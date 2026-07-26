@@ -1,0 +1,55 @@
+generated: '2026-07-25'
+method: searched
+source: https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-test-service/
+summary: >-
+  Mplify publishes no public API sandbox with self-serve test credentials — it operates no runtime
+  API. What it does publish is a real, named test environment (software emulators of both sides of
+  every LSO contract), a free no-login spec-blending tool, and example request/response payloads
+  shipped in every SDK. Test values below are only those Mplify actually publishes.
+environments:
+  - name: LSO API Test Service
+    formerly: LSO API Onboarding & Interop Test (OIT) Service
+    url: https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-test-service/
+    type: hosted emulator environment
+    hosting: dedicated public-cloud instance per subscriber
+    components:
+      - Buyer emulator — lets a Buyer test onboarding against many Sellers in parallel
+      - Seller emulator — lets a Seller test its implementation for LSO API compliance
+    capabilities:
+      - Run default configurations to exercise requests, responses and product payloads
+      - Self-assessment against Mplify's reference implementation of the LSO APIs
+      - Prepare an emulator configuration matching a specific scenario and share it with partners
+      - Load a partner-supplied configuration for pre-interop testing
+    access: contracted — informational engagement with Mplify, signed contract, onboarding with test partner Amartus
+    self_serve: false
+    credentials_published: false
+    partner: Amartus (authorised Mplify test & certification partner since October 2021)
+    leads_to: MEF 3.0 LSO API Certification (optional)
+  - name: LSO API Blending Tool (LSO API Blender)
+    url: https://lso.mef.net/api-blender
+    portal: https://lso.mplify.net/lso-tools
+    type: no-login browser tool
+    self_serve: true
+    what_it_does: >-
+      Blends a chosen LSO API with chosen product/service payload schemas and returns a downloadable
+      zip of the resulting API document — the artifact you then load into the MCP runner, a mock
+      server or a code generator. Also the only route to the five pre-standard LSO Quality on Demand
+      (CAMARA-aligned) APIs.
+    credentials_required: false
+test_data:
+  published: true
+  form: example request and response payloads committed in each SDK, plus Postman collections shipped as standard appendices
+  examples:
+    - https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/documentation
+    - https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/documentation/serviceSchema/carrierEthernet/Postman/MEF%2099_1_with_MEF%20101%20Service%20Ordering%20Management.postman_collection.json
+  magic_values: none — Mplify publishes no reserved/magic test identifiers
+  test_key_prefixes: none — there is no Mplify-issued credential of any kind
+local_option:
+  description: >-
+    The published MCP runner will start against any LSO document and any upstream base URL, so the
+    common local test loop is: blend the API, point mplify-mcp-server (or a mock server) at the
+    resulting document, and exercise the tool surface before a Seller endpoint exists.
+  reference: mcp/mef-mcp.yml
+related:
+  conventions: conventions/mef-conventions.yml
+  conformance: conformance/mef-conformance.yml

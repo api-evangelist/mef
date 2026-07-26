@@ -1,0 +1,373 @@
+generated: '2026-07-25'
+method: searched
+source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/MPLIFY-MCP-QUICKSTART.md
+status: published
+hosting: self-hosted — Mplify publishes the MCP server code and per-API configuration inside every LSO
+  SDK release; it does not operate a hosted/remote MCP endpoint.
+server:
+  name: mplify-mcp-server
+  package: mcp-openapi-server (pyproject name); console script mplify-mcp-server
+  implementation: Python 3.11+, FastMCP (fastmcp>=2.14.1), tools auto-generated with FastMCP.from_openapi()
+  transport: http
+  alternate_transports:
+  - stdio
+  - sse
+  default_endpoint: http://<host>:8000/mcp
+  container: docker build -t mplify-mcp-server mplify-mcp-runner
+  source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/generated/mcp/mplify-mcp-runner
+  license: MIT (runner) inside an Apache-2.0 SDK
+  authored_by: Amartus (Mplify LSO test & certification partner)
+introduced: 'kylie release, 2026-02-17 — release notes: "MCP Server code added for every Seller side API"'
+upstream_auth:
+  modes:
+  - none
+  - basic
+  - oauth-refresh
+  default_in_env_files: basic (MCP_AUTH_MODE=basic, MCP_BASIC_CREDENTIALS=user:password placeholder)
+  oauth: OAuth2 refresh-token grant with automatic refresh (MCP_OAUTH_TOKEN_URL / CLIENT_ID / CLIENT_SECRET
+    / REFRESH_TOKEN / SCOPE / AUDIENCE)
+  note: The MCP runner authenticates to the implementing Seller’s API. Mplify defines the contract; the
+    Seller operates the endpoint and issues credentials.
+tools:
+  derivation: One MCP tool per OpenAPI operation, generated at runtime by FastMCP.from_openapi() from
+    the blended API document named in MCP_OAS_URI.
+  live_introspection: tools/list requires running the container against a Seller endpoint; there is no
+    public hosted server to introspect anonymously.
+  crosswalk: mcp/mef-tool-crosswalk.yml
+server_count: 47
+servers:
+- name: APPOINTMENT_MANAGEMENT
+  irp: LSO Sonata
+  api: MEF LSO Sonata Appointment Management
+  aid: mef:mef-lso-sonata-appointment-management
+  openapi: openapi/mef-lso-sonata-appointment-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/APPOINTMENT_MANAGEMENT.env
+  mcp_oas_uri: /data/workforce/appointment/appointmentManagement.api.yaml
+- name: BILLING_MANAGEMENT
+  irp: LSO Sonata
+  api: MEF LSO Sonata Billing Management
+  aid: mef:mef-lso-sonata-billing-management
+  openapi: openapi/mef-lso-sonata-billing-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/BILLING_MANAGEMENT.env
+  mcp_oas_uri: /data/billing/billingManagement.api.yaml
+- name: CIRCUIT_IMPAIRMENT_AND_MAINTENANCE
+  irp: LSO Sonata
+  api: MEF LSO Sonata Circuit Impairment and Maintenance
+  aid: mef:mef-lso-sonata-circuit-impairment-and-maintenance
+  openapi: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/CIRCUIT_IMPAIRMENT_AND_MAINTENANCE.env
+  mcp_oas_uri: /data/cim/circuitImpairmentAndMaintenance.api.yaml
+- name: GEOGRAPHIC_ADDRESS_MANAGEMENT
+  irp: LSO Sonata
+  api: MEF LSO Sonata Geographic Address Management
+  aid: mef:mef-lso-sonata-geographic-address-management
+  openapi: openapi/mef-lso-sonata-geographic-address-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/GEOGRAPHIC_ADDRESS_MANAGEMENT.env
+  mcp_oas_uri: /data/serviceability/address/geographicAddressManagement.api.yaml
+- name: GEOGRAPHIC_SITE_MANAGEMENT
+  irp: LSO Sonata
+  api: MEF LSO Sonata Geographic Site Management
+  aid: mef:mef-lso-sonata-geographic-site-management
+  openapi: openapi/mef-lso-sonata-geographic-site-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/GEOGRAPHIC_SITE_MANAGEMENT.env
+  mcp_oas_uri: /data/serviceability/site/geographicSiteManagement.api.yaml
+- name: PRODUCT_CATALOG
+  irp: LSO Sonata
+  api: MEF LSO Sonata Product Catalog
+  aid: mef:mef-lso-sonata-product-catalog
+  openapi: openapi/mef-lso-sonata-product-catalog-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/PRODUCT_CATALOG.env
+  mcp_oas_uri: /data/catalog/productCatalog.api.yaml
+- name: PRODUCT_INVENTORY
+  irp: LSO Sonata
+  api: MEF LSO Sonata Product Inventory Management
+  aid: mef:mef-lso-sonata-product-inventory-management
+  openapi: openapi/mef-lso-sonata-product-inventory-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/PRODUCT_INVENTORY.env
+  mcp_oas_uri: /data/inventory/productInventoryManagement.api.yaml
+- name: PRODUCT_OFFERING_AVAILABILITY_AND_PRICING_DISCOVERY
+  irp: LSO Sonata
+  api: MEF LSO Sonata Product Offering Availability And Pricing Discovery Management
+  aid: mef:mef-lso-sonata-product-offering-availability-and-pricing-discovery
+  openapi: openapi/mef-lso-sonata-product-offering-availability-and-pricing-discovery-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/PRODUCT_OFFERING_AVAILABILITY_AND_PRICING_DISCOVERY.env
+  mcp_oas_uri: /data/availabilityAndPricingDiscovery/productOfferingAvailabilityAndPricingDiscovery.api.yaml
+- name: PRODUCT_OFFERING_QUALIFICATION
+  irp: LSO Sonata
+  api: MEF LSO Sonata Product Offering Qualification Management
+  aid: mef:mef-lso-sonata-product-offering-qualification-management
+  openapi: openapi/mef-lso-sonata-product-offering-qualification-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/PRODUCT_OFFERING_QUALIFICATION.env
+  mcp_oas_uri: /data/serviceability/offeringQualification/productOfferingQualificationManagement.api.yaml
+- name: PRODUCT_ORDER
+  irp: LSO Sonata
+  api: MEF LSO Sonata Product Ordering Management
+  aid: mef:mef-lso-sonata-product-order-management
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/PRODUCT_ORDER.env
+  mcp_oas_uri: /data/order/productOrderManagement.api.yaml
+- name: QUOTE
+  irp: LSO Sonata
+  api: MEF LSO Sonata Quote Management
+  aid: mef:mef-lso-sonata-quote-management
+  openapi: openapi/mef-lso-sonata-quote-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/QUOTE.env
+  mcp_oas_uri: /data/quote/quoteManagement.api.yaml
+- name: TROUBLE_TICKET_MANAGEMENT
+  irp: LSO Sonata
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  aid: mef:mef-lso-sonata-trouble-ticket-management
+  openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/TROUBLE_TICKET_MANAGEMENT.env
+  mcp_oas_uri: /data/troubleTicket/troubleTicketManagement.api.yaml
+- name: WORK_ORDER_MANAGEMENT
+  irp: LSO Sonata
+  api: MEF LSO Sonata WorkOrder Management
+  aid: mef:mef-lso-sonata-workorder-management
+  openapi: openapi/mef-lso-sonata-workorder-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/WORK_ORDER_MANAGEMENT.env
+  mcp_oas_uri: /data/workforce/workorder/workorderManagement.api.yaml
+- name: APPOINTMENT_MANAGEMENT
+  irp: LSO Cantata
+  api: MEF LSO Cantata Appointment Management
+  aid: mef:mef-lso-cantata-appointment-management
+  openapi: openapi/mef-lso-cantata-appointment-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/APPOINTMENT_MANAGEMENT.env
+  mcp_oas_uri: /data/workforce/appointment/appointmentManagement.api.yaml
+- name: BILLING_MANAGEMENT
+  irp: LSO Cantata
+  api: MEF LSO Cantata Billing Management
+  aid: mef:mef-lso-cantata-billing-management
+  openapi: openapi/mef-lso-cantata-billing-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/BILLING_MANAGEMENT.env
+  mcp_oas_uri: /data/billing/billingManagement.api.yaml
+- name: CIRCUIT_IMPAIRMENT_AND_MAINTENANCE
+  irp: LSO Cantata
+  api: MEF LSO Cantata Circuit Impairment and Maintenance
+  aid: mef:mef-lso-cantata-circuit-impairment-and-maintenance
+  openapi: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/CIRCUIT_IMPAIRMENT_AND_MAINTENANCE.env
+  mcp_oas_uri: /data/cim/circuitImpairmentAndMaintenance.api.yaml
+- name: GEOGRAPHIC_ADDRESS_MANAGEMENT
+  irp: LSO Cantata
+  api: MEF LSO Cantata Geographic Address Management
+  aid: mef:mef-lso-cantata-geographic-address-management
+  openapi: openapi/mef-lso-cantata-geographic-address-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/GEOGRAPHIC_ADDRESS_MANAGEMENT.env
+  mcp_oas_uri: /data/serviceability/address/geographicAddressManagement.api.yaml
+- name: GEOGRAPHIC_SITE_MANAGEMENT
+  irp: LSO Cantata
+  api: MEF LSO Cantata Geographic Site Management
+  aid: mef:mef-lso-cantata-geographic-site-management
+  openapi: openapi/mef-lso-cantata-geographic-site-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/GEOGRAPHIC_SITE_MANAGEMENT.env
+  mcp_oas_uri: /data/serviceability/site/geographicSiteManagement.api.yaml
+- name: PRODUCT_CATALOG
+  irp: LSO Cantata
+  api: MEF LSO Cantata Product Catalog
+  aid: mef:mef-lso-cantata-product-catalog
+  openapi: openapi/mef-lso-cantata-product-catalog-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/PRODUCT_CATALOG.env
+  mcp_oas_uri: /data/catalog/productCatalog.api.yaml
+- name: PRODUCT_INVENTORY
+  irp: LSO Cantata
+  api: MEF LSO Cantata Product Inventory Management
+  aid: mef:mef-lso-cantata-product-inventory-management
+  openapi: openapi/mef-lso-cantata-product-inventory-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/PRODUCT_INVENTORY.env
+  mcp_oas_uri: /data/inventory/productInventoryManagement.api.yaml
+- name: PRODUCT_OFFERING_AVAILABILITY_AND_PRICING_DISCOVERY
+  irp: LSO Cantata
+  api: MEF LSO Cantata Product Offering Availability And Pricing Discovery Management
+  aid: mef:mef-lso-cantata-product-offering-availability-and-pricing-discovery
+  openapi: openapi/mef-lso-cantata-product-offering-availability-and-pricing-discovery-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/PRODUCT_OFFERING_AVAILABILITY_AND_PRICING_DISCOVERY.env
+  mcp_oas_uri: /data/availabilityAndPricingDiscovery/productOfferingAvailabilityAndPricingDiscovery.api.yaml
+- name: PRODUCT_OFFERING_QUALIFICATION
+  irp: LSO Cantata
+  api: MEF LSO Cantata Product Offering Qualification Management
+  aid: mef:mef-lso-cantata-product-offering-qualification-management
+  openapi: openapi/mef-lso-cantata-product-offering-qualification-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/PRODUCT_OFFERING_QUALIFICATION.env
+  mcp_oas_uri: /data/serviceability/offeringQualification/productOfferingQualificationManagement.api.yaml
+- name: PRODUCT_ORDER
+  irp: LSO Cantata
+  api: MEF LSO Cantata Product Ordering Management
+  aid: mef:mef-lso-cantata-product-order-management
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/PRODUCT_ORDER.env
+  mcp_oas_uri: /data/order/productOrderManagement.api.yaml
+- name: QUOTE
+  irp: LSO Cantata
+  api: MEF LSO Cantata Quote Management
+  aid: mef:mef-lso-cantata-quote-management
+  openapi: openapi/mef-lso-cantata-quote-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/QUOTE.env
+  mcp_oas_uri: /data/quote/quoteManagement.api.yaml
+- name: TROUBLE_TICKET_MANAGEMENT
+  irp: LSO Cantata
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  aid: mef:mef-lso-cantata-trouble-ticket-management
+  openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/TROUBLE_TICKET_MANAGEMENT.env
+  mcp_oas_uri: /data/troubleTicket/troubleTicketManagement.api.yaml
+- name: WORK_ORDER_MANAGEMENT
+  irp: LSO Cantata
+  api: MEF LSO Cantata WorkOrder Management
+  aid: mef:mef-lso-cantata-workorder-management
+  openapi: openapi/mef-lso-cantata-workorder-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/mcp/WORK_ORDER_MANAGEMENT.env
+  mcp_oas_uri: /data/workforce/workorder/workorderManagement.api.yaml
+- name: ALARM_MANAGEMENT
+  irp: LSO Interlude
+  api: MEF LSO Interlude Alarm Management
+  aid: mef:mef-lso-interlude-alarm-management
+  openapi: openapi/mef-lso-interlude-alarm-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/ALARM_MANAGEMENT.env
+  mcp_oas_uri: /data/alarm/alarmManagement.api.yaml
+- name: FAULT_MANAGEMENT
+  irp: LSO Interlude
+  api: MEF LSO Interlude Fault Management
+  aid: mef:mef-lso-interlude-fault-management
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/FAULT_MANAGEMENT.env
+  mcp_oas_uri: /data/fm/faultManagement.api.yaml
+- name: PERFORMANCE_MONITORING
+  irp: LSO Interlude
+  api: MEF LSO Interlude Performance Monitoring
+  aid: mef:mef-lso-interlude-performance-monitoring
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/PERFORMANCE_MONITORING.env
+  mcp_oas_uri: /data/pm/performanceMonitoring.api.yaml
+- name: SERVICE_FUNCTION_TEST
+  irp: LSO Interlude
+  api: MEF LSO Interlude Service Function Testing
+  aid: mef:mef-lso-interlude-service-function-test
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/SERVICE_FUNCTION_TEST.env
+  mcp_oas_uri: /data/sft/serviceFunctionTest.api.yaml
+- name: SERVICE_INVENTORY_MANAGEMENT
+  irp: LSO Interlude
+  api: MEF LSO Interlude Service Inventory Management
+  aid: mef:mef-lso-interlude-service-inventory-management
+  openapi: openapi/mef-lso-interlude-service-inventory-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/SERVICE_INVENTORY_MANAGEMENT.env
+  mcp_oas_uri: /data/inventory/serviceInventoryManagement.api.yaml
+- name: SERVICE_ORDERING_MANAGEMENT
+  irp: LSO Interlude
+  api: MEF LSO Interlude Service Ordering Management
+  aid: mef:mef-lso-interlude-service-ordering-management
+  openapi: openapi/mef-lso-interlude-service-ordering-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/SERVICE_ORDERING_MANAGEMENT.env
+  mcp_oas_uri: /data/order/serviceOrderingManagement.api.yaml
+- name: STREAMING_MANAGEMENT
+  irp: LSO Interlude
+  api: MEF LSO Interlude Streaming Management
+  aid: mef:mef-lso-interlude-streaming-management-all-in-one
+  openapi: openapi/mef-lso-interlude-streaming-management-all-in-one-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/generated/mcp/STREAMING_MANAGEMENT.env
+  mcp_oas_uri: /data/pm/streamingManagement.api.all-in-one.yaml
+- name: ALARM_MANAGEMENT
+  irp: LSO Legato
+  api: MEF LSO Legato Alarm Management
+  aid: mef:mef-lso-legato-alarm-management
+  openapi: openapi/mef-lso-legato-alarm-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/ALARM_MANAGEMENT.env
+  mcp_oas_uri: /data/alarm/alarmManagement.api.yaml
+- name: FAULT_MANAGEMENT
+  irp: LSO Legato
+  api: MEF LSO Legato Fault Management
+  aid: mef:mef-lso-legato-fault-management
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/FAULT_MANAGEMENT.env
+  mcp_oas_uri: /data/fm/faultManagement.api.yaml
+- name: PERFORMANCE_MONITORING
+  irp: LSO Legato
+  api: MEF LSO Legato Performance Monitoring
+  aid: mef:mef-lso-legato-performance-monitoring
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/PERFORMANCE_MONITORING.env
+  mcp_oas_uri: /data/pm/performanceMonitoring.api.yaml
+- name: SERVICE_FUNCTION_TEST
+  irp: LSO Legato
+  api: MEF LSO Legato Service Function Testing
+  aid: mef:mef-lso-legato-service-function-test
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/SERVICE_FUNCTION_TEST.env
+  mcp_oas_uri: /data/sft/serviceFunctionTest.api.yaml
+- name: SERVICE_INVENTORY_MANAGEMENT
+  irp: LSO Legato
+  api: MEF LSO Legato Service Inventory Management
+  aid: mef:mef-lso-legato-service-inventory-management
+  openapi: openapi/mef-lso-legato-service-inventory-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/SERVICE_INVENTORY_MANAGEMENT.env
+  mcp_oas_uri: /data/inventory/serviceInventoryManagement.api.yaml
+- name: SERVICE_ORDERING_MANAGEMENT
+  irp: LSO Legato
+  api: MEF LSO Legato Service Ordering Management
+  aid: mef:mef-lso-legato-service-ordering-management
+  openapi: openapi/mef-lso-legato-service-ordering-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/SERVICE_ORDERING_MANAGEMENT.env
+  mcp_oas_uri: /data/order/serviceOrderingManagement.api.yaml
+- name: STREAMING_MANAGEMENT
+  irp: LSO Legato
+  api: MEF LSO Legato Streaming Management
+  aid: mef:mef-lso-legato-streaming-management-all-in-one
+  openapi: openapi/mef-lso-legato-streaming-management-all-in-one-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/generated/mcp/STREAMING_MANAGEMENT.env
+  mcp_oas_uri: /data/pm/streamingManagement.api.all-in-one.yaml
+- name: ALARM_MANAGEMENT
+  irp: LSO Allegro
+  api: MEF LSO Allegro Alarm Management
+  aid: mef:mef-lso-allegro-alarm-management
+  openapi: openapi/mef-lso-allegro-alarm-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/ALARM_MANAGEMENT.env
+  mcp_oas_uri: /data/alarm/alarmManagement.api.yaml
+- name: FAULT_MANAGEMENT
+  irp: LSO Allegro
+  api: MEF LSO Allegro Fault Management
+  aid: mef:mef-lso-allegro-fault-management
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/FAULT_MANAGEMENT.env
+  mcp_oas_uri: /data/fm/faultManagement.api.yaml
+- name: PERFORMANCE_MONITORING
+  irp: LSO Allegro
+  api: MEF LSO Allegro Performance Monitoring
+  aid: mef:mef-lso-allegro-performance-monitoring
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/PERFORMANCE_MONITORING.env
+  mcp_oas_uri: /data/pm/performanceMonitoring.api.yaml
+- name: SERVICE_FUNCTION_TEST
+  irp: LSO Allegro
+  api: MEF LSO Allegro Service Function Testing
+  aid: mef:mef-lso-allegro-service-function-test
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/SERVICE_FUNCTION_TEST.env
+  mcp_oas_uri: /data/sft/serviceFunctionTest.api.yaml
+- name: SERVICE_INVENTORY_MANAGEMENT
+  irp: LSO Allegro
+  api: MEF LSO Allegro Service Inventory Management
+  aid: mef:mef-lso-allegro-service-inventory-management
+  openapi: openapi/mef-lso-allegro-service-inventory-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/SERVICE_INVENTORY_MANAGEMENT.env
+  mcp_oas_uri: /data/inventory/serviceInventoryManagement.api.yaml
+- name: SERVICE_ORDERING_MANAGEMENT
+  irp: LSO Allegro
+  api: MEF LSO Allegro Service Ordering Management
+  aid: mef:mef-lso-allegro-service-ordering-management
+  openapi: openapi/mef-lso-allegro-service-ordering-management-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/SERVICE_ORDERING_MANAGEMENT.env
+  mcp_oas_uri: /data/order/serviceOrderingManagement.api.yaml
+- name: STREAMING_MANAGEMENT
+  irp: LSO Allegro
+  api: MEF LSO Allegro Streaming Management
+  aid: mef:mef-lso-allegro-streaming-management-all-in-one
+  openapi: openapi/mef-lso-allegro-streaming-management-all-in-one-openapi.yml
+  env_file: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/blob/kylie/generated/mcp/STREAMING_MANAGEMENT.env
+  mcp_oas_uri: /data/pm/streamingManagement.api.all-in-one.yaml
+notes:
+- Sonata and Cantata each ship 13 MCP server configurations; Interlude, Legato and Allegro ship 7 each;
+  Presto ships none.
+- The Cantata env files reuse the Sonata MCP_SERVER_URI path segment (mefApi/sonata/...) verbatim; recorded
+  as published.
+- Only Seller-side management APIs get MCP servers — the notification/listener APIs do not.

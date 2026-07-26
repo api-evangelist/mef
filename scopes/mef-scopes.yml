@@ -1,0 +1,2556 @@
+generated: '2026-07-25'
+method: searched
+source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/generated/security (and the Cantata/Interlude/Legato/Allegro
+  siblings)
+docs: https://lso.mplify.net/api-catalog
+note: Mplify ships two variants of every LSO API document. The canonical productApi/ and serviceApi/ definitions
+  carry NO securitySchemes at all — they are contracts for implementers to secure. The generated/security/
+  variants add a single scheme, oauth2MEFLSOAPI (OAuth 2.0 client credentials, m2m), and attach a PER-OPERATION
+  scope named after the operationId. The scope list below is harvested verbatim from those 88 published
+  security variants. The tokenUrl/refreshUrl in the published documents are placeholders (http://mef.net/example/token,
+  http://mef.net/example/refresh) — the implementing Seller supplies the real authorization server.
+schemes:
+- name: oauth2MEFLSOAPI
+  type: oauth2
+  description: Default m2m client code
+  flows:
+  - flow: clientCredentials
+    tokenUrl: http://mef.net/example/token
+    refreshUrl: http://mef.net/example/refresh
+    declared_scopes:
+      default: default scope
+    note: Declared flow scope map contains only "default"; the real per-operation scopes are attached
+      at the operation level.
+  documents: 88
+scope_count: 218
+scopes:
+- scope: ServiceCreateEvent
+  description: Authorizes the ServiceCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - ServiceCreateEvent
+- scope: alarmAcknowledgeEvent
+  description: Authorizes the alarmAcknowledgeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - alarmAcknowledgeEvent
+- scope: alarmCommentEvent
+  description: Authorizes the alarmCommentEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - alarmCommentEvent
+- scope: alarmCreateEvent
+  description: Authorizes the alarmCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - alarmCreateEvent
+- scope: alarmDeleteEvent
+  description: Authorizes the alarmDeleteEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - alarmDeleteEvent
+- scope: cancelAppointment
+  description: Authorizes the cancelAppointment operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - cancelAppointment
+- scope: cancelFaultManagementJobStateChangeEvent
+  description: Authorizes the cancelFaultManagementJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - cancelFaultManagementJobStateChangeEvent
+- scope: cancelPerformanceJobStateChangeEvent
+  description: Authorizes the cancelPerformanceJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - cancelPerformanceJobStateChangeEvent
+- scope: cancelProductOrderStateChangeEvent
+  description: Authorizes the cancelProductOrderStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - cancelProductOrderStateChangeEvent
+- scope: cancelQuote
+  description: Authorizes the cancelQuote operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - cancelQuote
+- scope: cancelTestJobStateChangeEvent
+  description: Authorizes the cancelTestJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - cancelTestJobStateChangeEvent
+- scope: cancelTroubleTicket
+  description: Authorizes the cancelTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - cancelTroubleTicket
+- scope: chargeCreateEvent
+  description: Authorizes the chargeCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - chargeCreateEvent
+- scope: chargeStateChangeEvent
+  description: Authorizes the chargeStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - chargeStateChangeEvent
+- scope: chargeTimeoutEvent
+  description: Authorizes the chargeTimeoutEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - chargeTimeoutEvent
+- scope: closeTroubleTicket
+  description: Authorizes the closeTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - closeTroubleTicket
+- scope: createAppointment
+  description: Authorizes the createAppointment operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createAppointment
+- scope: createCancelFaultManagementJob
+  description: Authorizes the createCancelFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createCancelFaultManagementJob
+- scope: createCancelPerformanceJob
+  description: Authorizes the createCancelPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createCancelPerformanceJob
+- scope: createCancelProductOrder
+  description: Authorizes the createCancelProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createCancelProductOrder
+- scope: createCancelTestJob
+  description: Authorizes the createCancelTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createCancelTestJob
+- scope: createFaultManagementJob
+  description: Authorizes the createFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createFaultManagementJob
+- scope: createGeographicAddressValidation
+  description: Authorizes the createGeographicAddressValidation operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createGeographicAddressValidation
+- scope: createModifyFaultManagementJob
+  description: Authorizes the createModifyFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createModifyFaultManagementJob
+- scope: createModifyPerformanceJob
+  description: Authorizes the createModifyPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createModifyPerformanceJob
+- scope: createModifyProductOrderItemRequestedDeliveryDate
+  description: Authorizes the createModifyProductOrderItemRequestedDeliveryDate operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createModifyProductOrderItemRequestedDeliveryDate
+- scope: createModifyTestJob
+  description: Authorizes the createModifyTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createModifyTestJob
+- scope: createPerformanceJob
+  description: Authorizes the createPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createPerformanceJob
+- scope: createPerformanceProfile
+  description: Authorizes the createPerformanceProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createPerformanceProfile
+- scope: createPerformanceReport
+  description: Authorizes the createPerformanceReport operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createPerformanceReport
+- scope: createProductOfferingQualification
+  description: Authorizes the createProductOfferingQualification operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createProductOfferingQualification
+- scope: createProductOrder
+  description: Authorizes the createProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createProductOrder
+- scope: createQuote
+  description: Authorizes the createQuote operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createQuote
+- scope: createResumeTestJob
+  description: Authorizes the createResumeTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createResumeTestJob
+- scope: createSearchTimeSlot
+  description: Authorizes the createSearchTimeSlot operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createSearchTimeSlot
+- scope: createServiceOrder
+  description: Authorizes the createServiceOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createServiceOrder
+- scope: createSuspendTestJob
+  description: Authorizes the createSuspendTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createSuspendTestJob
+- scope: createTestJob
+  description: Authorizes the createTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createTestJob
+- scope: createTestProfile
+  description: Authorizes the createTestProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - createTestProfile
+- scope: createTroubleTicket
+  description: Authorizes the createTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - createTroubleTicket
+- scope: declineQuote
+  description: Authorizes the declineQuote operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - declineQuote
+- scope: deletePerformanceProfile
+  description: Authorizes the deletePerformanceProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - deletePerformanceProfile
+- scope: deleteTestProfile
+  description: Authorizes the deleteTestProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - deleteTestProfile
+- scope: faultManagementJobAttributeValueChangeEvent
+  description: Authorizes the faultManagementJobAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementJobAttributeValueChangeEvent
+- scope: faultManagementJobComplexQuery
+  description: Authorizes the faultManagementJobComplexQuery operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementJobComplexQuery
+- scope: faultManagementJobCreateEvent
+  description: Authorizes the faultManagementJobCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementJobCreateEvent
+- scope: faultManagementJobReportPreparationErrorEvent
+  description: Authorizes the faultManagementJobReportPreparationErrorEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementJobReportPreparationErrorEvent
+- scope: faultManagementJobReportReadyEvent
+  description: Authorizes the faultManagementJobReportReadyEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementJobReportReadyEvent
+- scope: faultManagementJobStateChangeEvent
+  description: Authorizes the faultManagementJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementJobStateChangeEvent
+- scope: faultManagementReportComplexQuery
+  description: Authorizes the faultManagementReportComplexQuery operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementReportComplexQuery
+- scope: faultManagementReportCreateEvent
+  description: Authorizes the faultManagementReportCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementReportCreateEvent
+- scope: faultManagementReportStateChangeEvent
+  description: Authorizes the faultManagementReportStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - faultManagementReportStateChangeEvent
+- scope: listAlarms
+  description: Authorizes the listAlarms operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listAlarms
+- scope: listAppointment
+  description: Authorizes the listAppointment operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listAppointment
+- scope: listCancelFaultManagementJob
+  description: Authorizes the listCancelFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listCancelFaultManagementJob
+- scope: listCancelPerformanceJob
+  description: Authorizes the listCancelPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listCancelPerformanceJob
+- scope: listCancelProductOrder
+  description: Authorizes the listCancelProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listCancelProductOrder
+- scope: listCancelTestJob
+  description: Authorizes the listCancelTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listCancelTestJob
+- scope: listCategory
+  description: Authorizes the listCategory operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listCategory
+- scope: listCharge
+  description: Authorizes the listCharge operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listCharge
+- scope: listCimIncident
+  description: Authorizes the listCimIncident operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listCimIncident
+- scope: listCustomerBill
+  description: Authorizes the listCustomerBill operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listCustomerBill
+- scope: listFaultManagementJob
+  description: Authorizes the listFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listFaultManagementJob
+- scope: listFaultManagementReport
+  description: Authorizes the listFaultManagementReport operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listFaultManagementReport
+- scope: listGeographicSite
+  description: Authorizes the listGeographicSite operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listGeographicSite
+- scope: listIncident
+  description: Authorizes the listIncident operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listIncident
+- scope: listModifyFaultManagementJob
+  description: Authorizes the listModifyFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listModifyFaultManagementJob
+- scope: listModifyPerformanceJob
+  description: Authorizes the listModifyPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listModifyPerformanceJob
+- scope: listModifyProductOrderItemRequestedDeliveryDate
+  description: Authorizes the listModifyProductOrderItemRequestedDeliveryDate operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listModifyProductOrderItemRequestedDeliveryDate
+- scope: listModifyTestJob
+  description: Authorizes the listModifyTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listModifyTestJob
+- scope: listPerformanceJob
+  description: Authorizes the listPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listPerformanceJob
+- scope: listPerformanceProfile
+  description: Authorizes the listPerformanceProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listPerformanceProfile
+- scope: listPerformanceReport
+  description: Authorizes the listPerformanceReport operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listPerformanceReport
+- scope: listProduct
+  description: Authorizes the listProduct operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listProduct
+- scope: listProductOffering
+  description: Authorizes the listProductOffering operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listProductOffering
+- scope: listProductOfferingQualification
+  description: Authorizes the listProductOfferingQualification operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listProductOfferingQualification
+- scope: listProductOrder
+  description: Authorizes the listProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listProductOrder
+- scope: listProductSpecification
+  description: Authorizes the listProductSpecification operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listProductSpecification
+- scope: listQuote
+  description: Authorizes the listQuote operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listQuote
+- scope: listResumeTestJob
+  description: Authorizes the listResumeTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listResumeTestJob
+- scope: listServiceOrder
+  description: Authorizes the listServiceOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listServiceOrder
+- scope: listSuspendTestJob
+  description: Authorizes the listSuspendTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listSuspendTestJob
+- scope: listTestJob
+  description: Authorizes the listTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listTestJob
+- scope: listTestProfile
+  description: Authorizes the listTestProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listTestProfile
+- scope: listTestResult
+  description: Authorizes the listTestResult operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listTestResult
+- scope: listTrackingRecord
+  description: Authorizes the listTrackingRecord operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - listTrackingRecord
+- scope: listTroubleTicket
+  description: Authorizes the listTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listTroubleTicket
+- scope: listWorkOrder
+  description: Authorizes the listWorkOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listWorkOrder
+- scope: listen to Customer Bill Create Event
+  description: Authorizes the listen to Customer Bill Create Event operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listen to Customer Bill Create Event
+- scope: listen to customer Bill State Change Event
+  description: Authorizes the listen to customer Bill State Change Event operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listen to customer Bill State Change Event
+- scope: listenToAppointmentAttributeValueChangeEvent
+  description: Authorizes the listenToAppointmentAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToAppointmentAttributeValueChangeEvent
+- scope: listenToAppointmentStatusChangeEvent
+  description: Authorizes the listenToAppointmentStatusChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToAppointmentStatusChangeEvent
+- scope: listenToCategoryAttributeValueChangeEvent
+  description: Authorizes the listenToCategoryAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToCategoryAttributeValueChangeEvent
+- scope: listenToCategoryCreateEvent
+  description: Authorizes the listenToCategoryCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToCategoryCreateEvent
+- scope: listenToCimIncidentAttributeValueChangeEvent
+  description: Authorizes the listenToCimIncidentAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToCimIncidentAttributeValueChangeEvent
+- scope: listenToCimIncidentCreateEvent
+  description: Authorizes the listenToCimIncidentCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToCimIncidentCreateEvent
+- scope: listenToCimIncidentStatusChangeEvent
+  description: Authorizes the listenToCimIncidentStatusChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToCimIncidentStatusChangeEvent
+- scope: listenToGeographicAddressValidationStateChangeEvent
+  description: Authorizes the listenToGeographicAddressValidationStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToGeographicAddressValidationStateChangeEvent
+- scope: listenToIncidentAttributeValueChangeEvent
+  description: Authorizes the listenToIncidentAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToIncidentAttributeValueChangeEvent
+- scope: listenToIncidentCreateEvent
+  description: Authorizes the listenToIncidentCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToIncidentCreateEvent
+- scope: listenToIncidentStatusChangeEvent
+  description: Authorizes the listenToIncidentStatusChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToIncidentStatusChangeEvent
+- scope: listenToPoqItemStateChangeEvent
+  description: Authorizes the listenToPoqItemStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToPoqItemStateChangeEvent
+- scope: listenToProductOfferingAttributeValueChangeEvent
+  description: Authorizes the listenToProductOfferingAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToProductOfferingAttributeValueChangeEvent
+- scope: listenToProductOfferingCreateEvent
+  description: Authorizes the listenToProductOfferingCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToProductOfferingCreateEvent
+- scope: listenToProductOfferingStateChangeEvent
+  description: Authorizes the listenToProductOfferingStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToProductOfferingStateChangeEvent
+- scope: listenToProductSpecificationAttributeValueChangeEvent
+  description: Authorizes the listenToProductSpecificationAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToProductSpecificationAttributeValueChangeEvent
+- scope: listenToProductSpecificationCreateEvent
+  description: Authorizes the listenToProductSpecificationCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToProductSpecificationCreateEvent
+- scope: listenToProductSpecificationStatusChangeEvent
+  description: Authorizes the listenToProductSpecificationStatusChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToProductSpecificationStatusChangeEvent
+- scope: listenToQuoteItemStateChangeEvent
+  description: Authorizes the listenToQuoteItemStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToQuoteItemStateChangeEvent
+- scope: listenToQuoteStateChangeEvent
+  description: Authorizes the listenToQuoteStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToQuoteStateChangeEvent
+- scope: listenToTroubleTicketAttributeValueChangeEvent
+  description: Authorizes the listenToTroubleTicketAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToTroubleTicketAttributeValueChangeEvent
+- scope: listenToTroubleTicketInformationRequiredEvent
+  description: Authorizes the listenToTroubleTicketInformationRequiredEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToTroubleTicketInformationRequiredEvent
+- scope: listenToTroubleTicketResolvedEvent
+  description: Authorizes the listenToTroubleTicketResolvedEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToTroubleTicketResolvedEvent
+- scope: listenToTroubleTicketStatusChangeEvent
+  description: Authorizes the listenToTroubleTicketStatusChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToTroubleTicketStatusChangeEvent
+- scope: listenToWorkOrderAppointmentRequiredEvent
+  description: Authorizes the listenToWorkOrderAppointmentRequiredEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToWorkOrderAppointmentRequiredEvent
+- scope: listenToWorkOrderCreateEvent
+  description: Authorizes the listenToWorkOrderCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToWorkOrderCreateEvent
+- scope: listenToWorkOrderStateChangeEvent
+  description: Authorizes the listenToWorkOrderStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - listenToWorkOrderStateChangeEvent
+- scope: modifyFaultManagementJobStateChangeEvent
+  description: Authorizes the modifyFaultManagementJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - modifyFaultManagementJobStateChangeEvent
+- scope: modifyPerformanceJobStateChangeEvent
+  description: Authorizes the modifyPerformanceJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - modifyPerformanceJobStateChangeEvent
+- scope: modifyPerformanceProfile
+  description: Authorizes the modifyPerformanceProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - modifyPerformanceProfile
+- scope: modifyProductOrderItemRequestedDeliveryDateStateChangeEvent
+  description: Authorizes the modifyProductOrderItemRequestedDeliveryDateStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - modifyProductOrderItemRequestedDeliveryDateStateChangeEvent
+- scope: modifyTestJobStateChangeEvent
+  description: Authorizes the modifyTestJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - modifyTestJobStateChangeEvent
+- scope: modifyTestProfile
+  description: Authorizes the modifyTestProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - modifyTestProfile
+- scope: patchAppointment
+  description: Authorizes the patchAppointment operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - patchAppointment
+- scope: patchCharge
+  description: Authorizes the patchCharge operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - patchCharge
+- scope: patchProductOrder
+  description: Authorizes the patchProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - patchProductOrder
+- scope: patchTroubleTicket
+  description: Authorizes the patchTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - patchTroubleTicket
+- scope: performanceJobAttributeValueChangeEvent
+  description: Authorizes the performanceJobAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceJobAttributeValueChangeEvent
+- scope: performanceJobComplexQuery
+  description: Authorizes the performanceJobComplexQuery operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceJobComplexQuery
+- scope: performanceJobCreateEvent
+  description: Authorizes the performanceJobCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceJobCreateEvent
+- scope: performanceJobReportPreparationErrorEvent
+  description: Authorizes the performanceJobReportPreparationErrorEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceJobReportPreparationErrorEvent
+- scope: performanceJobReportReadyEvent
+  description: Authorizes the performanceJobReportReadyEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceJobReportReadyEvent
+- scope: performanceJobStateChangeEvent
+  description: Authorizes the performanceJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceJobStateChangeEvent
+- scope: performanceProfileAttributeValueChangeEvent
+  description: Authorizes the performanceProfileAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceProfileAttributeValueChangeEvent
+- scope: performanceProfileCreateEvent
+  description: Authorizes the performanceProfileCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceProfileCreateEvent
+- scope: performanceProfileDeleteEvent
+  description: Authorizes the performanceProfileDeleteEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceProfileDeleteEvent
+- scope: performanceReportComplexQuery
+  description: Authorizes the performanceReportComplexQuery operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceReportComplexQuery
+- scope: performanceReportCreateEvent
+  description: Authorizes the performanceReportCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceReportCreateEvent
+- scope: performanceReportStateChangeEvent
+  description: Authorizes the performanceReportStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - performanceReportStateChangeEvent
+- scope: poqStateChangeEvent
+  description: Authorizes the poqStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - poqStateChangeEvent
+- scope: pricingDiscoveryRequest
+  description: Authorizes the pricingDiscoveryRequest operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - pricingDiscoveryRequest
+- scope: productOfferingAvailabilityRequest
+  description: Authorizes the productOfferingAvailabilityRequest operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - productOfferingAvailabilityRequest
+- scope: productOrderItemExpectedCompletionDateSetEvent
+  description: Authorizes the productOrderItemExpectedCompletionDateSetEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - productOrderItemExpectedCompletionDateSetEvent
+- scope: productOrderItemStateChangeEvent
+  description: Authorizes the productOrderItemStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - productOrderItemStateChangeEvent
+- scope: productOrderStateChangeEvent
+  description: Authorizes the productOrderStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - productOrderStateChangeEvent
+- scope: productSpecificProductOrderItemMilestoneEvent
+  description: Authorizes the productSpecificProductOrderItemMilestoneEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - productSpecificProductOrderItemMilestoneEvent
+- scope: registerListener
+  description: Authorizes the registerListener operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Cantata
+  - LSO Interlude
+  - LSO Legato
+  - LSO Sonata
+  operations:
+  - registerListener
+- scope: reopenTroubleTicket
+  description: Authorizes the reopenTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - reopenTroubleTicket
+- scope: resumeFaultManagementJob
+  description: Authorizes the resumeFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - resumeFaultManagementJob
+- scope: resumePerformanceJob
+  description: Authorizes the resumePerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - resumePerformanceJob
+- scope: resumeTestJobStateChangeEvent
+  description: Authorizes the resumeTestJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - resumeTestJobStateChangeEvent
+- scope: retrieveAlarm
+  description: Authorizes the retrieveAlarm operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveAlarm
+- scope: retrieveAppointment
+  description: Authorizes the retrieveAppointment operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveAppointment
+- scope: retrieveCancelFaultManagementJob
+  description: Authorizes the retrieveCancelFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveCancelFaultManagementJob
+- scope: retrieveCancelPerformanceJob
+  description: Authorizes the retrieveCancelPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveCancelPerformanceJob
+- scope: retrieveCancelProductOrder
+  description: Authorizes the retrieveCancelProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveCancelProductOrder
+- scope: retrieveCancelTestJob
+  description: Authorizes the retrieveCancelTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveCancelTestJob
+- scope: retrieveCategory
+  description: Authorizes the retrieveCategory operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveCategory
+- scope: retrieveCharge
+  description: Authorizes the retrieveCharge operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveCharge
+- scope: retrieveCimIncident
+  description: Authorizes the retrieveCimIncident operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveCimIncident
+- scope: retrieveCustomerBill
+  description: Authorizes the retrieveCustomerBill operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveCustomerBill
+- scope: retrieveCustomerBillItem
+  description: Authorizes the retrieveCustomerBillItem operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveCustomerBillItem
+- scope: retrieveEventSubscription
+  description: Authorizes the retrieveEventSubscription operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveEventSubscription
+- scope: retrieveFaultManagementJob
+  description: Authorizes the retrieveFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveFaultManagementJob
+- scope: retrieveFaultManagementReport
+  description: Authorizes the retrieveFaultManagementReport operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveFaultManagementReport
+- scope: retrieveGeographicAddress
+  description: Authorizes the retrieveGeographicAddress operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveGeographicAddress
+- scope: retrieveGeographicAddressValidation
+  description: Authorizes the retrieveGeographicAddressValidation operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveGeographicAddressValidation
+- scope: retrieveGeographicSite
+  description: Authorizes the retrieveGeographicSite operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveGeographicSite
+- scope: retrieveHub
+  description: Authorizes the retrieveHub operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Cantata
+  - LSO Interlude
+  - LSO Legato
+  - LSO Sonata
+  operations:
+  - retrieveHub
+- scope: retrieveIncident
+  description: Authorizes the retrieveIncident operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveIncident
+- scope: retrieveModifyFaultManagementJob
+  description: Authorizes the retrieveModifyFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveModifyFaultManagementJob
+- scope: retrieveModifyPerformanceJob
+  description: Authorizes the retrieveModifyPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveModifyPerformanceJob
+- scope: retrieveModifyProductOrderItemRequestedDeliveryDate
+  description: Authorizes the retrieveModifyProductOrderItemRequestedDeliveryDate operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveModifyProductOrderItemRequestedDeliveryDate
+- scope: retrieveModifyTestJob
+  description: Authorizes the retrieveModifyTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveModifyTestJob
+- scope: retrievePerformanceJob
+  description: Authorizes the retrievePerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrievePerformanceJob
+- scope: retrievePerformanceProfile
+  description: Authorizes the retrievePerformanceProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrievePerformanceProfile
+- scope: retrievePerformanceReport
+  description: Authorizes the retrievePerformanceReport operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrievePerformanceReport
+- scope: retrieveProduct
+  description: Authorizes the retrieveProduct operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveProduct
+- scope: retrieveProductOffering
+  description: Authorizes the retrieveProductOffering operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveProductOffering
+- scope: retrieveProductOfferingQualification
+  description: Authorizes the retrieveProductOfferingQualification operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveProductOfferingQualification
+- scope: retrieveProductOrder
+  description: Authorizes the retrieveProductOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveProductOrder
+- scope: retrieveProductSpecification
+  description: Authorizes the retrieveProductSpecification operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveProductSpecification
+- scope: retrieveQuote
+  description: Authorizes the retrieveQuote operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveQuote
+- scope: retrieveResumeTestJob
+  description: Authorizes the retrieveResumeTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveResumeTestJob
+- scope: retrieveServiceOrder
+  description: Authorizes the retrieveServiceOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveServiceOrder
+- scope: retrieveSuspendTestJob
+  description: Authorizes the retrieveSuspendTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveSuspendTestJob
+- scope: retrieveTestJob
+  description: Authorizes the retrieveTestJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveTestJob
+- scope: retrieveTestProfile
+  description: Authorizes the retrieveTestProfile operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveTestProfile
+- scope: retrieveTestResult
+  description: Authorizes the retrieveTestResult operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - retrieveTestResult
+- scope: retrieveTroubleTicket
+  description: Authorizes the retrieveTroubleTicket operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveTroubleTicket
+- scope: retrieveWorkOrder
+  description: Authorizes the retrieveWorkOrder operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Cantata
+  - LSO Sonata
+  operations:
+  - retrieveWorkOrder
+- scope: serviceAttributeValueChangeEvent
+  description: Authorizes the serviceAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceAttributeValueChangeEvent
+- scope: serviceDeleteEvent
+  description: Authorizes the serviceDeleteEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceDeleteEvent
+- scope: serviceFind
+  description: Authorizes the serviceFind operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceFind
+- scope: serviceGet
+  description: Authorizes the serviceGet operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceGet
+- scope: serviceOrderCreateEvent
+  description: Authorizes the serviceOrderCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceOrderCreateEvent
+- scope: serviceOrderInformationRequiredEvent
+  description: Authorizes the serviceOrderInformationRequiredEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceOrderInformationRequiredEvent
+- scope: serviceOrderItemStateChangeEvent
+  description: Authorizes the serviceOrderItemStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceOrderItemStateChangeEvent
+- scope: serviceOrderStateChangeEvent
+  description: Authorizes the serviceOrderStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceOrderStateChangeEvent
+- scope: serviceStateChangeEvent
+  description: Authorizes the serviceStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - serviceStateChangeEvent
+- scope: subscribeTopic
+  description: Authorizes the subscribeTopic operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - subscribeTopic
+- scope: subscriptionById
+  description: Authorizes the subscriptionById operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - subscriptionById
+- scope: subscriptionList
+  description: Authorizes the subscriptionList operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - subscriptionList
+- scope: suspendFaultManagementJob
+  description: Authorizes the suspendFaultManagementJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - suspendFaultManagementJob
+- scope: suspendPerformanceJob
+  description: Authorizes the suspendPerformanceJob operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - suspendPerformanceJob
+- scope: suspendTestJobStateChangeEvent
+  description: Authorizes the suspendTestJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - suspendTestJobStateChangeEvent
+- scope: testJobAttributeValueChangeEvent
+  description: Authorizes the testJobAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testJobAttributeValueChangeEvent
+- scope: testJobCreateEvent
+  description: Authorizes the testJobCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testJobCreateEvent
+- scope: testJobStateChangeEvent
+  description: Authorizes the testJobStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testJobStateChangeEvent
+- scope: testProfileAttributeValueChangeEvent
+  description: Authorizes the testProfileAttributeValueChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testProfileAttributeValueChangeEvent
+- scope: testProfileCreateEvent
+  description: Authorizes the testProfileCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testProfileCreateEvent
+- scope: testProfileDeleteEvent
+  description: Authorizes the testProfileDeleteEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testProfileDeleteEvent
+- scope: testProfileLifecycleStateChangeEvent
+  description: Authorizes the testProfileLifecycleStateChangeEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testProfileLifecycleStateChangeEvent
+- scope: testResultCreateEvent
+  description: Authorizes the testResultCreateEvent operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - testResultCreateEvent
+- scope: topicById
+  description: Authorizes the topicById operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - topicById
+- scope: topicList
+  description: Authorizes the topicList operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - topicList
+- scope: unregisterListener
+  description: Authorizes the unregisterListener operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Cantata
+  - LSO Interlude
+  - LSO Legato
+  - LSO Sonata
+  operations:
+  - unregisterListener
+- scope: unsubscribeTopic
+  description: Authorizes the unsubscribeTopic operation.
+  flows:
+  - clientCredentials
+  irps:
+  - LSO Allegro
+  - LSO Interlude
+  - LSO Legato
+  operations:
+  - unsubscribeTopic
+source_documents:
+- irp: LSO Sonata
+  document: productOfferingAvailabilityAndPricingDiscovery.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/availabilityAndPricingDiscovery/productOfferingAvailabilityAndPricingDiscovery.api.yaml
+  title: Product Offering Availability And Pricing Discovery Management
+  version: 4.0.0
+- irp: LSO Sonata
+  document: billingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/billing/billingManagement.api.yaml
+  title: Billing Management
+  version: 3.0.1
+- irp: LSO Sonata
+  document: billingNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/billing/billingNotification.api.yaml
+  title: Billing Notification
+  version: 3.0.1
+- irp: LSO Sonata
+  document: productCatalog.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/catalog/productCatalog.api.yaml
+  title: Product Catalog
+  version: 4.0.0-RC
+- irp: LSO Sonata
+  document: productCatalogNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/catalog/productCatalogNotification.api.yaml
+  title: Product Catalog Notification
+  version: 4.0.0-RC
+- irp: LSO Sonata
+  document: circuitImpairmentAndMaintenance.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/cim/circuitImpairmentAndMaintenance.api.yaml
+  title: Circuit Impairment and Maintenance
+  version: 1.0.0
+- irp: LSO Sonata
+  document: circuitImpairmentAndMaintenanceNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/cim/circuitImpairmentAndMaintenanceNotification.api.yaml
+  title: Circuit Impairment and Maintenance Notification
+  version: 1.0.0
+- irp: LSO Sonata
+  document: productInventoryManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/inventory/productInventoryManagement.api.yaml
+  title: Product Inventory Management
+  version: 8.0.0
+- irp: LSO Sonata
+  document: productOrderManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/order/productOrderManagement.api.yaml
+  title: Product Ordering Management
+  version: 11.0.1
+- irp: LSO Sonata
+  document: productOrderNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/order/productOrderNotification.api.yaml
+  title: Product Ordering Notification
+  version: 11.0.1
+- irp: LSO Sonata
+  document: quoteManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/quote/quoteManagement.api.yaml
+  title: Quote Management
+  version: 10.0.0
+- irp: LSO Sonata
+  document: quoteNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/quote/quoteNotification.api.yaml
+  title: Quote Notification
+  version: 10.0.0
+- irp: LSO Sonata
+  document: geographicAddressManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/serviceability/address/geographicAddressManagement.api.yaml
+  title: Geographic Address Management
+  version: 8.0.0
+- irp: LSO Sonata
+  document: geographicAddressNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/serviceability/address/geographicAddressNotification.api.yaml
+  title: Geographic Address Notification
+  version: 8.0.0
+- irp: LSO Sonata
+  document: productOfferingQualificationManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/serviceability/offeringQualification/productOfferingQualificationManagement.api.yaml
+  title: Product Offering Qualification Management
+  version: 8.0.0
+- irp: LSO Sonata
+  document: productOfferingQualificationNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/serviceability/offeringQualification/productOfferingQualificationNotification.api.yaml
+  title: Product Offering Qualification Notification
+  version: 8.0.0
+- irp: LSO Sonata
+  document: geographicSiteManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/serviceability/site/geographicSiteManagement.api.yaml
+  title: Geographic Site Management
+  version: 8.0.0
+- irp: LSO Sonata
+  document: troubleTicketManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/troubleTicket/troubleTicketManagement.api.yaml
+  title: Trouble Ticket and Incident Management
+  version: 5.0.0
+- irp: LSO Sonata
+  document: troubleTicketNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/troubleTicket/troubleTicketNotification.api.yaml
+  title: Trouble Ticket and Incident Notification
+  version: 5.0.0
+- irp: LSO Sonata
+  document: appointmentManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/workforce/appointment/appointmentManagement.api.yaml
+  title: Appointment Management
+  version: 3.0.1
+- irp: LSO Sonata
+  document: appointmentNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/workforce/appointment/appointmentNotification.api.yaml
+  title: Appointment Management Notification
+  version: 3.0.1
+- irp: LSO Sonata
+  document: workorderManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/workforce/workorder/workorderManagement.api.yaml
+  title: WorkOrder Management
+  version: 3.0.0
+- irp: LSO Sonata
+  document: workorderNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/workforce/workorder/workorderNotification.api.yaml
+  title: WorkOrder Management Notification
+  version: 3.0.0
+- irp: LSO Cantata
+  document: productOfferingAvailabilityAndPricingDiscovery.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/availabilityAndPricingDiscovery/productOfferingAvailabilityAndPricingDiscovery.api.yaml
+  title: Product Offering Availability And Pricing Discovery Management
+  version: 4.0.0
+- irp: LSO Cantata
+  document: billingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/billing/billingManagement.api.yaml
+  title: Billing Management
+  version: 3.0.1
+- irp: LSO Cantata
+  document: billingNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/billing/billingNotification.api.yaml
+  title: Billing Notification
+  version: 3.0.1
+- irp: LSO Cantata
+  document: productCatalog.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/catalog/productCatalog.api.yaml
+  title: Product Catalog
+  version: 4.0.1
+- irp: LSO Cantata
+  document: productCatalogNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/catalog/productCatalogNotification.api.yaml
+  title: Product Catalog Notification
+  version: 4.0.1
+- irp: LSO Cantata
+  document: circuitImpairmentAndMaintenance.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/cim/circuitImpairmentAndMaintenance.api.yaml
+  title: Circuit Impairment and Maintenance
+  version: 1.0.0
+- irp: LSO Cantata
+  document: circuitImpairmentAndMaintenanceNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/cim/circuitImpairmentAndMaintenanceNotification.api.yaml
+  title: Circuit Impairment and Maintenance Notification
+  version: 1.0.0
+- irp: LSO Cantata
+  document: productInventoryManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/inventory/productInventoryManagement.api.yaml
+  title: Product Inventory Management
+  version: 2.0.0
+- irp: LSO Cantata
+  document: productOrderManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/order/productOrderManagement.api.yaml
+  title: Product Ordering Management
+  version: 6.0.1
+- irp: LSO Cantata
+  document: productOrderNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/order/productOrderNotification.api.yaml
+  title: Product Ordering Notification
+  version: 6.0.1
+- irp: LSO Cantata
+  document: quoteManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/quote/quoteManagement.api.yaml
+  title: Quote Management
+  version: 4.0.0
+- irp: LSO Cantata
+  document: quoteNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/quote/quoteNotification.api.yaml
+  title: Quote Notification
+  version: 4.0.0
+- irp: LSO Cantata
+  document: geographicAddressManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/serviceability/address/geographicAddressManagement.api.yaml
+  title: Geographic Address Management
+  version: 2.0.0
+- irp: LSO Cantata
+  document: geographicAddressNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/serviceability/address/geographicAddressNotification.api.yaml
+  title: Geographic Address Notification
+  version: 2.0.0
+- irp: LSO Cantata
+  document: productOfferingQualificationManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/serviceability/offeringQualification/productOfferingQualificationManagement.api.yaml
+  title: Product Offering Qualification Management
+  version: 2.0.0
+- irp: LSO Cantata
+  document: productOfferingQualificationNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/serviceability/offeringQualification/productOfferingQualificationNotification.api.yaml
+  title: Product Offering Qualification Notification
+  version: 2.0.0
+- irp: LSO Cantata
+  document: geographicSiteManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/serviceability/site/geographicSiteManagement.api.yaml
+  title: Geographic Site Management
+  version: 8.0.0
+- irp: LSO Cantata
+  document: troubleTicketManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/troubleTicket/troubleTicketManagement.api.yaml
+  title: Trouble Ticket and Incident Management
+  version: 5.0.0
+- irp: LSO Cantata
+  document: troubleTicketNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/troubleTicket/troubleTicketNotification.api.yaml
+  title: Trouble Ticket and Incident Notification
+  version: 5.0.0
+- irp: LSO Cantata
+  document: appointmentManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/workforce/appointment/appointmentManagement.api.yaml
+  title: Appointment Management
+  version: 3.0.1
+- irp: LSO Cantata
+  document: appointmentNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/workforce/appointment/appointmentNotification.api.yaml
+  title: Appointment Management Notification
+  version: 3.0.1
+- irp: LSO Cantata
+  document: workorderManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/workforce/workorder/workorderManagement.api.yaml
+  title: WorkOrder Management
+  version: 3.0.0
+- irp: LSO Cantata
+  document: workorderNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/generated/security/workforce/workorder/workorderNotification.api.yaml
+  title: WorkOrder Management Notification
+  version: 3.0.0
+- irp: LSO Interlude
+  document: alarmManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/alarm/alarmManagement.api.yaml
+  title: Alarm Management
+  version: 3.0.0
+- irp: LSO Interlude
+  document: alarmNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/alarm/alarmNotification.api.yaml
+  title: Alarm Notification
+  version: 3.0.0
+- irp: LSO Interlude
+  document: faultManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/fm/faultManagement.api.yaml
+  title: Fault Management
+  version: 3.0.0
+- irp: LSO Interlude
+  document: faultNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/fm/faultNotification.api.yaml
+  title: Fault Management Notification
+  version: 3.0.0
+- irp: LSO Interlude
+  document: serviceInventoryManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/inventory/serviceInventoryManagement.api.yaml
+  title: Service Inventory Management
+  version: 2.0.2
+- irp: LSO Interlude
+  document: serviceInventoryNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/inventory/serviceInventoryNotification.api.yaml
+  title: Service Inventory Notification
+  version: 2.0.2
+- irp: LSO Interlude
+  document: serviceOrderingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/order/serviceOrderingManagement.api.yaml
+  title: Service Ordering Management
+  version: 1.0.1
+- irp: LSO Interlude
+  document: serviceOrderingNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/order/serviceOrderingNotification.api.yaml
+  title: Service Ordering Notification
+  version: 1.0.1
+- irp: LSO Interlude
+  document: performanceMonitoring.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/pm/performanceMonitoring.api.yaml
+  title: Performance Monitoring
+  version: 5.0.0
+- irp: LSO Interlude
+  document: performanceNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/pm/performanceNotification.api.yaml
+  title: Performance Monitoring Notification
+  version: 5.0.0
+- irp: LSO Interlude
+  document: streamingManagement.api.all-in-one.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/pm/streamingManagement.api.all-in-one.yaml
+  title: Streaming Management
+  version: 1.0.0
+- irp: LSO Interlude
+  document: streamingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/pm/streamingManagement.api.yaml
+  title: Streaming Management
+  version: 1.0.0
+- irp: LSO Interlude
+  document: serviceFunctionTest.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/sft/serviceFunctionTest.api.yaml
+  title: Service Function Testing
+  version: 3.0.0
+- irp: LSO Interlude
+  document: serviceFunctionTestNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/generated/security/sft/serviceFunctionTestNotification.api.yaml
+  title: Service Function Testing Notification
+  version: 3.0.0
+- irp: LSO Legato
+  document: alarmManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/alarm/alarmManagement.api.yaml
+  title: Alarm Management
+  version: 3.0.0
+- irp: LSO Legato
+  document: alarmNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/alarm/alarmNotification.api.yaml
+  title: Alarm Notification
+  version: 3.0.0
+- irp: LSO Legato
+  document: faultManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/fm/faultManagement.api.yaml
+  title: Fault Management
+  version: 3.0.0
+- irp: LSO Legato
+  document: faultNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/fm/faultNotification.api.yaml
+  title: Fault Management Notification
+  version: 3.0.0
+- irp: LSO Legato
+  document: serviceInventoryManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/inventory/serviceInventoryManagement.api.yaml
+  title: Service Inventory Management
+  version: 7.0.2
+- irp: LSO Legato
+  document: serviceInventoryNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/inventory/serviceInventoryNotification.api.yaml
+  title: Service Inventory Notification
+  version: 7.0.2
+- irp: LSO Legato
+  document: serviceOrderingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/order/serviceOrderingManagement.api.yaml
+  title: Service Ordering Management
+  version: 6.0.1
+- irp: LSO Legato
+  document: serviceOrderingNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/order/serviceOrderingNotification.api.yaml
+  title: Service Ordering Notification
+  version: 6.0.1
+- irp: LSO Legato
+  document: performanceMonitoring.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/pm/performanceMonitoring.api.yaml
+  title: Performance Monitoring
+  version: 5.0.0
+- irp: LSO Legato
+  document: performanceNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/pm/performanceNotification.api.yaml
+  title: Performance Monitoring Notification
+  version: 5.0.0
+- irp: LSO Legato
+  document: streamingManagement.api.all-in-one.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/pm/streamingManagement.api.all-in-one.yaml
+  title: Streaming Management
+  version: 1.0.0
+- irp: LSO Legato
+  document: streamingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/pm/streamingManagement.api.yaml
+  title: Streaming Management
+  version: 1.0.0
+- irp: LSO Legato
+  document: serviceFunctionTest.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/sft/serviceFunctionTest.api.yaml
+  title: Service Function Testing
+  version: 3.0.0
+- irp: LSO Legato
+  document: serviceFunctionTestNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/generated/security/sft/serviceFunctionTestNotification.api.yaml
+  title: Service Function Testing Notification
+  version: 3.0.0
+- irp: LSO Allegro
+  document: alarmManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/alarm/alarmManagement.api.yaml
+  title: Alarm Management
+  version: 3.0.0
+- irp: LSO Allegro
+  document: alarmNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/alarm/alarmNotification.api.yaml
+  title: Alarm Notification
+  version: 3.0.0
+- irp: LSO Allegro
+  document: faultManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/fm/faultManagement.api.yaml
+  title: Fault Management
+  version: 3.0.0
+- irp: LSO Allegro
+  document: faultNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/fm/faultNotification.api.yaml
+  title: Fault Management Notification
+  version: 3.0.0
+- irp: LSO Allegro
+  document: serviceInventoryManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/inventory/serviceInventoryManagement.api.yaml
+  title: Service Inventory Management
+  version: 2.0.2
+- irp: LSO Allegro
+  document: serviceInventoryNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/inventory/serviceInventoryNotification.api.yaml
+  title: Service Inventory Notification
+  version: 2.0.2
+- irp: LSO Allegro
+  document: serviceOrderingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/order/serviceOrderingManagement.api.yaml
+  title: Service Ordering Management
+  version: 1.0.1
+- irp: LSO Allegro
+  document: serviceOrderingNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/order/serviceOrderingNotification.api.yaml
+  title: Service Ordering Notification
+  version: 1.0.1
+- irp: LSO Allegro
+  document: performanceMonitoring.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/pm/performanceMonitoring.api.yaml
+  title: Performance Monitoring
+  version: 5.0.0
+- irp: LSO Allegro
+  document: performanceNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/pm/performanceNotification.api.yaml
+  title: Performance Monitoring Notification
+  version: 5.0.0
+- irp: LSO Allegro
+  document: streamingManagement.api.all-in-one.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/pm/streamingManagement.api.all-in-one.yaml
+  title: Streaming Management
+  version: 1.0.0
+- irp: LSO Allegro
+  document: streamingManagement.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/pm/streamingManagement.api.yaml
+  title: Streaming Management
+  version: 1.0.0
+- irp: LSO Allegro
+  document: serviceFunctionTest.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/sft/serviceFunctionTest.api.yaml
+  title: Service Function Testing
+  version: 3.0.0
+- irp: LSO Allegro
+  document: serviceFunctionTestNotification.api.yaml
+  url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/generated/security/sft/serviceFunctionTestNotification.api.yaml
+  title: Service Function Testing Notification
+  version: 3.0.0

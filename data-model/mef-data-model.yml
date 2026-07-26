@@ -1,0 +1,2971 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/*.yml (management documents; notification/listener documents excluded)
+model: TM Forum-derived LSO information model. Root entities are the schemas returned by GET operations;
+  relationships are read from $ref links and *Id / *Ref reference fields.
+identity:
+  primary_key: id (Seller-assigned) with a Buyer-side href
+  cross_party_keys:
+  - buyerId
+  - sellerId
+  note: 'Every LSO API is a two-party contract: buyerId and sellerId qualify almost every resource (248
+    operations each), and both parties keep their own identifier for the same object (externalId / relatedContactInformation
+    patterns).'
+entity_count: 181
+relationship_count: 623
+entities:
+- entity: Alarm
+  openapi: openapi/mef-lso-allegro-alarm-management-openapi.yml
+  api: MEF LSO Allegro Alarm Management
+  irp: LSO Allegro
+  fields: 9
+  relationships:
+  - kind: has_many
+    target: AlarmedObjectRef
+    via: alarmedObject
+  - kind: has_many
+    target: Comment
+    via: comment
+  - kind: belongs_to
+    target: externalAlarm
+    via: externalAlarmId
+  - kind: has_one
+    target: AlarmRef
+    via: parentAlarm
+  - kind: has_one
+    target: ProbableCause
+    via: probableCause
+  - kind: has_one
+    target: AlarmSpecificAttributes
+    via: alarmSpecificAttributes
+  - kind: belongs_to
+    target: sourceSystem
+    via: sourceSystemId
+- entity: Alarm_Common
+  openapi: openapi/mef-lso-allegro-alarm-management-openapi.yml
+  api: MEF LSO Allegro Alarm Management
+  irp: LSO Allegro
+  fields: 16
+  relationships:
+  - kind: has_many
+    target: ServiceRef
+    via: affectedService
+  - kind: has_many
+    target: AlarmRef
+    via: correlatedAlarm
+  - kind: has_one
+    target: AlarmType
+    via: alarmType
+  - kind: has_one
+    target: PerceivedSeverity
+    via: perceivedSeverity
+  - kind: has_one
+    target: PlannedOutageIndicator
+    via: plannedOutageIndicator
+  - kind: belongs_to
+    target: reportingSystem
+    via: reportingSystemId
+  - kind: has_one
+    target: AlarmState
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-allegro-alarm-management-openapi.yml
+  api: MEF LSO Allegro Alarm Management
+  irp: LSO Allegro
+  fields: 1
+  relationships: []
+- entity: CancelFaultManagementJob
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 3
+  relationships: []
+- entity: FaultManagementJob
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: FaultManagementReport
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 15
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobRef
+    via: faultManagementJob
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_one
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_many
+    target: ReportContentItem
+    via: reportContent
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: AttachmentURL
+    via: reportUrl
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: FaultManagementReportStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: FaultManagementReport_Find
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 11
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobRef
+    via: faultManagementJob
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_one
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: FaultManagementReportStateType
+    via: state
+- entity: FmTrackingRecord
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedObjectRef
+    via: relatedObjectId
+- entity: ModifyFaultManagementJob
+  openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobProcessStateType
+    via: state
+- entity: CancelPerformanceJob
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: PerformanceJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 3
+  relationships: []
+- entity: ModifyPerformanceJob
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: PerformanceJobProcessStateType
+    via: state
+- entity: PerformanceJob
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: PerformanceJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: PerformanceProfile
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 5
+  relationships: []
+- entity: PerformanceReport
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: PerformanceJobRef
+    via: performanceJob
+  - kind: has_many
+    target: ReportContentPerMonitoredObject
+    via: reportContent
+  - kind: has_one
+    target: AttachmentURL
+    via: reportUrl
+  - kind: has_one
+    target: PerformanceReportStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: PerformanceReport_Find
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 11
+  relationships:
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_many
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_one
+    target: PerformanceJobRef
+    via: performanceJob
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: PerformanceReportStateType
+    via: state
+- entity: PmTrackingRecord
+  openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedObjectRef
+    via: relatedObjectId
+- entity: CancelTestJob
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 1
+  relationships: []
+- entity: ModifyTestJob
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: ResumeTestJob
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: SuspendTestJob
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: TestJob
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: TestJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: TestJob_Find
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceFrom
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceTo
+  - kind: has_one
+    target: TestProfileRefOrValue
+    via: testProfile
+- entity: TestProfile
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestProfileLifecycleStateType
+    via: lifecycleState
+- entity: TestResult
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 1
+  relationships:
+  - kind: has_one
+    target: ServiceSpecificTestResultConfiguration
+    via: serviceSpecificTestResultConfiguration
+- entity: TestResult_Common
+  openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceFrom
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceTo
+  - kind: has_one
+    target: TestJobRef
+    via: testJob
+- entity: EventSubscription
+  openapi: openapi/mef-lso-allegro-service-inventory-management-openapi.yml
+  api: MEF LSO Allegro Service Inventory Management
+  irp: LSO Allegro
+  fields: 3
+  relationships: []
+- entity: Service
+  openapi: openapi/mef-lso-allegro-service-inventory-management-openapi.yml
+  api: MEF LSO Allegro Service Inventory Management
+  irp: LSO Allegro
+  fields: 16
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_many
+    target: Note_BusSof
+    via: note
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MefServiceConfiguration
+    via: serviceConfiguration
+  - kind: has_many
+    target: ServiceOrderItemRef
+    via: serviceOrderItem
+  - kind: has_many
+    target: ServiceRelationship
+    via: serviceRelationship
+  - kind: has_one
+    target: ServiceStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-allegro-service-ordering-management-openapi.yml
+  api: MEF LSO Allegro Service Ordering Management
+  irp: LSO Allegro
+  fields: 3
+  relationships: []
+- entity: ServiceOrder
+  openapi: openapi/mef-lso-allegro-service-ordering-management-openapi.yml
+  api: MEF LSO Allegro Service Ordering Management
+  irp: LSO Allegro
+  fields: 8
+  relationships:
+  - kind: has_many
+    target: ServiceOrderItem
+    via: serviceOrderItem
+  - kind: has_one
+    target: ServiceOrderStateType
+    via: state
+- entity: Topic
+  openapi: openapi/mef-lso-allegro-streaming-management-all-in-one-openapi.yml
+  api: MEF LSO Allegro Streaming Management
+  irp: LSO Allegro
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: Category
+    via: category
+  - kind: belongs_to
+    target: model
+    via: modelRef
+  - kind: has_many
+    target: ChannelDescription
+    via: availableChannels
+- entity: Appointment
+  openapi: openapi/mef-lso-cantata-appointment-management-openapi.yml
+  api: MEF LSO Cantata Appointment Management
+  irp: LSO Cantata
+  fields: 9
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: RelatedPlaceRefOrQuery
+    via: relatedPlace
+  - kind: has_one
+    target: AppointmentStatusType
+    via: status
+  - kind: has_one
+    target: TimePeriod
+    via: validFor
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: WorkOrderRef
+    via: workOrder
+- entity: Appointment_Find
+  openapi: openapi/mef-lso-cantata-appointment-management-openapi.yml
+  api: MEF LSO Cantata Appointment Management
+  irp: LSO Cantata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedPlaceRefOrQuery
+    via: relatedPlace
+  - kind: has_one
+    target: AppointmentStatusType
+    via: status
+  - kind: has_one
+    target: TimePeriod
+    via: validFor
+  - kind: has_one
+    target: WorkOrderRef
+    via: workOrder
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-appointment-management-openapi.yml
+  api: MEF LSO Cantata Appointment Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: CustomerBill
+  openapi: openapi/mef-lso-cantata-billing-management-openapi.yml
+  api: MEF LSO Cantata Billing Management
+  irp: LSO Cantata
+  fields: 25
+  relationships:
+  - kind: has_one
+    target: Money
+    via: amountDue
+  - kind: has_many
+    target: AppliedPayment
+    via: appliedPayment
+  - kind: has_one
+    target: BillingAccountRef
+    via: billingAccount
+  - kind: has_one
+    target: AttachmentURL
+    via: billDocument
+  - kind: has_one
+    target: TimePeriod
+    via: billingPeriod
+  - kind: has_one
+    target: CustomerBillCategory
+    via: category
+  - kind: has_one
+    target: Money
+    via: credits
+  - kind: has_many
+    target: CustomerBillItemRef
+    via: customerBillItem
+  - kind: has_one
+    target: Money
+    via: discounts
+  - kind: has_one
+    target: Money
+    via: fees
+  - kind: has_one
+    target: FinancialAccountRef
+    via: financialAccount
+  - kind: has_one
+    target: CustomerBillRunType
+    via: runType
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: Money
+    via: remainingAmount
+  - kind: has_one
+    target: CustomerBillStateType
+    via: state
+  - kind: has_one
+    target: Money
+    via: taxExcludedAmount
+  - kind: has_one
+    target: Money
+    via: taxIncludedAmount
+  - kind: has_many
+    target: TaxItem
+    via: taxItem
+- entity: CustomerBillItem
+  openapi: openapi/mef-lso-cantata-billing-management-openapi.yml
+  api: MEF LSO Cantata Billing Management
+  irp: LSO Cantata
+  fields: 15
+  relationships:
+  - kind: has_many
+    target: CustomerBillItemTax
+    via: appliedTax
+  - kind: has_many
+    target: CustomerBillItemFee
+    via: appliedFee
+  - kind: has_one
+    target: MEFPriceType
+    via: customerBillItemType
+  - kind: has_one
+    target: TimePeriod
+    via: periodCoverage
+  - kind: has_one
+    target: ProductRef
+    via: product
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: CustomerBillItemStateType
+    via: state
+  - kind: has_one
+    target: Money
+    via: taxExcludedAmount
+  - kind: has_one
+    target: Money
+    via: unitRate
+- entity: CustomerBill_Find
+  openapi: openapi/mef-lso-cantata-billing-management-openapi.yml
+  api: MEF LSO Cantata Billing Management
+  irp: LSO Cantata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: BillingAccountRef
+    via: billingAccount
+  - kind: has_one
+    target: TimePeriod
+    via: billingPeriod
+  - kind: has_one
+    target: CustomerBillCategory
+    via: category
+  - kind: has_one
+    target: CustomerBillStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-billing-management-openapi.yml
+  api: MEF LSO Cantata Billing Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: CimIncident
+  openapi: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-openapi.yml
+  api: MEF LSO Cantata Circuit Impairment and Maintenance
+  irp: LSO Cantata
+  fields: 19
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: CimIncidentPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_many
+    target: IssueRelationship
+    via: relatedIssue
+  - kind: has_one
+    target: CimIncidentSeverityType
+    via: severity
+  - kind: has_one
+    target: IncidentStatusType
+    via: status
+  - kind: has_many
+    target: IncidentStatusChange
+    via: statusChange
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-openapi.yml
+  api: MEF LSO Cantata Circuit Impairment and Maintenance
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-geographic-address-management-openapi.yml
+  api: MEF LSO Cantata Geographic Address Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: GeographicAddress
+  openapi: openapi/mef-lso-cantata-geographic-address-management-openapi.yml
+  api: MEF LSO Cantata Geographic Address Management
+  irp: LSO Cantata
+  fields: 9
+  relationships:
+  - kind: has_one
+    target: TrueFalseUnknown
+    via: hasPublicSite
+  - kind: has_one
+    target: TrueFalseUnknown
+    via: allowsNewSite
+  - kind: has_many
+    target: FieldedAddressRepresentation
+    via: fieldedAddressRepresentation
+  - kind: has_many
+    target: FormattedAddressRepresentation
+    via: formattedAddressRepresentation
+  - kind: has_many
+    target: GeographicPointRepresentation
+    via: geographicPointRepresentation
+  - kind: has_many
+    target: LabelRepresentation
+    via: labelRepresentation
+- entity: GeographicAddressValidation
+  openapi: openapi/mef-lso-cantata-geographic-address-management-openapi.yml
+  api: MEF LSO Cantata Geographic Address Management
+  irp: LSO Cantata
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: GeographicAddressValidationStateType
+    via: state
+  - kind: has_many
+    target: GeographicAddress
+    via: alternateGeographicAddress
+  - kind: has_one
+    target: GeographicAddress
+    via: bestMatchGeographicAddress
+- entity: GeographicSite
+  openapi: openapi/mef-lso-cantata-geographic-site-management-openapi.yml
+  api: MEF LSO Cantata Geographic Site Management
+  irp: LSO Cantata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: GeographicAddressRefOrQuery
+    via: place
+  - kind: has_one
+    target: SiteRestrictionType
+    via: siteRestrictionType
+  - kind: has_one
+    target: SiteNetworkType
+    via: networkType
+  - kind: has_many
+    target: SubUnit
+    via: subUnit
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-product-catalog-openapi.yml
+  api: MEF LSO Cantata Product Catalog
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: ProductCategory
+  openapi: openapi/mef-lso-cantata-product-catalog-openapi.yml
+  api: MEF LSO Cantata Product Catalog
+  irp: LSO Cantata
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: ProductCategoryRef
+    via: parentCategory
+  - kind: has_many
+    target: ProductCategoryRef
+    via: subCategory
+  - kind: has_many
+    target: ProductOfferingRef
+    via: productOffering
+- entity: ProductOffering
+  openapi: openapi/mef-lso-cantata-product-catalog-openapi.yml
+  api: MEF LSO Cantata Product Catalog
+  irp: LSO Cantata
+  fields: 12
+  relationships:
+  - kind: has_many
+    target: ProductOfferingLifecycleStatusTransition
+    via: statusTransition
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_one
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: ProductOfferingTerm
+    via: productOfferingTerm
+  - kind: has_many
+    target: ProductMilestoneDefinition
+    via: milestone
+  - kind: has_many
+    target: ProductOfferingBundleRelationship
+    via: bundledProductOffering
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: SchemaRefOrValue
+    via: productOfferingSpecificationSchema
+  - kind: has_many
+    target: ProductOfferingContextualInfo
+    via: productOfferingContextualInfo
+  - kind: has_many
+    target: ProductRelationshipConstraint
+    via: productRelationshipConstraint
+  - kind: has_many
+    target: PlaceRelationshipConstraint
+    via: placeRelationshipConstraint
+- entity: ProductSpecification
+  openapi: openapi/mef-lso-cantata-product-catalog-openapi.yml
+  api: MEF LSO Cantata Product Catalog
+  irp: LSO Cantata
+  fields: 7
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_many
+    target: ProductRelationshipConstraint
+    via: productRelationship
+  - kind: has_many
+    target: PlaceRelationshipConstraint
+    via: placeRelationship
+  - kind: has_many
+    target: ProductMilestoneDefinition
+    via: milestone
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: SchemaRefOrValue
+    via: sourceSchema
+- entity: MEFProduct
+  openapi: openapi/mef-lso-cantata-product-inventory-management-openapi.yml
+  api: MEF LSO Cantata Product Inventory Management
+  irp: LSO Cantata
+  fields: 19
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_one
+    target: MEFProductStatusType
+    via: status
+  - kind: has_many
+    target: MEFProductStatusChange
+    via: statusChange
+  - kind: has_one
+    target: ProductSpecificationRef
+    via: productSpecification
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_one
+    target: ProductOfferingRef
+    via: productOffering
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MEFBillingAccountRef
+    via: billingAccount
+  - kind: has_many
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_many
+    target: MEFItemTerm
+    via: productTerm
+  - kind: has_one
+    target: MEFProductConfiguration
+    via: productConfiguration
+  - kind: has_many
+    target: ProductRelationship
+    via: productRelationship
+  - kind: has_many
+    target: ProductPrice
+    via: productPrice
+- entity: MEFProduct_Find
+  openapi: openapi/mef-lso-cantata-product-inventory-management-openapi.yml
+  api: MEF LSO Cantata Product Inventory Management
+  irp: LSO Cantata
+  fields: 12
+  relationships:
+  - kind: has_one
+    target: ProductSpecificationRef
+    via: productSpecification
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_one
+    target: ProductOfferingRef
+    via: productOffering
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_many
+    target: ProductRelationship
+    via: productRelationship
+  - kind: has_one
+    target: MEFBillingAccountRef
+    via: billingAccount
+  - kind: has_many
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductStatusType
+    via: status
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Cantata Product Offering Qualification Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: ProductOfferingQualification
+  openapi: openapi/mef-lso-cantata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Cantata Product Offering Qualification Management
+  irp: LSO Cantata
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: MEFPOQTaskStateType
+    via: state
+  - kind: has_many
+    target: ProductOfferingQualificationItem
+    via: productOfferingQualificationItem
+  - kind: has_many
+    target: MEFPOQStateChange
+    via: stateChange
+- entity: ProductOfferingQualification_Find
+  openapi: openapi/mef-lso-cantata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Cantata Product Offering Qualification Management
+  irp: LSO Cantata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: MEFPOQTaskStateType
+    via: state
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: belongs_to
+    target: project
+    via: projectId
+- entity: CancelProductOrder
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 9
+  relationships:
+  - kind: has_one
+    target: CancellationReasonType
+    via: cancellationReasonType
+  - kind: has_one
+    target: MEFProductOrderChargeRef
+    via: charge
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MEFChargeableTaskStateType
+    via: state
+- entity: CancelProductOrder_Find
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: CancellationReasonType
+    via: cancellationReasonType
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_one
+    target: MEFChargeableTaskStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: MEFModifyProductOrderItemRequestedDeliveryDate
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFChargeableTaskStateType
+    via: state
+- entity: MEFProductOrderCharge
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: MEFCancelProductOrderRef
+    via: cancelProductOrder
+  - kind: has_many
+    target: MEFProductOrderChargeItem
+    via: chargeItem
+  - kind: has_one
+    target: MEFModifyProductOrderItemRequestedDeliveryDateRef
+    via: modifyProductOrderItemRequestedDeliveryDate
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductOrderChargeStateType
+    via: state
+- entity: MEFProductOrderCharge_Find
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductOrderChargeStateType
+    via: state
+- entity: ProductOrder
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 10
+  relationships:
+  - kind: has_many
+    target: MEFProductOrderChargeRef
+    via: cancellationCharge
+  - kind: has_many
+    target: ProductOrderItem
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductOrderStateType
+    via: state
+  - kind: has_many
+    target: MEFProductOrderStateChange
+    via: stateChange
+- entity: ProductOrder_Find
+  openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  fields: 7
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: belongs_to
+    target: project
+    via: projectId
+  - kind: has_one
+    target: MEFProductOrderStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-quote-management-openapi.yml
+  api: MEF LSO Cantata Quote Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: Quote
+  openapi: openapi/mef-lso-cantata-quote-management-openapi.yml
+  api: MEF LSO Cantata Quote Management
+  irp: LSO Cantata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: TimePeriod
+    via: validFor
+  - kind: has_one
+    target: MEFSellerQuoteLevel
+    via: quoteLevel
+  - kind: has_many
+    target: QuoteItem
+    via: quoteItem
+  - kind: has_many
+    target: MEFQuoteStateChange
+    via: stateChange
+  - kind: has_one
+    target: MEFQuoteStateType
+    via: state
+- entity: Quote_Find
+  openapi: openapi/mef-lso-cantata-quote-management-openapi.yml
+  api: MEF LSO Cantata Quote Management
+  irp: LSO Cantata
+  fields: 9
+  relationships:
+  - kind: has_one
+    target: MEFSellerQuoteLevel
+    via: quoteLevel
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_one
+    target: MEFQuoteStateType
+    via: state
+  - kind: belongs_to
+    target: project
+    via: projectId
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: Incident
+  openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  irp: LSO Cantata
+  fields: 18
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_one
+    target: MEFObservedImpactType
+    via: impact
+  - kind: has_one
+    target: IncidentType
+    via: incidentType
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_many
+    target: IssueRelationship
+    via: relatedIssue
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: severity
+  - kind: has_one
+    target: IncidentStatusType
+    via: status
+  - kind: has_many
+    target: IncidentStatusChange
+    via: statusChange
+- entity: Incident_Find
+  openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  irp: LSO Cantata
+  fields: 13
+  relationships:
+  - kind: has_one
+    target: MEFObservedImpactType
+    via: impact
+  - kind: has_one
+    target: IncidentType
+    via: incidentType
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: severity
+  - kind: has_one
+    target: IncidentStatusType
+    via: status
+- entity: TroubleTicket
+  openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  irp: LSO Cantata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: sellerPriority
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: sellerSeverity
+  - kind: has_one
+    target: TroubleTicketStatusType
+    via: status
+  - kind: has_many
+    target: TroubleTicketStatusChange
+    via: statusChange
+  - kind: has_many
+    target: WorkOrderRef
+    via: workOrder
+- entity: TroubleTicket_Find
+  openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  irp: LSO Cantata
+  fields: 14
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: MEFObservedImpactType
+    via: observedImpact
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: sellerPriority
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: sellerSeverity
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: severity
+  - kind: has_one
+    target: TroubleTicketStatusType
+    via: status
+  - kind: has_one
+    target: TroubleTicketType
+    via: ticketType
+- entity: EventSubscription
+  openapi: openapi/mef-lso-cantata-workorder-management-openapi.yml
+  api: MEF LSO Cantata WorkOrder Management
+  irp: LSO Cantata
+  fields: 3
+  relationships: []
+- entity: WorkOrder
+  openapi: openapi/mef-lso-cantata-workorder-management-openapi.yml
+  api: MEF LSO Cantata WorkOrder Management
+  irp: LSO Cantata
+  fields: 12
+  relationships:
+  - kind: has_many
+    target: AppointmentRef
+    via: appointment
+  - kind: has_one
+    target: TimeDuration
+    via: duration
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: WorkOrderStateType
+    via: state
+- entity: WorkOrder_Find
+  openapi: openapi/mef-lso-cantata-workorder-management-openapi.yml
+  api: MEF LSO Cantata WorkOrder Management
+  irp: LSO Cantata
+  fields: 5
+  relationships:
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: WorkOrderStateType
+    via: state
+- entity: Alarm
+  openapi: openapi/mef-lso-interlude-alarm-management-openapi.yml
+  api: MEF LSO Interlude Alarm Management
+  irp: LSO Interlude
+  fields: 9
+  relationships:
+  - kind: has_many
+    target: AlarmedObjectRef
+    via: alarmedObject
+  - kind: has_many
+    target: Comment
+    via: comment
+  - kind: belongs_to
+    target: externalAlarm
+    via: externalAlarmId
+  - kind: has_one
+    target: AlarmRef
+    via: parentAlarm
+  - kind: has_one
+    target: ProbableCause
+    via: probableCause
+  - kind: has_one
+    target: AlarmSpecificAttributes
+    via: alarmSpecificAttributes
+  - kind: belongs_to
+    target: sourceSystem
+    via: sourceSystemId
+- entity: Alarm_Common
+  openapi: openapi/mef-lso-interlude-alarm-management-openapi.yml
+  api: MEF LSO Interlude Alarm Management
+  irp: LSO Interlude
+  fields: 16
+  relationships:
+  - kind: has_many
+    target: ServiceRef
+    via: affectedService
+  - kind: has_many
+    target: AlarmRef
+    via: correlatedAlarm
+  - kind: has_one
+    target: AlarmType
+    via: alarmType
+  - kind: has_one
+    target: PerceivedSeverity
+    via: perceivedSeverity
+  - kind: has_one
+    target: PlannedOutageIndicator
+    via: plannedOutageIndicator
+  - kind: belongs_to
+    target: reportingSystem
+    via: reportingSystemId
+  - kind: has_one
+    target: AlarmState
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-interlude-alarm-management-openapi.yml
+  api: MEF LSO Interlude Alarm Management
+  irp: LSO Interlude
+  fields: 1
+  relationships: []
+- entity: CancelFaultManagementJob
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 3
+  relationships: []
+- entity: FaultManagementJob
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: FaultManagementReport
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 15
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobRef
+    via: faultManagementJob
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_one
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_many
+    target: ReportContentItem
+    via: reportContent
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: AttachmentURL
+    via: reportUrl
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: FaultManagementReportStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: FaultManagementReport_Find
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 11
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobRef
+    via: faultManagementJob
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_one
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: FaultManagementReportStateType
+    via: state
+- entity: FmTrackingRecord
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedObjectRef
+    via: relatedObjectId
+- entity: ModifyFaultManagementJob
+  openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobProcessStateType
+    via: state
+- entity: CancelPerformanceJob
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: PerformanceJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 3
+  relationships: []
+- entity: ModifyPerformanceJob
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: PerformanceJobProcessStateType
+    via: state
+- entity: PerformanceJob
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: PerformanceJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: PerformanceProfile
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 5
+  relationships: []
+- entity: PerformanceReport
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: PerformanceJobRef
+    via: performanceJob
+  - kind: has_many
+    target: ReportContentPerMonitoredObject
+    via: reportContent
+  - kind: has_one
+    target: AttachmentURL
+    via: reportUrl
+  - kind: has_one
+    target: PerformanceReportStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: PerformanceReport_Find
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 11
+  relationships:
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_many
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_one
+    target: PerformanceJobRef
+    via: performanceJob
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: PerformanceReportStateType
+    via: state
+- entity: PmTrackingRecord
+  openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedObjectRef
+    via: relatedObjectId
+- entity: CancelTestJob
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 1
+  relationships: []
+- entity: ModifyTestJob
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: ResumeTestJob
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: SuspendTestJob
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: TestJob
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: TestJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: TestJob_Find
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceFrom
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceTo
+  - kind: has_one
+    target: TestProfileRefOrValue
+    via: testProfile
+- entity: TestProfile
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestProfileLifecycleStateType
+    via: lifecycleState
+- entity: TestResult
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 1
+  relationships:
+  - kind: has_one
+    target: ServiceSpecificTestResultConfiguration
+    via: serviceSpecificTestResultConfiguration
+- entity: TestResult_Common
+  openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceFrom
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceTo
+  - kind: has_one
+    target: TestJobRef
+    via: testJob
+- entity: EventSubscription
+  openapi: openapi/mef-lso-interlude-service-inventory-management-openapi.yml
+  api: MEF LSO Interlude Service Inventory Management
+  irp: LSO Interlude
+  fields: 3
+  relationships: []
+- entity: Service
+  openapi: openapi/mef-lso-interlude-service-inventory-management-openapi.yml
+  api: MEF LSO Interlude Service Inventory Management
+  irp: LSO Interlude
+  fields: 16
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_many
+    target: Note_BusSof
+    via: note
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MefServiceConfiguration
+    via: serviceConfiguration
+  - kind: has_many
+    target: ServiceOrderItemRef
+    via: serviceOrderItem
+  - kind: has_many
+    target: ServiceRelationship
+    via: serviceRelationship
+  - kind: has_one
+    target: ServiceStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-interlude-service-ordering-management-openapi.yml
+  api: MEF LSO Interlude Service Ordering Management
+  irp: LSO Interlude
+  fields: 3
+  relationships: []
+- entity: ServiceOrder
+  openapi: openapi/mef-lso-interlude-service-ordering-management-openapi.yml
+  api: MEF LSO Interlude Service Ordering Management
+  irp: LSO Interlude
+  fields: 8
+  relationships:
+  - kind: has_many
+    target: ServiceOrderItem
+    via: serviceOrderItem
+  - kind: has_one
+    target: ServiceOrderStateType
+    via: state
+- entity: Topic
+  openapi: openapi/mef-lso-interlude-streaming-management-all-in-one-openapi.yml
+  api: MEF LSO Interlude Streaming Management
+  irp: LSO Interlude
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: Category
+    via: category
+  - kind: belongs_to
+    target: model
+    via: modelRef
+  - kind: has_many
+    target: ChannelDescription
+    via: availableChannels
+- entity: Alarm
+  openapi: openapi/mef-lso-legato-alarm-management-openapi.yml
+  api: MEF LSO Legato Alarm Management
+  irp: LSO Legato
+  fields: 9
+  relationships:
+  - kind: has_many
+    target: AlarmedObjectRef
+    via: alarmedObject
+  - kind: has_many
+    target: Comment
+    via: comment
+  - kind: belongs_to
+    target: externalAlarm
+    via: externalAlarmId
+  - kind: has_one
+    target: AlarmRef
+    via: parentAlarm
+  - kind: has_one
+    target: ProbableCause
+    via: probableCause
+  - kind: has_one
+    target: AlarmSpecificAttributes
+    via: alarmSpecificAttributes
+  - kind: belongs_to
+    target: sourceSystem
+    via: sourceSystemId
+- entity: Alarm_Common
+  openapi: openapi/mef-lso-legato-alarm-management-openapi.yml
+  api: MEF LSO Legato Alarm Management
+  irp: LSO Legato
+  fields: 16
+  relationships:
+  - kind: has_many
+    target: ServiceRef
+    via: affectedService
+  - kind: has_many
+    target: AlarmRef
+    via: correlatedAlarm
+  - kind: has_one
+    target: AlarmType
+    via: alarmType
+  - kind: has_one
+    target: PerceivedSeverity
+    via: perceivedSeverity
+  - kind: has_one
+    target: PlannedOutageIndicator
+    via: plannedOutageIndicator
+  - kind: belongs_to
+    target: reportingSystem
+    via: reportingSystemId
+  - kind: has_one
+    target: AlarmState
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-legato-alarm-management-openapi.yml
+  api: MEF LSO Legato Alarm Management
+  irp: LSO Legato
+  fields: 1
+  relationships: []
+- entity: CancelFaultManagementJob
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 3
+  relationships: []
+- entity: FaultManagementJob
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: FaultManagementReport
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 15
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobRef
+    via: faultManagementJob
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_one
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_many
+    target: ReportContentItem
+    via: reportContent
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: AttachmentURL
+    via: reportUrl
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: FaultManagementReportStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: FaultManagementReport_Find
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 11
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobRef
+    via: faultManagementJob
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_one
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: FaultManagementReportStateType
+    via: state
+- entity: FmTrackingRecord
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedObjectRef
+    via: relatedObjectId
+- entity: ModifyFaultManagementJob
+  openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: FaultManagementJobProcessStateType
+    via: state
+- entity: CancelPerformanceJob
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: PerformanceJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 3
+  relationships: []
+- entity: ModifyPerformanceJob
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: PerformanceJobProcessStateType
+    via: state
+- entity: PerformanceJob
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: PerformanceJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: PerformanceProfile
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 5
+  relationships: []
+- entity: PerformanceReport
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: PerformanceJobRef
+    via: performanceJob
+  - kind: has_many
+    target: ReportContentPerMonitoredObject
+    via: reportContent
+  - kind: has_one
+    target: AttachmentURL
+    via: reportUrl
+  - kind: has_one
+    target: PerformanceReportStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: PerformanceReport_Find
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 11
+  relationships:
+  - kind: has_one
+    target: TimeDuration
+    via: granularity
+  - kind: has_many
+    target: MonitoredObjectRef
+    via: monitoredObject
+  - kind: has_one
+    target: OutputFormat
+    via: outputFormat
+  - kind: has_one
+    target: PerformanceJobRef
+    via: performanceJob
+  - kind: has_one
+    target: ReportingTimeframe
+    via: reportingTimeframe
+  - kind: has_one
+    target: ResultFormat
+    via: resultFormat
+  - kind: has_one
+    target: ServiceSpecificConfiguration
+    via: serviceSpecificConfiguration
+  - kind: has_one
+    target: PerformanceReportStateType
+    via: state
+- entity: PmTrackingRecord
+  openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedObjectRef
+    via: relatedObjectId
+- entity: CancelTestJob
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 1
+  relationships: []
+- entity: ModifyTestJob
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: ResumeTestJob
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: SuspendTestJob
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestJobProcessStateType
+    via: state
+- entity: TestJob
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: TestJobStateType
+    via: state
+  - kind: has_many
+    target: TerminationError
+    via: terminationError
+- entity: TestJob_Find
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceFrom
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceTo
+  - kind: has_one
+    target: TestProfileRefOrValue
+    via: testProfile
+- entity: TestProfile
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 5
+  relationships:
+  - kind: has_one
+    target: TestProfileLifecycleStateType
+    via: lifecycleState
+- entity: TestResult
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 1
+  relationships:
+  - kind: has_one
+    target: ServiceSpecificTestResultConfiguration
+    via: serviceSpecificTestResultConfiguration
+- entity: TestResult_Common
+  openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceFrom
+  - kind: has_one
+    target: ServiceRef
+    via: relatedServiceTo
+  - kind: has_one
+    target: TestJobRef
+    via: testJob
+- entity: EventSubscription
+  openapi: openapi/mef-lso-legato-service-inventory-management-openapi.yml
+  api: MEF LSO Legato Service Inventory Management
+  irp: LSO Legato
+  fields: 3
+  relationships: []
+- entity: Service
+  openapi: openapi/mef-lso-legato-service-inventory-management-openapi.yml
+  api: MEF LSO Legato Service Inventory Management
+  irp: LSO Legato
+  fields: 16
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_many
+    target: Note_BusSof
+    via: note
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MefServiceConfiguration
+    via: serviceConfiguration
+  - kind: has_many
+    target: ServiceOrderItemRef
+    via: serviceOrderItem
+  - kind: has_many
+    target: ServiceRelationship
+    via: serviceRelationship
+  - kind: has_one
+    target: ServiceStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-legato-service-ordering-management-openapi.yml
+  api: MEF LSO Legato Service Ordering Management
+  irp: LSO Legato
+  fields: 3
+  relationships: []
+- entity: ServiceOrder
+  openapi: openapi/mef-lso-legato-service-ordering-management-openapi.yml
+  api: MEF LSO Legato Service Ordering Management
+  irp: LSO Legato
+  fields: 8
+  relationships:
+  - kind: has_many
+    target: ServiceOrderItem
+    via: serviceOrderItem
+  - kind: has_one
+    target: ServiceOrderStateType
+    via: state
+- entity: Topic
+  openapi: openapi/mef-lso-legato-streaming-management-all-in-one-openapi.yml
+  api: MEF LSO Legato Streaming Management
+  irp: LSO Legato
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: Category
+    via: category
+  - kind: belongs_to
+    target: model
+    via: modelRef
+  - kind: has_many
+    target: ChannelDescription
+    via: availableChannels
+- entity: Appointment
+  openapi: openapi/mef-lso-sonata-appointment-management-openapi.yml
+  api: MEF LSO Sonata Appointment Management
+  irp: LSO Sonata
+  fields: 9
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: RelatedPlaceRefOrQuery
+    via: relatedPlace
+  - kind: has_one
+    target: AppointmentStatusType
+    via: status
+  - kind: has_one
+    target: TimePeriod
+    via: validFor
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: WorkOrderRef
+    via: workOrder
+- entity: Appointment_Find
+  openapi: openapi/mef-lso-sonata-appointment-management-openapi.yml
+  api: MEF LSO Sonata Appointment Management
+  irp: LSO Sonata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: RelatedPlaceRefOrQuery
+    via: relatedPlace
+  - kind: has_one
+    target: AppointmentStatusType
+    via: status
+  - kind: has_one
+    target: TimePeriod
+    via: validFor
+  - kind: has_one
+    target: WorkOrderRef
+    via: workOrder
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-appointment-management-openapi.yml
+  api: MEF LSO Sonata Appointment Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: CustomerBill
+  openapi: openapi/mef-lso-sonata-billing-management-openapi.yml
+  api: MEF LSO Sonata Billing Management
+  irp: LSO Sonata
+  fields: 25
+  relationships:
+  - kind: has_one
+    target: Money
+    via: amountDue
+  - kind: has_many
+    target: AppliedPayment
+    via: appliedPayment
+  - kind: has_one
+    target: BillingAccountRef
+    via: billingAccount
+  - kind: has_one
+    target: AttachmentURL
+    via: billDocument
+  - kind: has_one
+    target: TimePeriod
+    via: billingPeriod
+  - kind: has_one
+    target: CustomerBillCategory
+    via: category
+  - kind: has_one
+    target: Money
+    via: credits
+  - kind: has_many
+    target: CustomerBillItemRef
+    via: customerBillItem
+  - kind: has_one
+    target: Money
+    via: discounts
+  - kind: has_one
+    target: Money
+    via: fees
+  - kind: has_one
+    target: FinancialAccountRef
+    via: financialAccount
+  - kind: has_one
+    target: CustomerBillRunType
+    via: runType
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: Money
+    via: remainingAmount
+  - kind: has_one
+    target: CustomerBillStateType
+    via: state
+  - kind: has_one
+    target: Money
+    via: taxExcludedAmount
+  - kind: has_one
+    target: Money
+    via: taxIncludedAmount
+  - kind: has_many
+    target: TaxItem
+    via: taxItem
+- entity: CustomerBillItem
+  openapi: openapi/mef-lso-sonata-billing-management-openapi.yml
+  api: MEF LSO Sonata Billing Management
+  irp: LSO Sonata
+  fields: 15
+  relationships:
+  - kind: has_many
+    target: CustomerBillItemTax
+    via: appliedTax
+  - kind: has_many
+    target: CustomerBillItemFee
+    via: appliedFee
+  - kind: has_one
+    target: MEFPriceType
+    via: customerBillItemType
+  - kind: has_one
+    target: TimePeriod
+    via: periodCoverage
+  - kind: has_one
+    target: ProductRef
+    via: product
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: CustomerBillItemStateType
+    via: state
+  - kind: has_one
+    target: Money
+    via: taxExcludedAmount
+  - kind: has_one
+    target: Money
+    via: unitRate
+- entity: CustomerBill_Find
+  openapi: openapi/mef-lso-sonata-billing-management-openapi.yml
+  api: MEF LSO Sonata Billing Management
+  irp: LSO Sonata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: BillingAccountRef
+    via: billingAccount
+  - kind: has_one
+    target: TimePeriod
+    via: billingPeriod
+  - kind: has_one
+    target: CustomerBillCategory
+    via: category
+  - kind: has_one
+    target: CustomerBillStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-billing-management-openapi.yml
+  api: MEF LSO Sonata Billing Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: CimIncident
+  openapi: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-openapi.yml
+  api: MEF LSO Sonata Circuit Impairment and Maintenance
+  irp: LSO Sonata
+  fields: 19
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: CimIncidentPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_many
+    target: IssueRelationship
+    via: relatedIssue
+  - kind: has_one
+    target: CimIncidentSeverityType
+    via: severity
+  - kind: has_one
+    target: IncidentStatusType
+    via: status
+  - kind: has_many
+    target: IncidentStatusChange
+    via: statusChange
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-openapi.yml
+  api: MEF LSO Sonata Circuit Impairment and Maintenance
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-geographic-address-management-openapi.yml
+  api: MEF LSO Sonata Geographic Address Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: GeographicAddress
+  openapi: openapi/mef-lso-sonata-geographic-address-management-openapi.yml
+  api: MEF LSO Sonata Geographic Address Management
+  irp: LSO Sonata
+  fields: 9
+  relationships:
+  - kind: has_one
+    target: TrueFalseUnknown
+    via: hasPublicSite
+  - kind: has_one
+    target: TrueFalseUnknown
+    via: allowsNewSite
+  - kind: has_many
+    target: FieldedAddressRepresentation
+    via: fieldedAddressRepresentation
+  - kind: has_many
+    target: FormattedAddressRepresentation
+    via: formattedAddressRepresentation
+  - kind: has_many
+    target: GeographicPointRepresentation
+    via: geographicPointRepresentation
+  - kind: has_many
+    target: LabelRepresentation
+    via: labelRepresentation
+- entity: GeographicAddressValidation
+  openapi: openapi/mef-lso-sonata-geographic-address-management-openapi.yml
+  api: MEF LSO Sonata Geographic Address Management
+  irp: LSO Sonata
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: GeographicAddressValidationStateType
+    via: state
+  - kind: has_many
+    target: GeographicAddress
+    via: alternateGeographicAddress
+  - kind: has_one
+    target: GeographicAddress
+    via: bestMatchGeographicAddress
+- entity: GeographicSite
+  openapi: openapi/mef-lso-sonata-geographic-site-management-openapi.yml
+  api: MEF LSO Sonata Geographic Site Management
+  irp: LSO Sonata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: GeographicAddressRefOrQuery
+    via: place
+  - kind: has_one
+    target: SiteRestrictionType
+    via: siteRestrictionType
+  - kind: has_one
+    target: SiteNetworkType
+    via: networkType
+  - kind: has_many
+    target: SubUnit
+    via: subUnit
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-product-catalog-openapi.yml
+  api: MEF LSO Sonata Product Catalog
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: ProductCategory
+  openapi: openapi/mef-lso-sonata-product-catalog-openapi.yml
+  api: MEF LSO Sonata Product Catalog
+  irp: LSO Sonata
+  fields: 8
+  relationships:
+  - kind: has_one
+    target: ProductCategoryRef
+    via: parentCategory
+  - kind: has_many
+    target: ProductCategoryRef
+    via: subCategory
+  - kind: has_many
+    target: ProductOfferingRef
+    via: productOffering
+- entity: ProductOffering
+  openapi: openapi/mef-lso-sonata-product-catalog-openapi.yml
+  api: MEF LSO Sonata Product Catalog
+  irp: LSO Sonata
+  fields: 12
+  relationships:
+  - kind: has_many
+    target: ProductOfferingLifecycleStatusTransition
+    via: statusTransition
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_one
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: ProductOfferingTerm
+    via: productOfferingTerm
+  - kind: has_many
+    target: ProductMilestoneDefinition
+    via: milestone
+  - kind: has_many
+    target: ProductOfferingBundleRelationship
+    via: bundledProductOffering
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: SchemaRefOrValue
+    via: productOfferingSpecificationSchema
+  - kind: has_many
+    target: ProductOfferingContextualInfo
+    via: productOfferingContextualInfo
+  - kind: has_many
+    target: ProductRelationshipConstraint
+    via: productRelationshipConstraint
+  - kind: has_many
+    target: PlaceRelationshipConstraint
+    via: placeRelationshipConstraint
+- entity: ProductSpecification
+  openapi: openapi/mef-lso-sonata-product-catalog-openapi.yml
+  api: MEF LSO Sonata Product Catalog
+  irp: LSO Sonata
+  fields: 7
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_many
+    target: ProductRelationshipConstraint
+    via: productRelationship
+  - kind: has_many
+    target: PlaceRelationshipConstraint
+    via: placeRelationship
+  - kind: has_many
+    target: ProductMilestoneDefinition
+    via: milestone
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: SchemaRefOrValue
+    via: sourceSchema
+- entity: MEFProduct
+  openapi: openapi/mef-lso-sonata-product-inventory-management-openapi.yml
+  api: MEF LSO Sonata Product Inventory Management
+  irp: LSO Sonata
+  fields: 19
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_one
+    target: MEFProductStatusType
+    via: status
+  - kind: has_many
+    target: MEFProductStatusChange
+    via: statusChange
+  - kind: has_one
+    target: ProductSpecificationRef
+    via: productSpecification
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_one
+    target: ProductOfferingRef
+    via: productOffering
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MEFBillingAccountRef
+    via: billingAccount
+  - kind: has_many
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_many
+    target: MEFItemTerm
+    via: productTerm
+  - kind: has_one
+    target: MEFProductConfiguration
+    via: productConfiguration
+  - kind: has_many
+    target: ProductRelationship
+    via: productRelationship
+  - kind: has_many
+    target: ProductPrice
+    via: productPrice
+- entity: MEFProduct_Find
+  openapi: openapi/mef-lso-sonata-product-inventory-management-openapi.yml
+  api: MEF LSO Sonata Product Inventory Management
+  irp: LSO Sonata
+  fields: 12
+  relationships:
+  - kind: has_one
+    target: ProductSpecificationRef
+    via: productSpecification
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_one
+    target: ProductOfferingRef
+    via: productOffering
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_many
+    target: ProductRelationship
+    via: productRelationship
+  - kind: has_one
+    target: MEFBillingAccountRef
+    via: billingAccount
+  - kind: has_many
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductStatusType
+    via: status
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Sonata Product Offering Qualification Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: ProductOfferingQualification
+  openapi: openapi/mef-lso-sonata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Sonata Product Offering Qualification Management
+  irp: LSO Sonata
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: MEFPOQTaskStateType
+    via: state
+  - kind: has_many
+    target: ProductOfferingQualificationItem
+    via: productOfferingQualificationItem
+  - kind: has_many
+    target: MEFPOQStateChange
+    via: stateChange
+- entity: ProductOfferingQualification_Find
+  openapi: openapi/mef-lso-sonata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Sonata Product Offering Qualification Management
+  irp: LSO Sonata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: MEFPOQTaskStateType
+    via: state
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: belongs_to
+    target: project
+    via: projectId
+- entity: CancelProductOrder
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 9
+  relationships:
+  - kind: has_one
+    target: CancellationReasonType
+    via: cancellationReasonType
+  - kind: has_one
+    target: MEFProductOrderChargeRef
+    via: charge
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_one
+    target: MEFChargeableTaskStateType
+    via: state
+- entity: CancelProductOrder_Find
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 4
+  relationships:
+  - kind: has_one
+    target: CancellationReasonType
+    via: cancellationReasonType
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_one
+    target: MEFChargeableTaskStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: MEFModifyProductOrderItemRequestedDeliveryDate
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 7
+  relationships:
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFChargeableTaskStateType
+    via: state
+- entity: MEFProductOrderCharge
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: MEFCancelProductOrderRef
+    via: cancelProductOrder
+  - kind: has_many
+    target: MEFProductOrderChargeItem
+    via: chargeItem
+  - kind: has_one
+    target: MEFModifyProductOrderItemRequestedDeliveryDateRef
+    via: modifyProductOrderItemRequestedDeliveryDate
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductOrderChargeStateType
+    via: state
+- entity: MEFProductOrderCharge_Find
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 6
+  relationships:
+  - kind: has_one
+    target: MEFProductOrderRef
+    via: productOrder
+  - kind: has_one
+    target: MEFProductOrderItemRef
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductOrderChargeStateType
+    via: state
+- entity: ProductOrder
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 10
+  relationships:
+  - kind: has_many
+    target: MEFProductOrderChargeRef
+    via: cancellationCharge
+  - kind: has_many
+    target: ProductOrderItem
+    via: productOrderItem
+  - kind: has_one
+    target: MEFProductOrderStateType
+    via: state
+  - kind: has_many
+    target: MEFProductOrderStateChange
+    via: stateChange
+- entity: ProductOrder_Find
+  openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  fields: 7
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: belongs_to
+    target: project
+    via: projectId
+  - kind: has_one
+    target: MEFProductOrderStateType
+    via: state
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-quote-management-openapi.yml
+  api: MEF LSO Sonata Quote Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: Quote
+  openapi: openapi/mef-lso-sonata-quote-management-openapi.yml
+  api: MEF LSO Sonata Quote Management
+  irp: LSO Sonata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: TimePeriod
+    via: validFor
+  - kind: has_one
+    target: MEFSellerQuoteLevel
+    via: quoteLevel
+  - kind: has_many
+    target: QuoteItem
+    via: quoteItem
+  - kind: has_many
+    target: MEFQuoteStateChange
+    via: stateChange
+  - kind: has_one
+    target: MEFQuoteStateType
+    via: state
+- entity: Quote_Find
+  openapi: openapi/mef-lso-sonata-quote-management-openapi.yml
+  api: MEF LSO Sonata Quote Management
+  irp: LSO Sonata
+  fields: 9
+  relationships:
+  - kind: has_one
+    target: MEFSellerQuoteLevel
+    via: quoteLevel
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_one
+    target: MEFQuoteStateType
+    via: state
+  - kind: belongs_to
+    target: project
+    via: projectId
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: Incident
+  openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  irp: LSO Sonata
+  fields: 18
+  relationships:
+  - kind: has_many
+    target: AttachmentValue
+    via: attachment
+  - kind: has_one
+    target: MEFObservedImpactType
+    via: impact
+  - kind: has_one
+    target: IncidentType
+    via: incidentType
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_many
+    target: IssueRelationship
+    via: relatedIssue
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: severity
+  - kind: has_one
+    target: IncidentStatusType
+    via: status
+  - kind: has_many
+    target: IncidentStatusChange
+    via: statusChange
+- entity: Incident_Find
+  openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  irp: LSO Sonata
+  fields: 13
+  relationships:
+  - kind: has_one
+    target: MEFObservedImpactType
+    via: impact
+  - kind: has_one
+    target: IncidentType
+    via: incidentType
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: severity
+  - kind: has_one
+    target: IncidentStatusType
+    via: status
+- entity: TroubleTicket
+  openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  irp: LSO Sonata
+  fields: 10
+  relationships:
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: sellerPriority
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: sellerSeverity
+  - kind: has_one
+    target: TroubleTicketStatusType
+    via: status
+  - kind: has_many
+    target: TroubleTicketStatusChange
+    via: statusChange
+  - kind: has_many
+    target: WorkOrderRef
+    via: workOrder
+- entity: TroubleTicket_Find
+  openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  irp: LSO Sonata
+  fields: 14
+  relationships:
+  - kind: belongs_to
+    target: external
+    via: externalId
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: priority
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: MEFObservedImpactType
+    via: observedImpact
+  - kind: has_one
+    target: TroubleTicketPriorityType
+    via: sellerPriority
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: sellerSeverity
+  - kind: has_one
+    target: TroubleTicketSeverityType
+    via: severity
+  - kind: has_one
+    target: TroubleTicketStatusType
+    via: status
+  - kind: has_one
+    target: TroubleTicketType
+    via: ticketType
+- entity: EventSubscription
+  openapi: openapi/mef-lso-sonata-workorder-management-openapi.yml
+  api: MEF LSO Sonata WorkOrder Management
+  irp: LSO Sonata
+  fields: 3
+  relationships: []
+- entity: WorkOrder
+  openapi: openapi/mef-lso-sonata-workorder-management-openapi.yml
+  api: MEF LSO Sonata WorkOrder Management
+  irp: LSO Sonata
+  fields: 12
+  relationships:
+  - kind: has_many
+    target: AppointmentRef
+    via: appointment
+  - kind: has_one
+    target: TimeDuration
+    via: duration
+  - kind: has_many
+    target: Note
+    via: note
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedContactInformation
+    via: relatedContactInformation
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: WorkOrderStateType
+    via: state
+- entity: WorkOrder_Find
+  openapi: openapi/mef-lso-sonata-workorder-management-openapi.yml
+  api: MEF LSO Sonata WorkOrder Management
+  irp: LSO Sonata
+  fields: 5
+  relationships:
+  - kind: has_many
+    target: RelatedPlaceRefOrQuery
+    via: place
+  - kind: has_many
+    target: RelatedEntity
+    via: relatedEntity
+  - kind: has_one
+    target: WorkOrderStateType
+    via: state

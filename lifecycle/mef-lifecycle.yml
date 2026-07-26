@@ -1,0 +1,63 @@
+generated: '2026-07-25'
+method: searched
+source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/releases + https://lso.mplify.net/lso-api-sdk-releases + openapi/*.yml
+versioning:
+  scheme: uri-path major version per API, inside a named suite-wide SDK release
+  api_version_examples:
+    - productOrderingManagement/v11 (document version 11.0.1)
+    - quoteManagement/v10
+    - productInventory/v8
+    - geographicAddressManagement/v8
+    - serviceInventory/v7
+    - alarmManagement/v3
+    - cimIncident/v1
+  release_train:
+    name: LSO API Release Framework
+    naming: named after singers, alphabetical — aretha, billie, celine, dolly, ella, fergie, grace, haley, irene, janis, kylie
+    current: kylie
+    current_published: '2026-02-17'
+    cadence: roughly two releases per year since 2021
+    docs: https://lso.mplify.net/lso-api-sdk-releases
+  maturity_levels:
+    published: >-
+      Each functional area carries an explicit maturity in the release notes — "Published Standard"
+      for ratified documents, draft/working otherwise, with (*) marking a maturity change since the
+      previous release. Release notes state plainly that "the API files contained in this SDK are
+      evolving and subject to change".
+    url: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/releases/tag/kylie
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecated_operations: []
+  evidence: >-
+    No formal deprecation or sunset policy is published, no RFC 8594 Sunset/Deprecation header is
+    defined, and no operation in the 94 kylie documents is marked deprecated: true. Retirement is
+    handled implicitly by the major-version bump and the named release train — older releases stay
+    permanently downloadable as GitHub tags and release zips.
+availability:
+  status_page: null
+  sla: null
+  note: >-
+    Mplify operates no runtime API, so there is no status page and no uptime SLA. Availability is
+    the implementing Seller's responsibility. The one Mplify-run runtime service is the LSO API
+    Test Service (buyer/seller emulators on a dedicated cloud instance per subscriber), delivered
+    under contract with Amartus — see sandbox/mef-sandbox.yml.
+distribution:
+  github_org: https://github.com/MEF-GIT
+  repos:
+    - {name: MEF-LSO-Sonata-SDK, irp: LSO Sonata, releases: 19}
+    - {name: MEF-LSO-Cantata-SDK, irp: LSO Cantata, releases: 11}
+    - {name: MEF-LSO-Legato-SDK, irp: LSO Legato, releases: 13}
+    - {name: MEF-LSO-Interlude-SDK, irp: LSO Interlude, releases: 6}
+    - {name: MEF-LSO-Allegro-SDK, irp: LSO Allegro, releases: 6}
+    - {name: MEF-LSO-Presto-SDK, irp: LSO Presto, releases: 14}
+  license: Apache-2.0
+  artifact: per-release zip, e.g. Mplify-LSO-Sonata-SDK-kylie.zip
+  member_extension: >-
+    Extended SDK repositories containing work-in-progress and pre-release standards exist for active
+    members only, alongside member-only Developer Guides and MEF W92.1 test requirements on
+    wiki.mplify.net.
+related:
+  changelog: changelog/mef-changelog.yml
+  conventions: conventions/mef-conventions.yml

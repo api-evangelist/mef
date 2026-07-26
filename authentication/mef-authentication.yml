@@ -1,0 +1,57 @@
+generated: '2026-07-25'
+method: searched
+source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/generated/security
+docs: https://lso.mplify.net/api-catalog
+summary:
+  types: [oauth2]
+  api_key_in: []
+  oauth2_flows: [clientCredentials]
+  model: two-legged machine-to-machine OAuth 2.0 between a Buyer system and a Seller system
+posture: >-
+  Mplify (formerly MEF) is a standards body, not an API operator. The 94 canonical LSO API
+  documents in productApi/ and serviceApi/ declare NO securitySchemes at all — they are
+  contracts that each implementing Seller secures on its own authorization server. The
+  security model is published separately, as a second generated variant of every document.
+schemes:
+  - name: oauth2MEFLSOAPI
+    type: oauth2
+    description: Default m2m client code
+    flows:
+      - flow: clientCredentials
+        tokenUrl: http://mef.net/example/token
+        refreshUrl: http://mef.net/example/refresh
+        scopes:
+          default: default scope
+    applied: >-
+      Document-level `security: [{oauth2MEFLSOAPI: [default]}]` plus an operation-level
+      requirement carrying a scope named after the operationId (218 distinct scopes).
+    sources:
+      - https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/order/productOrderManagement.api.yaml
+      - https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/tree/kylie/generated/security
+      - https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie/generated/security
+      - https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/tree/kylie/generated/security
+      - https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK/tree/kylie/generated/security
+    documents: 88
+    note: >-
+      The tokenUrl and refreshUrl shipped in the published documents are deliberate placeholders
+      on the mef.net example host. The implementing Seller substitutes its own authorization
+      server; Mplify does not operate one.
+mcp_client_auth:
+  source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/generated/mcp/mplify-mcp-runner
+  modes: [none, basic, oauth-refresh]
+  default_in_shipped_env_files: basic (MCP_AUTH_MODE=basic, credentials placeholder user:password)
+  oauth_refresh: >-
+    OAuth 2.0 refresh-token grant with automatic refresh and one retry on 401
+    (MCP_OAUTH_TOKEN_URL / CLIENT_ID / CLIENT_SECRET / REFRESH_TOKEN / SCOPE / AUDIENCE).
+  note: >-
+    This is how Mplify's own MCP runner authenticates to a Seller's live implementation — the
+    only place Mplify publishes concrete, runnable auth configuration.
+not_documented:
+  - api keys
+  - mutual TLS
+  - OpenID Connect discovery (https://lso.mplify.net/.well-known/openid-configuration returns 404)
+  - CIBA / subscriber-consent flows (structurally absent — LSO is B2B, not subscriber-facing)
+related:
+  scopes: scopes/mef-scopes.yml
+  conventions: conventions/mef-conventions.yml
+  conformance: conformance/mef-conformance.yml

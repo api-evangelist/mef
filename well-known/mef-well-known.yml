@@ -1,0 +1,34 @@
+generated: '2026-07-25'
+method: searched
+source: live probes, 2026-07-25
+summary: >-
+  Mplify serves no /.well-known/ discovery surface on any of its hosts. Every probe returned 404.
+  Recorded as a real (negative) result, not an omission — the only machine-readable discovery
+  surface Mplify publishes is the GitHub SDK release, the LSO API Catalog and an llms.txt.
+hosts:
+  - host: https://www.mplify.net
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+      - {path: /security.txt, status: 404}
+  - host: https://mplify.net
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://lso.mplify.net
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /llms.txt, status: 404}
+found_elsewhere:
+  - {path: /llms.txt, host: https://www.mplify.net, status: 200, file: ../llms/mef-llms.txt, note: Yoast SEO-generated llms.txt}
+  - {path: /sitemap_index.xml, host: https://www.mplify.net, status: 200}
+  - {path: /feed/, host: https://www.mplify.net, status: 200, note: site-wide RSS}
+  - {path: /edge-view-blog/feed/, host: https://www.mplify.net, status: 200, note: Edge VIEW blog RSS}
+api_hosts:
+  probed: false
+  reason: >-
+    Every LSO baseURL is a template — https://{serverBase}/mefApi/... — because Mplify defines the
+    path contract and the implementing Seller supplies the host. There is no Mplify-operated API
+    host to probe.

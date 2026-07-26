@@ -1,0 +1,38 @@
+generated: '2026-07-25'
+method: generated
+source: openapi/*.yml (kylie release) + conventions/mef-conventions.yml + errors/mef-problem-types.yml + mcp/mef-mcp.yml
+note: >-
+  Every step is grounded in an operationId that exists verbatim in the referenced Mplify (MEF) LSO
+  document. Mplify operates no API — these skills describe how to use a Seller's implementation of
+  the standard.
+skills:
+  - file: mef-sonata-quote-to-order.md
+    name: LSO Sonata quote-to-order
+    api: openapi/mef-lso-sonata-product-order-management-openapi.yml
+    irp: LSO Sonata
+    operations: [createGeographicAddressValidation, createProductOfferingQualification, createQuote, createProductOrder, retrieveProductOrder, listCharge, patchCharge, listProduct]
+  - file: mef-trouble-ticket-lifecycle.md
+    name: LSO trouble ticket lifecycle
+    api: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+    irp: LSO Sonata / LSO Cantata
+    operations: [createTroubleTicket, patchTroubleTicket, cancelTroubleTicket, closeTroubleTicket, reopenTroubleTicket, listIncident]
+  - file: mef-legato-service-order-and-inventory.md
+    name: LSO Legato service order and inventory
+    api: openapi/mef-lso-legato-service-ordering-management-openapi.yml
+    irp: LSO Legato
+    operations: [createServiceOrder, retrieveServiceOrder, listServiceOrder, serviceFind, serviceGet]
+  - file: mef-performance-and-fault-jobs.md
+    name: LSO performance and fault management jobs
+    api: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+    irp: LSO Allegro / LSO Interlude / LSO Legato
+    operations: [createPerformanceProfile, createPerformanceJob, suspendPerformanceJob, resumePerformanceJob, createPerformanceReport, createFaultManagementJob]
+  - file: mef-subscribe-to-lso-events.md
+    name: Subscribe to LSO events
+    api: openapi/mef-lso-sonata-product-order-management-openapi.yml
+    irp: all
+    operations: [registerListener, retrieveHub, retrieveEventSubscription, unregisterListener]
+  - file: mef-run-lso-mcp-server.md
+    name: Run an LSO API as an MCP server
+    api: mcp/mef-mcp.yml
+    irp: all
+    operations: [createProductOrder, retrieveProductOrder, listProductOrder, createQuote, listProduct]

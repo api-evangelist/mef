@@ -1,0 +1,36 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for MEF LSO Cantata Trouble Ticket and Incident Notification
+  version: 1.0.0
+extends: openapi/mef-lso-cantata-trouble-ticket-notification-openapi.yml
+x-generated: '2026-07-25'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist-source: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/productApi/troubleTicket/troubleTicketNotification.api.yaml
+    x-apievangelist-harvested: '2026-07-25'
+    x-apievangelist-release: kylie
+    x-apievangelist-irp: LSO Cantata
+    x-apievangelist-license: Apache-2.0
+    x-apievangelist-provider: Mplify Alliance (formerly MEF Forum)
+    x-apievangelist-conventions: conventions/mef-conventions.yml
+    x-apievangelist-errors: errors/mef-problem-types.yml
+- target: $.components
+  update:
+    securitySchemes:
+      oauth2MEFLSOAPI:
+        type: oauth2
+        description: Default m2m client code
+        flows:
+          clientCredentials:
+            tokenUrl: http://mef.net/example/token
+            refreshUrl: http://mef.net/example/refresh
+            scopes:
+              default: default scope
+- target: $
+  update:
+    security:
+    - oauth2MEFLSOAPI:
+      - default
+    x-apievangelist-security-source: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK/blob/kylie/generated/security/troubleTicket/troubleTicketNotification.api.yaml

@@ -1,0 +1,45 @@
+generated: '2026-07-25'
+method: searched
+source: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/generated/mcp/mplify-mcp-runner
+summary: >-
+  Mplify ships no CLI for calling the LSO APIs (it operates none). It does ship one first-party
+  command-line tool: mplify-mcp-server, the Typer-based runner that turns any LSO OpenAPI document
+  into an MCP server. Published in every LSO SDK from the kylie release onward.
+clis:
+  - name: mplify-mcp-server
+    package: mcp-openapi-server 0.1.0 (console script)
+    language: Python >=3.11
+    license: MIT (inside an Apache-2.0 SDK)
+    purpose: Expose a Mplify/MEF LSO OpenAPI specification as MCP tools using FastMCP
+    install:
+      - docker build -t mplify-mcp-server mplify-mcp-runner
+      - uv venv && uv pip install -e .   # from generated/mcp/mplify-mcp-runner
+      - uv run mplify-mcp-server --help
+    single_command: run
+    options:
+      - {flag: --openapi-uri, env: MCP_OAS_URI, required: true, description: URL or file path to the OpenAPI spec}
+      - {flag: --server-uri, env: MCP_SERVER_URI, description: "Upstream API base URL; defaults to openapi.servers[0].url"}
+      - {flag: --name, env: MCP_SERVER_NAME, default: Mplify MCP Server, description: MCP server name}
+      - {flag: --auth, env: MCP_AUTH_MODE, default: none, values: [none, basic, oauth-refresh], description: Upstream auth mode}
+      - {flag: --basic-credentials, env: MCP_BASIC_CREDENTIALS, description: 'Basic auth credentials in the form user:password'}
+      - {flag: --oauth-token-url, env: MCP_OAUTH_TOKEN_URL, description: OAuth token endpoint (refresh-token grant)}
+      - {flag: --oauth-client-id, env: MCP_OAUTH_CLIENT_ID}
+      - {flag: --oauth-client-secret, env: MCP_OAUTH_CLIENT_SECRET}
+      - {flag: --oauth-refresh-token, env: MCP_OAUTH_REFRESH_TOKEN}
+      - {flag: --oauth-scope, env: MCP_OAUTH_SCOPE}
+      - {flag: --oauth-audience, env: MCP_OAUTH_AUDIENCE}
+      - {flag: --transport, env: MCP_TRANSPORT, default: http, values: [http, stdio, sse]}
+      - {flag: --listen-host, env: MCP_LISTEN_HOST, default: 0.0.0.0}
+      - {flag: --listen-port, env: MCP_LISTEN_PORT, default: 8000}
+      - {flag: --request-timeout-s, default: 30.0}
+    flows:
+      - name: Run one API as an MCP server
+        example: docker run --rm -p 8004:8000 -v $(pwd):/data --env-file ./PRODUCT_ORDER.env mplify-mcp-server
+      - name: Inspect the generated tools
+        example: npx @modelcontextprotocol/inspector http://localhost:8004/mcp
+      - name: Wire into an agent
+        example: 'VS Code user mcp.json or Claude Desktop mcpServers entry pointing at http://localhost:<port>/mcp'
+    docs: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/blob/kylie/generated/mcp/MPLIFY-MCP-QUICKSTART.md
+related:
+  mcp: mcp/mef-mcp.yml
+  packages: packages/mef-packages.yml

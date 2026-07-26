@@ -1,0 +1,87 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/*.yml + asyncapi/ + https://lso.mplify.net/api-catalog + https://www.mplify.net/certification/
+context: >-
+  Mplify (formerly MEF Forum) is the standards body that AUTHORS these specifications. This file
+  records which cross-cutting industry standards its own published artifacts conform to, and which
+  peer-standard bodies it builds on. It is not a vendor compliance claim, and Mplify publishes no
+  SOC 2 / ISO 27001 / PCI trust posture of its own.
+standards:
+  - id: openapi-3.0
+    conforms: true
+    evidence: 90 of 94 published documents are OpenAPI 3.0.1 (82) or 3.0.3 (8).
+  - id: swagger-2.0
+    conforms: true
+    evidence: The 4 LSO Presto documents (MEF 60 Network Resource Provisioning) are Swagger 2.0.
+  - id: openapi-3.1
+    conforms: false
+    evidence: No 3.1 document published in the kylie release.
+  - id: asyncapi-2.0
+    conforms: true
+    evidence: asyncapi/mef-lso-interlude-performance.template-asyncapi.yml (AsyncAPI 2.0.0 streaming template).
+  - id: oauth2-client-credentials
+    conforms: true
+    evidence: >-
+      oauth2MEFLSOAPI clientCredentials scheme in the 88 generated/security document variants,
+      with per-operation scopes.
+  - id: oidc-discovery
+    conforms: false
+    evidence: https://lso.mplify.net/.well-known/openid-configuration returns 404; no discovery document published.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a TM Forum-derived Error envelope (code/reason/message/referenceError) served as
+      application/json;charset=utf-8, not application/problem+json.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on www.mplify.net and lso.mplify.net.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: No Sunset or Deprecation header is defined in any published document.
+  - id: json-schema
+    conforms: true
+    evidence: >-
+      Product and service payloads are published as standalone JSON Schema documents in the SDK
+      schema/ trees, e.g. urn:mef:xid:spec:product:qos-session:v0.0.1:all.
+  - id: restconf
+    conforms: true
+    evidence: LSO Presto (MEF 60) uses a RESTCONF-style interface, basePath /restconf, derived from the ONF Transport API (TAPI) model.
+  - id: tmforum-open-api
+    conforms: partial
+    evidence: >-
+      LSO APIs are built on and attribute TM Forum Open APIs — TMF622 Product Order, TMF633 Service
+      Catalog, TMF638 Service Inventory, TMF641 Service Ordering (Apache-2.0, modified by Mplify).
+      Mplify is a peer SDO, not a TM Forum conformance certificate holder.
+  - id: camara-quality-on-demand
+    conforms: partial
+    evidence: >-
+      Pre-standard LSO QoD payload schema modelled on the CAMARA QoD session object and citing
+      CAMARA Commonalities v0.4 by name (schema/productSchema/preStandard/qualityOnDemand/qosSession.yaml
+      in the Sonata and Cantata SDKs). Alignment on payload only — Mplify exposes no callable CAMARA endpoint.
+  - id: gsma-open-gateway
+    conforms: partial
+    evidence: >-
+      MOU signatory as a standards body (announced 11 November 2025, with the GSMA, the Linux
+      Foundation and TM Forum) — an ecosystem participant contributing wireline LSO APIs, not one
+      of the operator groups committing to expose CAMARA APIs.
+  - id: model-context-protocol
+    conforms: true
+    evidence: >-
+      Every Seller-side API ships an MCP server configuration in generated/mcp/ from the kylie
+      release onward (FastMCP-based runner, HTTP transport at /mcp). See mcp/mef-mcp.yml.
+certification_programs_operated:
+  - name: MEF 3.0 LSO API Certification Program
+    url: https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-certification/
+    unit: a triple of Seller + Business Function + LSO API Release
+    registry: https://www.mplify.net/certification/certifications-for-lso-apis/lso-api-registry/
+  - name: LSO API Test Service (formerly the OIT Service)
+    url: https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-test-service/
+    partner: Amartus (authorised test & certification partner since October 2021)
+  - name: Company, service-provider, technology-provider and professional certifications (Carrier Ethernet, SD-WAN, SASE, SSE, Zero Trust)
+    url: https://www.mplify.net/certification/
+own_compliance_posture:
+  published: false
+  note: >-
+    No trust center, no SOC 2 / ISO 27001 / PCI DSS / HIPAA / FedRAMP claim and no security.txt
+    were found for mplify.net. Mplify certifies other organisations; it does not publish a
+    compliance program for itself.

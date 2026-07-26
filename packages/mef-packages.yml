@@ -1,0 +1,48 @@
+generated: '2026-07-25'
+method: searched
+source: registry probes (npm, PyPI) + https://github.com/MEF-GIT + https://lso.mplify.net/lso-api-sdk-releases
+summary: >-
+  Mplify publishes NO first-party client libraries. "SDK" in Mplify's vocabulary means a versioned
+  bundle of specification documents, not a code package: an LSO SDK release is a GitHub tag plus a
+  downloadable zip of OpenAPI/AsyncAPI documents, JSON Schemas, developer documentation and (since
+  kylie) MCP server code. The one runnable package Mplify ships is the MCP runner, distributed as
+  source inside every SDK rather than through a registry.
+client_libraries: []
+packages:
+  - language: python
+    registry: none (source-in-repo)
+    name: mcp-openapi-server
+    console_script: mplify-mcp-server
+    version: 0.1.0
+    url: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/tree/kylie/generated/mcp/mplify-mcp-runner
+    install: uv pip install -e . (from generated/mcp/mplify-mcp-runner) — or docker build -t mplify-mcp-server mplify-mcp-runner
+    requires: Python >=3.11
+    dependencies: [fastmcp>=2.14.1, httpx>=0.27, typer>=0.12, pyyaml>=6.0, pyfiglet]
+    license: MIT (inside an Apache-2.0 SDK)
+    official: true
+    authored_by: Amartus, published by Mplify in every LSO SDK
+    purpose: turns any LSO OpenAPI document into an MCP server
+    note: >-
+      Also present in the Cantata, Interlude, Legato and Allegro SDKs. Not published to PyPI; the
+      README's `uv pip install git+https://github.com/Amartus/mplify-mcp-runner.git` target is not
+      publicly resolvable (404 on 2026-07-25).
+distributions:
+  - name: LSO SDK release zips
+    url: https://lso.mplify.net/lso-api-sdk-releases
+    example: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK/releases/download/kylie/Mplify-LSO-Sonata-SDK-kylie.zip
+    contents: OpenAPI/AsyncAPI documents, JSON Schema payloads, Postman collections, developer documentation, generated security + MCP variants
+    license: Apache-2.0
+    official: true
+registry_probes:
+  - {registry: pypi, query: mplify, status: 404}
+  - {registry: pypi, query: mplify-mcp-server, status: 404}
+  - {registry: pypi, query: mplify-mcp-runner, status: 404}
+  - {registry: pypi, query: mef-lso, status: 404}
+  - {registry: npm, query: mplify, status: 404}
+  - {registry: npm, query: mef-lso, status: 404}
+  - {registry: npm, query: "@mplify/sdk", status: 404}
+  - {registry: npm, query: lso-api, status: 404}
+not_found: [maven central, nuget, rubygems, packagist, crates.io, pkg.go.dev]
+generation_path: >-
+  Implementers generate their own clients from the published OpenAPI documents — that is the intended
+  path, and the reason Mplify invests in the API Blending Tool rather than in language SDKs.

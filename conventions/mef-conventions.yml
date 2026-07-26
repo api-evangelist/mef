@@ -1,0 +1,94 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/*.yml (94 documents, kylie release) + https://lso.mplify.net/api-catalog
+scope: >-
+  Cross-cutting request/response semantics shared by every Mplify (MEF) LSO API. The LSO
+  suite is TM Forum Open API-derived, so these conventions are consistent across all six
+  Interface Reference Points (Sonata, Cantata, Interlude, Legato, Allegro, Presto).
+parties:
+  model: two-party B2B contract
+  buyer_seller: >-
+    Almost every operation carries buyerId and sellerId query parameters (248 operations each).
+    A Buyer is the party consuming the API (a Service Provider in Sonata, an enterprise in
+    Cantata); the Seller implements and hosts the API.
+  note: Mplify defines the contract only — the implementing Seller supplies the host.
+base_url:
+  template: https://{serverBase}/mefApi/{irp}/{apiName}/v{major}/
+  example: https://{serverBase}/mefApi/sonata/productOrderingManagement/v11/
+  server_variable: serverBase — "The base of Seller's URL", default mplify.net
+authentication:
+  style: OAuth 2.0 client credentials (see authentication/mef-authentication.yml)
+  scopes: per-operation, named after the operationId (see scopes/mef-scopes.yml)
+idempotency:
+  supported: false
+  evidence: >-
+    No Idempotency-Key header, no idempotency parameter and no idempotency language appears in
+    any of the 94 published documents. Duplicate-submission protection is left to the Buyer's
+    use of externalId and the Seller's own implementation.
+pagination:
+  style: offset/limit
+  request_params:
+    - name: offset
+      in: query
+      description: Requested index for the start of items to be provided in response.
+    - name: limit
+      in: query
+      description: Requested number of items to be provided in response.
+  response_headers:
+    - name: X-Total-Count
+      description: Total number of matching items, independent of offset/limit.
+    - name: X-Result-Count
+      description: Number of items included in this response.
+    - name: X-Pagination-Throttled
+      description: Boolean — the page was throttled to the Seller's maximum size and more results exist.
+  throttling: >-
+    A Seller may cap page size; when it does it returns X-Pagination-Throttled: true and, where
+    the request would exceed its threshold, the 422 tooManyRecords business error.
+filtering:
+  attribute_filters: Resource attributes are exposed as query parameters (state, externalId, projectId, ...).
+  range_filters:
+    convention: "<attribute>.gt and <attribute>.lt"
+    examples: [orderDate.gt, orderDate.lt, creationDateTime.gt, creationDateTime.lt, itemRequestedCompletionDate.gt]
+  field_selection:
+    supported: partial
+    param: fields
+    note: A `fields` sparse-fieldset parameter appears on only 2 operations; it is not a suite-wide convention.
+partial_update:
+  method: PATCH
+  media_type: application/merge-patch+json where declared; otherwise application/json
+  note: PATCH bodies are constrained "…Update" schemas that expose only the attributes a Buyer may change.
+versioning:
+  scheme: uri-path major version, per API (not per suite)
+  examples: [productOrderingManagement/v11, quoteManagement/v10, productInventory/v8, alarmManagement/v3, cimIncident/v1]
+  document_version: info.version carries a full semantic-style version, e.g. 11.0.1
+  release_train: >-
+    APIs ship together in a named SDK release (aretha … kylie), roughly twice a year. See
+    changelog/mef-changelog.yml and lifecycle/mef-lifecycle.yml.
+errors:
+  envelope: Error (code, reason, message, referenceError, propertyPath)
+  media_type: application/json;charset=utf-8
+  rfc9457: false
+  catalog: errors/mef-problem-types.yml
+  universal_statuses: [400, 401, 403, 500]
+  optional_operation_signal: 501 notImplemented — the standard way a Seller declines an optional operation.
+events:
+  style: TM Forum hub/listener callbacks
+  register: POST /hub {callback, query}
+  unregister: DELETE /hub/{id}
+  catalog: asyncapi/mef-webhooks.yml
+  streaming: AsyncAPI 2.0.0 template for performance-monitoring streams (asyncapi/)
+rate_limits:
+  published: false
+  note: >-
+    No rate-limit headers or quotas are defined in the contracts. Pagination throttling
+    (X-Pagination-Throttled) is the only load-protection signal Mplify standardises; runtime
+    limits are a Seller/Buyer commercial matter.
+request_tracing:
+  request_id_header: none standardised
+  note: Correlation is done at the business level via id / externalId / relatedEntity references.
+related:
+  authentication: authentication/mef-authentication.yml
+  scopes: scopes/mef-scopes.yml
+  errors: errors/mef-problem-types.yml
+  lifecycle: lifecycle/mef-lifecycle.yml
+  data_model: data-model/mef-data-model.yml

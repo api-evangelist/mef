@@ -1,0 +1,1138 @@
+generated: '2026-07-25'
+method: derived
+source: openapi/*.yml (kylie release) — the paired *Notification documents and the /hub registration paths
+style: TM Forum hub/listener callbacks
+mechanism:
+  register: POST /hub with {callback, query} to register a listener endpoint; response returns the subscription
+    id.
+  unregister: DELETE /hub/{id}
+  delivery: The Seller POSTs the event payload to the registered callback URL. Each event type has its
+    own listener path in the paired Notification API, e.g. POST /listener/productOrderStateChangeEvent.
+  filtering: The optional query field on hub registration filters which events are delivered.
+  security: The generated/security variants attach an OAuth2 client-credentials scope named after the
+    listener operationId (see scopes/mef-scopes.yml).
+asyncapi:
+  present: true
+  file: asyncapi/mef-lso-interlude-performance.template-asyncapi.yml
+  version: 2.0.0
+  scope: Streaming performance-monitoring data; a companion streamingManagement OpenAPI manages topics
+    and subscriptions. The same template also ships in the Legato and Allegro SDKs.
+documents_with_events: 78
+event_total: 216
+catalog:
+- openapi: openapi/mef-lso-allegro-alarm-management-openapi.yml
+  api: MEF LSO Allegro Alarm Management
+  irp: LSO Allegro
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-allegro-alarm-notification-openapi.yml
+  api: MEF LSO Allegro Alarm Notification
+  irp: LSO Allegro
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: alarmCommentEvent
+    path: /listener/alarmAttributeValueChangeEvent
+    summary: Alarm Attribute Value Change Notification endpoint
+  - event: alarmCreateEvent
+    path: /listener/alarmCreateEvent
+    summary: Create Alarm Notification endpoint
+  - event: alarmDeleteEvent
+    path: /listener/alarmDeleteEvent
+    summary: Delete Alarm Notification endpoint
+  - event: alarmAcknowledgeEvent
+    path: /listener/alarmStateChangeEvent
+    summary: Alarm Attribute Change Notification endpoint
+- openapi: openapi/mef-lso-allegro-fault-management-openapi.yml
+  api: MEF LSO Allegro Fault Management
+  irp: LSO Allegro
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-allegro-fault-notification-openapi.yml
+  api: MEF LSO Allegro Fault Management Notification
+  irp: LSO Allegro
+  hub_registration: false
+  event_count: 9
+  events:
+  - event: faultManagementJobCreateEvent
+    path: /listener/faultManagementJobCreateEvent
+    summary: Fault Management Job Create Notification endpoint.
+  - event: faultManagementJobStateChangeEvent
+    path: /listener/faultManagementJobStateChangeEvent
+    summary: Fault Management Job State Change Notification endpoint.
+  - event: faultManagementJobAttributeValueChangeEvent
+    path: /listener/faultManagementJobAttributeValueChangeEvent
+    summary: Fault Management Job Attribute Value Change Notification endpoint.
+  - event: faultManagementJobReportReadyEvent
+    path: /listener/faultManagementJobReportReadyEvent
+    summary: Fault Management Job Report Ready Notification endpoint.
+  - event: faultManagementJobReportPreparationErrorEvent
+    path: /listener/faultManagementJobReportPreparationErrorEvent
+    summary: Fault Management Job Report Preparation Error Notification endpoint.
+  - event: cancelFaultManagementJobStateChangeEvent
+    path: /listener/cancelFaultManagementJobStateChangeEvent
+    summary: Cancel Fault Management Job State Change Notification endpoint.
+  - event: modifyFaultManagementJobStateChangeEvent
+    path: /listener/modifyFaultManagementJobStateChangeEvent
+    summary: Modify Fault Management Job State Change Notification endpoint.
+  - event: faultManagementReportCreateEvent
+    path: /listener/faultManagementReportCreateEvent
+    summary: Fault Management Report Create Notification endpoint.
+  - event: faultManagementReportStateChangeEvent
+    path: /listener/faultManagementReportStateChangeEvent
+    summary: Fault Management Report State Change Notification endpoint.
+- openapi: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring
+  irp: LSO Allegro
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-allegro-performance-notification-openapi.yml
+  api: MEF LSO Allegro Performance Monitoring Notification
+  irp: LSO Allegro
+  hub_registration: false
+  event_count: 12
+  events:
+  - event: performanceJobCreateEvent
+    path: /listener/performanceJobCreateEvent
+    summary: Performance Job Create Notification endpoint.
+  - event: performanceJobStateChangeEvent
+    path: /listener/performanceJobStateChangeEvent
+    summary: Performance Job State Change Notification endpoint.
+  - event: performanceJobAttributeValueChangeEvent
+    path: /listener/performanceJobAttributeValueChangeEvent
+    summary: Performance Job Attribute Value Change Notification endpoint.
+  - event: performanceJobReportReadyEvent
+    path: /listener/performanceJobReportReadyEvent
+    summary: Performance Job Report Ready Notification endpoint.
+  - event: performanceJobReportPreparationErrorEvent
+    path: /listener/performanceJobReportPreparationErrorEvent
+    summary: Performance Job Report Preparation Error Notification endpoint.
+  - event: cancelPerformanceJobStateChangeEvent
+    path: /listener/cancelPerformanceJobStateChangeEvent
+    summary: Cancel Performance Job State Change Notification endpoint.
+  - event: modifyPerformanceJobStateChangeEvent
+    path: /listener/modifyPerformanceJobStateChangeEvent
+    summary: Modify Performance Job State Change Notification endpoint.
+  - event: performanceProfileCreateEvent
+    path: /listener/performanceProfileCreateEvent
+    summary: Performance Profile Create Notification endpoint.
+  - event: performanceProfileAttributeValueChangeEvent
+    path: /listener/performanceProfileAttributeValueChangeEvent
+    summary: Performance Profile Attribute Value Change Notification endpoint.
+  - event: performanceProfileDeleteEvent
+    path: /listener/performanceProfileDeleteEvent
+    summary: Performance Profile Delete Notification endpoint.
+  - event: performanceReportCreateEvent
+    path: /listener/performanceReportCreateEvent
+    summary: Performance Report Create Notification endpoint.
+  - event: performanceReportStateChangeEvent
+    path: /listener/performanceReportStateChangeEvent
+    summary: Performance Report State Change Notification endpoint.
+- openapi: openapi/mef-lso-allegro-service-function-test-notification-openapi.yml
+  api: MEF LSO Allegro Service Function Testing Notification
+  irp: LSO Allegro
+  hub_registration: false
+  event_count: 12
+  events:
+  - event: testJobCreateEvent
+    path: /listener/testJobCreateEvent
+    summary: Test Job Create Notification endpoint
+  - event: testJobAttributeValueChangeEvent
+    path: /listener/testJobAttributeValueChangeEvent
+    summary: Test Job Attribute Value Change Notification endpoint
+  - event: testJobStateChangeEvent
+    path: /listener/testJobStateChangeEvent
+    summary: Test Job State Change Notification endpoint
+  - event: cancelTestJobStateChangeEvent
+    path: /listener/cancelTestJobStateChangeEvent
+    summary: Cancel Test Job State Change Notification endpoint
+  - event: modifyTestJobStateChangeEvent
+    path: /listener/modifyTestJobStateChangeEvent
+    summary: Modify Test Job State Change Notification endpoint
+  - event: suspendTestJobStateChangeEvent
+    path: /listener/suspendTestJobStateChangeEvent
+    summary: Suspend Test Job State Change Notification endpoint
+  - event: resumeTestJobStateChangeEvent
+    path: /listener/resumeTestJobStateChangeEvent
+    summary: Resume Test Job State Change Notification endpoint
+  - event: testProfileCreateEvent
+    path: /listener/testProfileCreateEvent
+    summary: Test Profile Create Notification endpoint
+  - event: testProfileAttributeValueChangeEvent
+    path: /listener/testProfileAttributeValueChangeEvent
+    summary: Test Profile Attribute Value Change Notification endpoint
+  - event: testProfileLifecycleStateChangeEvent
+    path: /listener/testProfileLifecycleStateChangeEvent
+    summary: Test Profile Lifecycle State Change Notification endpoint
+  - event: testProfileDeleteEvent
+    path: /listener/testProfileDeleteEvent
+    summary: Test Profile Delete Notification endpoint
+  - event: testResultCreateEvent
+    path: /listener/testResultCreateEvent
+    summary: Test Result Create Notification endpoint
+- openapi: openapi/mef-lso-allegro-service-function-test-openapi.yml
+  api: MEF LSO Allegro Service Function Testing
+  irp: LSO Allegro
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-allegro-service-inventory-management-openapi.yml
+  api: MEF LSO Allegro Service Inventory Management
+  irp: LSO Allegro
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-allegro-service-inventory-notification-openapi.yml
+  api: MEF LSO Allegro Service Inventory Notification
+  irp: LSO Allegro
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: ServiceCreateEvent
+    path: /listener/serviceCreateEvent
+    summary: Service Create Event endpoint
+  - event: serviceDeleteEvent
+    path: /listener/serviceDeleteEvent
+    summary: Service Delete Event endpoint
+  - event: serviceStateChangeEvent
+    path: /listener/serviceStateChangeEvent
+    summary: Service State Change Event endpoint
+  - event: serviceAttributeValueChangeEvent
+    path: /listener/serviceAttributeValueChangeEvent
+    summary: Service Attribute Value Change Event endpoint
+- openapi: openapi/mef-lso-allegro-service-ordering-management-openapi.yml
+  api: MEF LSO Allegro Service Ordering Management
+  irp: LSO Allegro
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-allegro-service-ordering-notification-openapi.yml
+  api: MEF LSO Allegro Service Ordering Notification
+  irp: LSO Allegro
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: serviceOrderCreateEvent
+    path: /listener/serviceOrderCreateEvent
+    summary: Service Order Create Notification endpoint
+  - event: serviceOrderStateChangeEvent
+    path: /listener/serviceOrderStateChangeEvent
+    summary: Service Order State Change Notification endpoint
+  - event: serviceOrderInformationRequiredEvent
+    path: /listener/serviceOrderInformationRequiredEvent
+    summary: Service Order Information Required Notification endpoint
+  - event: serviceOrderItemStateChangeEvent
+    path: /listener/serviceOrderItemStateChangeEvent
+    summary: Service Order Item State Change Notification endpoint
+- openapi: openapi/mef-lso-cantata-appointment-management-openapi.yml
+  api: MEF LSO Cantata Appointment Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-appointment-notification-openapi.yml
+  api: MEF LSO Cantata Appointment Management Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: listenToAppointmentAttributeValueChangeEvent
+    path: /listener/appointmentAttributeValueChangeEvent
+    summary: Client listener for entity appointmentAttributeValueChangeEvent
+  - event: listenToAppointmentStatusChangeEvent
+    path: /listener/appointmentStatusChangeEvent
+    summary: Client listener for entity appointmentStatusChangeEvent
+- openapi: openapi/mef-lso-cantata-billing-management-openapi.yml
+  api: MEF LSO Cantata Billing Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-billing-notification-openapi.yml
+  api: MEF LSO Cantata Billing Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: listen to Customer Bill Create Event
+    path: /listener/customerBillCreateEvent
+    summary: Client listener for customerBillCreateEvent
+  - event: listen to customer Bill State Change Event
+    path: /listener/customerBillStateChangeEvent
+    summary: Client listener for customerBillStateChangeEvent
+- openapi: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-notification-openapi.yml
+  api: MEF LSO Cantata Circuit Impairment and Maintenance Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 3
+  events:
+  - event: listenToCimIncidentCreateEvent
+    path: /listener/cimIncidentCreateEvent
+    summary: Client listener for entity CIM Incident Create Event
+  - event: listenToCimIncidentAttributeValueChangeEvent
+    path: /listener/cimIncidentAttributeValueChangeEvent
+    summary: Client listener for entity CIM Incident Attribute Value Change Event
+  - event: listenToCimIncidentStatusChangeEvent
+    path: /listener/cimIncidentStatusChangeEvent
+    summary: Client listener for entity CIM Incident Status Change Event
+- openapi: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-openapi.yml
+  api: MEF LSO Cantata Circuit Impairment and Maintenance
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-geographic-address-management-openapi.yml
+  api: MEF LSO Cantata Geographic Address Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-geographic-address-notification-openapi.yml
+  api: MEF LSO Cantata Geographic Address Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 1
+  events:
+  - event: listenToGeographicAddressValidationStateChangeEvent
+    path: /listener/geographicAddressValidationStateChangeEvent
+    summary: Geographic Address Validation State Change Notification endpoint
+- openapi: openapi/mef-lso-cantata-product-catalog-notification-openapi.yml
+  api: MEF LSO Cantata Product Catalog Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 8
+  events:
+  - event: listenToCategoryCreateEvent
+    path: /listener/categoryCreateEvent
+    summary: Client listener for entity CategoryCreateEvent
+  - event: listenToCategoryAttributeValueChangeEvent
+    path: /listener/categoryAttributeValueChangeEvent
+    summary: Client listener for entity CategoryAttributeValueChangeEvent
+  - event: listenToProductOfferingCreateEvent
+    path: /listener/productOfferingCreateEvent
+    summary: Client listener for entity ProductOfferingCreateEvent
+  - event: listenToProductOfferingAttributeValueChangeEvent
+    path: /listener/productOfferingAttributeValueChangeEvent
+    summary: Client listener for entity ProductOfferingAttributeValueChangeEvent
+  - event: listenToProductOfferingStateChangeEvent
+    path: /listener/productOfferingStateChangeEvent
+    summary: Client listener for entity ProductOfferingStateChangeEvent
+  - event: listenToProductSpecificationCreateEvent
+    path: /listener/productSpecificationCreateEvent
+    summary: Client listener for entity ProductSpecificationCreateEvent
+  - event: listenToProductSpecificationAttributeValueChangeEvent
+    path: /listener/productSpecificationAttributeValueChangeEvent
+    summary: Client listener for entity ProductSpecificationAttributeValueChangeEvent
+  - event: listenToProductSpecificationStatusChangeEvent
+    path: /listener/productSpecificationStateChangeEvent
+    summary: Client listener for entity ProductSpecificationStatusChangeEvent
+- openapi: openapi/mef-lso-cantata-product-catalog-openapi.yml
+  api: MEF LSO Cantata Product Catalog
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Cantata Product Offering Qualification Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-product-offering-qualification-notification-openapi.yml
+  api: MEF LSO Cantata Product Offering Qualification Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: poqStateChangeEvent
+    path: /listener/poqStateChangeEvent
+    summary: Product Offering Qualification Change Notification endpoint
+  - event: listenToPoqItemStateChangeEvent
+    path: /listener/poqItemStateChangeEvent
+    summary: Poq Item State Change Notification endpoint
+- openapi: openapi/mef-lso-cantata-product-order-management-openapi.yml
+  api: MEF LSO Cantata Product Ordering Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-product-order-notification-openapi.yml
+  api: MEF LSO Cantata Product Ordering Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 9
+  events:
+  - event: productOrderStateChangeEvent
+    path: /listener/productOrderStateChangeEvent
+    summary: Product Order State Change Notification endpoint
+  - event: productOrderItemStateChangeEvent
+    path: /listener/productOrderItemStateChangeEvent
+    summary: Product Order Item State Change Notification endpoint
+  - event: productOrderItemExpectedCompletionDateSetEvent
+    path: /listener/productOrderItemExpectedCompletionDateSetEvent
+    summary: Product Order Item Expected Completion Date Set Notification endpoint
+  - event: productSpecificProductOrderItemMilestoneEvent
+    path: /listener/productSpecificProductOrderItemMilestoneEvent
+    summary: Product Specific Product Order Item Milestone Notification endpoint
+  - event: cancelProductOrderStateChangeEvent
+    path: /listener/cancelProductOrderStateChangeEvent
+    summary: Cancel Product Order State Change Notification endpoint
+  - event: chargeCreateEvent
+    path: /listener/chargeCreateEvent
+    summary: Charge Create Notification endpoint
+  - event: chargeStateChangeEvent
+    path: /listener/chargeStateChangeEvent
+    summary: Charge State Change Notification endpoint
+  - event: chargeTimeoutEvent
+    path: /listener/chargeTimeoutEvent
+    summary: Charge State Change Notification endpoint
+  - event: modifyProductOrderItemRequestedDeliveryDateStateChangeEvent
+    path: /listener/modifyProductOrderItemRequestedDeliveryDateStateChangeEvent
+    summary: Modify Product Order Item Requested Delivery Date State Change Notification endpoint
+- openapi: openapi/mef-lso-cantata-quote-management-openapi.yml
+  api: MEF LSO Cantata Quote Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-quote-notification-openapi.yml
+  api: MEF LSO Cantata Quote Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: listenToQuoteStateChangeEvent
+    path: /listener/quoteStateChangeEvent
+    summary: Quote State Change Notification endpoint
+  - event: listenToQuoteItemStateChangeEvent
+    path: /listener/quoteItemStateChangeEvent
+    summary: Quote Item State Change Notification endpoint
+- openapi: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-trouble-ticket-notification-openapi.yml
+  api: MEF LSO Cantata Trouble Ticket and Incident Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 7
+  events:
+  - event: listenToTroubleTicketAttributeValueChangeEvent
+    path: /listener/troubleTicketAttributeValueChangeEvent
+    summary: Client listener for entity TroubleTicketAttributeValueChangeEvent
+  - event: listenToTroubleTicketStatusChangeEvent
+    path: /listener/troubleTicketStatusChangeEvent
+    summary: Client listener for entity TroubleTicketStatusChangeEvent
+  - event: listenToTroubleTicketResolvedEvent
+    path: /listener/troubleTicketResolvedEvent
+    summary: Client listener for entity TroubleTicketResolvedEvent
+  - event: listenToTroubleTicketInformationRequiredEvent
+    path: /listener/troubleTicketInformationRequiredEvent
+    summary: Client listener for entity TroubleTicketInformationRequiredEvent
+  - event: listenToIncidentCreateEvent
+    path: /listener/incidentCreateEvent
+    summary: Client listener for entity Incident Create Event
+  - event: listenToIncidentAttributeValueChangeEvent
+    path: /listener/incidentAttributeValueChangeEvent
+    summary: Client listener for entity Incident Attribute Value Change Event
+  - event: listenToIncidentStatusChangeEvent
+    path: /listener/incidentStatusChangeEvent
+    summary: Client listener for entity Incident Status Change Event
+- openapi: openapi/mef-lso-cantata-workorder-management-openapi.yml
+  api: MEF LSO Cantata WorkOrder Management
+  irp: LSO Cantata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-cantata-workorder-notification-openapi.yml
+  api: MEF LSO Cantata WorkOrder Management Notification
+  irp: LSO Cantata
+  hub_registration: false
+  event_count: 3
+  events:
+  - event: listenToWorkOrderCreateEvent
+    path: /listener/workOrderCreateEvent
+    summary: Client listener for entity WorkOrder Create Event
+  - event: listenToWorkOrderStateChangeEvent
+    path: /listener/workOrderStateChangeEvent
+    summary: Client listener for entity workOrderStateChangeEvent
+  - event: listenToWorkOrderAppointmentRequiredEvent
+    path: /listener/workOrderAppointmentRequiredEvent
+    summary: Client listener for entity workOrderAppointmentRequiredEvent
+- openapi: openapi/mef-lso-interlude-alarm-management-openapi.yml
+  api: MEF LSO Interlude Alarm Management
+  irp: LSO Interlude
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-interlude-alarm-notification-openapi.yml
+  api: MEF LSO Interlude Alarm Notification
+  irp: LSO Interlude
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: alarmCommentEvent
+    path: /listener/alarmAttributeValueChangeEvent
+    summary: Alarm Attribute Value Change Notification endpoint
+  - event: alarmCreateEvent
+    path: /listener/alarmCreateEvent
+    summary: Create Alarm Notification endpoint
+  - event: alarmDeleteEvent
+    path: /listener/alarmDeleteEvent
+    summary: Delete Alarm Notification endpoint
+  - event: alarmAcknowledgeEvent
+    path: /listener/alarmStateChangeEvent
+    summary: Alarm Attribute Change Notification endpoint
+- openapi: openapi/mef-lso-interlude-fault-management-openapi.yml
+  api: MEF LSO Interlude Fault Management
+  irp: LSO Interlude
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-interlude-fault-notification-openapi.yml
+  api: MEF LSO Interlude Fault Management Notification
+  irp: LSO Interlude
+  hub_registration: false
+  event_count: 9
+  events:
+  - event: faultManagementJobCreateEvent
+    path: /listener/faultManagementJobCreateEvent
+    summary: Fault Management Job Create Notification endpoint.
+  - event: faultManagementJobStateChangeEvent
+    path: /listener/faultManagementJobStateChangeEvent
+    summary: Fault Management Job State Change Notification endpoint.
+  - event: faultManagementJobAttributeValueChangeEvent
+    path: /listener/faultManagementJobAttributeValueChangeEvent
+    summary: Fault Management Job Attribute Value Change Notification endpoint.
+  - event: faultManagementJobReportReadyEvent
+    path: /listener/faultManagementJobReportReadyEvent
+    summary: Fault Management Job Report Ready Notification endpoint.
+  - event: faultManagementJobReportPreparationErrorEvent
+    path: /listener/faultManagementJobReportPreparationErrorEvent
+    summary: Fault Management Job Report Preparation Error Notification endpoint.
+  - event: cancelFaultManagementJobStateChangeEvent
+    path: /listener/cancelFaultManagementJobStateChangeEvent
+    summary: Cancel Fault Management Job State Change Notification endpoint.
+  - event: modifyFaultManagementJobStateChangeEvent
+    path: /listener/modifyFaultManagementJobStateChangeEvent
+    summary: Modify Fault Management Job State Change Notification endpoint.
+  - event: faultManagementReportCreateEvent
+    path: /listener/faultManagementReportCreateEvent
+    summary: Fault Management Report Create Notification endpoint.
+  - event: faultManagementReportStateChangeEvent
+    path: /listener/faultManagementReportStateChangeEvent
+    summary: Fault Management Report State Change Notification endpoint.
+- openapi: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring
+  irp: LSO Interlude
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-interlude-performance-notification-openapi.yml
+  api: MEF LSO Interlude Performance Monitoring Notification
+  irp: LSO Interlude
+  hub_registration: false
+  event_count: 12
+  events:
+  - event: performanceJobCreateEvent
+    path: /listener/performanceJobCreateEvent
+    summary: Performance Job Create Notification endpoint.
+  - event: performanceJobStateChangeEvent
+    path: /listener/performanceJobStateChangeEvent
+    summary: Performance Job State Change Notification endpoint.
+  - event: performanceJobAttributeValueChangeEvent
+    path: /listener/performanceJobAttributeValueChangeEvent
+    summary: Performance Job Attribute Value Change Notification endpoint.
+  - event: performanceJobReportReadyEvent
+    path: /listener/performanceJobReportReadyEvent
+    summary: Performance Job Report Ready Notification endpoint.
+  - event: performanceJobReportPreparationErrorEvent
+    path: /listener/performanceJobReportPreparationErrorEvent
+    summary: Performance Job Report Preparation Error Notification endpoint.
+  - event: cancelPerformanceJobStateChangeEvent
+    path: /listener/cancelPerformanceJobStateChangeEvent
+    summary: Cancel Performance Job State Change Notification endpoint.
+  - event: modifyPerformanceJobStateChangeEvent
+    path: /listener/modifyPerformanceJobStateChangeEvent
+    summary: Modify Performance Job State Change Notification endpoint.
+  - event: performanceProfileCreateEvent
+    path: /listener/performanceProfileCreateEvent
+    summary: Performance Profile Create Notification endpoint.
+  - event: performanceProfileAttributeValueChangeEvent
+    path: /listener/performanceProfileAttributeValueChangeEvent
+    summary: Performance Profile Attribute Value Change Notification endpoint.
+  - event: performanceProfileDeleteEvent
+    path: /listener/performanceProfileDeleteEvent
+    summary: Performance Profile Delete Notification endpoint.
+  - event: performanceReportCreateEvent
+    path: /listener/performanceReportCreateEvent
+    summary: Performance Report Create Notification endpoint.
+  - event: performanceReportStateChangeEvent
+    path: /listener/performanceReportStateChangeEvent
+    summary: Performance Report State Change Notification endpoint.
+- openapi: openapi/mef-lso-interlude-service-function-test-notification-openapi.yml
+  api: MEF LSO Interlude Service Function Testing Notification
+  irp: LSO Interlude
+  hub_registration: false
+  event_count: 12
+  events:
+  - event: testJobCreateEvent
+    path: /listener/testJobCreateEvent
+    summary: Test Job Create Notification endpoint
+  - event: testJobAttributeValueChangeEvent
+    path: /listener/testJobAttributeValueChangeEvent
+    summary: Test Job Attribute Value Change Notification endpoint
+  - event: testJobStateChangeEvent
+    path: /listener/testJobStateChangeEvent
+    summary: Test Job State Change Notification endpoint
+  - event: cancelTestJobStateChangeEvent
+    path: /listener/cancelTestJobStateChangeEvent
+    summary: Cancel Test Job State Change Notification endpoint
+  - event: modifyTestJobStateChangeEvent
+    path: /listener/modifyTestJobStateChangeEvent
+    summary: Modify Test Job State Change Notification endpoint
+  - event: suspendTestJobStateChangeEvent
+    path: /listener/suspendTestJobStateChangeEvent
+    summary: Suspend Test Job State Change Notification endpoint
+  - event: resumeTestJobStateChangeEvent
+    path: /listener/resumeTestJobStateChangeEvent
+    summary: Resume Test Job State Change Notification endpoint
+  - event: testProfileCreateEvent
+    path: /listener/testProfileCreateEvent
+    summary: Test Profile Create Notification endpoint
+  - event: testProfileAttributeValueChangeEvent
+    path: /listener/testProfileAttributeValueChangeEvent
+    summary: Test Profile Attribute Value Change Notification endpoint
+  - event: testProfileLifecycleStateChangeEvent
+    path: /listener/testProfileLifecycleStateChangeEvent
+    summary: Test Profile Lifecycle State Change Notification endpoint
+  - event: testProfileDeleteEvent
+    path: /listener/testProfileDeleteEvent
+    summary: Test Profile Delete Notification endpoint
+  - event: testResultCreateEvent
+    path: /listener/testResultCreateEvent
+    summary: Test Result Create Notification endpoint
+- openapi: openapi/mef-lso-interlude-service-function-test-openapi.yml
+  api: MEF LSO Interlude Service Function Testing
+  irp: LSO Interlude
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-interlude-service-inventory-management-openapi.yml
+  api: MEF LSO Interlude Service Inventory Management
+  irp: LSO Interlude
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-interlude-service-inventory-notification-openapi.yml
+  api: MEF LSO Interlude Service Inventory Notification
+  irp: LSO Interlude
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: ServiceCreateEvent
+    path: /listener/serviceCreateEvent
+    summary: Service Create Event endpoint
+  - event: serviceDeleteEvent
+    path: /listener/serviceDeleteEvent
+    summary: Service Delete Event endpoint
+  - event: serviceStateChangeEvent
+    path: /listener/serviceStateChangeEvent
+    summary: Service State Change Event endpoint
+  - event: serviceAttributeValueChangeEvent
+    path: /listener/serviceAttributeValueChangeEvent
+    summary: Service Attribute Value Change Event endpoint
+- openapi: openapi/mef-lso-interlude-service-ordering-management-openapi.yml
+  api: MEF LSO Interlude Service Ordering Management
+  irp: LSO Interlude
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-interlude-service-ordering-notification-openapi.yml
+  api: MEF LSO Interlude Service Ordering Notification
+  irp: LSO Interlude
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: serviceOrderCreateEvent
+    path: /listener/serviceOrderCreateEvent
+    summary: Service Order Create Notification endpoint
+  - event: serviceOrderStateChangeEvent
+    path: /listener/serviceOrderStateChangeEvent
+    summary: Service Order State Change Notification endpoint
+  - event: serviceOrderInformationRequiredEvent
+    path: /listener/serviceOrderInformationRequiredEvent
+    summary: Service Order Information Required Notification endpoint
+  - event: serviceOrderItemStateChangeEvent
+    path: /listener/serviceOrderItemStateChangeEvent
+    summary: Service Order Item State Change Notification endpoint
+- openapi: openapi/mef-lso-legato-alarm-management-openapi.yml
+  api: MEF LSO Legato Alarm Management
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-alarm-notification-openapi.yml
+  api: MEF LSO Legato Alarm Notification
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: alarmCommentEvent
+    path: /listener/alarmAttributeValueChangeEvent
+    summary: Alarm Attribute Value Change Notification endpoint
+  - event: alarmCreateEvent
+    path: /listener/alarmCreateEvent
+    summary: Create Alarm Notification endpoint
+  - event: alarmDeleteEvent
+    path: /listener/alarmDeleteEvent
+    summary: Delete Alarm Notification endpoint
+  - event: alarmAcknowledgeEvent
+    path: /listener/alarmStateChangeEvent
+    summary: Alarm Attribute Change Notification endpoint
+- openapi: openapi/mef-lso-legato-fault-management-openapi.yml
+  api: MEF LSO Legato Fault Management
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-fault-notification-openapi.yml
+  api: MEF LSO Legato Fault Management Notification
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 9
+  events:
+  - event: faultManagementJobCreateEvent
+    path: /listener/faultManagementJobCreateEvent
+    summary: Fault Management Job Create Notification endpoint.
+  - event: faultManagementJobStateChangeEvent
+    path: /listener/faultManagementJobStateChangeEvent
+    summary: Fault Management Job State Change Notification endpoint.
+  - event: faultManagementJobAttributeValueChangeEvent
+    path: /listener/faultManagementJobAttributeValueChangeEvent
+    summary: Fault Management Job Attribute Value Change Notification endpoint.
+  - event: faultManagementJobReportReadyEvent
+    path: /listener/faultManagementJobReportReadyEvent
+    summary: Fault Management Job Report Ready Notification endpoint.
+  - event: faultManagementJobReportPreparationErrorEvent
+    path: /listener/faultManagementJobReportPreparationErrorEvent
+    summary: Fault Management Job Report Preparation Error Notification endpoint.
+  - event: cancelFaultManagementJobStateChangeEvent
+    path: /listener/cancelFaultManagementJobStateChangeEvent
+    summary: Cancel Fault Management Job State Change Notification endpoint.
+  - event: modifyFaultManagementJobStateChangeEvent
+    path: /listener/modifyFaultManagementJobStateChangeEvent
+    summary: Modify Fault Management Job State Change Notification endpoint.
+  - event: faultManagementReportCreateEvent
+    path: /listener/faultManagementReportCreateEvent
+    summary: Fault Management Report Create Notification endpoint.
+  - event: faultManagementReportStateChangeEvent
+    path: /listener/faultManagementReportStateChangeEvent
+    summary: Fault Management Report State Change Notification endpoint.
+- openapi: openapi/mef-lso-legato-performance-monitoring-openapi.yml
+  api: MEF LSO Legato Performance Monitoring
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-performance-notification-openapi.yml
+  api: MEF LSO Legato Performance Monitoring Notification
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 12
+  events:
+  - event: performanceJobCreateEvent
+    path: /listener/performanceJobCreateEvent
+    summary: Performance Job Create Notification endpoint.
+  - event: performanceJobStateChangeEvent
+    path: /listener/performanceJobStateChangeEvent
+    summary: Performance Job State Change Notification endpoint.
+  - event: performanceJobAttributeValueChangeEvent
+    path: /listener/performanceJobAttributeValueChangeEvent
+    summary: Performance Job Attribute Value Change Notification endpoint.
+  - event: performanceJobReportReadyEvent
+    path: /listener/performanceJobReportReadyEvent
+    summary: Performance Job Report Ready Notification endpoint.
+  - event: performanceJobReportPreparationErrorEvent
+    path: /listener/performanceJobReportPreparationErrorEvent
+    summary: Performance Job Report Preparation Error Notification endpoint.
+  - event: cancelPerformanceJobStateChangeEvent
+    path: /listener/cancelPerformanceJobStateChangeEvent
+    summary: Cancel Performance Job State Change Notification endpoint.
+  - event: modifyPerformanceJobStateChangeEvent
+    path: /listener/modifyPerformanceJobStateChangeEvent
+    summary: Modify Performance Job State Change Notification endpoint.
+  - event: performanceProfileCreateEvent
+    path: /listener/performanceProfileCreateEvent
+    summary: Performance Profile Create Notification endpoint.
+  - event: performanceProfileAttributeValueChangeEvent
+    path: /listener/performanceProfileAttributeValueChangeEvent
+    summary: Performance Profile Attribute Value Change Notification endpoint.
+  - event: performanceProfileDeleteEvent
+    path: /listener/performanceProfileDeleteEvent
+    summary: Performance Profile Delete Notification endpoint.
+  - event: performanceReportCreateEvent
+    path: /listener/performanceReportCreateEvent
+    summary: Performance Report Create Notification endpoint.
+  - event: performanceReportStateChangeEvent
+    path: /listener/performanceReportStateChangeEvent
+    summary: Performance Report State Change Notification endpoint.
+- openapi: openapi/mef-lso-legato-service-catalog-api-openapi.yml
+  api: MEF LSO Legato Legato Service Catalog API
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-service-catalog-notification-api-openapi.yml
+  api: MEF LSO Legato Legato Service Catalog Notification API
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 3
+  events:
+  - event: serviceSpecificationCreateNotification
+    path: /listener/serviceSpecificationCreateNotification
+    summary: Publish ServiceSpecification Create Notification
+  - event: serviceSpecificationDeleteNotification
+    path: /listener/serviceSpecificationDeleteNotification
+    summary: Publish ServiceSpecification Deletion Notification
+  - event: serviceSpecificationChangeNotification
+    path: /listener/serviceSpecificationChangeNotification
+    summary: Publish ServiceSpecification StateChange Notification
+- openapi: openapi/mef-lso-legato-service-function-test-notification-openapi.yml
+  api: MEF LSO Legato Service Function Testing Notification
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 12
+  events:
+  - event: testJobCreateEvent
+    path: /listener/testJobCreateEvent
+    summary: Test Job Create Notification endpoint
+  - event: testJobAttributeValueChangeEvent
+    path: /listener/testJobAttributeValueChangeEvent
+    summary: Test Job Attribute Value Change Notification endpoint
+  - event: testJobStateChangeEvent
+    path: /listener/testJobStateChangeEvent
+    summary: Test Job State Change Notification endpoint
+  - event: cancelTestJobStateChangeEvent
+    path: /listener/cancelTestJobStateChangeEvent
+    summary: Cancel Test Job State Change Notification endpoint
+  - event: modifyTestJobStateChangeEvent
+    path: /listener/modifyTestJobStateChangeEvent
+    summary: Modify Test Job State Change Notification endpoint
+  - event: suspendTestJobStateChangeEvent
+    path: /listener/suspendTestJobStateChangeEvent
+    summary: Suspend Test Job State Change Notification endpoint
+  - event: resumeTestJobStateChangeEvent
+    path: /listener/resumeTestJobStateChangeEvent
+    summary: Resume Test Job State Change Notification endpoint
+  - event: testProfileCreateEvent
+    path: /listener/testProfileCreateEvent
+    summary: Test Profile Create Notification endpoint
+  - event: testProfileAttributeValueChangeEvent
+    path: /listener/testProfileAttributeValueChangeEvent
+    summary: Test Profile Attribute Value Change Notification endpoint
+  - event: testProfileLifecycleStateChangeEvent
+    path: /listener/testProfileLifecycleStateChangeEvent
+    summary: Test Profile Lifecycle State Change Notification endpoint
+  - event: testProfileDeleteEvent
+    path: /listener/testProfileDeleteEvent
+    summary: Test Profile Delete Notification endpoint
+  - event: testResultCreateEvent
+    path: /listener/testResultCreateEvent
+    summary: Test Result Create Notification endpoint
+- openapi: openapi/mef-lso-legato-service-function-test-openapi.yml
+  api: MEF LSO Legato Service Function Testing
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-service-inventory-management-openapi.yml
+  api: MEF LSO Legato Service Inventory Management
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-service-inventory-notification-openapi.yml
+  api: MEF LSO Legato Service Inventory Notification
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: ServiceCreateEvent
+    path: /listener/serviceCreateEvent
+    summary: Service Create Event endpoint
+  - event: serviceDeleteEvent
+    path: /listener/serviceDeleteEvent
+    summary: Service Delete Event endpoint
+  - event: serviceStateChangeEvent
+    path: /listener/serviceStateChangeEvent
+    summary: Service State Change Event endpoint
+  - event: serviceAttributeValueChangeEvent
+    path: /listener/serviceAttributeValueChangeEvent
+    summary: Service Attribute Value Change Event endpoint
+- openapi: openapi/mef-lso-legato-service-ordering-management-openapi.yml
+  api: MEF LSO Legato Service Ordering Management
+  irp: LSO Legato
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-legato-service-ordering-notification-openapi.yml
+  api: MEF LSO Legato Service Ordering Notification
+  irp: LSO Legato
+  hub_registration: false
+  event_count: 4
+  events:
+  - event: serviceOrderCreateEvent
+    path: /listener/serviceOrderCreateEvent
+    summary: Service Order Create Notification endpoint
+  - event: serviceOrderStateChangeEvent
+    path: /listener/serviceOrderStateChangeEvent
+    summary: Service Order State Change Notification endpoint
+  - event: serviceOrderInformationRequiredEvent
+    path: /listener/serviceOrderInformationRequiredEvent
+    summary: Service Order Information Required Notification endpoint
+  - event: serviceOrderItemStateChangeEvent
+    path: /listener/serviceOrderItemStateChangeEvent
+    summary: Service Order Item State Change Notification endpoint
+- openapi: openapi/mef-lso-sonata-appointment-management-openapi.yml
+  api: MEF LSO Sonata Appointment Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-appointment-notification-openapi.yml
+  api: MEF LSO Sonata Appointment Management Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: listenToAppointmentAttributeValueChangeEvent
+    path: /listener/appointmentAttributeValueChangeEvent
+    summary: Client listener for entity appointmentAttributeValueChangeEvent
+  - event: listenToAppointmentStatusChangeEvent
+    path: /listener/appointmentStatusChangeEvent
+    summary: Client listener for entity appointmentStatusChangeEvent
+- openapi: openapi/mef-lso-sonata-billing-management-openapi.yml
+  api: MEF LSO Sonata Billing Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-billing-notification-openapi.yml
+  api: MEF LSO Sonata Billing Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: listen to Customer Bill Create Event
+    path: /listener/customerBillCreateEvent
+    summary: Client listener for customerBillCreateEvent
+  - event: listen to customer Bill State Change Event
+    path: /listener/customerBillStateChangeEvent
+    summary: Client listener for customerBillStateChangeEvent
+- openapi: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-notification-openapi.yml
+  api: MEF LSO Sonata Circuit Impairment and Maintenance Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 3
+  events:
+  - event: listenToCimIncidentCreateEvent
+    path: /listener/cimIncidentCreateEvent
+    summary: Client listener for entity CIM Incident Create Event
+  - event: listenToCimIncidentAttributeValueChangeEvent
+    path: /listener/cimIncidentAttributeValueChangeEvent
+    summary: Client listener for entity CIM Incident Attribute Value Change Event
+  - event: listenToCimIncidentStatusChangeEvent
+    path: /listener/cimIncidentStatusChangeEvent
+    summary: Client listener for entity CIM Incident Status Change Event
+- openapi: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-openapi.yml
+  api: MEF LSO Sonata Circuit Impairment and Maintenance
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-geographic-address-management-openapi.yml
+  api: MEF LSO Sonata Geographic Address Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-geographic-address-notification-openapi.yml
+  api: MEF LSO Sonata Geographic Address Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 1
+  events:
+  - event: listenToGeographicAddressValidationStateChangeEvent
+    path: /listener/geographicAddressValidationStateChangeEvent
+    summary: Geographic Address Validation State Change Notification endpoint
+- openapi: openapi/mef-lso-sonata-product-catalog-notification-openapi.yml
+  api: MEF LSO Sonata Product Catalog Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 8
+  events:
+  - event: listenToCategoryCreateEvent
+    path: /listener/categoryCreateEvent
+    summary: Client listener for entity CategoryCreateEvent
+  - event: listenToCategoryAttributeValueChangeEvent
+    path: /listener/categoryAttributeValueChangeEvent
+    summary: Client listener for entity CategoryAttributeValueChangeEvent
+  - event: listenToProductOfferingCreateEvent
+    path: /listener/productOfferingCreateEvent
+    summary: Client listener for entity ProductOfferingCreateEvent
+  - event: listenToProductOfferingAttributeValueChangeEvent
+    path: /listener/productOfferingAttributeValueChangeEvent
+    summary: Client listener for entity ProductOfferingAttributeValueChangeEvent
+  - event: listenToProductOfferingStateChangeEvent
+    path: /listener/productOfferingStateChangeEvent
+    summary: Client listener for entity ProductOfferingStateChangeEvent
+  - event: listenToProductSpecificationCreateEvent
+    path: /listener/productSpecificationCreateEvent
+    summary: Client listener for entity ProductSpecificationCreateEvent
+  - event: listenToProductSpecificationAttributeValueChangeEvent
+    path: /listener/productSpecificationAttributeValueChangeEvent
+    summary: Client listener for entity ProductSpecificationAttributeValueChangeEvent
+  - event: listenToProductSpecificationStatusChangeEvent
+    path: /listener/productSpecificationStateChangeEvent
+    summary: Client listener for entity ProductSpecificationStatusChangeEvent
+- openapi: openapi/mef-lso-sonata-product-catalog-openapi.yml
+  api: MEF LSO Sonata Product Catalog
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-product-offering-qualification-management-openapi.yml
+  api: MEF LSO Sonata Product Offering Qualification Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-product-offering-qualification-notification-openapi.yml
+  api: MEF LSO Sonata Product Offering Qualification Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: poqStateChangeEvent
+    path: /listener/poqStateChangeEvent
+    summary: Product Offering Qualification Change Notification endpoint
+  - event: listenToPoqItemStateChangeEvent
+    path: /listener/poqItemStateChangeEvent
+    summary: Poq Item State Change Notification endpoint
+- openapi: openapi/mef-lso-sonata-product-order-management-openapi.yml
+  api: MEF LSO Sonata Product Ordering Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-product-order-notification-openapi.yml
+  api: MEF LSO Sonata Product Ordering Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 9
+  events:
+  - event: productOrderStateChangeEvent
+    path: /listener/productOrderStateChangeEvent
+    summary: Product Order State Change Notification endpoint
+  - event: productOrderItemStateChangeEvent
+    path: /listener/productOrderItemStateChangeEvent
+    summary: Product Order Item State Change Notification endpoint
+  - event: productOrderItemExpectedCompletionDateSetEvent
+    path: /listener/productOrderItemExpectedCompletionDateSetEvent
+    summary: Product Order Item Expected Completion Date Set Notification endpoint
+  - event: productSpecificProductOrderItemMilestoneEvent
+    path: /listener/productSpecificProductOrderItemMilestoneEvent
+    summary: Product Specific Product Order Item Milestone Notification endpoint
+  - event: cancelProductOrderStateChangeEvent
+    path: /listener/cancelProductOrderStateChangeEvent
+    summary: Cancel Product Order State Change Notification endpoint
+  - event: chargeCreateEvent
+    path: /listener/chargeCreateEvent
+    summary: Charge Create Notification endpoint
+  - event: chargeStateChangeEvent
+    path: /listener/chargeStateChangeEvent
+    summary: Charge State Change Notification endpoint
+  - event: chargeTimeoutEvent
+    path: /listener/chargeTimeoutEvent
+    summary: Charge State Change Notification endpoint
+  - event: modifyProductOrderItemRequestedDeliveryDateStateChangeEvent
+    path: /listener/modifyProductOrderItemRequestedDeliveryDateStateChangeEvent
+    summary: Modify Product Order Item Requested Delivery Date State Change Notification endpoint
+- openapi: openapi/mef-lso-sonata-quote-management-openapi.yml
+  api: MEF LSO Sonata Quote Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-quote-notification-openapi.yml
+  api: MEF LSO Sonata Quote Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 2
+  events:
+  - event: listenToQuoteStateChangeEvent
+    path: /listener/quoteStateChangeEvent
+    summary: Quote State Change Notification endpoint
+  - event: listenToQuoteItemStateChangeEvent
+    path: /listener/quoteItemStateChangeEvent
+    summary: Quote Item State Change Notification endpoint
+- openapi: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-trouble-ticket-notification-openapi.yml
+  api: MEF LSO Sonata Trouble Ticket and Incident Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 7
+  events:
+  - event: listenToTroubleTicketAttributeValueChangeEvent
+    path: /listener/troubleTicketAttributeValueChangeEvent
+    summary: Client listener for entity TroubleTicketAttributeValueChangeEvent
+  - event: listenToTroubleTicketStatusChangeEvent
+    path: /listener/troubleTicketStatusChangeEvent
+    summary: Client listener for entity TroubleTicketStatusChangeEvent
+  - event: listenToTroubleTicketResolvedEvent
+    path: /listener/troubleTicketResolvedEvent
+    summary: Client listener for entity TroubleTicketResolvedEvent
+  - event: listenToTroubleTicketInformationRequiredEvent
+    path: /listener/troubleTicketInformationRequiredEvent
+    summary: Client listener for entity TroubleTicketInformationRequiredEvent
+  - event: listenToIncidentCreateEvent
+    path: /listener/incidentCreateEvent
+    summary: Client listener for entity Incident Create Event
+  - event: listenToIncidentAttributeValueChangeEvent
+    path: /listener/incidentAttributeValueChangeEvent
+    summary: Client listener for entity Incident Attribute Value Change Event
+  - event: listenToIncidentStatusChangeEvent
+    path: /listener/incidentStatusChangeEvent
+    summary: Client listener for entity Incident Status Change Event
+- openapi: openapi/mef-lso-sonata-workorder-management-openapi.yml
+  api: MEF LSO Sonata WorkOrder Management
+  irp: LSO Sonata
+  hub_registration: true
+  event_count: 0
+  events: []
+- openapi: openapi/mef-lso-sonata-workorder-notification-openapi.yml
+  api: MEF LSO Sonata WorkOrder Management Notification
+  irp: LSO Sonata
+  hub_registration: false
+  event_count: 3
+  events:
+  - event: listenToWorkOrderCreateEvent
+    path: /listener/workOrderCreateEvent
+    summary: Client listener for entity WorkOrder Create Event
+  - event: listenToWorkOrderStateChangeEvent
+    path: /listener/workOrderStateChangeEvent
+    summary: Client listener for entity workOrderStateChangeEvent
+  - event: listenToWorkOrderAppointmentRequiredEvent
+    path: /listener/workOrderAppointmentRequiredEvent
+    summary: Client listener for entity workOrderAppointmentRequiredEvent
