@@ -1,0 +1,869 @@
+openapi: 3.0.1
+info:
+  title: Trouble Ticket and Incident Notification
+  description: |
+    **This file forms part of Mplify 124.1**
+
+    This API implements Business Requirements described in MEF 113
+
+
+    It allows the Buyer to create, retrieve, and update Trouble Tickets as well
+    as receive notifications about Incidents' and Trouble Tickets' updates.
+    This allows managing issues and situations that are not part of normal
+    operations of the Product provided by the Seller.
+
+    List of supported use cases:
+    - Send Event Notification
+
+    Copyright 2025 Mplify Alliance and its contributors.
+
+    This file includes content based on the TM Forum Trouble Ticket API (TMF621
+    v4.0.0) available at https://github.com/tmforum-apis/TMF621_TroubleTicket,
+    which is licensed by the TM Forum under the Apache License version 2.0.
+    Such content has been modified by the Mplify Alliance and its contributors.
+  version: 5.0.0
+servers:
+  - url: 'https://{serverBase}/mefApi/sonata/troubleTicketNotification/v5/'
+    variables:
+      serverBase:
+        description: The base of Buyer's URL.
+        default: mplify.net
+tags:
+  - name: Notification listeners
+    description: |
+      The Buyer's endpoint to send particular event types notifications to.
+paths:
+  /listener/troubleTicketAttributeValueChangeEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity TroubleTicketAttributeValueChangeEvent
+      description: >-
+        Client listener for receiving the notification
+        TroubleTicketAttributeValueChangeEvent
+      operationId: listenToTroubleTicketAttributeValueChangeEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TroubleTicketAttributeValueChangeEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /listener/troubleTicketStatusChangeEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity TroubleTicketStatusChangeEvent
+      description: >-
+        Client listener for receiving the notification
+        TroubleTicketStatusChangeEvent
+      operationId: listenToTroubleTicketStatusChangeEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TroubleTicketStatusChangeEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /listener/troubleTicketResolvedEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity TroubleTicketResolvedEvent
+      description: >-
+        Client listener for receiving the notification
+        TroubleTicketResolvedEvent
+      operationId: listenToTroubleTicketResolvedEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TroubleTicketResolvedEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /listener/troubleTicketInformationRequiredEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity TroubleTicketInformationRequiredEvent
+      description: >-
+        Client listener for receiving the notification
+        TroubleTicketInformationRequiredEvent
+      operationId: listenToTroubleTicketInformationRequiredEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/TroubleTicketInformationRequiredEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /listener/incidentCreateEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity Incident Create Event
+      description:
+        Client listener for receiving the notification Incident Create Event
+      operationId: listenToIncidentCreateEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/IncidentCreateEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /listener/incidentAttributeValueChangeEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity Incident Attribute Value Change Event
+      description: >-
+        Client listener for receiving the notification Incident Attribute Value
+        Change Event
+      operationId: listenToIncidentAttributeValueChangeEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/IncidentAttributeValueChangeEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+  /listener/incidentStatusChangeEvent:
+    post:
+      tags:
+        - Notification listeners
+      summary: Client listener for entity Incident Status Change Event
+      description: >-
+        Client listener for receiving the notification Incident Status Change
+        Event
+      operationId: listenToIncidentStatusChangeEvent
+      parameters:
+        - name: buyerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Buyer. MUST be specified in the request when the requester
+            represents more than one Buyer.
+          required: false
+          schema:
+            type: string
+        - name: sellerId
+          in: query
+          description: >-
+            The unique identifier of the organization that is acting as the
+            Seller. MUST be specified in the request when the responding entity
+            represents more than one Seller.
+          required: false
+          schema:
+            type: string
+      requestBody:
+        description: The event data
+        content:
+          application/json;charset=utf-8:
+            schema:
+              $ref: '#/components/schemas/IncidentStatusChangeEvent'
+        required: true
+      responses:
+        '204':
+          description:
+            'No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)'
+        '400':
+          description: Bad Request
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error400'
+        '401':
+          description: Unauthorized
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error401'
+        '403':
+          description: Forbidden
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error403'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json;charset=utf-8:
+              schema:
+                $ref: '#/components/schemas/Error500'
+components:
+  schemas:
+    Error:
+      description: >
+        Standard Class used to describe API response error
+
+        Not intended to be use directly. The `code` in the HTTP header is used
+        as a discriminator for the type of error returned in runtime.
+      type: object
+      properties:
+        reason:
+          description: >-
+            Text that explains the reason for error. This can be shown to a
+            client user.
+          type: string
+          maxLength: 255
+        message:
+          description: >-
+            Text that provide mode details and corrective actions related to the
+            error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: url pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+        - reason
+    Error400:
+      description:
+        'Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)'
+      allOf:
+        - $ref: '#/components/schemas/Error'
+        - type: object
+          properties:
+            code:
+              description: >-
+                One of the following error codes:
+
+                - missingQueryParameter: The URI is missing a required
+                query-string parameter
+
+                - missingQueryValue: The URI is missing a required query-string
+                parameter value
+
+                - invalidQuery: The query section of the URI is invalid.
+
+                - invalidBody: The request has an invalid body
+              $ref: '#/components/schemas/Error400Code'
+          required:
+            - code
+    Error400Code:
+      description: >-
+        One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string
+        parameter
+
+        - missingQueryValue: The URI is missing a required query-string
+        parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body
+      type: string
+      enum:
+        - missingQueryParameter
+        - missingQueryValue
+        - invalidQuery
+        - invalidBody
+    Error401:
+      description:
+        'Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)'
+      allOf:
+        - $ref: '#/components/schemas/Error'
+        - type: object
+          properties:
+            code:
+              description: >-
+                One of the following error codes:
+
+                - missingCredentials: No credentials provided.
+
+                - invalidCredentials: Provided credentials are invalid or
+                expired
+              $ref: '#/components/schemas/Error401Code'
+          required:
+            - code
+    Error401Code:
+      description: |-
+        One of the following error codes:
+        - missingCredentials: No credentials provided.
+        - invalidCredentials: Provided credentials are invalid or expired
+      type: string
+      enum:
+        - missingCredentials
+        - invalidCredentials
+    Error403:
+      description:
+        'Forbidden. (https://tools.ietf.org/html/rfc7231#section-6.5.3)'
+      allOf:
+        - $ref: '#/components/schemas/Error'
+        - type: object
+          properties:
+            code:
+              description: |-
+                This code indicates that the server understood
+                the request but refuses to authorize it because
+                of one of the following error codes:
+                - accessDenied: Access denied
+                - forbiddenRequester: Forbidden requester
+                - tooManyUsers: Too many users
+              $ref: '#/components/schemas/Error403Code'
+          required:
+            - code
+    Error403Code:
+      description: |-
+        This code indicates that the server understood
+        the request but refuses to authorize it because
+        of one of the following error codes:
+        - accessDenied: Access denied
+        - forbiddenRequester: Forbidden requester
+        - tooManyUsers: Too many users
+      type: string
+      enum:
+        - accessDenied
+        - forbiddenRequester
+        - tooManyUsers
+    Error500:
+      description: >-
+        Internal Server Error.
+        (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+        - $ref: '#/components/schemas/Error'
+        - type: object
+          properties:
+            code:
+              description: >-
+                The following error code:
+
+                - internalError: Internal server error - the server encountered
+                an unexpected condition that prevented it from fulfilling the
+                request.
+              type: string
+              enum:
+                - internalError
+          required:
+            - code
+    Event:
+      description: >-
+        Event class is used to describe information structure used for
+        notification.
+      type: object
+      properties:
+        eventId:
+          description: Id of the event
+          type: string
+        eventTime:
+          description: Date-time when the event occurred
+          type: string
+          format: date-time
+        eventType:
+          description: The type of the notification.
+          type: string
+        event:
+          description: The event linked to the involved resource object
+          type: object
+      required:
+        - event
+        - eventId
+        - eventTime
+        - eventType
+    IncidentAttributeValueChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - incidentAttributeValueChangeEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/IncidentEventPayload'
+          required:
+            - event
+            - eventType
+    IncidentCreateEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - incidentCreateEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/IncidentEventPayload'
+          required:
+            - event
+            - eventType
+    IncidentEventPayload:
+      description: The identifier of the Incident being subject of this event.
+      type: object
+      properties:
+        id:
+          description: ID of the Incident
+          type: string
+        href:
+          description: Hyperlink to access the Incident
+          type: string
+      required:
+        - id
+    IncidentStatusChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - incidentStatusChangeEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/IncidentStatusChangeEventPayload'
+          required:
+            - event
+            - eventType
+    IncidentStatusChangeEventPayload:
+      description:
+        The identifier of the Trouble Ticket being subject of this event.
+      type: object
+      properties:
+        id:
+          description: ID of the Trouble Ticket
+          type: string
+        href:
+          description: Hyperlink to access the Trouble Ticket
+          type: string
+        status:
+          description: The current status of the Trouble Ticket
+          $ref: '#/components/schemas/IncidentStatusType'
+      required:
+        - id
+        - status
+    IncidentStatusType:
+      description: |
+        Possible values for the status of the Incident
+
+        | status       | MEF 113 name | Description                                                                                                                                                              |
+        | ------------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+        | `closed`     | CLOSED       | The Situation described in the Incident was closed by has been resolved and normal operation has been restored on the Seller.Seller's network. This is a terminal state. |
+        | `created`    | CREATED      | A new Incident has been created and allocated a unique `id`.                                                                                                             |
+        | `inProgress` | IN_PROGRESS  | The Incident is in the process of being handled and investigated for resolution by the Seller.
+      type: string
+      enum:
+        - closed
+        - created
+        - inProgress
+    TroubleTicketAttributeValueChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - troubleTicketAttributeValueChangeEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/TroubleTicketEventPayload'
+          required:
+            - event
+            - eventType
+    TroubleTicketEventPayload:
+      description:
+        The identifier of the Trouble Ticket being subject of this event.
+      type: object
+      properties:
+        id:
+          description: ID of the Trouble Ticket
+          type: string
+        href:
+          description: Hyperlink to access the Trouble Ticket
+          type: string
+      required:
+        - id
+    TroubleTicketInformationRequiredEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - troubleTicketInformationRequiredEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/TroubleTicketEventPayload'
+          required:
+            - event
+            - eventType
+    TroubleTicketResolvedEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - troubleTicketResolvedEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/TroubleTicketEventPayload'
+          required:
+            - event
+            - eventType
+    TroubleTicketStatusChangeEvent:
+      allOf:
+        - $ref: '#/components/schemas/Event'
+        - type: object
+          properties:
+            eventType:
+              description: Indicates the type of the event.
+              type: string
+              enum:
+                - troubleTicketStatusChangeEvent
+            event:
+              description: >
+                A reference to the object that is the source of the
+                notification.
+              $ref: '#/components/schemas/TroubleTicketStatusChangeEventPayload'
+          required:
+            - event
+            - eventType
+    TroubleTicketStatusChangeEventPayload:
+      description:
+        The identifier of the Trouble Ticket being subject of this event.
+      type: object
+      properties:
+        id:
+          description: ID of the Trouble Ticket
+          type: string
+        href:
+          description: Hyperlink to access the Trouble Ticket
+          type: string
+        status:
+          description: The current status of the Trouble Ticket
+          $ref: '#/components/schemas/TroubleTicketStatusType'
+      required:
+        - id
+        - status
+    TroubleTicketStatusType:
+      description: |
+        Possible values for the status of the Trouble Ticket
+
+        | status                  | MEF 113 name           | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+        | ----------------------- | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+        | `acknowledged`          | ACKNOWLEDGED           | A request to create a Ticket was received and accepted by the Seller. The Ticket create request has been validated and a Ticket has been created by the Seller and allocated a unique `id`.                                                                                                                                                                                                                                                                                                                        |
+        | `assessingCancellation` | ASSESSING_CANCELLATION | A request has been made by the Buyer to cancel the Ticket and is being assessed by the Seller to determine whether to just close the Ticket, or continue to resolve the Issue to prevent similar Create Ticket requests from other Buyers. If the Seller chooses to resolve the Issue, the Seller might create an Incident or an internal Ticket for the Issue, but that is outside the scope of this document. After the Seller has completed the assessment, the Seller updates the Ticket State to `cancelled`. |
+        | `cancelled`             | CANCELLED              | The Ticket has been successfully cancelled by the Buy-er. The Buyer will receive no further Event Notifications for the Ticket. This is a terminal state.                                                                                                                                                                                                                                                                                                                                               |
+        | `closed`                | CLOSED                 | The Buyer has confirmed that the Issue they reported is no longer observed, or the pre-defined time frame (agreed upon between Buyer and Seller) for confirming that the Issue has been resolved has passed without a response by the Buyer. This is a terminal state.                                                                                                                                                                                                                                             |
+        | `inProgress`            | IN_PROGRESS            | The Ticket is in the process of being handled and investigated for resolution by the Seller.                                                                                                                                                                                                                                                                                                                                                                                                                       |
+        | `pending`               | PENDING                | The Seller is waiting on the Buyer to provide additional information for the Ticket, or the Buyer to schedule an Appointment for the WorkOrder (linked to the Ticket) in order to continue processing the Ticket. This may result in the clock being stopped for the service level agreement until the Buyer has responded to the request.                                                                                                                                                                         |
+        | `reopened`              | REOPENED               | The Buyer has verified that the Issue described in the Ticket is still observed and has not been resolved satisfactorily. The Buyer rejects the Seller's request to close the Ticket. The Ticket has been reopened and is waiting for further actions from the Seller.                                                                                                                                                                                                                                             |
+        | `resolved`              | RESOLVED               | The Buyer's Issue described in the Ticket was resolved by the Seller. The Seller assumes that normal operation is re-established for the Buyer's product and i snow waiting for the Buyer to confirm that the Issue they reported is no longer observed.                                                                                                                                                                                                                                                           |
+      type: string
+      enum:
+        - acknowledged
+        - assessingCancellation
+        - cancelled
+        - closed
+        - inProgress
+        - pending
+        - resolved
+        - reopened

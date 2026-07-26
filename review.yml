@@ -1,0 +1,381 @@
+aid: mef
+name: MEF
+review:
+  question: >-
+    Does MEF (Mplify Alliance) publish a real, self-serve developer surface with downloadable
+    machine-readable API definitions, and what is its CAMARA / GSMA Open Gateway posture?
+  answer: true
+  date: '2026-07-25'
+  reviewer: API Evangelist
+  tier: standards-body
+  homeMarket: United States
+findings:
+  summary: |
+    MEF is a standards body, not an operator, and it is one of the more genuinely open
+    API publishers in telecom. MEF Forum rebranded to Mplify Alliance on 24 June 2025;
+    mef.net now 301s to mplify.net, and already-published standards keep the "MEF" name.
+
+    There is a REAL, self-serve developer portal at https://lso.mplify.net/ (HTTP 200,
+    no login wall, no registration). It carries an LSO API Catalog, an LSO Payload
+    Catalog, SDK release downloads, a Network APIs page, an LSO API Blending Tool that
+    produces a downloadable zip of blended API + payload, and evaluate/implement guides.
+    Nothing on the portal required credentials during this review.
+
+    The machine-readable specifications themselves are openly downloadable from the
+    public GitHub organization https://github.com/MEF-GIT under Apache-2.0. Ninety-five
+    real specification documents were harvested verbatim from the latest published
+    release tag (`kylie`) across six LSO Interface Reference Point SDKs.
+
+    The membership wall exists, but it sits one layer INSIDE the specs rather than
+    around them. The LSO API catalog pages state plainly: "API developer guides are only
+    available to MEF members on GitHub" and "LSO API test requirements are only
+    available to MEF members on the wiki." So: the OpenAPI is free, the prose developer
+    guide PDFs and the MEF W92.1 test requirements are member-only. wiki.mplify.net and
+    members.mplify.net both resolve but gate their content. That gap — public contract,
+    private implementation guidance — is the honest characterization of this organization.
+  developerPortal:
+    url: https://lso.mplify.net/
+    httpStatus: 200
+    verdict: real self-serve developer portal
+    loginRequired: false
+    notes: >-
+      Drupal-based "Mplify Alliance Developer Portal". API catalog, payload catalog, SDK
+      releases, tools, network APIs, support. Also reachable at https://lso.mef.net/ (200).
+      No /openapi.json, /swagger.json, /api-docs, /spec or /sitemap.xml served (all 404) —
+      the specs live on GitHub, not on the portal host.
+  probes:
+    - url: https://mef.net
+      status: 200
+      note: redirects to https://www.mplify.net/ (MEF Forum became Mplify Alliance 2025-06-24)
+    - url: https://www.mef.net
+      status: 200
+      note: redirects to https://www.mplify.net/
+    - url: https://developer.mef.net
+      status: 000
+      note: does not resolve
+    - url: https://developers.mef.net
+      status: 000
+      note: does not resolve
+    - url: https://docs.mef.net
+      status: 000
+      note: does not resolve
+    - url: https://api.mef.net
+      status: 000
+      note: does not resolve
+    - url: https://www.mef.net/developer
+      status: 404
+    - url: https://www.mef.net/developers
+      status: 404
+    - url: https://www.mef.net/api
+      status: 404
+    - url: https://developer.mplify.net
+      status: 000
+      note: does not resolve
+    - url: https://docs.mplify.net
+      status: 000
+      note: does not resolve
+    - url: https://lso.mplify.net/
+      status: 200
+      note: THE developer portal
+    - url: https://lso.mef.net/
+      status: 200
+      note: same portal on the legacy domain
+    - url: https://lso.mplify.net/api-catalog
+      status: 200
+    - url: https://lso.mplify.net/network-apis
+      status: 200
+    - url: https://lso.mplify.net/lso-api-sdk-releases
+      status: 200
+    - url: https://lso.mef.net/api-blender
+      status: 200
+    - url: https://lso.mplify.net/openapi.json
+      status: 404
+    - url: https://lso.mplify.net/openapi.yaml
+      status: 404
+    - url: https://lso.mplify.net/swagger.json
+      status: 404
+    - url: https://lso.mplify.net/api-docs
+      status: 404
+    - url: https://lso.mplify.net/spec
+      status: 404
+    - url: https://lso.mplify.net/sitemap.xml
+      status: 404
+    - url: https://lso.mplify.net/.well-known/openid-configuration
+      status: 404
+      note: no OIDC discovery document served
+    - url: https://wiki.mplify.net/
+      status: 200
+      note: Confluence wiki, content member-gated ("Log in"); test requirements live here
+    - url: https://members.mplify.net/
+      status: 200
+      note: Salesforce member portal, gated
+    - url: https://github.com/MEF-GIT
+      status: 200
+      note: public GitHub org, now named "Mplify", 9 public repos
+openapi:
+  downloadable: true
+  count: 94
+  asyncapiCount: 1
+  license: Apache-2.0
+  releaseTag: kylie
+  fetchDate: '2026-07-25'
+  allHttpStatus: 200
+  provenance:
+    - repo: https://github.com/MEF-GIT/MEF-LSO-Sonata-SDK
+      irp: LSO Sonata
+      role: Service Provider to Service Provider — business / product layer
+      specs: 23
+      rawBase: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/productApi/
+    - repo: https://github.com/MEF-GIT/MEF-LSO-Cantata-SDK
+      irp: LSO Cantata
+      role: Customer to Service Provider — business / product layer
+      specs: 23
+      rawBase: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Cantata-SDK/kylie/productApi/
+    - repo: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK
+      irp: LSO Interlude
+      role: Service Provider to Service Provider — operational / service layer
+      specs: 14
+      asyncapi: 1
+      rawBase: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/serviceApi/
+    - repo: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK
+      irp: LSO Legato
+      role: Business Applications to Service Orchestration Functionality — intra-provider
+      specs: 16
+      rawBase: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/
+    - repo: https://github.com/MEF-GIT/MEF-LSO-Allegro-SDK
+      irp: LSO Allegro
+      role: Customer to Service Provider — operational / service layer
+      specs: 14
+      rawBase: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Allegro-SDK/kylie/serviceApi/
+    - repo: https://github.com/MEF-GIT/MEF-LSO-Presto-SDK
+      irp: LSO Presto
+      role: Service Orchestration Functionality to Infrastructure Control and Management (MEF 60 NRP)
+      specs: 4
+      rawBase: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Presto-SDK/kylie/api/swagger/
+  specVersions:
+    OpenAPI 3.0.1: 82
+    OpenAPI 3.0.3: 8
+    Swagger 2.0: 4
+    AsyncAPI 2.0.0: 1
+  notes: >-
+    Excluded from harvest: components-only schema documents (apiSchema/errorSchema/hubSchema/
+    serviceCatalogSchema), TCA alarm templates, request/response example payloads, and the
+    `generated/security` and `generated/mcp` variant copies of the same APIs. Only the
+    canonical productApi/ and serviceApi/ definitions were saved.
+camara:
+  posture: >-
+    Standards-body partner, not a CAMARA implementer — MEF has no network to expose. MEF is
+    a signatory to the GSMA Open Gateway Memorandum of Understanding (announced 11 November
+    2025, alongside the GSMA, the Linux Foundation and TM Forum) and contributes its wireline
+    LSO APIs to complement CAMARA's mobile network APIs. The one concrete, machine-readable
+    CAMARA artifact is the pre-standard LSO Quality on Demand payload schema shipped in the
+    Sonata and Cantata SDKs, whose JSON Schema is modelled directly on the CAMARA QoD session
+    object and cites CAMARA Commonalities v0.4 by name in its own comments. This is real
+    alignment on one API, not a press release — but MEF exposes no callable CAMARA endpoint.
+  apis:
+    - name: Quality on Demand (QoD)
+      evidence: >-
+        schema/productSchema/preStandard/qualityOnDemand/qosSession.yaml in MEF-LSO-Sonata-SDK
+        and MEF-LSO-Cantata-SDK at tag kylie (HTTP 200). Title "MEF LSO - QoS Session",
+        $id urn:mef:xid:spec:product:qos-session:v0.0.1:all. Contains device/applicationServer/
+        devicePorts/qosProfile modelled on the CAMARA QoD createSession object and states
+        "for the Commonalities release v0.4, we are enforcing that the networkAccessIdentifier
+        is only part of the schema for future-proofing, and CAMARA does not currently allow
+        its use."
+      status: pre-standard payload schema, member-blendable via the LSO API Blender; not a
+        callable MEF-operated endpoint
+      portalReference: >-
+        https://lso.mplify.net/network-apis states "The CAMARA QoD API aims to provide the
+        customer with the ability to set the quality for a flow within an access network
+        connection ... The five pre-standard LSO QoD APIs can be accessed via the LSO
+        Blending Tool."
+  notFound:
+    - Number Verification
+    - SIM Swap
+    - Device Location / Location Verification
+    - Device Status / Reachability
+    - Carrier Billing
+    - KYC Match
+    - Anti-fraud / Scam Signal
+    - Device Swap
+    - Population Density
+  openGatewayMember: true
+  openGatewayNature: >-
+    MOU signatory / ecosystem partner as a standards body — NOT one of the 80+ mobile
+    operator groups that commit to exposing CAMARA APIs. Recorded at
+    https://www.gsma.com/solutions-and-impact/gsma-open-gateway/mplify-joins-gsma-open-gateway-framework-to-advance-unified-network-apis-across-wired-and-wireless-domains-for-ai-powered-connectivity/
+    and https://www.mplify.net/news/mplify-joins-gsma-open-gateway-framework-to-advance-unified-network-apis-across-wired-and-wireless-domains-for-ai-powered-connectivity/
+  aduna: no evidence of any Aduna relationship found
+tmForum:
+  relationship: >-
+    Peer standards body and upstream source, not a certification holder. MEF does not hold
+    TM Forum Open API conformance certification — it is an SDO, not an implementer. What it
+    does do is BUILD ON TM Forum Open APIs and say so in the specs: the harvested definitions
+    carry attribution such as "TMF API Reference : TMF 633/638/641 v18.5.1" and "This file
+    includes content based on the TM Forum Service Catalog Management API (TMF633 v3.0.0)
+    available at https://github.com/tmforum-apis/TMF633_ServiceCatalog, which is licensed by
+    the TM Forum under the Apache License 2.0."
+  referencedTMFApis:
+    - TMF633 Service Catalog Management
+    - TMF638 Service Inventory Management
+    - TMF641 Service Ordering Management
+  mefCertification: >-
+    MEF runs its own certification instead — the MEF 3.0 LSO API Certification Program
+    (https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-certification/,
+    200) plus the LSO API Onboarding & Interop Test (OIT) Service
+    (https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-test-service/,
+    200), delivered with certification partner Amartus. Certified units are a triple of
+    Seller + Business Function + LSO API Release.
+  alsoJointMOU: TM Forum is a co-signatory with MEF on the GSMA Open Gateway MOU.
+threeGpp:
+  nefScefSurface: false
+  note: >-
+    No NEF or SCEF surface — MEF's equivalent southbound interface is LSO Presto (MEF 60
+    Network Resource Provisioning), a RESTCONF-style Swagger 2.0 definition derived from the
+    ONF Transport API model, base path /restconf, 32 paths. No 5G network-slicing or MEC API
+    was found published by MEF. Edge compute appears only as a pre-standard payload schema
+    directory in the Sonata/Cantata SDKs.
+auth:
+  model: OAuth 2.0 client credentials (machine-to-machine)
+  evidence: >-
+    The canonical productApi/ and serviceApi/ definitions ship with NO securitySchemes at all
+    (0 of 95 harvested documents declare one) — they are contract definitions for implementers
+    to secure. The `generated/security/*` variants in each SDK add a single scheme,
+    `oauth2MEFLSOAPI`, type oauth2, flow clientCredentials, scope `default`, with placeholder
+    tokenUrl http://mef.net/example/token. Confirmed at
+    https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/generated/security/order/productOrderManagement.api.yaml
+    (HTTP 200).
+  ciba: false
+  cibaNote: >-
+    CIBA (Client-Initiated Backchannel Authentication) does NOT appear anywhere in MEF's
+    published API surface. MEF's LSO APIs are provider-to-provider and provider-to-enterprise
+    B2B contracts secured by two-legged OAuth, not subscriber-consent network authorization.
+    That is the structural difference between MEF's wireline API model and CAMARA's.
+  oidcDiscovery: not served — https://lso.mplify.net/.well-known/openid-configuration returns 404
+  apiKeys: none documented
+  mtls: not documented in the published specs
+webhooks:
+  present: true
+  mechanism: >-
+    Hub/listener callback pattern inherited from TM Forum Open APIs. Every LSO functional area
+    ships a paired "Notification" OpenAPI alongside its "Management" OpenAPI — 39 of the 94
+    harvested OpenAPI documents are notification/listener definitions (billingNotification,
+    productOrderNotification, quoteNotification, alarmNotification, faultNotification,
+    serviceInventoryNotification, and so on). Subscribers POST to /hub to register a callback
+    and the Seller POSTs events to the registered listener.
+  asyncapi:
+    present: true
+    file: asyncapi/mef-lso-interlude-performance.template-asyncapi.yml
+    source: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Interlude-SDK/kylie/serviceApi/pm/streaming/performance.template.asyncapi.yaml
+    note: >-
+      AsyncAPI 2.0.0 template for streaming performance-monitoring data. An identical template
+      also ships in the Legato and Allegro SDKs; harvested once. A companion
+      streamingManagement OpenAPI manages topics and subscriptions.
+sdks:
+  firstPartyPackages: none
+  npm: none found
+  pypi: none found
+  maven: none found
+  nuget: none found
+  note: >-
+    "SDK" in MEF's vocabulary means a versioned bundle of specification documents, not client
+    libraries. SDK releases are GitHub release zips (Mplify-LSO-Sonata-SDK-kylie.zip and
+    siblings, linked from https://lso.mplify.net/lso-api-sdk-releases). Releases are named
+    after singers: aretha, billie, celine, dolly, ella, fergie, grace, haley, irene, janis,
+    kylie — kylie is current, published 2026-02-17.
+mcp:
+  present: true
+  note: >-
+    Genuinely notable for a standards body. The kylie release notes say "MCP Server code added
+    for every Seller side API." Each SDK ships generated/mcp/ containing a Python Model Context
+    Protocol server (`mplify-mcp-runner`, src/mcp_openapi_server/, Dockerfile, pyproject.toml),
+    per-API .env files, MPLIFY-MCP-QUICKSTART.md, and MCP-flavored copies of each API
+    definition. MEF publishes an agent-facing runner for its own standard; it does not host one.
+postman:
+  present: true
+  note: >-
+    Postman collections ship inside the SDK repos as documentation appendices, not as a public
+    Postman workspace. Examples: "MEF 106 - Appendix A.postman_collection.json",
+    "MEF 125.0.1 Appendix A.postman_collection.json", "Mplify 139.1 Appendix A.postman_collection.json"
+    (Sonata/Cantata) and "MEF 99_1_with_MEF 101 Service Ordering Management.postman_collection.json",
+    "MEF W103 Service Order Management API.postman_collection.json" (Interlude/Legato/Allegro).
+  publicWorkspace: none found
+graphql:
+  present: false
+grpc:
+  present: false
+  note: no .proto files published in the public MEF-GIT repos
+gated:
+  overall: false
+  detail: >-
+    The specs are not gated. Two adjacent things are: per-API Developer Guide PDFs are
+    described on the portal as "only available to MEF members on GitHub", and MEF W92.1 LSO
+    test requirements as "only available to MEF members on the wiki" (wiki.mplify.net, 200,
+    content behind Confluence login). Membership sign-up at https://www.mplify.net/join-mplify/.
+    Note one inconsistency worth flagging: at least one Developer Guide PDF linked from the
+    catalog resolved 200 anonymously from the public releases endpoint.
+transports:
+  - protocol: REST
+    scheme: https
+    documented: true
+    note: >-
+      All 94 harvested OpenAPI documents are HTTPS REST/JSON. Server URLs are templated,
+      e.g. https://{serverBase}/mefApi/sonata/productOrderingManagement/v11/ — MEF defines the
+      path contract, the implementing Seller supplies the host.
+  - protocol: Webhook / HTTP callback
+    scheme: https
+    documented: true
+    note: TM Forum-style hub/listener registration; 38 notification OpenAPI documents.
+  - protocol: Streaming (AsyncAPI 2.0.0)
+    scheme: https
+    documented: true
+    note: performance-monitoring streaming template in Interlude/Legato/Allegro.
+  - protocol: RESTCONF
+    scheme: https
+    documented: true
+    note: LSO Presto MEF 60 Network Resource Provisioning, Swagger 2.0, basePath /restconf.
+  - protocol: GraphQL
+    documented: false
+  - protocol: gRPC
+    documented: false
+  - protocol: WebSocket
+    documented: false
+sources:
+  - url: https://www.mplify.net/
+    type: Website
+    note: MEF Forum is now Mplify Alliance; mef.net redirects here.
+  - url: https://lso.mplify.net/
+    type: DeveloperPortal
+    note: Real self-serve developer portal, HTTP 200, no login.
+  - url: https://lso.mplify.net/api-catalog
+    type: Documentation
+    note: >-
+      Per-API pages carry the membership caveat verbatim — "API developer guides are only
+      available to MEF members on GitHub" and "LSO API test requirements are only available
+      to MEF members on the wiki."
+  - url: https://lso.mplify.net/network-apis
+    type: Documentation
+    note: CAMARA QoD referenced by name; CIM pre-standard API and five pre-standard LSO QoD APIs.
+  - url: https://github.com/MEF-GIT
+    type: GitHubOrganization
+    note: Public org (display name "Mplify"), 9 public repos, six LSO SDKs Apache-2.0.
+  - url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/README.md
+    type: Documentation
+    note: >-
+      Kylie release notes; "MCP Server code added for every Seller side API"; confirms the
+      MEF-to-Mplify naming transition and that published standards keep the MEF name.
+  - url: https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Sonata-SDK/kylie/schema/productSchema/preStandard/qualityOnDemand/qosSession.yaml
+    type: Schema
+    note: The CAMARA QoD-aligned payload schema. HTTP 200.
+  - url: https://www.mplify.net/news/mplify-joins-gsma-open-gateway-framework-to-advance-unified-network-apis-across-wired-and-wireless-domains-for-ai-powered-connectivity/
+    type: PressRelease
+    note: GSMA Open Gateway MOU participation, 11 November 2025.
+  - url: https://www.mplify.net/certification/testing-certifications-for-lso-apis/lso-api-certification/
+    type: Certification
+    note: MEF 3.0 LSO API Certification Program.
+actions:
+  openapiHarvested: 94
+  asyncapiHarvested: 1
+  apisYmlEntries: 95
+  openapiPath: openapi/
+  asyncapiPath: asyncapi/
