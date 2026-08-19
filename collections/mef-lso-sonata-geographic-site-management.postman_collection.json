@@ -1,0 +1,1017 @@
+{
+  "item": [
+    {
+      "id": "eed355fc-12af-4f70-929b-44b454348be3",
+      "name": "geographicSite",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be3c1a1a-db6b-4a4c-b100-7d99d898983c",
+          "name": "List or find GeographicSite objects",
+          "request": {
+            "name": "List or find GeographicSite objects",
+            "description": {
+              "content": "This operation queries for a list of Sites within a GeographicAddress, which can be referenced with an `id` or be found by list of representations (GeographicAddress_Query).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geographicSite"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer.\nReference: Mplify 150 (Sn 8.8)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller.\nReference: Mplify 150 (Sn 8.8)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Requested index for the start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Requested number of items to be provided in response requested by client"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "410d745d-b826-4f55-8c3e-decc1cc5cd94",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Used to indicate that result page was throttled to maximum possible size and there are additional results that can be fetched\n",
+                  "key": "X-Pagination-Throttled",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of matching records. E.g. if there are 50 matching records in total, but the request has offset=10 and limit=10, then the X-Total-Count is 50.\n",
+                  "key": "X-Total-Count",
+                  "value": "1390"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of records included in the response",
+                  "key": "X-Result-Count",
+                  "value": "1390"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"@type\": \"GeographicSite\",\n    \"administrativeAuthority\": \"string\",\n    \"customerName\": \"string\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"networkType\": \"<string>\",\n    \"place\": {\n      \"@type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    \"siteRestrictionType\": \"<string>\",\n    \"subUnit\": [\n      {\n        \"subUnitNumber\": \"<string>\",\n        \"subUnitType\": \"<string>\"\n      },\n      {\n        \"subUnitNumber\": \"<string>\",\n        \"subUnitType\": \"<string>\"\n      }\n    ],\n    \"href\": \"string\"\n  },\n  {\n    \"@type\": \"GeographicSite\",\n    \"administrativeAuthority\": \"string\",\n    \"customerName\": \"string\",\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"networkType\": \"<string>\",\n    \"place\": {\n      \"@type\": \"<string>\",\n      \"id\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    \"siteRestrictionType\": \"<string>\",\n    \"subUnit\": [\n      {\n        \"subUnitNumber\": \"<string>\",\n        \"subUnitType\": \"<string>\"\n      },\n      {\n        \"subUnitNumber\": \"<string>\",\n        \"subUnitType\": \"<string>\"\n      }\n    ],\n    \"href\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "38698d8a-6b38-41a0-8b74-d7e0428f849c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://sugcybXtwzeiTN.cfhvNyqGhupERmOz7EiR12vz,Aeej2gx0Fhzez6.JwVXaAsz.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "69df518d-e397-4cdc-9a6a-de02a0a8baaa",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://rlaBwSOHXCunKiVZmxnM.sqbyepU6fWOtDKcwcKMwdIJN+APStKGMdB3L8PMs+zIAU6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecbd0a0a-ae2a-44de-871c-d574371016b3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MQCkpRdDZjcc.airxd2SU7yIF-Td-noZdN8q3MtJICnnrdLdEH9MBvNd\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e603ca4b-e7bc-4a71-be14-30a0b4a359cc",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://zCbgqSnHYGvTEe.bdrjuigsTN7uNhL2r1\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"referenceNotFound\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://wAFTqBlUs.nuugFXeD+AqNza2jhIt5sYl-G-VxofZA+pmUzhirUVobZaPJVe.3PHJU5a\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7cc395de-1585-4e0e-84e3-3cc2ddf12d23",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"name\": \"<string>\",\n  \"administrativeAuthority\": \"<string>\",\n  \"customerName\": \"<string>\",\n  \"siteRestrictionType\": \"<string>\",\n  \"networkType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSlRIykiAfVItGLiqJ.jdpkzqoSW8Mwt-+pGtjQ,kOhnz1+c9lM\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02fa2b98-7a55-475b-8f69-e4adc5cd94b7",
+          "name": "Retrieves a GeographicSite by ID",
+          "request": {
+            "name": "Retrieves a GeographicSite by ID",
+            "description": {
+              "content": "This operation retrieves a GeographicSite entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geographicSite",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer.\nReference: Mplify 150 (Sn 8.8)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller.\nReference: Mplify 150 (Sn 8.8)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the GeographicSite"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "397b1684-2b6e-4a80-87d2-cdf8d24b2f09",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"@type\": \"GeographicSite\",\n  \"administrativeAuthority\": \"string\",\n  \"customerName\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"networkType\": \"<string>\",\n  \"place\": {\n    \"@type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"siteRestrictionType\": \"<string>\",\n  \"subUnit\": [\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    },\n    {\n      \"subUnitNumber\": \"<string>\",\n      \"subUnitType\": \"<string>\"\n    }\n  ],\n  \"href\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e154941e-f1bf-48de-8671-8858eb161f27",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://sugcybXtwzeiTN.cfhvNyqGhupERmOz7EiR12vz,Aeej2gx0Fhzez6.JwVXaAsz.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce9ac589-14f9-4f5f-abb7-75f2af216c9f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://rlaBwSOHXCunKiVZmxnM.sqbyepU6fWOtDKcwcKMwdIJN+APStKGMdB3L8PMs+zIAU6\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6903b1c1-d004-4fcf-98b6-3d78478acce2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MQCkpRdDZjcc.airxd2SU7yIF-Td-noZdN8q3MtJICnnrdLdEH9MBvNd\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "093cc529-4c3f-4efd-82f7-62fa41f1dfc7",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://qXB.ymwrsWbsdR7pxBP,V4ffb6VV5c-N3Q-AL\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b54d350-0a4d-4a46-8adf-4b6e4731b3c2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSlRIykiAfVItGLiqJ.jdpkzqoSW8Mwt-+pGtjQ,kOhnz1+c9lM\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25d0514f-41cb-44d1-ba79-8b3df0cb64ad",
+              "name": "Method not implemented. Used in case Seller is not supporting this operation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicSite",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicSite"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://ozMVsGrjzDrTgDQPPQtIO.qvSQu6NXlJDvKjh.SKsyjm0IiYHtl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Seller's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/sonata/geographicSiteManagement/v8/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1c8f580a-8593-4ab9-8cb0-4e0be2b087d1",
+    "name": "Geographic Site Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 122.1**\n\nThis API implements Business Requirements described in Mplify 150\n\nIt allows to retrieve a list of Geographic Sites and to get all\ninformation for one geographic site.\n\nList of supported Use Cases:\n\n- Retrieve Service Site List\n- Retrieve Service Site by Identifier\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Geographic Site Management API\n(TMF674 v4.0.0) available at\nhttps://github.com/tmforum-apis/TMF674_GeographicSite, which is licensed\nby the TM Forum under the Apache License version 2.0. Such content has been\nmodified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

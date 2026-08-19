@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WorkOrder Management",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "workorder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieves a WorkOrder by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderManagement/v3/workorder/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique (within the Seller domain) identifier for the WorkOrder."
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests detailed information about a single WorkOrder based on a WorkOrder Identifier."
+        },
+        {
+          "info": {
+            "name": "Retrieves a WorkOrder by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderManagement/v3/workorder",
+            "params": [
+              {
+                "name": "geographicalSiteId",
+                "value": "",
+                "type": "query",
+                "description": "A site identifier that is associated to the Appointment."
+              },
+              {
+                "name": "geographicalAddressId",
+                "value": "",
+                "type": "query",
+                "description": "A address identifier that is associated to the Appointment."
+              },
+              {
+                "name": "relatedEntityType",
+                "value": "",
+                "type": "query",
+                "description": "The type of Related Entity (e.g. Trouble Ticket)."
+              },
+              {
+                "name": "relatedEntityId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Related Entity."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the WorkOrder."
+              },
+              {
+                "name": "appointmentRequired",
+                "value": "",
+                "type": "query",
+                "description": "Indicates that the Buyer must schedule an Appointment to fulfill the WorkOder."
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of resources to be provided in response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response"
+              }
+            ]
+          },
+          "docs": "The Buyer requests detailed information about a single WorkOrder based on a WorkOrder Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allows the Buyer to register to WorkOrder state change notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderManagement/v3/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer requests to subscribe to WorkOrder Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the EventSubscription"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests to unsubscribe from WorkOrder Notifications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

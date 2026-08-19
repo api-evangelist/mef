@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Product Inventory Management",
+    "version": "8.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "product",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Product objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/productInventory/v8/product",
+            "params": [
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The status of the product"
+              },
+              {
+                "name": "productSpecificationId",
+                "value": "",
+                "type": "query",
+                "description": "A reference to a product spec by id"
+              },
+              {
+                "name": "productOfferingId",
+                "value": "",
+                "type": "query",
+                "description": "A reference to a product offering by id"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "A reference to the externalId provided in the order"
+              },
+              {
+                "name": "geographicAddressId",
+                "value": "",
+                "type": "query",
+                "description": "A Geographic Address identifier which is associated to the product"
+              },
+              {
+                "name": "geographicSiteId",
+                "value": "",
+                "type": "query",
+                "description": "A site identifier which is associated to the product"
+              },
+              {
+                "name": "relatedProductId",
+                "value": "",
+                "type": "query",
+                "description": "This criteria allows to retrieve all Product records with a Product Relationship to a specified Product.\nE.g. All Products related to Product with ID 5"
+              },
+              {
+                "name": "billingAccountId",
+                "value": "",
+                "type": "query",
+                "description": "The Billing Account associated with the Product."
+              },
+              {
+                "name": "productOrderId",
+                "value": "",
+                "type": "query",
+                "description": "Identifies Product Order associated with the Product"
+              },
+              {
+                "name": "startDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Less than the date that is the initial install date for the Product"
+              },
+              {
+                "name": "startDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Greater than the date that is the initial install date for the Product"
+              },
+              {
+                "name": "lastUpdateDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Less than date that the last change affecting this Product was completed"
+              },
+              {
+                "name": "lastUpdateDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Greater than the date that the last change affecting this Product was completed"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client"
+              }
+            ]
+          },
+          "docs": "This operation lists or finds Product entities"
+        },
+        {
+          "info": {
+            "name": "Retrieves a Product by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/productInventory/v8/product/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Product"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a Product entity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

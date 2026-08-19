@@ -1,0 +1,3521 @@
+{
+  "item": [
+    {
+      "id": "bc5656da-599c-42cf-a1d7-79927f3830fd",
+      "name": "Notification listeners",
+      "description": {
+        "content": "The Buyer/Client's endpoint to send particular event types notifications to.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e088923e-d6c7-462d-b819-0ac8bb735f3b",
+          "name": "Test Job Create Notification endpoint",
+          "request": {
+            "name": "Test Job Create Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Test Job Create Event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testJobCreateEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "77dc318f-a227-44c1-88c7-2d53d26ed320",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "29045dc1-8c98-48e2-9f82-55e8c24edaca",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90b32882-f146-4402-8c05-6394a57669de",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "811dc7b6-966c-4e50-acd5-046338f20364",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc71329f-fea2-493d-a4be-8c8b3a532cd2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c07afff7-0f1d-43d1-9418-3ee584c9ebc6",
+          "name": "Test Job Attribute Value Change Notification endpoint",
+          "request": {
+            "name": "Test Job Attribute Value Change Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Test Job attribute value change event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testJobAttributeValueChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "f479214e-8812-443d-b224-05b3379156a6",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "77d6c5bb-1859-48fa-ba71-34c965b575a4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98fb6949-5844-4af9-8c89-ef346ff2a516",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b6582f8-cc0e-4cd0-9bda-144d986bd247",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e31ee6d9-a2e2-4b37-b48f-49cb1247d314",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2d28ef2-e08a-4d9a-b9ce-28e3878b635a",
+          "name": "Test Job State Change Notification endpoint",
+          "request": {
+            "name": "Test Job State Change Notification endpoint",
+            "description": {
+              "content": "Client listener for receiving the testJobStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testJobStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a8f98d9-21cc-42a4-b483-02fabb583a33",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44cde857-32c5-4d6f-b6eb-2d63fcf78dd9",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30122c71-864b-401a-acc2-63902edd108c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d991597-27a6-4f67-9550-87bb25ece688",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80e27553-01b5-4a2a-b242-4fcd24093558",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "137dedbf-9326-4879-aad7-0acc18b76298",
+          "name": "Cancel Test Job State Change Notification endpoint",
+          "request": {
+            "name": "Cancel Test Job State Change Notification endpoint",
+            "description": {
+              "content": "Client listener for receiving the cancelTestJobStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "cancelTestJobStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b08c3b3-e345-44f9-a99f-66e49ace3c21",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "cancelTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9518d9bf-762c-4491-a085-933b66fe7cc5",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "cancelTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd3ebcb7-e38e-4645-8670-d837d32c8548",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "cancelTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a10e3ee-0e0c-4bf6-ab9f-bffb4c0872a4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "cancelTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "132387a3-84f5-4fad-adee-c7a503c905ef",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "cancelTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5cf2248b-5239-4e82-8aa6-6e4760ed8fe2",
+          "name": "Modify Test Job State Change Notification endpoint",
+          "request": {
+            "name": "Modify Test Job State Change Notification endpoint",
+            "description": {
+              "content": "Client listener for receiving the modifyTestJobStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "modifyTestJobStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52485a36-0768-4616-89d3-832f53e7207d",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "modifyTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "736d140a-12d2-463d-8de3-a5e1a444a1ca",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "modifyTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47cc9ab6-90b0-4c64-998f-62745e3896eb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "modifyTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20400afd-453b-4788-9d95-af1dd5b3aa77",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "modifyTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a01d7ef9-43a9-4df7-ac86-511e71c94564",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "modifyTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bdd63008-b4ee-4cbc-912e-a244a37cda1c",
+          "name": "Suspend Test Job State Change Notification endpoint",
+          "request": {
+            "name": "Suspend Test Job State Change Notification endpoint",
+            "description": {
+              "content": "Client listener for receiving the suspendTestJobStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "suspendTestJobStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b1314296-9274-4e4b-9e08-98d636f60f08",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "suspendTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "de1f4d7a-7b63-4308-b341-d2e46d2e6d26",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "suspendTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c42b536-bec0-4d40-9fbc-4a953b588b21",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "suspendTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88e79016-0b48-421d-82bc-99af726f8943",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "suspendTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5ab5dc1-e605-41e6-a8cb-5aa9ed37e989",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "suspendTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b04137c3-bd33-450d-b89e-f8cf13782e97",
+          "name": "Resume Test Job State Change Notification endpoint",
+          "request": {
+            "name": "Resume Test Job State Change Notification endpoint",
+            "description": {
+              "content": "Client listener for receiving the resumeTestJobStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "resumeTestJobStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5e63510b-29bb-4557-8495-576a2f953a29",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "resumeTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fd6084c-7f07-466a-b9c8-3849fc338aeb",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "resumeTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca1871aa-0e7a-4150-b30d-8c7497d335ac",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "resumeTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fede0d2d-3e01-4288-86b5-be38ce345dd4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "resumeTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd27e566-451c-4320-9379-eb1f2534b596",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "resumeTestJobStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b32d7654-eb60-4d95-b002-2c70ed9f7b58",
+          "name": "Test Profile Create Notification endpoint",
+          "request": {
+            "name": "Test Profile Create Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Test Profile Create Event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testProfileCreateEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "aa3f6abc-2f05-40d8-b0fe-75a36a2e1c81",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "873b2e0e-046f-4653-a6e0-f367a8adb797",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "70768b45-1526-4f99-9973-8445169dbb66",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c37cad0e-cc6d-44eb-9b47-d2d3c0ab5731",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24f34d77-c9dd-4268-bca3-3a8b1f206b2d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f067ab7-c20a-4ca2-b729-41c2dabc7ca8",
+          "name": "Test Profile Attribute Value Change Notification endpoint",
+          "request": {
+            "name": "Test Profile Attribute Value Change Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Test Profile attribute value change event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testProfileAttributeValueChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "3f201133-3ef1-42f1-932e-6423e44d5482",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0802d1c2-0332-48d5-9df1-3724ce0a1c14",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca144099-3139-4703-ba18-fbdf8391273d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c2eee4e-796e-4425-80c8-51011ccaa398",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84e41414-15bf-450a-99a3-305e4fa818d7",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileAttributeValueChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e6c9d319-149a-4ae1-943a-15c018f99ffa",
+          "name": "Test Profile Lifecycle State Change Notification endpoint",
+          "request": {
+            "name": "Test Profile Lifecycle State Change Notification endpoint",
+            "description": {
+              "content": "Client listener for receiving the testProfileLifecycleStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testProfileLifecycleStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f9d0f681-788f-49c4-a27a-b38d4ebddfd8",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileLifecycleStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8074d4a8-54c0-4915-b282-c8ca6ca8717a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileLifecycleStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "84093f23-a3dd-4694-9674-f5cc7acda227",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileLifecycleStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0edddb70-3fe8-4535-850a-3305dcdd73f5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileLifecycleStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66ee5210-e19a-4e53-a6a6-f9df075a7c05",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileLifecycleStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c379727f-95f4-4755-adbe-c5a339b44e8a",
+          "name": "Test Profile Delete Notification endpoint",
+          "request": {
+            "name": "Test Profile Delete Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Test Profile Delete Event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testProfileDeleteEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "89fdd69c-74ba-4c6e-aea3-d71f79f6a87b",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileDeleteEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "71d2e016-659a-4f29-b2d1-39b9e93f2767",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileDeleteEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c688977c-4b87-4a53-b9ed-4658bdfa4468",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileDeleteEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7885c64-1275-4039-9437-d70c4d3192c5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileDeleteEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbfc57ab-a379-45fd-ae59-40c8beede4cb",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testProfileDeleteEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98279b99-686a-4181-9c1c-60c426533680",
+          "name": "Test Result Create Notification endpoint",
+          "request": {
+            "name": "Test Result Create Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Test Result Create Event",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "testResultCreateEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "*/*"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+            }
+          },
+          "response": [
+            {
+              "id": "cb8dba61-5e23-4a1e-829e-f4bd22a7b102",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testResultCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1edf5a88-4c43-4337-bc18-5b5b8dc073fd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testResultCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://kkIOiSPYGslosMWMcNbqha.djruqY2b2PYJxKxLLvWbJIGpR9caYFORktPxFcNQ9vqUIyB9PFc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4be5d5db-a029-431d-ab8f-e9c9cb7b0751",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testResultCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PJBobgLFCHCVpKjFQTiHDwpOiojZaCQp.msnaW8w523HZwHt0Y0.zUwZUxMSyKU-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8449577d-4e62-4142-a5b3-ac35ef3441d0",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testResultCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mWRFldhHSvubYrp.yznwmvTPex6N.fYCcmie6quB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7906b303-4e15-40d4-bebd-39aacc9c86c4",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "testResultCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}"
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gGnCdeyAvMST.khkh53C,zTr7Y2y2arFArZOoRjBbiee\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Buyer's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mef.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/legato/serviceFunctionTestingNotification/v3/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2dc75895-9d1b-453e-897b-79d876125c65",
+    "name": "Service Function Testing Notification",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 149**\n**This API implements part of Business Requirements & Use Cases described in Mplify 136.1**\nThis is the API to manage notifications for Test Job, Test Profile and Test Result. This API must be deployed on notification subscriber side  (buyer side / listener).\n\nList of supported use cases:\n  - Send Event Notification\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Service Test Management API\n(TMF653 v4.1.0) available at \nhttps://github.com/tmforum-apis/TMF653_ServiceTestManagement, which is licensed by \nthe TM Forum under the Apache License version 2.0. Such content has been\nmodified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

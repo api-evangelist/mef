@@ -1,0 +1,767 @@
+{
+  "item": [
+    {
+      "id": "9f189f53-1511-4af4-b0f6-4ff2a7c6b2cc",
+      "name": "Notification listeners",
+      "description": {
+        "content": "The Buyer's endpoint to send particular event types notifications to.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "abb90839-58da-468c-aca6-d4a89453935d",
+          "name": "Client listener for customerBillCreateEvent",
+          "request": {
+            "name": "Client listener for customerBillCreateEvent",
+            "description": {
+              "content": "Client listener for receiving the billCreatedEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "customerBillCreateEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "33623c7c-e94f-4e06-971c-9fd8c09bb23e",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "92912c65-cce9-4f23-abb4-def3fa1bbdc2",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://ZVO.fxrDpyyI+LxajtT3LYHnnzun0PTZHyqmjqQLPQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fade6c0-f767-4c46-bed4-6ea088cebc89",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gUUycXgiihXGS.wcpNLjCQVYlNZcwV.N2.pi1sr5Q6p\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00b94c19-c1b9-4c0a-8e33-9154edde9ac4",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://CHsAEGdZDFggPgH.ghx5gyBcmP.7aSxBlgAfveaScRh61qssC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02310a5f-ae51-4510-b9ad-c8f3a8f04f03",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillCreateEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://cqQWhdyJJoPYNaYytbRKHdoQmCeVVy.lloaaI0Kd+bEaHPtR1TSmxhzJ6xa7tydwcvuzyEbGA8MKSuPp3jV.zUQJKOg4WvxLX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8554c48b-af33-4dc3-a20c-a5fdad8108ae",
+          "name": "Client listener for customerBillStateChangeEvent",
+          "request": {
+            "name": "Client listener for customerBillStateChangeEvent",
+            "description": {
+              "content": "Client listener for receiving the customerBillStateChangeEvent notification",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "customerBillStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "81507741-cfc8-4f40-ad62-4fa142d48a20",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "168e3dd6-61cc-4b60-aa13-91e5d87fa7c7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://ZVO.fxrDpyyI+LxajtT3LYHnnzun0PTZHyqmjqQLPQ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ceb7808e-77f1-4123-b863-b7661ae0aafe",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://gUUycXgiihXGS.wcpNLjCQVYlNZcwV.N2.pi1sr5Q6p\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a76fb28f-e0d3-44e0-bab2-ebfe3bf33695",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://CHsAEGdZDFggPgH.ghx5gyBcmP.7aSxBlgAfveaScRh61qssC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb83f70b-033a-48fc-8078-d5a875e5455e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "customerBillStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://cqQWhdyJJoPYNaYytbRKHdoQmCeVVy.lloaaI0Kd+bEaHPtR1TSmxhzJ6xa7tydwcvuzyEbGA8MKSuPp3jV.zUQJKOg4WvxLX\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Buyer's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/sonata/customerBillNotification/v3/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c3618490-a644-4232-9a3c-031852f588da",
+    "name": "Billing Notification",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 141.1**\nBill is a legal document generated by the Seller to the Buyer relating \nto charges associated to Products provided by the Seller to the Buyer. \n\nList of supported use cases:\n- Generate Invoice Notifications\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Customer Bill Management API (TMF678 v4.0.0) available at https://github.com/tmforum-apis/TMF678_CustomerBill, which is licensed by the TM Forum under the Apache License version 2.0. Such content has been modified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

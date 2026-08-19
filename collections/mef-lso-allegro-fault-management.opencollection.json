@@ -1,0 +1,619 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Fault Management",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "faultManagementJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Fault Management Job objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementJob",
+            "params": [
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service."
+              },
+              {
+                "name": "serviceFromId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service From endpoint."
+              },
+              {
+                "name": "serviceToId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service To endpoint."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of an Entity."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of the Fault Management Job. See `FaultManagementJobStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the job was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the job was created - lower than."
+              },
+              {
+                "name": "jobType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the Fault Management Job."
+              },
+              {
+                "name": "jobPriority",
+                "value": "",
+                "type": "query",
+                "description": "The priority of the Fault Management Job."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of FM Jobs based on a set of filter criteria. The Seller/Server returns a summarized list of FM  Jobs. For each FM Job returned, the Seller/Server also provides a  Fault Management Job Identifier that uniquely identifies this FM Job  within the Seller/Server. The order of the elements returned to the Buyer/Client is defined by the Seller/Server (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Creates a Fault Management Job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to create a Fault Management Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Fault Management Job by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Fault Management Job."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Fault Management Job based on the Job Identifier."
+        },
+        {
+          "info": {
+            "name": "Resumes a Fault Management Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementJob/:id/resume",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the FaultManagementJob."
+              }
+            ]
+          },
+          "docs": "A request initiated by the Buyer/Client to resume a Fault Management Job."
+        },
+        {
+          "info": {
+            "name": "Suspends a Fault Management Job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementJob/:id/suspend",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the FaultManagementJob."
+              }
+            ]
+          },
+          "docs": "A request initiated by the Buyer/Client to suspend a Fault Management Job."
+        },
+        {
+          "info": {
+            "name": "List or find CancelFaultManagementJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/cancelFaultManagementJob",
+            "params": [
+              {
+                "name": "faultManagementJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Fault Management Job that is a subject of CancelFaultManagementJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of CancelFaultManagementJob. See `FaultManagementJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the CancelFaultManagementJob was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the CancelFaultManagementJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Cancel Fault Management Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "Creates a Cancel Fault Management Job entity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/cancelFaultManagementJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to cancel  a Fault Management Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a CancelFaultManagementJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/cancelFaultManagementJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the CancelFaultManagementJob."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Cancel Fault Management Job based on the Cancel Fault Management Job Identifier."
+        },
+        {
+          "info": {
+            "name": "List or find ModifyFaultManagementJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/modifyFaultManagementJob",
+            "params": [
+              {
+                "name": "faultManagementJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Fault Management Job that is a subject of ModifyFaultManagementJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of ModifyFaultManagementJob See `FaultManagementJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ModifyFaultManagementJob was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ModifyFaultManagementJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Modify Fault Management Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "Creates a Modify Fault Management Job entity.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/modifyFaultManagementJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to modify a Fault Management Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a ModifyFaultManagementJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/modifyFaultManagementJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ModifyFaultManagementJob."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Modify Fault Management Job based on the Modify Fault Management Job Identifier."
+        },
+        {
+          "info": {
+            "name": "Executes a FaultManagementJobComplexQuery.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementJobComplexQuery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to execute a Fault Management Job Complex Query in the Seller/Server system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "faultManagementReport",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Fault Management Report objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementReport",
+            "params": [
+              {
+                "name": "faultManagementJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Fault Management Job that generated Fault Management Report."
+              },
+              {
+                "name": "serviceFromId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service From endpoint."
+              },
+              {
+                "name": "serviceToId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service To endpoint."
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Entity."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of the Fault Management Report. See `FaultManagementReportStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the report was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the report was created - lower than."
+              },
+              {
+                "name": "reportingTimeframe.startDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Start date of reporting timeframe - greater than."
+              },
+              {
+                "name": "reportingTimeframe.startDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Start date of reporting timeframe - lower than."
+              },
+              {
+                "name": "reportingTimeframe.endDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "End date of reporting timeframe - greater than."
+              },
+              {
+                "name": "reportingTimeframe.endDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "End date of reporting timeframe - lower than."
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query",
+                "description": "Format of report output."
+              },
+              {
+                "name": "resultFormat",
+                "value": "",
+                "type": "query",
+                "description": "Type of providing report results."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Fault Management Reports based  on a set of filter criteria. The Seller/Server returns a summarized list of FM Reports. For each FM Report returned, the Seller/Server also provides a Fault Management Report Identifier that uniquely identifies this FM Report within the Seller/Server. The order of the elements returned to the Buyer/Client is defined by the Seller/Server  (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Fault Management Report by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementReport/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Fault Management Report to be retrieved."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single  Fault Management Report based on the Report Identifier."
+        },
+        {
+          "info": {
+            "name": "Executes a FaultManagementReportComplexQuery.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/faultManagementReportComplexQuery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to execute a Fault Management Report Complex Query in the Seller/Server system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "trackingRecord",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Tracking Record objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/trackingRecord",
+            "params": [
+              {
+                "name": "relatedFaultManagementJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Fault Management Job."
+              },
+              {
+                "name": "relatedFaultManagementReportId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Fault Management Report."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the record was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the record was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Tracking Records based on a set of filter criteria. The Seller/Server returns a list of Tracking Records. Tracking Record allows for tracking of modifications performed on  a Fault Management Job or Report."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/hub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer/Client requests to subscribe to Fault Management Job  or Fault Management Report Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about  a single Notification Hub based on the Hub Identifier."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/allegro/faultManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the registered listener."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests to unsubscribe from Fault Management Job or Fault Management Report Notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

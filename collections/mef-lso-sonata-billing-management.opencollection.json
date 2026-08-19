@@ -1,0 +1,222 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Billing Management",
+    "version": "3.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Customer Bill",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find CustomerBill objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/customerBillManagement/v3/customerBill",
+            "params": [
+              {
+                "name": "billingAccount.id",
+                "value": "",
+                "type": "query",
+                "description": "An identifier for the Billing Account that is unique within the Seller."
+              },
+              {
+                "name": "billingPeriod.startDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Billing Period started - lower than."
+              },
+              {
+                "name": "billingPeriod.startDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Billing Period started - greater than."
+              },
+              {
+                "name": "billingPeriod.endDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Billing Period ended - lower than."
+              },
+              {
+                "name": "billingPeriod.endDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Billing Period ended - greater than."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "The category of Bill. One of the following:  - normal  - duplicate - trial"
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the Bill Item."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of resources to be provided in response."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "This operation lists or finds CustomerBill entities"
+        },
+        {
+          "info": {
+            "name": "Retrieves a CustomerBill by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/customerBillManagement/v3/customerBill/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the CustomerBill"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a CustomerBill entity."
+        },
+        {
+          "info": {
+            "name": "Retrieves a CustomerBillItem by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/customerBillManagement/v3/customerBillItem/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the CustomerBillItem"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a CustomerBillItem entity."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events Subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allows the Buyer to register to Bill state change notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/customerBillManagement/v3/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer requests to subscribe to Bill Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/customerBillManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller. 9.18)"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/sonata/customerBillManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the EventSubscription"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests to unsubscribe from Bill Notifications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

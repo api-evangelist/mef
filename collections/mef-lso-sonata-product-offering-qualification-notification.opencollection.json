@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Product Offering Qualification Notification",
+    "version": "8.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification listeners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Product Offering Qualification Change Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualificationNotification/v8/listener/poqStateChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on POQ state change"
+        },
+        {
+          "info": {
+            "name": "Poq Item State Change Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualificationNotification/v8/listener/poqItemStateChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on Poq Item state change\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,404 @@
+{
+  "item": [
+    {
+      "id": "c01377e4-7ee8-48ed-ab94-1ceeccb9dcc3",
+      "name": "Notification listeners",
+      "description": {
+        "content": "The Seller's endpoint to send particular event types notifications to.\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ffa33967-a9f6-4a62-a6fc-8521feaae048",
+          "name": "Geographic Address Validation State Change Notification endpoint",
+          "request": {
+            "name": "Geographic Address Validation State Change Notification endpoint",
+            "description": {
+              "content": "This endpoint is used to receive notifications on Geographic Address Validation state change",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "listener",
+                "geographicAddressValidationStateChangeEvent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Buyer's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "894e2fdc-be60-4f12-b5ae-5047fd06ba30",
+              "name": "No Content (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "geographicAddressValidationStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0b9f6ffc-92c2-4729-a694-37be1b708718",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "geographicAddressValidationStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidBody\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://QXNZXxDabDZbENcKvfsp.nmmyCgrwdA6o9o8QF5hSDIxURpQh70cMttIGo.rEn8l1E0Lg\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecfd8d00-a007-4f95-8c82-7ce0dcb67814",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "geographicAddressValidationStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://HYEDYIXkqhIuMYFwkWm.uqqv,4I,+T16aN3ueuQS6iM3\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10e70122-5460-4ad3-a571-04d179540998",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "geographicAddressValidationStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://ethnxdQiwsbIhmWhpTLJ.cvuqIz-Jfo00,ghXdyEYzwRAFNXQlNSKL2TDSwAQvPOS9p6mRnilin\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1c3ed11-9f62-4374-a907-08a8754a4742",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "listener",
+                    "geographicAddressValidationStateChangeEvent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Buyer's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"event\": \"<object>\",\n  \"eventId\": \"<string>\",\n  \"eventTime\": \"<dateTime>\",\n  \"eventType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://EtsyXyuBmUVfdebf.gfgOpE,0bXdJLNCHJcBmIDFfsqKDErVM1\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Buyer's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/cantata/geographicAddressNotification/v2/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "263bc530-4f82-472d-85da-e1847d75969f",
+    "name": "Geographic Address Notification",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 121.1**\n\nThis API implements Business Requirements described in Mplify 150\n\nThis draft represents Mplify work in progress and is subject to change\n\nIt allows the Buyer to retrieve address information from the Seller, including\nexact formats, for addresses known to the Seller.\n\nList of supported Use Cases:\n- Send Notifications\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Geographic Address API\n(TMF673 v4.0.1) available at\nhttps://github.com/tmforum-apis/TMF673_GeographicAddress, which is licensed\nby the TM Forum under the Apache License version 2.0. Such content has been\nmodified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,457 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Product Catalog",
+    "version": "4.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "category",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists or finds Category objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/category",
+            "params": [
+              {
+                "name": "parentCategory.id",
+                "value": "",
+                "type": "query",
+                "description": "Id of the Parent of this Product Category."
+              },
+              {
+                "name": "lastUpdate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date and time the Product Category was created or most recently updated, greater than"
+              },
+              {
+                "name": "lastUpdate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date and time the Product Category was created or most recently updated, less than"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. It MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. It MUST be specified in the request only when the responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client"
+              }
+            ]
+          },
+          "docs": "This operation lists or finds Category entities"
+        },
+        {
+          "info": {
+            "name": "Retrieves a Category by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/category/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Category"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a Category entity."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "productOffering",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Product Offering objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/productOffering",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The commercial name of the Product Offering"
+              },
+              {
+                "name": "lastUpdate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date and time the Product Offering was created or most recently updated, greater than"
+              },
+              {
+                "name": "lastUpdate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date and time the Product Offering was created or most recently updated, less than"
+              },
+              {
+                "name": "lifecycleStatus",
+                "value": "",
+                "type": "query",
+                "description": "Lifecycle Status of the Product Offering"
+              },
+              {
+                "name": "agreement",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Seller's offer arrangement (such as a framework agreement).  **Note:** The list of allowable values for agreements should be negotiated between the Buyer and the Seller, during the integration phase. Ultimately it will be the enumerated set of values (it's problematic to define the enumerated values globally for any operator)."
+              },
+              {
+                "name": "channel",
+                "value": "",
+                "type": "query",
+                "description": "The names of the sales channels through which the Product Offering is made available to the Buyer to order. **Note:** The list of allowable values for selling channels should be negotiated between the Buyer and the Seller, during the integration phase.  Ultimately it will be the enumerated set of values (it's problematic to define\n the enumerated values globally for any operator)."
+              },
+              {
+                "name": "marketSegment",
+                "value": "",
+                "type": "query",
+                "description": "The names of the market segments  targeted for the Product Offering. **Note:** The list of allowable values for selling market segments should be negotiated between the Buyer and the Seller, during the integration phase.  Ultimately it will be the enumerated set of values (it's problematic to define the enumerated values globally for any operator)."
+              },
+              {
+                "name": "region.countryCode",
+                "value": "",
+                "type": "query",
+                "description": "Country where the products are offered by the Seller to potential Buyers."
+              },
+              {
+                "name": "isBundle",
+                "value": "",
+                "type": "query",
+                "description": "Determines whether a productOffering represents a single productOffering (false), or a bundle of productOfferings (true)."
+              },
+              {
+                "name": "isSellable",
+                "value": "",
+                "type": "query",
+                "description": "A flag indicating if this product offer can be sold stand-alone for sale or not. If this flag is false it indicates that the offer can only be sold within a bundle."
+              },
+              {
+                "name": "category.id",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of the Category that Product Offering is the direct or transitive member of. Direct member - there is a direct relation between Category and Product Offering. Transitive member - there is a relation between one of the sub-categories and Product Offering."
+              },
+              {
+                "name": "productSpecification.id",
+                "value": "",
+                "type": "query",
+                "description": "A Product Specification Reference to the detailed description of the specifications and attributes defining all of the Product Offering characteristics."
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of an item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client"
+              }
+            ]
+          },
+          "docs": "This operation list or find ProductOffering entities"
+        },
+        {
+          "info": {
+            "name": "Retrieves a ProductOffering by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/productOffering/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ProductOffering"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a ProductOffering entity. Attribute selection is enabled for all first level attributes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "productSpecification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find ProductSpecification objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/productSpecification",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Product Specification (may not be unique)"
+              },
+              {
+                "name": "lifecycleStatus",
+                "value": "",
+                "type": "query",
+                "description": "Lifecycle Status of the Product Specification"
+              },
+              {
+                "name": "lastUpdate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date and time the Product Specification was created or most recently updated, greater than"
+              },
+              {
+                "name": "lastUpdate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date and time the Product Specification was created or most recently updated, less than"
+              },
+              {
+                "name": "agreement",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Seller's standard offer arrangement (such as a framework agreement). The name is unique within the Seller domain. This should be the name of the Seller's standard offer arrangement or framework agreement for the Product Specification."
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of an item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client"
+              }
+            ]
+          },
+          "docs": "This operation list or find ProductSpecification entities"
+        },
+        {
+          "info": {
+            "name": "Retrieves a ProductSpecification by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/productSpecification/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ProductSpecification"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a ProductSpecification entity. Attribute selection is enabled for all first level attributes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{serverBase}/mefApi/sonata/productCatalog/v4/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the registered listener"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

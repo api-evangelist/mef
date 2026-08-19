@@ -1,0 +1,2709 @@
+{
+  "item": [
+    {
+      "id": "55b85c35-9438-4b79-882d-58b94b9b8e0e",
+      "name": "Customer Bill",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d5f08d82-25d8-4866-b516-d81e5b88a4a6",
+          "name": "List or find CustomerBill objects",
+          "request": {
+            "name": "List or find CustomerBill objects",
+            "description": {
+              "content": "This operation lists or finds CustomerBill entities",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customerBill"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "billingAccount.id",
+                  "value": "<string>",
+                  "description": "An identifier for the Billing Account that is unique within the Seller."
+                },
+                {
+                  "disabled": false,
+                  "key": "billingPeriod.startDateTime.lt",
+                  "value": "<dateTime>",
+                  "description": "The date the Billing Period started - lower than."
+                },
+                {
+                  "disabled": false,
+                  "key": "billingPeriod.startDateTime.gt",
+                  "value": "<dateTime>",
+                  "description": "The date the Billing Period started - greater than."
+                },
+                {
+                  "disabled": false,
+                  "key": "billingPeriod.endDateTime.lt",
+                  "value": "<dateTime>",
+                  "description": "The date the Billing Period ended - lower than."
+                },
+                {
+                  "disabled": false,
+                  "key": "billingPeriod.endDateTime.gt",
+                  "value": "<dateTime>",
+                  "description": "The date the Billing Period ended - greater than."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "The category of Bill. One of the following:  - normal  - duplicate - trial"
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "The state of the Bill Item."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Requested index for start of resources to be provided in response."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Requested number of resources to be provided in response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "beb55d48-5229-487c-8e99-3d0afcff7bb8",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "billingAccount.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Used to indicate that result page was throttled to maximum possible size  and there are additional results that can be fetched\n",
+                  "key": "X-Pagination-Throttled",
+                  "value": "true"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of matching records. E.g. if there are 50 matching records in total, but the request has offset=10 and limit=10, then the X-Total-Count is 50.\n",
+                  "key": "X-Total-Count",
+                  "value": "3322"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of records included in the response",
+                  "key": "X-Result-Count",
+                  "value": "3322"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"billNo\": \"string\",\n    \"category\": \"normal\",\n    \"id\": \"string\",\n    \"state\": \"generated\",\n    \"billingAccount\": {\n      \"id\": \"string\"\n    },\n    \"billingPeriod\": {\n      \"endDateTime\": \"1962-01-11T12:59:48.296Z\",\n      \"startDateTime\": \"1982-05-21T09:49:38.345Z\"\n    }\n  },\n  {\n    \"billNo\": \"string\",\n    \"category\": \"trial\",\n    \"id\": \"string\",\n    \"state\": \"generated\",\n    \"billingAccount\": {\n      \"id\": \"string\"\n    },\n    \"billingPeriod\": {\n      \"endDateTime\": \"2011-08-24T17:03:08.349Z\",\n      \"startDateTime\": \"2002-02-19T18:52:36.194Z\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9631d4ab-2ac8-4752-9ef0-949884db2280",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "billingAccount.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://FPkQDNqzexYJvlZPCpZnbLRng.qeyhqsHNzVWfp9zNlAOUHkMYHq3yXvO7nNCxENYLpC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a1bcad85-0040-4e3f-8cb8-a2ff30bf7e4f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "billingAccount.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fLVzBfzMzJlfUAdgfYtqsDMGe.zyseKCt60sdi,q9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e570d587-5b1c-4c2c-acde-90dc0f6a28d1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "billingAccount.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GMzDJANB.zhukcitM314LT+FNROOBIIz6zztPSfwIZj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e2b69f3-c4d3-447b-804b-bda8278b1775",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "billingAccount.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://JGwmfeaGzePV.eimJ5RdrhavFhlC25wmxlAr,FYgbXJEmL3+ffi1irnNzi9IkRRTCoD\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"unexpectedProperty\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://LrpOXyyKcpf.sfyhrUuXy9A6nCAz0P-mk\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8135ff4-5fb2-42e1-af2c-9b92c8048063",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "billingAccount.id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.startDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "billingPeriod.endDateTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MmChjil.ymjEFl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5dfa44fa-cf81-4592-a90e-e7a33f8f7088",
+          "name": "Retrieves a CustomerBill by ID",
+          "request": {
+            "name": "Retrieves a CustomerBill by ID",
+            "description": {
+              "content": "This operation retrieves a CustomerBill entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customerBill",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the CustomerBill"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29c0d98e-742a-4b12-86d9-a916ee4118da",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBill"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"amountDue\": {\n      \"unit\": \"string\",\n      \"value\": 6219.221873471844\n    },\n    \"appliedPayment\": [\n      {\n        \"appliedAmount\": {\n          \"unit\": \"string\",\n          \"value\": 5567.060339094281\n        },\n        \"payment\": {\n          \"id\": \"string\",\n          \"amount\": {\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"paymentMethod\": \"other\",\n          \"paymentDate\": \"1980-10-02T17:54:36.491Z\"\n        }\n      },\n      {\n        \"appliedAmount\": {\n          \"unit\": \"string\",\n          \"value\": 4839.931645226574\n        },\n        \"payment\": {\n          \"id\": \"string\",\n          \"amount\": {\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"paymentMethod\": \"check\",\n          \"paymentDate\": \"2006-12-26T21:02:51.453Z\"\n        }\n      }\n    ],\n    \"billCycle\": \"string\",\n    \"billDate\": \"2014-09-12T10:35:24.070Z\",\n    \"billDocument\": {\n      \"url\": \"string\"\n    },\n    \"billNo\": \"string\",\n    \"billingAccount\": {\n      \"id\": \"string\"\n    },\n    \"billingPeriod\": {\n      \"endDateTime\": \"1983-06-12T06:46:45.170Z\",\n      \"startDateTime\": \"1999-07-29T00:54:12.390Z\"\n    },\n    \"category\": \"duplicate\",\n    \"credits\": {\n      \"unit\": \"string\",\n      \"value\": 4656.937721602412\n    },\n    \"customerBillItem\": [\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"discounts\": {\n      \"unit\": \"string\",\n      \"value\": 6673.047923439739\n    },\n    \"fees\": {\n      \"unit\": \"string\",\n      \"value\": 462.55728230148117\n    },\n    \"financialAccount\": {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    \"id\": \"string\",\n    \"lastUpdate\": \"2008-07-26T08:48:25.889Z\",\n    \"paymentDueDate\": \"2022-06-27T23:04:42.645Z\",\n    \"relatedContactInformation\": [\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": \"string\",\n          \"streetNrSuffix\": \"string\",\n          \"streetNrLast\": \"string\",\n          \"streetNrLastSuffix\": \"string\",\n          \"streetPreDirection\": \"string\",\n          \"streetName\": \"string\",\n          \"streetType\": \"string\",\n          \"streetPostDirection\": \"string\",\n          \"poBox\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"postcode\": \"string\",\n          \"postcodeExtension\": \"string\",\n          \"stateOrProvince\": \"string\",\n          \"countryCode\": \"st\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"string\",\n          \"privateStreetNumber\": \"string\",\n          \"privateStreetName\": \"string\",\n          \"language\": \"st\"\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      },\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": \"string\",\n          \"streetNrSuffix\": \"string\",\n          \"streetNrLast\": \"string\",\n          \"streetNrLastSuffix\": \"string\",\n          \"streetPreDirection\": \"string\",\n          \"streetName\": \"string\",\n          \"streetType\": \"string\",\n          \"streetPostDirection\": \"string\",\n          \"poBox\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"postcode\": \"string\",\n          \"postcodeExtension\": \"string\",\n          \"stateOrProvince\": \"string\",\n          \"countryCode\": \"st\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"string\",\n          \"privateStreetNumber\": \"string\",\n          \"privateStreetName\": \"string\",\n          \"language\": \"st\"\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      }\n    ],\n    \"remainingAmount\": {\n      \"unit\": \"string\",\n      \"value\": 5972.550613222327\n    },\n    \"runType\": \"offCycle\",\n    \"state\": \"settled\",\n    \"taxExcludedAmount\": {\n      \"unit\": \"string\",\n      \"value\": 6698.552281212019\n    },\n    \"taxIncludedAmount\": {\n      \"unit\": \"string\",\n      \"value\": 314.70520563690485\n    },\n    \"taxItem\": [\n      {\n        \"taxCategory\": \"string\",\n        \"taxRate\": 2806.591852366074,\n        \"taxAmount\": {\n          \"unit\": \"string\",\n          \"value\": 9721.71819749697\n        }\n      },\n      {\n        \"taxCategory\": \"string\",\n        \"taxRate\": 1316.81024262995,\n        \"taxAmount\": {\n          \"unit\": \"string\",\n          \"value\": 9586.228393607382\n        }\n      }\n    ],\n    \"href\": \"string\"\n  },\n  {\n    \"amountDue\": {\n      \"unit\": \"string\",\n      \"value\": 7515.7988280026\n    },\n    \"appliedPayment\": [\n      {\n        \"appliedAmount\": {\n          \"unit\": \"string\",\n          \"value\": 1769.7238441628283\n        },\n        \"payment\": {\n          \"id\": \"string\",\n          \"amount\": {\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"paymentMethod\": \"electronic\",\n          \"paymentDate\": \"2023-04-19T05:42:10.314Z\"\n        }\n      },\n      {\n        \"appliedAmount\": {\n          \"unit\": \"string\",\n          \"value\": 2388.7510025089255\n        },\n        \"payment\": {\n          \"id\": \"string\",\n          \"amount\": {\n            \"unit\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"paymentMethod\": \"other\",\n          \"paymentDate\": \"2021-01-04T15:09:49.565Z\"\n        }\n      }\n    ],\n    \"billCycle\": \"string\",\n    \"billDate\": \"1968-05-19T23:25:56.213Z\",\n    \"billDocument\": {\n      \"url\": \"string\"\n    },\n    \"billNo\": \"string\",\n    \"billingAccount\": {\n      \"id\": \"string\"\n    },\n    \"billingPeriod\": {\n      \"endDateTime\": \"1996-10-17T05:19:21.175Z\",\n      \"startDateTime\": \"1948-04-25T18:41:32.394Z\"\n    },\n    \"category\": \"duplicate\",\n    \"credits\": {\n      \"unit\": \"string\",\n      \"value\": 1685.7684965221042\n    },\n    \"customerBillItem\": [\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"discounts\": {\n      \"unit\": \"string\",\n      \"value\": 7146.742864752075\n    },\n    \"fees\": {\n      \"unit\": \"string\",\n      \"value\": 3891.8029279704556\n    },\n    \"financialAccount\": {\n      \"id\": \"string\",\n      \"href\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"string\"\n    },\n    \"id\": \"string\",\n    \"lastUpdate\": \"1972-09-06T09:20:50.548Z\",\n    \"paymentDueDate\": \"1982-07-28T20:36:59.714Z\",\n    \"relatedContactInformation\": [\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": \"string\",\n          \"streetNrSuffix\": \"string\",\n          \"streetNrLast\": \"string\",\n          \"streetNrLastSuffix\": \"string\",\n          \"streetPreDirection\": \"string\",\n          \"streetName\": \"string\",\n          \"streetType\": \"string\",\n          \"streetPostDirection\": \"string\",\n          \"poBox\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"postcode\": \"string\",\n          \"postcodeExtension\": \"string\",\n          \"stateOrProvince\": \"string\",\n          \"countryCode\": \"st\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"string\",\n          \"privateStreetNumber\": \"string\",\n          \"privateStreetName\": \"string\",\n          \"language\": \"st\"\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      },\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": \"string\",\n          \"streetNrSuffix\": \"string\",\n          \"streetNrLast\": \"string\",\n          \"streetNrLastSuffix\": \"string\",\n          \"streetPreDirection\": \"string\",\n          \"streetName\": \"string\",\n          \"streetType\": \"string\",\n          \"streetPostDirection\": \"string\",\n          \"poBox\": \"string\",\n          \"locality\": \"string\",\n          \"city\": \"string\",\n          \"postcode\": \"string\",\n          \"postcodeExtension\": \"string\",\n          \"stateOrProvince\": \"string\",\n          \"countryCode\": \"st\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"string\",\n          \"privateStreetNumber\": \"string\",\n          \"privateStreetName\": \"string\",\n          \"language\": \"st\"\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      }\n    ],\n    \"remainingAmount\": {\n      \"unit\": \"string\",\n      \"value\": 357.90953482515374\n    },\n    \"runType\": \"offCycle\",\n    \"state\": \"generated\",\n    \"taxExcludedAmount\": {\n      \"unit\": \"string\",\n      \"value\": 6790.6418882902035\n    },\n    \"taxIncludedAmount\": {\n      \"unit\": \"string\",\n      \"value\": 4736.6144969019215\n    },\n    \"taxItem\": [\n      {\n        \"taxCategory\": \"string\",\n        \"taxRate\": 2813.2733638983655,\n        \"taxAmount\": {\n          \"unit\": \"string\",\n          \"value\": 9012.635134975842\n        }\n      },\n      {\n        \"taxCategory\": \"string\",\n        \"taxRate\": 7508.696257372822,\n        \"taxAmount\": {\n          \"unit\": \"string\",\n          \"value\": 7349.171296966364\n        }\n      }\n    ],\n    \"href\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8ca662a-8723-4934-b0f9-0cfe9584e034",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBill"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://FPkQDNqzexYJvlZPCpZnbLRng.qeyhqsHNzVWfp9zNlAOUHkMYHq3yXvO7nNCxENYLpC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "339212f8-8713-49e2-89b9-cba546f0bab7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBill"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fLVzBfzMzJlfUAdgfYtqsDMGe.zyseKCt60sdi,q9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02577dc8-2f4b-4bfd-ae80-688df377a342",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBill"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GMzDJANB.zhukcitM314LT+FNROOBIIz6zztPSfwIZj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dd6cfec1-9a00-4111-95b2-ae9f6d8243da",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBill"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://yyEGByUQLKTqgNX.jjMVjmgxbQcX4FUvpCMRLj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ceb2e13-87bb-452e-ad6c-e1f7e033bc43",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBill",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBill"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MmChjil.ymjEFl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f7d76a95-3c84-48e3-8823-112af6083723",
+          "name": "Retrieves a CustomerBillItem by ID",
+          "request": {
+            "name": "Retrieves a CustomerBillItem by ID",
+            "description": {
+              "content": "This operation retrieves a CustomerBillItem entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customerBillItem",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the CustomerBillItem"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b6602eb0-ed1d-4eb5-a6c9-854e369d9c64",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBillItem",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBillItem"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"appliedFee\": [\n      {\n        \"category\": \"recurring\",\n        \"description\": \"string\",\n        \"rate\": 7237.247892308156,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 8544.027474482702\n        }\n      },\n      {\n        \"category\": \"recurring\",\n        \"description\": \"string\",\n        \"rate\": 5008.543573609888,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 7278.081241246958\n        }\n      }\n    ],\n    \"appliedTax\": [\n      {\n        \"category\": \"country\",\n        \"description\": \"string\",\n        \"rate\": 9025.357374293844,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 6565.295656658074\n        }\n      },\n      {\n        \"category\": \"country\",\n        \"description\": \"string\",\n        \"rate\": 2602.942963630898,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 8328.526559741093\n        }\n      }\n    ],\n    \"customerBillItemType\": \"usageBased\",\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"periodCoverage\": {\n      \"endDateTime\": \"1966-03-03T14:55:43.547Z\",\n      \"startDateTime\": \"1995-11-01T13:08:30.778Z\"\n    },\n    \"product\": {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    \"productName\": \"string\",\n    \"productOrderItem\": {\n      \"productOrderId\": \"string\",\n      \"productOrderItemId\": \"string\",\n      \"productOrderHref\": \"string\"\n    },\n    \"state\": \"paymentDue\",\n    \"taxExcludedAmount\": {\n      \"unit\": \"string\",\n      \"value\": 3591.0924635071506\n    },\n    \"unit\": \"string\",\n    \"unitQuantity\": 8512.603330485012,\n    \"unitRate\": {\n      \"unit\": \"string\",\n      \"value\": 8579.725903167135\n    },\n    \"href\": \"string\"\n  },\n  {\n    \"appliedFee\": [\n      {\n        \"category\": \"other\",\n        \"description\": \"string\",\n        \"rate\": 5544.390438472682,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 9.094332508740033\n        }\n      },\n      {\n        \"category\": \"nonRecurring\",\n        \"description\": \"string\",\n        \"rate\": 2279.0548270285894,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 4920.178549212164\n        }\n      }\n    ],\n    \"appliedTax\": [\n      {\n        \"category\": \"city\",\n        \"description\": \"string\",\n        \"rate\": 6388.995100222328,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 2605.2659588720207\n        }\n      },\n      {\n        \"category\": \"country\",\n        \"description\": \"string\",\n        \"rate\": 1788.6380978779891,\n        \"amount\": {\n          \"unit\": \"string\",\n          \"value\": 8708.573780280309\n        }\n      }\n    ],\n    \"customerBillItemType\": \"usageBased\",\n    \"description\": \"string\",\n    \"id\": \"string\",\n    \"periodCoverage\": {\n      \"endDateTime\": \"1982-04-19T21:20:57.745Z\",\n      \"startDateTime\": \"1970-03-18T16:59:25.467Z\"\n    },\n    \"product\": {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    \"productName\": \"string\",\n    \"productOrderItem\": {\n      \"productOrderId\": \"string\",\n      \"productOrderItemId\": \"string\",\n      \"productOrderHref\": \"string\"\n    },\n    \"state\": \"paymentDue\",\n    \"taxExcludedAmount\": {\n      \"unit\": \"string\",\n      \"value\": 9135.191379210057\n    },\n    \"unit\": \"string\",\n    \"unitQuantity\": 3463.2997953389367,\n    \"unitRate\": {\n      \"unit\": \"string\",\n      \"value\": 4621.073841573321\n    },\n    \"href\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2235c712-e4c3-4c1a-903b-bc7078aaf77d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBillItem",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBillItem"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://FPkQDNqzexYJvlZPCpZnbLRng.qeyhqsHNzVWfp9zNlAOUHkMYHq3yXvO7nNCxENYLpC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f5d161ca-9d5a-4d18-8871-4db3c2241767",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBillItem",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBillItem"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fLVzBfzMzJlfUAdgfYtqsDMGe.zyseKCt60sdi,q9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f60dac3-2fae-47da-95ae-b0ed6411aec1",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBillItem",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBillItem"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GMzDJANB.zhukcitM314LT+FNROOBIIz6zztPSfwIZj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a68e564f-0df5-4419-b719-2733471ac220",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBillItem",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBillItem"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://yyEGByUQLKTqgNX.jjMVjmgxbQcX4FUvpCMRLj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8cdaf84-d872-4a4d-9670-14a704f9b7af",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customerBillItem",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the CustomerBillItem"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MmChjil.ymjEFl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "002e1f51-794b-46aa-bcae-151596b3a1e7",
+      "name": "Events Subscription",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e3d7f57e-1fa9-468a-b51c-c0c8e41bf06a",
+          "name": "Allows the Buyer to register to Bill state change notifications",
+          "request": {
+            "name": "Allows the Buyer to register to Bill state change notifications",
+            "description": {
+              "content": "The Buyer requests to subscribe to Bill Notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8596ee9e-819a-48da-936a-23fbeedf9a00",
+              "name": "Subscribed  (https://tools.ietf.org/html/rfc7231#section-6.3.2)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1df249f4-3c92-4956-ad48-659789acdecd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://FPkQDNqzexYJvlZPCpZnbLRng.qeyhqsHNzVWfp9zNlAOUHkMYHq3yXvO7nNCxENYLpC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d88f4560-0949-4aff-9f45-d06bbad5e8f1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fLVzBfzMzJlfUAdgfYtqsDMGe.zyseKCt60sdi,q9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc255a71-34eb-4632-bf87-4b6de37714aa",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GMzDJANB.zhukcitM314LT+FNROOBIIz6zztPSfwIZj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03a8fa66-8e4b-4810-a878-9c59d550d22c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MmChjil.ymjEFl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71492a68-1495-4324-af86-f035883d984c",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mozncFmWEe.zzdpvb7wnN.yL4YSscQDUeWqwrbh9SK4laB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fba78b90-b755-465d-b484-bba5ce7ec53d",
+          "name": "Retrieves a Hub by ID",
+          "request": {
+            "name": "Retrieves a Hub by ID",
+            "description": {
+              "content": "This operation retrieves a hub entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller. 9.18)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the Hub"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db3a0033-b626-49b9-a7bd-9e74962f3d75",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "55603fbf-eab6-441f-bafa-6b623a01fc86",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://FPkQDNqzexYJvlZPCpZnbLRng.qeyhqsHNzVWfp9zNlAOUHkMYHq3yXvO7nNCxENYLpC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f390a83-8745-4eed-89b3-0eeeadfdba00",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fLVzBfzMzJlfUAdgfYtqsDMGe.zyseKCt60sdi,q9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75bf8286-9444-4868-be46-a1bd5ab44a47",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GMzDJANB.zhukcitM314LT+FNROOBIIz6zztPSfwIZj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d97378b2-69c0-4df7-9f8b-12b913fb00d9",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://yyEGByUQLKTqgNX.jjMVjmgxbQcX4FUvpCMRLj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe8784f8-e1a1-4518-a28e-782eba82c627",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MmChjil.ymjEFl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac729c28-9a1d-486c-8707-4e3cacc02d6e",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mozncFmWEe.zzdpvb7wnN.yL4YSscQDUeWqwrbh9SK4laB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "45848f69-27c8-4300-befb-9cd515e9e4c7",
+          "name": "Unregister a listener",
+          "request": {
+            "name": "Unregister a listener",
+            "description": {
+              "content": "The Buyer requests to unsubscribe from Bill Notifications",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the EventSubscription"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9106406d-a3c7-4432-a43b-2fb70ff69eba",
+              "name": "Deleted (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "992d7caf-db2d-4cc1-b81d-829562d6dc4a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://FPkQDNqzexYJvlZPCpZnbLRng.qeyhqsHNzVWfp9zNlAOUHkMYHq3yXvO7nNCxENYLpC\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "491df93a-fe37-450d-94df-7430112fee47",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fLVzBfzMzJlfUAdgfYtqsDMGe.zyseKCt60sdi,q9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d78fa471-d554-49d2-b56a-8c39898881d9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GMzDJANB.zhukcitM314LT+FNROOBIIz6zztPSfwIZj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a09f563-e3fe-4300-ae3a-45064f8123f3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://yyEGByUQLKTqgNX.jjMVjmgxbQcX4FUvpCMRLj\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb2c8030-bcc4-4d8e-b42a-7e97669af223",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://MmChjil.ymjEFl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "001d143a-ead1-45ea-882a-d993e5d9d306",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://mozncFmWEe.zzdpvb7wnN.yL4YSscQDUeWqwrbh9SK4laB\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Seller's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/cantata/customerBillManagement/v3/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1a09e058-d5e4-4a79-95e9-2b5f291fed03",
+    "name": "Billing Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 141.1**\n\n**This API implements Business Requirements described in MEF 134.**\n\nBill is a legal document generated by the Seller to the Buyer relating \nto charges associated to Products provided by the Seller to the Buyer. \n\nList of supported use cases:\n- Retrieve Invoice List\n- Retrieve Invoice by Identifier \n- Retrieve Invoice Line Item by Identifier\n- Retrieve Printable Invoice   \n- Register for Invoice Notification\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Customer Bill Management API (TMF678 v4.0.0) available at https://github.com/tmforum-apis/TMF678_CustomerBill, which is licensed by the TM Forum under the Apache License version 2.0. Such content has been modified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

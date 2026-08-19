@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Geographic Address Notification",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification listeners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Geographic Address Validation State Change Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/cantata/geographicAddressNotification/v2/listener/geographicAddressValidationStateChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on Geographic Address Validation state change"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

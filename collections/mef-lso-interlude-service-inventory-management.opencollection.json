@@ -1,0 +1,213 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Service Inventory Management",
+    "version": "2.0.2"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Service",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/interlude/serviceInventory/v2/service",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "The state of the service"
+              },
+              {
+                "name": "serviceDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Less than the date when the service was created (whatever its status)"
+              },
+              {
+                "name": "serviceDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Greater than the date when the service was created (whatever its status)"
+              },
+              {
+                "name": "startDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Less than the date when the service starts"
+              },
+              {
+                "name": "startDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Greater than the date when the service starts"
+              },
+              {
+                "name": "endDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Less than the date when the service ends"
+              },
+              {
+                "name": "endDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Greater than the date when the service ends"
+              },
+              {
+                "name": "serviceOrder.id",
+                "value": "",
+                "type": "query",
+                "description": "A reference to a service order related to this service. Must be used together with serviceOrderItem.id"
+              },
+              {
+                "name": "serviceOrderItem.id",
+                "value": "",
+                "type": "query",
+                "description": "A reference to a service order item related to this service. Must be used together with serviceOrder.id"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "An externalId provided in the service order"
+              },
+              {
+                "name": "geographicSite.id",
+                "value": "",
+                "type": "query",
+                "description": "A GeographicSite identifier which is associated to this service"
+              },
+              {
+                "name": "geographicAddress.id",
+                "value": "",
+                "type": "query",
+                "description": "A GeographicAddress identifier which is associated to this service"
+              },
+              {
+                "name": "serviceType",
+                "value": "",
+                "type": "query",
+                "description": "Business type of the service"
+              },
+              {
+                "name": "@type",
+                "value": "",
+                "type": "query",
+                "description": "The `@type` of `MefServiceConfiguration`. This is used to filter the services by the precise `urn` of the Product Schema they have."
+              },
+              {
+                "name": "startMode",
+                "value": "",
+                "type": "query",
+                "description": "This attribute is an enumerated integer that indicates how the \nService is started, such as: 0: Unknown; 1: Automatically by \nthe managed environment; 2: Automatically by the owning device; \n3: Manually by the Provider of the Service; 4: Manually by a \nCustomer of the Provider; 5: Any of the above"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client"
+              }
+            ]
+          },
+          "docs": "This operation lists Service entities."
+        },
+        {
+          "info": {
+            "name": "Retrieve a service",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/interlude/serviceInventory/v2/service/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Service instance"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a service entity."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/interlude/serviceInventory/v2/hub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/interlude/serviceInventory/v2/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/interlude/serviceInventory/v2/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the registered listener"
+              }
+            ]
+          },
+          "docs": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Geographic Site Management",
+    "version": "8.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "geographicSite",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find GeographicSite objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/cantata/geographicSiteManagement/v8/geographicSite",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer.\nReference: Mplify 150 (Sn 8.8)"
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller.\nReference: Mplify 150 (Sn 8.8)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation queries for a list of Sites within a GeographicAddress, which can be referenced with an `id` or be found by list of representations (GeographicAddress_Query)."
+        },
+        {
+          "info": {
+            "name": "Retrieves a GeographicSite by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/cantata/geographicSiteManagement/v8/geographicSite/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the GeographicSite"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer.\nReference: Mplify 150 (Sn 8.8)"
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller.\nReference: Mplify 150 (Sn 8.8)"
+              }
+            ]
+          },
+          "docs": "This operation retrieves a GeographicSite entity."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

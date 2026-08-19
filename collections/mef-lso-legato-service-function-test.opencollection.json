@@ -1,0 +1,795 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Service Function Testing",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "testJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find TestJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testJob",
+            "params": [
+              {
+                "name": "relatedServiceIdFrom",
+                "value": "",
+                "type": "query",
+                "description": "The from service identifier of the Service to be tested."
+              },
+              {
+                "name": "relatedServiceIdTo",
+                "value": "",
+                "type": "query",
+                "description": "The to service identifier of the Service to be tested."
+              },
+              {
+                "name": "testProfileId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the Test Profile."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "The name of the Test Job."
+              },
+              {
+                "name": "requestedStartDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time of the Test Job - greater than."
+              },
+              {
+                "name": "requestedStartDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time of the Test Job - lower than."
+              },
+              {
+                "name": "requestedEndDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time of the Test Job - greater than."
+              },
+              {
+                "name": "requestedEndDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time of the Test Job - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Test Jobs using none or more of the filter criteria. The Seller/Server returns a summarized list of Test Jobs. For each Test Job returned, the Seller/Server also provides a Test Job Identifier that uniquely identifiers this Test Job within the Seller/Server. The order of the elements returned to the Buyer/Client is defined by the Seller/Server (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Creates a TestJob.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to create a Test Job in the Seller/Server that specifies the service to be tested."
+        },
+        {
+          "info": {
+            "name": "Retrieves a TestJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Test Job"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Test Jobs based on the Test Job Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "cancelTestJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists or finds CancelTestJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/cancelTestJob",
+            "params": [
+              {
+                "name": "testJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Test Job that is a subject of CancelTestJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of CancelTestJob. See `TestJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the CancelTestJob was created - greater than."
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the CancelTestJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Cancel Test Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "createCancelTestJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/cancelTestJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to cancel a Test Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a CancelTestJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/cancelTestJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the CancelTestJob"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Cancel Test Job based on the Cancel Test Job Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "suspendTestJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists or finds SuspendTestJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/suspendTestJob",
+            "params": [
+              {
+                "name": "testJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Test Job that is a subject of SuspendTestJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of SuspendTestJob. See `TestJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the SuspendTestJob was created - greater than."
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the SuspendTestJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Suspend Test Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "createSuspendTestJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/suspendTestJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to suspend a Test Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a SuspendTestJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/suspendTestJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the SuspendTestJob"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Suspend Test Job based on the Suspend Test Job Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "resumeTestJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists or finds ResumeTestJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/resumeTestJob",
+            "params": [
+              {
+                "name": "testJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Test Job that is a subject of ResumeTestJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of ResumeTestJob. See `TestJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ResumeTestJob was created - greater than."
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ResumeTestJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Resume Test Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "createResumeTestJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/resumeTestJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to resume a Test Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a ResumeTestJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/resumeTestJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ResumeTestJob"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Resume Test Job based on the Resume Test Job Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "modifyTestJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lists or finds ModifyTestJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/modifyTestJob",
+            "params": [
+              {
+                "name": "testJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Test Job that is a subject of ModifyTestJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of ModifyTestJob. See `TestJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ModifyTestJob was created - greater than."
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ModifyTestJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Modify Test Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "createModifyTestJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/modifyTestJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to modify a Test Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a ModifyTestJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/modifyTestJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ModifyTestJob"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Modify Test Job based on the Modify Test Job Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "testProfile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Test Profile objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testProfile",
+            "params": [
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the profile was created - greater than."
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the profile was created - lower than."
+              },
+              {
+                "name": "lastUpdate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the profile was updated - greater than."
+              },
+              {
+                "name": "lastUpdate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the profile was updated - lower than."
+              },
+              {
+                "name": "relatedServiceSpecificationId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the related Service Specification."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of TestProfiles based on a set of filter criteria. The Seller/Server returns a summarized list of TestProfiles. For each TestProfile returned, the Seller/Server also provides a TestProfiles Identifier that uniquely identifiers this TestProfiles within the Seller/Server. The order of the elements returned to the Buyer is defined by the Seller/Server (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Creates a TestProfile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testProfile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to create a TestProfile Profile in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Test Profile by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testProfile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TestProfile"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single TestProfile based on the TestProfile Identifier."
+        },
+        {
+          "info": {
+            "name": "Modifies partially a TestProfile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testProfile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TestProfile"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to modify a TestProfile in the Seller/Server system based on a TestProfile Identifier."
+        },
+        {
+          "info": {
+            "name": "Deletes a Test Profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testProfile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TestProfile"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests deletion of TestProfile by specifying TestProfile Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "testResult",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find TestJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testResult",
+            "params": [
+              {
+                "name": "testJobId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the Test Job."
+              },
+              {
+                "name": "relatedServiceIdFrom",
+                "value": "",
+                "type": "query",
+                "description": "The from service identifier for a related Service."
+              },
+              {
+                "name": "relatedServiceIdTo",
+                "value": "",
+                "type": "query",
+                "description": "The to service identifier for a related Service."
+              },
+              {
+                "name": "relatedServiceSpecificationId",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the related Service Specification."
+              },
+              {
+                "name": "relatedContactInformationName",
+                "value": "",
+                "type": "query",
+                "description": "The contact for a Test Job."
+              },
+              {
+                "name": "requestedStartDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time of the Test Result for a given Test Job - greater than."
+              },
+              {
+                "name": "requestedStartDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "The start date and time of the Test Result for a given Test Job - lower than."
+              },
+              {
+                "name": "requestedEndDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time of the Test Result for a given Test Job - greater than."
+              },
+              {
+                "name": "requestedEndDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "The end date and time of the Test Result for a given Test Job - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Test Results using none or more of the filter criteria. The Seller/Server returns a summarized list of Test Results. For each Test Result returned, the Seller/Server also provides a Test Result Identifier that uniquely identifiers this Test Result within the Seller/Server. The order of the elements returned to the Buyer/Client is defined by the Seller/Server (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Retrieves a TestResult by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/testResult/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Test Result"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Test Result based on the Test Result Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/hub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer/Client requests to subscribe to Test Job, Test Profile or Test Result Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Notification Hub based on the Hub Identifier."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the registered listener"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests to unsubscribe from Test Job Notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

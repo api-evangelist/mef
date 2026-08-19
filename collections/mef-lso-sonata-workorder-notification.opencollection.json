@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "WorkOrder Management Notification",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification listeners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Client listener for entity WorkOrder Create Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderNotification/v3/listener/workOrderCreateEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the notification WorkOrder Create Event"
+        },
+        {
+          "info": {
+            "name": "Client listener for entity workOrderStateChangeEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderNotification/v3/listener/workOrderStateChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the workOrderStateChangeEvent notification"
+        },
+        {
+          "info": {
+            "name": "Client listener for entity workOrderAppointmentRequiredEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/workOrderNotification/v3/listener/workOrderAppointmentRequiredEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the workOrderAppointmentRequiredEvent notification"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

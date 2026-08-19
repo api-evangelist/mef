@@ -1,0 +1,352 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Quote Management",
+    "version": "10.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "quote",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Quote objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/quote",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of the Quote to be retrieved. See `MEFQuoteStateType` definition for details"
+              },
+              {
+                "name": "quoteLevel",
+                "value": "",
+                "type": "query",
+                "description": "Level of the quote - could be budgetary, firmSubjectToFeasibilityCheck, firm"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "ID given by the consumer and only understandable by him (to facilitate his searches afterward)"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "An identifier that is used to group Quotes that represent a unit of functionality that is important to a Buyer. A Project can be used to relate multiple Quotes together"
+              },
+              {
+                "name": "quoteDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the quote was created - greater than"
+              },
+              {
+                "name": "quoteDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the quote was created - lower than"
+              },
+              {
+                "name": "requestedQuoteCompletionDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Requested Quote Completion Date - greater than"
+              },
+              {
+                "name": "requestedQuoteCompletionDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Requested Quote Completion Date - lower than"
+              },
+              {
+                "name": "expectedQuoteCompletionDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Expected Quote Completion Date - greater than"
+              },
+              {
+                "name": "expectedQuoteCompletionDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Expected Quote Completion Date - lower than"
+              },
+              {
+                "name": "effectiveQuoteCompletionDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the Quote State was set to one of the Completion States - greater than"
+              },
+              {
+                "name": "effectiveQuoteCompletionDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the Quote State was set to one of the Completion States - lower than"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of resources to be provided in response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response"
+              }
+            ]
+          },
+          "docs": "The Buyer requests a list of Quotes from the Seller based on a set of filter criteria (as described in MEF 80).  For each Quote returned, the Seller also provides a Quote Identifier that uniquely identifies this Quote within the Seller. The order of the elements returned to the Buyer is defined by the Seller (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Send request to perform a quotation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/quote",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation creates a Quote entity."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Quote by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/quote/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Quote"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a Quote entity. Attribute selection is enabled for all first level attributes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "quote operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancels a Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/cancelQuote",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation sends a cancellation request."
+        },
+        {
+          "info": {
+            "name": "Declines a Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/declineQuote",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This operation sends a decline request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allows the Buyer to register to Quote state change notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer to instruct the Seller to send notifications of Quote state changes in the event the Seller uses the Deferred Response pattern to respond to a Create Quote request."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/sonata/quoteManagement/v10/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the EventSubscription"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when the responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

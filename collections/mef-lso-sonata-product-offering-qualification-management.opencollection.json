@@ -1,0 +1,256 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Product Offering Qualification Management",
+    "version": "8.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allows a Buyer to register to receive POQ state change notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualification/v8/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer to instruct the Seller to send notifications of POQ create, POQ and/or POQ Item state changes if the Buyer has registered for these notifications. The state change notifications are sent only in the Deferred response scenario as in the Immediate response scenario once the response to the POQ Request is provided (create notification), there will be no further state changes."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualification/v8/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualification/v8/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the EventSubscription"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation is used to delete an event subscription.\n"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "productOfferingQualification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of ProductOfferingQualifications based on a set of criteria",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualification/v8/productOfferingQualification",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of the POQ to be retrieved. See `MEFPOQTaskStateType` definition for details"
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Creation Date is on or after this date"
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Creation Date is on or before this date"
+              },
+              {
+                "name": "requestedPOQCompletionDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "POQ requested response date is on or after this date"
+              },
+              {
+                "name": "requestedPOQCompletionDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "POQ requested response date is on or before this date"
+              },
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "ID given by the consumer and only understandable by him (to facilitate his searches afterward)"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Buyer project associated with POQ"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer"
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of POQ to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of POQ to be provided in response requested by client"
+              }
+            ]
+          },
+          "docs": "The Buyer requests a list of POQs from the Seller based on a set of POQ filter criteria. For each POQ returned, the Seller also provides a POQ Identifier that uniquely identifies this POQ within the Seller's system. The order of the elements returned to the Buyer is defined by the Seller (e.g. natural order) and does not change between the pages. If criteria for attribute X are provided, all returned items must match it."
+        },
+        {
+          "info": {
+            "name": "Send a request to perform product offering qualification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualification/v8/productOfferingQualification",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer to determine whether the Seller is able to deliver a product or set of products from among their product offerings, at the Buyer's location(s); or modify a previously purchased product. The Seller also provides estimated time intervals to complete these deliveries."
+        },
+        {
+          "info": {
+            "name": "Retrieves a ProductOfferingQualification by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/productOfferingQualification/v8/productOfferingQualification/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "POQ identifier (matches `ProductOfferingQualification.id`)"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests the full details of a single Product Offering Qualification based on a POQ identifier returned from  the POQ create (`createProductOfferingQualification`) or POQ find (`listProductOfferingQualification`)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

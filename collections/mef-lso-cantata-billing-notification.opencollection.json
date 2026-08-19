@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Billing Notification",
+    "version": "3.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification listeners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Client listener for customerBillCreateEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/cantata/customerBillNotification/v3/listener/customerBillCreateEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the billCreatedEvent notification"
+        },
+        {
+          "info": {
+            "name": "Client listener for customerBillStateChangeEvent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/cantata/customerBillNotification/v3/listener/customerBillStateChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the customerBillStateChangeEvent notification"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

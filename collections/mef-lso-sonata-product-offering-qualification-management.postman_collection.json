@@ -1,0 +1,3172 @@
+{
+  "item": [
+    {
+      "id": "f35545fa-1d60-45e5-bcad-6481dbcfe63b",
+      "name": "productOfferingQualification",
+      "description": {
+        "content": "Operations for managing the Product Offering Qualification request.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d906b793-1884-4e39-b5a5-3d3aad964119",
+          "name": "Retrieve a list of ProductOfferingQualifications based on a set of criteria",
+          "request": {
+            "name": "Retrieve a list of ProductOfferingQualifications based on a set of criteria",
+            "description": {
+              "content": "The Buyer requests a list of POQs from the Seller based on a set of POQ filter criteria. For each POQ returned, the Seller also provides a POQ Identifier that uniquely identifies this POQ within the Seller's system. The order of the elements returned to the Buyer is defined by the Seller (e.g. natural order) and does not change between the pages. If criteria for attribute X are provided, all returned items must match it.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productOfferingQualification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "State of the POQ to be retrieved. See `MEFPOQTaskStateType` definition for details"
+                },
+                {
+                  "disabled": false,
+                  "key": "creationDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Creation Date is on or after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "creationDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Creation Date is on or before this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestedPOQCompletionDate.gt",
+                  "value": "<dateTime>",
+                  "description": "POQ requested response date is on or after this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "requestedPOQCompletionDate.lt",
+                  "value": "<dateTime>",
+                  "description": "POQ requested response date is on or before this date"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalId",
+                  "value": "<string>",
+                  "description": "ID given by the consumer and only understandable by him (to facilitate his searches afterward)"
+                },
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "Identifier of Buyer project associated with POQ"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer"
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Requested index for the start of POQ to be provided in response requested by the client. Note that the index starts with \"0\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Requested number of POQ to be provided in response requested by client"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fd252cc-3a8d-4be5-a4ae-ad4611eae6c1",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Used to indicate that the result page was throttled to maximum possible size  and there are additional results that can be fetched\n",
+                  "key": "X-Pagination-Throttled",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of matching POQ. E.g. if there are 50 matching items in total, but the request has offset=10 and limit=10, then the X-Total-Count is 50.\n",
+                  "key": "X-Total-Count",
+                  "value": "172"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of POQ included in the response",
+                  "key": "X-Result-Count",
+                  "value": "172"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"creationDate\": \"2021-09-12T14:10:22.232Z\",\n    \"id\": \"string\",\n    \"state\": \"terminatedWithError\",\n    \"requestedPOQCompletionDate\": \"2025-07-04T22:31:23.683Z\",\n    \"externalId\": \"string\",\n    \"projectId\": \"string\"\n  },\n  {\n    \"creationDate\": \"1990-06-08T21:03:07.972Z\",\n    \"id\": \"string\",\n    \"state\": \"rejected\",\n    \"requestedPOQCompletionDate\": \"1952-02-09T06:19:18.658Z\",\n    \"externalId\": \"string\",\n    \"projectId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bab7332c-2a57-49ff-8a30-5f5ec9dc5a7b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://hsSKm.xuqoofK5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf1a4aa6-4ae1-42e6-afdf-5cd6826b3e2e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://agVHuZiYnGvGRvGkx.qeaEnsp5NPqkCHW3odJLxQORQnpMA2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a2c8263-d8cd-47a0-8536-7d4328139f6a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://cGxzYgPWMXFvoWovUrHl.enmgaOF3rJw+s50RX.Y1z4+H8a9ifQjE2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d635e538-a60c-4482-8f46-25dfe8b40848",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidValue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://uucsraupsvvQZIKFCkc.dkhJ.FGBc+0+eAD.Q3GYdDi\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://LFZDLCaKaqoFWycYBDWXMXBu.wlawjeM6n6CpK0kjbNpXVbwiLIvsVIIpjCPWXCujR9gLGucscFo0o4\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3cfa9e3-9fb6-4fe7-be3a-f2be8fdfe0d2",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://YnOQaQruelrncGxx.tjxxnwt0-5d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c819270f-5630-4ec7-93eb-e0d24d04def7",
+              "name": "Method not implemented. Used in case Seller is not supporting Notification mechanism",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "creationDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "creationDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "requestedPOQCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fvLzhHRVpMgs.wnqEntPb7ChusHIMRTmeUYd9IDbu0H7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8696d830-02be-4f4a-99bc-45ce47dfd6bb",
+          "name": "Send a request to perform product offering qualification",
+          "request": {
+            "name": "Send a request to perform product offering qualification",
+            "description": {
+              "content": "A request initiated by the Buyer to determine whether the Seller is able to deliver a product or set of products from among their product offerings, at the Buyer's location(s); or modify a previously purchased product. The Seller also provides estimated time intervals to complete these deliveries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productOfferingQualification"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0006bf0-55ce-45d7-9367-52e2dc2886cb",
+              "name": "Created. (https://tools.ietf.org/html/rfc7231#section-6.3.2)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"creationDate\": \"1989-07-29T14:39:30.266Z\",\n  \"id\": \"string\",\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    {\n      \"action\": \"<string>\",\n      \"id\": \"<string>\",\n      \"product\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\",\n        \"productSpecification\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"productOffering\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"productConfiguration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"productRelationship\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"place\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"state\": \"rejected\",\n      \"stateChange\": [\n        {\n          \"changeDate\": \"1969-01-26T06:04:15.529Z\",\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"changeReason\": \"string\"\n        }\n      ],\n      \"qualificationItemRelationship\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"endCustomerName\": \"<string>\",\n      \"serviceabilityConfidence\": \"red\",\n      \"serviceabilityConfidenceReason\": \"string\",\n      \"installationInterval\": {\n        \"amount\": 5942,\n        \"units\": \"businessDays\"\n      },\n      \"guaranteedUntilDate\": \"2012-09-07T15:58:17.184Z\",\n      \"alternateProductOfferingProposal\": [\n        {\n          \"alternateProduct\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"deliveryType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"string\",\n          \"installationInterval\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidence\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidenceReason\": \"string\",\n          \"guaranteedUntilDate\": \"1990-05-25T20:10:06.397Z\",\n          \"3rdPartyProvider\": \"string\",\n          \"3rdPartyProviderProductOffering\": \"string\"\n        },\n        {\n          \"alternateProduct\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"deliveryType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"string\",\n          \"installationInterval\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidence\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidenceReason\": \"string\",\n          \"guaranteedUntilDate\": \"1982-03-06T12:11:25.658Z\",\n          \"3rdPartyProvider\": \"string\",\n          \"3rdPartyProviderProductOffering\": \"string\"\n        }\n      ],\n      \"deliveryType\": \"offNetWithBuild\",\n      \"3rdPartyProvider\": \"string\",\n      \"3rdPartyProviderProductOffering\": \"string\",\n      \"terminationError\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"state\": \"inProgress\",\n  \"stateChange\": [\n    {\n      \"changeDate\": \"1970-09-09T18:12:27.556Z\",\n      \"state\": \"terminatedWithError\",\n      \"changeReason\": \"string\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\",\n  \"href\": \"string\",\n  \"expectedPOQCompletionDate\": \"1952-05-31T00:14:07.323Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4c2c211-818c-4728-b511-1620155ecd65",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://hsSKm.xuqoofK5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd03fdd8-628f-4009-b124-e224f8e4b408",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://agVHuZiYnGvGRvGkx.qeaEnsp5NPqkCHW3odJLxQORQnpMA2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b0ded1c-06ea-487e-a093-bcd6a393b5c6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://cGxzYgPWMXFvoWovUrHl.enmgaOF3rJw+s50RX.Y1z4+H8a9ifQjE2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "870042ef-f88a-4546-bb49-dd625a92f552",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidValue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://uucsraupsvvQZIKFCkc.dkhJ.FGBc+0+eAD.Q3GYdDi\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://LFZDLCaKaqoFWycYBDWXMXBu.wlawjeM6n6CpK0kjbNpXVbwiLIvsVIIpjCPWXCujR9gLGucscFo0o4\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "122d65ae-5198-4bc9-9136-da46b951ef15",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    \"<object>\"\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://YnOQaQruelrncGxx.tjxxnwt0-5d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8015365-d564-41f1-945e-44305a17a61c",
+          "name": "Retrieves a ProductOfferingQualification by ID",
+          "request": {
+            "name": "Retrieves a ProductOfferingQualification by ID",
+            "description": {
+              "content": "The Buyer requests the full details of a single Product Offering Qualification based on a POQ identifier returned from  the POQ create (`createProductOfferingQualification`) or POQ find (`listProductOfferingQualification`)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "productOfferingQualification",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cc8331c-ac9f-4f64-ab7c-243be42c27de",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"creationDate\": \"1949-11-24T07:49:38.029Z\",\n  \"id\": \"string\",\n  \"instantSyncQualification\": \"<boolean>\",\n  \"productOfferingQualificationItem\": [\n    {\n      \"action\": \"<string>\",\n      \"id\": \"<string>\",\n      \"product\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\",\n        \"productSpecification\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"productOffering\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"productConfiguration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"productRelationship\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"place\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"state\": \"inProgress\",\n      \"stateChange\": [\n        {\n          \"changeDate\": \"1950-07-14T23:08:58.385Z\",\n          \"state\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"changeReason\": \"string\"\n        }\n      ],\n      \"qualificationItemRelationship\": [\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"endCustomerName\": \"<string>\",\n      \"serviceabilityConfidence\": \"red\",\n      \"serviceabilityConfidenceReason\": \"string\",\n      \"installationInterval\": {\n        \"amount\": 6720,\n        \"units\": \"calendarDays\"\n      },\n      \"guaranteedUntilDate\": \"2006-04-28T00:02:26.351Z\",\n      \"alternateProductOfferingProposal\": [\n        {\n          \"alternateProduct\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"deliveryType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"string\",\n          \"installationInterval\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidence\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidenceReason\": \"string\",\n          \"guaranteedUntilDate\": \"1988-09-08T13:55:03.066Z\",\n          \"3rdPartyProvider\": \"string\",\n          \"3rdPartyProviderProductOffering\": \"string\"\n        },\n        {\n          \"alternateProduct\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"deliveryType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": \"string\",\n          \"installationInterval\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidence\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"serviceabilityConfidenceReason\": \"string\",\n          \"guaranteedUntilDate\": \"1995-06-28T04:58:41.521Z\",\n          \"3rdPartyProvider\": \"string\",\n          \"3rdPartyProviderProductOffering\": \"string\"\n        }\n      ],\n      \"deliveryType\": \"onNetWithoutBuild\",\n      \"3rdPartyProvider\": \"string\",\n      \"3rdPartyProviderProductOffering\": \"string\",\n      \"terminationError\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"provideAlternative\": \"<boolean>\",\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"state\": \"rejected\",\n  \"stateChange\": [\n    {\n      \"changeDate\": \"2014-06-04T14:16:35.178Z\",\n      \"state\": \"rejected\",\n      \"changeReason\": \"string\"\n    }\n  ],\n  \"projectId\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"requestedPOQCompletionDate\": \"<dateTime>\",\n  \"href\": \"string\",\n  \"expectedPOQCompletionDate\": \"1959-12-02T10:36:35.777Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f40323a-53fe-4837-bb15-9e722ac4a788",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://hsSKm.xuqoofK5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "771eaeca-3b9f-4c11-b2ab-4bd43b905d44",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://agVHuZiYnGvGRvGkx.qeaEnsp5NPqkCHW3odJLxQORQnpMA2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abd0f44b-b765-44e2-8102-df9a2fcbbf05",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://cGxzYgPWMXFvoWovUrHl.enmgaOF3rJw+s50RX.Y1z4+H8a9ifQjE2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25483b2f-3dd4-44ac-b0d5-c83d967a4a67",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://qrutKDLGkadeSY.fladi.tk3OsmrwFEtQZgGLTGpXxVXq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcccb657-0c10-43c0-b4bb-105d48d088fe",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://YnOQaQruelrncGxx.tjxxnwt0-5d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67c1c90b-fef5-4aa5-9443-e820652504cd",
+              "name": "Method not implemented. Used in case Seller is not supporting Notification mechanism",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingQualification",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) POQ identifier (matches `ProductOfferingQualification.id`)"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fvLzhHRVpMgs.wnqEntPb7ChusHIMRTmeUYd9IDbu0H7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "276a579c-8785-4ddd-a094-883dc6f006b7",
+      "name": "events subscription",
+      "description": {
+        "content": "Operations for managing the subscription for events notification.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4101d634-dc33-4c89-825f-6a60334e8114",
+          "name": "Allows a Buyer to register to receive POQ state change notifications",
+          "request": {
+            "name": "Allows a Buyer to register to receive POQ state change notifications",
+            "description": {
+              "content": "A request initiated by the Buyer to instruct the Seller to send notifications of POQ create, POQ and/or POQ Item state changes if the Buyer has registered for these notifications. The state change notifications are sent only in the Deferred response scenario as in the Immediate response scenario once the response to the POQ Request is provided (create notification), there will be no further state changes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "950c1657-849a-4b66-9e63-8bf5f643bf40",
+              "name": "Created. (https://tools.ietf.org/html/rfc7231#section-6.3.2)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07e96061-7919-4602-b33a-d75a2d5c2bf7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://hsSKm.xuqoofK5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66364307-923f-484a-8e78-bf2706bd4f1a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://agVHuZiYnGvGRvGkx.qeaEnsp5NPqkCHW3odJLxQORQnpMA2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f658f423-d456-4b77-9f56-61bced302dc2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://cGxzYgPWMXFvoWovUrHl.enmgaOF3rJw+s50RX.Y1z4+H8a9ifQjE2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93a3a5a2-4782-4f6b-91d0-0c9c37a71e8a",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidValue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://uucsraupsvvQZIKFCkc.dkhJ.FGBc+0+eAD.Q3GYdDi\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://LFZDLCaKaqoFWycYBDWXMXBu.wlawjeM6n6CpK0kjbNpXVbwiLIvsVIIpjCPWXCujR9gLGucscFo0o4\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "111c79ae-284a-4eee-adc4-2a669ca71567",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://YnOQaQruelrncGxx.tjxxnwt0-5d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7639dcd1-9017-41ab-9c23-54b6b095752c",
+              "name": "Method not implemented. Used in case Seller is not supporting Notification mechanism",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fvLzhHRVpMgs.wnqEntPb7ChusHIMRTmeUYd9IDbu0H7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9974c23-dd62-4992-8915-8636c8c91d0a",
+          "name": "Retrieves a Hub by ID",
+          "request": {
+            "name": "Retrieves a Hub by ID",
+            "description": {
+              "content": "This operation retrieves a hub entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the Hub"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41aa8c4c-fe72-4315-807e-357254633bb2",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30d13440-5342-4269-8dba-cecfb88df84b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://hsSKm.xuqoofK5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "481c050d-d910-4551-91f2-18cf35411a42",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://agVHuZiYnGvGRvGkx.qeaEnsp5NPqkCHW3odJLxQORQnpMA2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecdb70bd-3ad5-4a00-9436-5a114ca14440",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://cGxzYgPWMXFvoWovUrHl.enmgaOF3rJw+s50RX.Y1z4+H8a9ifQjE2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11a15f92-6fb5-402a-90ec-15cfe438e081",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://qrutKDLGkadeSY.fladi.tk3OsmrwFEtQZgGLTGpXxVXq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56796f30-33e2-477e-aeff-2a751293efba",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://YnOQaQruelrncGxx.tjxxnwt0-5d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "646c802f-cc3e-40f4-9c48-098a8765c5c2",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fvLzhHRVpMgs.wnqEntPb7ChusHIMRTmeUYd9IDbu0H7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c53a27fa-3b1e-4264-95ac-eeb1bf02801a",
+          "name": "Unregister a listener",
+          "request": {
+            "name": "Unregister a listener",
+            "description": {
+              "content": "This operation is used to delete an event subscription.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the EventSubscription"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99147bea-cbd2-4fa1-be02-f783d61942ab",
+              "name": "No Content. (https://tools.ietf.org/html/rfc7231#section-6.3.5)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a402cf81-b96c-4ad2-8787-ac837cf87eb3",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://hsSKm.xuqoofK5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1e49c36-a41d-42d3-aeac-948a4bec2e68",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://agVHuZiYnGvGRvGkx.qeaEnsp5NPqkCHW3odJLxQORQnpMA2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b034a86b-d03c-4115-8fa9-56e1a273d8fb",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://cGxzYgPWMXFvoWovUrHl.enmgaOF3rJw+s50RX.Y1z4+H8a9ifQjE2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f33422a-2ceb-41e1-b5ac-5576b527aa6a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://qrutKDLGkadeSY.fladi.tk3OsmrwFEtQZgGLTGpXxVXq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2d81904e-698b-40fa-ab73-b2caebd23972",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidValue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://uucsraupsvvQZIKFCkc.dkhJ.FGBc+0+eAD.Q3GYdDi\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://LFZDLCaKaqoFWycYBDWXMXBu.wlawjeM6n6CpK0kjbNpXVbwiLIvsVIIpjCPWXCujR9gLGucscFo0o4\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2128d1f5-5614-4cda-83b7-9b10dbf25cc8",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://YnOQaQruelrncGxx.tjxxnwt0-5d\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce1697e5-5342-4c40-80f7-492d8b807366",
+              "name": "Method not implemented. Used in case Seller is not supporting Notification mechanism",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://fvLzhHRVpMgs.wnqEntPb7ChusHIMRTmeUYd9IDbu0H7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Seller's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/sonata/productOfferingQualification/v8/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bcd0970a-943c-43d6-9bd4-454e20760402",
+    "name": "Product Offering Qualification Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 87.1**\n \nThis API implements Business Requirements described in Mplify 79.1\nThe Product Offering Qualification (POQ) Management API allows a Buyer to\ncheck whether the Seller can deliver a product or set of products from\namong their product offerings at the geographic address or a service site\nspecified by the Buyer; or modify a previously purchased product.\n\nThe following use cases are managed:\n- Create Product Offering Qualification\n- Retrieve POQ List\n- Retrieve POQ by Identifier\n- Register for POQ Notifications (note: Send POQ Notification is supported by productOfferingQualificationNotification.api.yaml)\n\nCopyright 2025 Mplify Alliance and its contributors\n\nThis file includes content based on the TM Forum Product Offering\nQualification API (TMF679 v4.0.0) available at\nhttps://github.com/tmforum-apis/TMF679_ProductOfferingQualification, which\nis licensed by the TM Forum under the Apache License version 2.0. Such\ncontent has been modified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

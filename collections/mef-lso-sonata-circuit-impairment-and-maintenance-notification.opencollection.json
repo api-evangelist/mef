@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circuit Impairment and Maintenance Notification",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification listeners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Client listener for entity CIM Incident Create Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncidentNotification/v1/listener/cimIncidentCreateEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the notification CIM Incident Create Event"
+        },
+        {
+          "info": {
+            "name": "Client listener for entity CIM Incident Attribute Value Change Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncidentNotification/v1/listener/cimIncidentAttributeValueChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the notification CIM Incident Attribute Value Change Event"
+        },
+        {
+          "info": {
+            "name": "Client listener for entity CIM Incident Status Change Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncidentNotification/v1/listener/cimIncidentStatusChangeEvent",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Buyer. MUST be specified in the request when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request when the responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Client listener for receiving the notification CIM Incident Status Change Event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

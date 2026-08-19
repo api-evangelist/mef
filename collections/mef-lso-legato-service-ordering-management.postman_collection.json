@@ -1,0 +1,2505 @@
+{
+  "item": [
+    {
+      "id": "2226c705-d353-47b5-978e-437e4c831c91",
+      "name": "Service Order",
+      "description": {
+        "content": "Operations for Service Order Resource",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2aef550b-3a37-41c2-95b5-77d6e10c4a9f",
+          "name": "List or find ServiceOrder objects",
+          "request": {
+            "name": "List or find ServiceOrder objects",
+            "description": {
+              "content": "This operation retrieves list of ServiceOrder entities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serviceOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "State of the Service Order"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Date when the order was created greater than"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Date when the order was created lesser than"
+                },
+                {
+                  "disabled": false,
+                  "key": "completionDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Effective completion date greater than"
+                },
+                {
+                  "disabled": false,
+                  "key": "completionDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Effective completion date lesser than"
+                },
+                {
+                  "disabled": false,
+                  "key": "expectedCompletionDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Expected delivery date greater than"
+                },
+                {
+                  "disabled": false,
+                  "key": "expectedCompletionDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Expected delivery date lesser than"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Date when the order was started for processing"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Date when the order was started for processing"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Requested number of items to be provided in response requested by client"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "54d3cff8-96fb-433d-9535-d0a9bf10203c",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Used to indicate that result page was throttled to maximum possible size  and there are additional results that can be fetched\n",
+                  "key": "X-Pagination-Throttled",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of matching items. E.g. if there are 50 matching items in total, but the request has offset=10 and limit=10, then the X-Total-Count is 50.\n",
+                  "key": "X-Total-Count",
+                  "value": "7077"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of items included in the response",
+                  "key": "X-Result-Count",
+                  "value": "7077"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"orderDate\": \"2008-08-19T03:33:51.205Z\",\n    \"requestedCompletionDate\": \"2020-05-23T08:01:48.865Z\",\n    \"requestedStartDate\": \"2003-11-28T17:44:44.599Z\",\n    \"serviceOrderItem\": [\n      {\n        \"action\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"string\",\n        \"service\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"state\": \"string\",\n        \"coordinatedAction\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"note\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"relatedContactInformation\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"serviceOrderItemRelationship\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"terminationError\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"state\": \"<string>\",\n    \"coordinatedAction\": [\n      {\n        \"coordinatedActionDelay\": {\n          \"amount\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"coordinationDependency\": \"startToStart\",\n        \"orderId\": \"string\"\n      },\n      {\n        \"coordinatedActionDelay\": {\n          \"amount\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"coordinationDependency\": \"startToFinish\",\n        \"orderId\": \"string\"\n      }\n    ],\n    \"description\": \"string\",\n    \"externalId\": \"string\",\n    \"note\": [\n      {\n        \"author\": \"string\",\n        \"date\": \"1985-08-18T19:04:04.661Z\",\n        \"id\": \"string\",\n        \"source\": \"bus\",\n        \"text\": \"string\"\n      },\n      {\n        \"author\": \"string\",\n        \"date\": \"1970-05-07T12:56:18.841Z\",\n        \"id\": \"string\",\n        \"source\": \"bus\",\n        \"text\": \"string\"\n      }\n    ],\n    \"orderRelationship\": [\n      {\n        \"relationshipType\": \"string\",\n        \"serviceOrder\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      {\n        \"relationshipType\": \"string\",\n        \"serviceOrder\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    ],\n    \"relatedContactInformation\": [\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLast\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLastSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPreDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPostDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"poBox\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locality\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcodeExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"stateOrProvince\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countryCode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subUnit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"buildingName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetNumber\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      },\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLast\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLastSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPreDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPostDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"poBox\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locality\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcodeExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"stateOrProvince\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countryCode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subUnit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"buildingName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetNumber\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      }\n    ],\n    \"href\": \"string\",\n    \"completionDate\": \"1965-10-31T19:40:55.997Z\",\n    \"expectedCompletionDate\": \"2006-01-14T20:41:54.220Z\",\n    \"startDate\": \"2013-07-11T20:03:43.635Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"orderDate\": \"1950-04-13T14:12:26.978Z\",\n    \"requestedCompletionDate\": \"1984-06-04T15:51:02.691Z\",\n    \"requestedStartDate\": \"2010-05-28T06:53:48.064Z\",\n    \"serviceOrderItem\": [\n      {\n        \"action\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"string\",\n        \"service\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"state\": \"string\",\n        \"coordinatedAction\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"note\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"relatedContactInformation\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"serviceOrderItemRelationship\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"terminationError\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      }\n    ],\n    \"state\": \"<string>\",\n    \"coordinatedAction\": [\n      {\n        \"coordinatedActionDelay\": {\n          \"amount\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"coordinationDependency\": \"finishToFinish\",\n        \"orderId\": \"string\"\n      },\n      {\n        \"coordinatedActionDelay\": {\n          \"amount\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"coordinationDependency\": \"finishToFinish\",\n        \"orderId\": \"string\"\n      }\n    ],\n    \"description\": \"string\",\n    \"externalId\": \"string\",\n    \"note\": [\n      {\n        \"author\": \"string\",\n        \"date\": \"1984-03-13T12:09:01.309Z\",\n        \"id\": \"string\",\n        \"source\": \"bus\",\n        \"text\": \"string\"\n      },\n      {\n        \"author\": \"string\",\n        \"date\": \"1950-04-07T01:46:30.898Z\",\n        \"id\": \"string\",\n        \"source\": \"bus\",\n        \"text\": \"string\"\n      }\n    ],\n    \"orderRelationship\": [\n      {\n        \"relationshipType\": \"string\",\n        \"serviceOrder\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      },\n      {\n        \"relationshipType\": \"string\",\n        \"serviceOrder\": {\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    ],\n    \"relatedContactInformation\": [\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLast\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLastSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPreDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPostDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"poBox\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locality\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcodeExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"stateOrProvince\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countryCode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subUnit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"buildingName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetNumber\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      },\n      {\n        \"emailAddress\": \"string\",\n        \"name\": \"string\",\n        \"number\": \"string\",\n        \"role\": \"string\",\n        \"postalAddress\": {\n          \"streetNr\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLast\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetNrLastSuffix\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPreDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"streetPostDirection\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"poBox\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"locality\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"city\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postcodeExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"stateOrProvince\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"countryCode\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"subUnit\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"buildingName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetNumber\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"privateStreetName\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"language\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"organization\": \"string\",\n        \"numberExtension\": \"string\"\n      }\n    ],\n    \"href\": \"string\",\n    \"completionDate\": \"1985-02-01T06:14:00.005Z\",\n    \"expectedCompletionDate\": \"1952-11-23T14:07:54.342Z\",\n    \"startDate\": \"1980-08-24T23:22:22.788Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "479815e2-81d6-426a-84be-4a5e12df0dea",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://gPVureiipQlJ.mekHeWArIZDib2VfOtiuVH3Y6nxcBoc4-cEHe1DKjVU32KCigxgIaN9kYRhU8tt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9a0173d2-6884-4bb5-82bd-5ef97a20becd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://aALZxDTu.dfY+FWSpwsa59ZrnSNwq,Hv0Z+bbCFHC7DttOQ-ONt3R08xnC8R4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ca567c9f-85fa-4e2b-bf16-6a73322d6fc2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jnKVMyKeWhqFsNnXGxtXopppEQ.oancvRL6+WexyaZusdbn7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "579049e1-c9b7-411a-994d-929c5a4ca38a",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"otherIssue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://KIJHicLLkUfKkFNXGp.ukvbJ2uuNZWqIZvkY\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://TercSHViDFPWmSXBjUSTVDyTOiamm.yexIAzN7NeoquOxKQbUBbjuFvJMIyJ.3prI8rYpmOKF9opz5ETfA6LD+Xm0T\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2a3515d-bb12-4b42-b7f7-b0890d084a9a",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "orderDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "completionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "expectedCompletionDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mF.jbnwnqLfNHegGZhMZ,4Rbrxmr9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2647d928-9f9d-45b1-93a8-c5ad10da7b50",
+          "name": "Creates a ServiceOrder",
+          "request": {
+            "name": "Creates a ServiceOrder",
+            "description": {
+              "content": "This operation creates a ServiceOrder entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serviceOrder"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "25ea3630-2bb1-4a28-b88d-1fc0626b547c",
+              "name": "Created (https://tools.ietf.org/html/rfc7231#section-6.3.2)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orderDate\": \"1955-02-17T09:51:29.609Z\",\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    {\n      \"action\": \"<string>\",\n      \"id\": \"<string>\",\n      \"service\": {\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"description\": \"<string>\",\n        \"externalId\": \"<string>\",\n        \"startDate\": \"<dateTime>\",\n        \"endDate\": \"<dateTime>\",\n        \"state\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"serviceType\": \"<string>\",\n        \"name\": \"<string>\",\n        \"serviceRelationship\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"relatedContactInformation\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"place\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"serviceConfiguration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"serviceOrderItem\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"state\": \"string\",\n      \"coordinatedAction\": [\n        {\n          \"coordinatedActionDelay\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"coordinationDependency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"itemId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"coordinatedActionDelay\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"coordinationDependency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"itemId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"note\": [\n        {\n          \"author\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"author\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"relatedContactInformation\": [\n        {\n          \"emailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"number\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"role\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postalAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"organization\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"emailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"number\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"role\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postalAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"organization\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"serviceOrderItemRelationship\": [\n        {\n          \"orderItem\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"orderItem\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"terminationError\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"state\": \"<string>\",\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"href\": \"string\",\n  \"completionDate\": \"1993-10-17T04:24:26.422Z\",\n  \"expectedCompletionDate\": \"2014-06-30T05:04:05.464Z\",\n  \"startDate\": \"1957-06-10T11:24:42.132Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c048bfa1-7566-476b-8688-bbf88f438351",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://gPVureiipQlJ.mekHeWArIZDib2VfOtiuVH3Y6nxcBoc4-cEHe1DKjVU32KCigxgIaN9kYRhU8tt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1761bf9-9699-49ed-8c28-0e6b7ba343db",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://aALZxDTu.dfY+FWSpwsa59ZrnSNwq,Hv0Z+bbCFHC7DttOQ-ONt3R08xnC8R4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bdd6e579-ed6b-465b-9ee3-142eac273bf6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jnKVMyKeWhqFsNnXGxtXopppEQ.oancvRL6+WexyaZusdbn7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57869497-6ce1-4cf5-837b-20f84f345814",
+              "name": "Unprocessable entity due to the business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"otherIssue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://KIJHicLLkUfKkFNXGp.ukvbJ2uuNZWqIZvkY\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://TercSHViDFPWmSXBjUSTVDyTOiamm.yexIAzN7NeoquOxKQbUBbjuFvJMIyJ.3prI8rYpmOKF9opz5ETfA6LD+Xm0T\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb97f907-b9dd-4c89-9f6f-8c202b6fafb6",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    \"<object>\"\n  ],\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mF.jbnwnqLfNHegGZhMZ,4Rbrxmr9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69657a71-29e8-40b7-8c4c-25ce076b1d02",
+          "name": "Retrieves a ServiceOrder by ID",
+          "request": {
+            "name": "Retrieves a ServiceOrder by ID",
+            "description": {
+              "content": "This operation retrieves a ServiceOrder entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "serviceOrder",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the ServiceOrder"
+                },
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "97cff336-7714-4f21-a2c6-cc6cf846493f",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the ServiceOrder"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"orderDate\": \"1955-02-17T09:51:29.609Z\",\n  \"requestedCompletionDate\": \"<dateTime>\",\n  \"requestedStartDate\": \"<dateTime>\",\n  \"serviceOrderItem\": [\n    {\n      \"action\": \"<string>\",\n      \"id\": \"<string>\",\n      \"service\": {\n        \"href\": \"<string>\",\n        \"id\": \"<string>\",\n        \"description\": \"<string>\",\n        \"externalId\": \"<string>\",\n        \"startDate\": \"<dateTime>\",\n        \"endDate\": \"<dateTime>\",\n        \"state\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"note\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"serviceType\": \"<string>\",\n        \"name\": \"<string>\",\n        \"serviceRelationship\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"relatedContactInformation\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"place\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"serviceConfiguration\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"serviceOrderItem\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ]\n      },\n      \"state\": \"string\",\n      \"coordinatedAction\": [\n        {\n          \"coordinatedActionDelay\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"coordinationDependency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"itemId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"coordinatedActionDelay\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"coordinationDependency\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"itemId\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"note\": [\n        {\n          \"author\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"author\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"date\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"source\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"text\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"relatedContactInformation\": [\n        {\n          \"emailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"number\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"role\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postalAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"organization\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"emailAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"name\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"number\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"role\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"postalAddress\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"organization\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"numberExtension\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"serviceOrderItemRelationship\": [\n        {\n          \"orderItem\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        {\n          \"orderItem\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"relationshipType\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      ],\n      \"terminationError\": [\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        },\n        {\n          \"code\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"propertyPath\": \"string\",\n          \"value\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"state\": \"<string>\",\n  \"coordinatedAction\": [\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    },\n    {\n      \"coordinatedActionDelay\": {\n        \"amount\": \"<integer>\",\n        \"units\": \"<string>\"\n      },\n      \"coordinationDependency\": \"<string>\",\n      \"orderId\": \"<string>\"\n    }\n  ],\n  \"description\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"note\": [\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    },\n    {\n      \"author\": \"<string>\",\n      \"date\": \"<dateTime>\",\n      \"id\": \"<string>\",\n      \"source\": \"<string>\",\n      \"text\": \"<string>\"\n    }\n  ],\n  \"orderRelationship\": [\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    },\n    {\n      \"relationshipType\": \"<string>\",\n      \"serviceOrder\": {\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      }\n    }\n  ],\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    },\n    {\n      \"emailAddress\": \"<string>\",\n      \"name\": \"<string>\",\n      \"number\": \"<string>\",\n      \"role\": \"<string>\",\n      \"postalAddress\": {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      \"organization\": \"<string>\",\n      \"numberExtension\": \"<string>\"\n    }\n  ],\n  \"href\": \"string\",\n  \"completionDate\": \"1993-10-17T04:24:26.422Z\",\n  \"expectedCompletionDate\": \"2014-06-30T05:04:05.464Z\",\n  \"startDate\": \"1957-06-10T11:24:42.132Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a297e8a0-3a89-40b3-b8c2-bf0d71122eb4",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the ServiceOrder"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://gPVureiipQlJ.mekHeWArIZDib2VfOtiuVH3Y6nxcBoc4-cEHe1DKjVU32KCigxgIaN9kYRhU8tt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f60d4a91-3a2f-4a7a-96d3-ba7e64a36141",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the ServiceOrder"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://aALZxDTu.dfY+FWSpwsa59ZrnSNwq,Hv0Z+bbCFHC7DttOQ-ONt3R08xnC8R4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f063834-0ce2-4786-af03-a92aae0c1466",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the ServiceOrder"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jnKVMyKeWhqFsNnXGxtXopppEQ.oancvRL6+WexyaZusdbn7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6090b23d-2730-4bbe-ab65-4d33120b8054",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the ServiceOrder"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://MAvhLVjXihQtsXrBtbthRqejlDzOPeG.ohjnwQ59rqlCT8qCGFpJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7c2bd7db-29b1-4b50-a5fb-7721889277de",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "serviceOrder",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the ServiceOrder"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mF.jbnwnqLfNHegGZhMZ,4Rbrxmr9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7d94d23c-7e1d-4949-9900-1045098c7e52",
+      "name": "Events subscription",
+      "description": {
+        "content": "Endpoints to register and terminate an Event Listener",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fff0aadd-2a5b-4d03-bb33-28ffc6e2cddc",
+          "name": "Register a listener",
+          "request": {
+            "name": "Register a listener",
+            "description": {
+              "content": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "71211f8b-71c0-4028-9af5-2b1fa2c6b9e1",
+              "name": "Subscribed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9cdd4d9-e228-4dd6-a84b-06acd743e09c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://gPVureiipQlJ.mekHeWArIZDib2VfOtiuVH3Y6nxcBoc4-cEHe1DKjVU32KCigxgIaN9kYRhU8tt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1aac1259-aa0a-4179-86ab-02f39cb8499e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://aALZxDTu.dfY+FWSpwsa59ZrnSNwq,Hv0Z+bbCFHC7DttOQ-ONt3R08xnC8R4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caeaafcb-2a58-4a2a-afbb-e0a9a3a18b0d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jnKVMyKeWhqFsNnXGxtXopppEQ.oancvRL6+WexyaZusdbn7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "faa7cd53-96c5-4af2-afdc-4540d5259b26",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"otherIssue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://KIJHicLLkUfKkFNXGp.ukvbJ2uuNZWqIZvkY\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://TercSHViDFPWmSXBjUSTVDyTOiamm.yexIAzN7NeoquOxKQbUBbjuFvJMIyJ.3prI8rYpmOKF9opz5ETfA6LD+Xm0T\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3969f2b6-1dac-499e-aa79-2978af2bdbf1",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mF.jbnwnqLfNHegGZhMZ,4Rbrxmr9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61a8aba6-5feb-457d-9ccd-e0945295077b",
+          "name": "Retrieves a EventSubscription by ID",
+          "request": {
+            "name": "Retrieves a EventSubscription by ID",
+            "description": {
+              "content": "This operation retrieves a EventSubscription entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the EventSubscription"
+                },
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cca0ff9b-9204-4a8f-a715-44d7cd695f20",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "394e7d42-7712-44c3-9d57-0611b84ec380",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://gPVureiipQlJ.mekHeWArIZDib2VfOtiuVH3Y6nxcBoc4-cEHe1DKjVU32KCigxgIaN9kYRhU8tt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d208ed38-28dd-4fb6-be59-1c7f83f61a0f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://aALZxDTu.dfY+FWSpwsa59ZrnSNwq,Hv0Z+bbCFHC7DttOQ-ONt3R08xnC8R4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "447ceaf4-66af-45b1-9718-566e7ecc879b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jnKVMyKeWhqFsNnXGxtXopppEQ.oancvRL6+WexyaZusdbn7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f7f6336-9412-417c-8f8e-1d3b6eedc396",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://MAvhLVjXihQtsXrBtbthRqejlDzOPeG.ohjnwQ59rqlCT8qCGFpJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "033aa5c5-3992-4531-afd4-18a8d343501d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the EventSubscription"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mF.jbnwnqLfNHegGZhMZ,4Rbrxmr9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d9ca599-2b0f-4fcd-b303-9e669cbcd99a",
+          "name": "Unregister a listener",
+          "request": {
+            "name": "Unregister a listener",
+            "description": {
+              "content": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the registered listener"
+                },
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3ee410b-3752-4955-9acf-8d3ec690386d",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f18c598e-6414-40f3-a6f8-775da5d0f71e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://gPVureiipQlJ.mekHeWArIZDib2VfOtiuVH3Y6nxcBoc4-cEHe1DKjVU32KCigxgIaN9kYRhU8tt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28f598ae-4785-4043-bfea-0b9abe34070e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://aALZxDTu.dfY+FWSpwsa59ZrnSNwq,Hv0Z+bbCFHC7DttOQ-ONt3R08xnC8R4\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5abdd19f-a6b7-4449-af71-31e4eaf46e87",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jnKVMyKeWhqFsNnXGxtXopppEQ.oancvRL6+WexyaZusdbn7\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0fa2cfc-dae6-4379-8a0e-13b2d9f4314c",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://MAvhLVjXihQtsXrBtbthRqejlDzOPeG.ohjnwQ59rqlCT8qCGFpJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3849614-a72e-439c-bb95-51e8e285f3db",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"otherIssue\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://KIJHicLLkUfKkFNXGp.ukvbJ2uuNZWqIZvkY\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://TercSHViDFPWmSXBjUSTVDyTOiamm.yexIAzN7NeoquOxKQbUBbjuFvJMIyJ.3prI8rYpmOKF9opz5ETfA6LD+Xm0T\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1fffd77-b867-44c3-a359-73b03d7c6401",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mF.jbnwnqLfNHegGZhMZ,4Rbrxmr9\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of SOF's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/legato/serviceOrderingManagement/v6/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "80652bec-d197-4735-ac00-b12477301f70",
+    "name": "Service Ordering Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 99.1** \n \n\nSupported use cases:\n- Create Service Order\n- Retrieve List of Service Orders\n- Retrieve Service Order by Service Order Identifier\n- Register for Notifications\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Service Order API (TMF641\nv4.1.0) available at https://github.com/tmforum-apis/TMF641_ServiceOrder,\nwhich is licensed by the TM Forum under the Apache License version 2.0. Such\ncontent has been modified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,803 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Performance Monitoring",
+    "version": "5.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "performanceJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Performance Job objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceJob",
+            "params": [
+              {
+                "name": "buyerJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier assigned and understandable by Buyer/Client to facilitate search requests."
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service."
+              },
+              {
+                "name": "serviceFromId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service From endpoint."
+              },
+              {
+                "name": "serviceToId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service To endpoint."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of an Entity."
+              },
+              {
+                "name": "performanceProfileId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Profile used as a template for Performance Job."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of the Performance Job. See `PerformanceJobStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the job was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the job was created - lower than."
+              },
+              {
+                "name": "jobType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the Performance Job."
+              },
+              {
+                "name": "jobPriority",
+                "value": "",
+                "type": "query",
+                "description": "The priority of the Performance Job."
+              },
+              {
+                "name": "consumingApplicationId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of consuming application."
+              },
+              {
+                "name": "producingApplicationId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of producing application."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of PM Jobs based on a set of filter criteria. The Seller/Server returns a summarized list of PM  Jobs. For each PM Job returned, the Seller/Server also provides a  Performance Job Identifier that uniquely identifies this PM Job within the Seller/Server. The order of the elements returned to the  Buyer/Client is defined by the Seller/Server (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Creates a Performance Job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to create a Performance Job in the Seller/Server system to indicate performance monitoring objectives."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Performance Job by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Performance Job."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Performance Job based on the Job Identifier."
+        },
+        {
+          "info": {
+            "name": "Resumes a Performance Job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceJob/:id/resume",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the PerformanceJob."
+              }
+            ]
+          },
+          "docs": "A request initiated by the Buyer/Client to resume a Performance Job"
+        },
+        {
+          "info": {
+            "name": "Suspends a Performance Job.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceJob/:id/suspend",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the PerformanceJob."
+              }
+            ]
+          },
+          "docs": "A request initiated by the Buyer/Client to suspend a Performance Job"
+        },
+        {
+          "info": {
+            "name": "Lists or finds CancelPerformanceJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/cancelPerformanceJob",
+            "params": [
+              {
+                "name": "performanceJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Job that is a subject of CancelPerformanceJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of CancelPerformanceJob. See `PerformanceJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the CancelPerformanceJob was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the CancelPerformanceJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Cancel Performance Monitoring Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "createCancelPerformanceJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/cancelPerformanceJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to cancel  a Performance Monitoring Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a CancelPerformanceJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/cancelPerformanceJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the CancelPerformanceJob."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single  Cancel Performance Monitoring Job based on the  Cancel Performance Monitoring Job Identifier."
+        },
+        {
+          "info": {
+            "name": "Lists or finds ModifyPerformanceJob objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/modifyPerformanceJob",
+            "params": [
+              {
+                "name": "performanceJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Job that is a subject of ModifyPerformanceJob."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of ModifyPerformanceJob See `PerformanceJobProcessStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ModifyPerformanceJob was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the ModifyPerformanceJob was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of items to be provided in response requested by client."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Modify Performance Monitoring Job based on a set of filter criteria."
+        },
+        {
+          "info": {
+            "name": "createModifyPerformanceJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/modifyPerformanceJob",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to modify a Performance Monitoring Job in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a ModifyPerformanceJob by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/modifyPerformanceJob/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ModifyPerformanceJob."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single  Modify Performance Monitoring Job based on the  Modify Performance Monitoring Job Identifier."
+        },
+        {
+          "info": {
+            "name": "Executes a PerformanceJobComplexQuery.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceJobComplexQuery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to execute  a Performance Monitoring Job Complex Query in the Seller/Server system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "performanceProfile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Performance Profile objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceProfile",
+            "params": [
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the profile was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the profile was created - lower than."
+              },
+              {
+                "name": "jobType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the Performance Job."
+              },
+              {
+                "name": "jobPriority",
+                "value": "",
+                "type": "query",
+                "description": "The priority of the Performance Job."
+              },
+              {
+                "name": "lifecycleStatus",
+                "value": "",
+                "type": "query",
+                "description": "The lifecycle status of the Performance Profile."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Performance Monitoring Profiles based on a set of filter criteria. The Seller/Server returns a list of PM Profiles. For each PM Profile returned, the Seller/Server also provides a Performance Monitoring Profile Identifier that uniquely identifies this PM Profile within the Seller/Server. The order of the elements returned to the Buyer is defined by the Seller/Server (e.g. natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Creates a Performance Profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceProfile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to create a Performance Monitoring Profile in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Performance Profile by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceProfile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Performance Profile."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Performance Monitoring Profile based on the Performance Monitoring Profile Identifier."
+        },
+        {
+          "info": {
+            "name": "Updates partially a Performance Profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceProfile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Performance Profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to modify a Performance Monitoring Profile in the Seller/Server system based on a Performance Monitoring Profile Identifier."
+        },
+        {
+          "info": {
+            "name": "Deletes a Performance Profile.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceProfile/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Performance Profile."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests deletion of Performance Monitoring Profile by specifying Performance Monitoring Profile Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "performanceReport",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Performance Report objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceReport",
+            "params": [
+              {
+                "name": "performanceJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Job that generated Performance Report."
+              },
+              {
+                "name": "serviceFromId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service From endpoint."
+              },
+              {
+                "name": "serviceToId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service To endpoint."
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Service."
+              },
+              {
+                "name": "entityId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a Entity."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "State of the Performance Report. See `PerformanceReportStateType` definition for details."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the report was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the report was created - lower than."
+              },
+              {
+                "name": "reportingTimeframe.startDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "Start date of reporting timeframe - greater than."
+              },
+              {
+                "name": "reportingTimeframe.startDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "Start date of reporting timeframe - lower than."
+              },
+              {
+                "name": "reportingTimeframe.endDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "End date of reporting timeframe - greater than."
+              },
+              {
+                "name": "reportingTimeframe.endDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "End date of reporting timeframe - lower than."
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query",
+                "description": "Format of report output."
+              },
+              {
+                "name": "resultFormat",
+                "value": "",
+                "type": "query",
+                "description": "Type of providing report results."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Performance Monitoring Reports based on a set of filter criteria. The Seller/Server returns  a summarized list of PM Reports. For each PM Report returned,  the Seller/Server also provides a Performance Monitoring Report  Identifier that uniquely identifies this PM Report within the  Seller/Server. The order of the elements returned to the Buyer/Client  is defined by the Seller/Server (e.g. natural order) and does not  change between the pages."
+        },
+        {
+          "info": {
+            "name": "Creates a Performance Report.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceReport",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to create a Performance Report based on existing performance data in the Seller/Server system."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Performance Report by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceReport/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Performance Report to be retrieved."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Performance Report based on the Report Identifier."
+        },
+        {
+          "info": {
+            "name": "Executes a PerformanceReportComplexQuery.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/performanceReportComplexQuery",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer/Client to execute a Performance Monitoring Report Complex Query in the Seller/Server system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "trackingRecord",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Tracking Record objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/trackingRecord",
+            "params": [
+              {
+                "name": "relatedPerformanceJobId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Job."
+              },
+              {
+                "name": "relatedPerformanceProfileId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Profile."
+              },
+              {
+                "name": "relatedPerformanceReportId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of Performance Report."
+              },
+              {
+                "name": "creationDateTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the record was created - greater than."
+              },
+              {
+                "name": "creationDateTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the record was created - lower than."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests a list of Tracking Records based on a set of filter criteria. The Seller/Server returns a list of Tracking Records. Tracking Record allows for tracking of modifications performed on  a Performance Job, Profile or Report."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/hub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer/Client requests to subscribe to Performance Monitoring Profile, Performance Monitoring Job and/or Performance Monitoring Report Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about  a single Notification Hub based on the Hub Identifier."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener.",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/legato/performanceMonitoring/v5/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the registered listener."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests to unsubscribe from  Performance Monitoring Profile, Performance Monitoring Job or  Performance Monitoring Report Notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

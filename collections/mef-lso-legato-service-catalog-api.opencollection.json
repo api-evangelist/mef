@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Legato Service Catalog API",
+    "version": "4.0.0-RC"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ServiceSpecification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List service specifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}:{port}{basePath}/serviceSpecification",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Service Category"
+              },
+              {
+                "name": "lifecycleStatus",
+                "value": "",
+                "type": "query",
+                "description": "Service Specification status"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties of the Service Specification to be \nincluded in the returned response"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested start index in a ordered list (sorted by id property) of \nmatching Service Specifications to be provided in response. "
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested maximum number of Service Specifications to be provided \nin the response"
+              }
+            ]
+          },
+          "docs": "This operation returns service specifications from a catalog"
+        },
+        {
+          "info": {
+            "name": "Retrieve a service specification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}:{port}{basePath}/serviceSpecification/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the ServiceSpecification"
+              },
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated properties of the Service Specification to be \nincluded in the returned response"
+              }
+            ]
+          },
+          "docs": "This operation returns a service specification by its id from a catalog. Attribute selection is enabled using the fields attribute."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "EventSubscriptionHub",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:{port}{basePath}/hub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Structure used to create a hub (to subscribe to notification"
+        },
+        {
+          "info": {
+            "name": "get hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{server}:{port}{basePath}/hub/:hubId",
+            "params": [
+              {
+                "name": "hubId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "get hub"
+        },
+        {
+          "info": {
+            "name": "Delete Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{server}:{port}{basePath}/hub/:hubId",
+            "params": [
+              {
+                "name": "hubId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an existing Hub"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

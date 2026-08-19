@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Legato Service Catalog Notification API",
+    "version": "4.0.0-RC"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "serviceSpecificationNotification",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Publish ServiceSpecification Create Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:{port}{basePath}/listener/serviceSpecificationCreateNotification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mechanism for SOF to notify registred BUS listeners of \nServiceSpecification creation event"
+        },
+        {
+          "info": {
+            "name": "Publish ServiceSpecification Deletion Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:{port}{basePath}/listener/serviceSpecificationDeleteNotification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mechanism for SOF to notify registred BUS listeners of \nServiceSpecification deletion event"
+        },
+        {
+          "info": {
+            "name": "Publish ServiceSpecification StateChange Notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{server}:{port}{basePath}/listener/serviceSpecificationChangeNotification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mechanism for SOF to notify registred BUS listeners of \nServiceSpecification state change event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

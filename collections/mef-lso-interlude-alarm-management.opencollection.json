@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Alarm Management",
+    "version": "3.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "alarm",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or find Alarm objects.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/interlude/alarmManagement/v3/alarm",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The identifier of the Alarm."
+              },
+              {
+                "name": "alarmChangedTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the alarm was changed - greater than."
+              },
+              {
+                "name": "alarmChangedTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the alarm was changed - lower than."
+              },
+              {
+                "name": "alarmClearedTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the alarm was cleared - greater than."
+              },
+              {
+                "name": "alarmClearedTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the alarm was cleared - lower than."
+              },
+              {
+                "name": "alarmReportingTime.gt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the alarm was reported - greater than."
+              },
+              {
+                "name": "alarmReportingTime.lt",
+                "value": "",
+                "type": "query",
+                "description": "Date when the alarm was reported - lower than."
+              },
+              {
+                "name": "alarmType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the Alarm."
+              },
+              {
+                "name": "alarmedObjectType",
+                "value": "",
+                "type": "query",
+                "description": "Type of the Alarm Object."
+              },
+              {
+                "name": "perceivedSeverity",
+                "value": "",
+                "type": "query",
+                "description": "Perceived Severity of the Alarm."
+              },
+              {
+                "name": "plannedOutageIndicator",
+                "value": "",
+                "type": "query",
+                "description": "Planned Outage Indicator of the Alarm."
+              },
+              {
+                "name": "reportingSystemId",
+                "value": "",
+                "type": "query",
+                "description": "Alarm Reporting system identity."
+              },
+              {
+                "name": "serviceAffecting",
+                "value": "",
+                "type": "query",
+                "description": "Service Affecting Alarms."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Alarm state."
+              },
+              {
+                "name": "affectedServiceId",
+                "value": "",
+                "type": "query",
+                "description": "Affected Service Id."
+              },
+              {
+                "name": "correlatedAlarmId",
+                "value": "",
+                "type": "query",
+                "description": "Correlated Alarm Id."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response."
+              }
+            ]
+          },
+          "docs": "The Buyer/Client  requests a list of Alarms using none or more of the filter criteria. The Seller/Server returns a summarized list of  Alarms. For each Alarm returned, the Seller/Server also  provides a Alarm Identifier that uniquely identifiers this  Alarm within the Seller/Server. The order of the elements  returned to the Buyer/Client is defined by the Seller/Server (e.g.  natural order) and does not change between the pages."
+        },
+        {
+          "info": {
+            "name": "Retrieves an Alarm by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/interlude/alarmManagement/v3/alarm/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Alarm"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about a single Alarm based on the Alarm Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Register a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/interlude/alarmManagement/v3/hub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer/Client or Administrator requests to subscribe to  Alarm Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves a Hub by ID.",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/interlude/alarmManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client requests detailed information about  a single Notification Hub based on the Hub Identifier."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/interlude/alarmManagement/v3/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the registered listener"
+              }
+            ]
+          },
+          "docs": "The Buyer/Client or Administrator requests to unsubscribe from  Alarm Notifications."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

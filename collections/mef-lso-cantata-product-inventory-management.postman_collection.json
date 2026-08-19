@@ -1,0 +1,1297 @@
+{
+  "item": [
+    {
+      "id": "96d65c55-3741-4d94-b822-cf99982eb2ac",
+      "name": "product",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a594b321-e30d-434a-a5ca-416dc113102d",
+          "name": "List or find Product objects",
+          "request": {
+            "name": "List or find Product objects",
+            "description": {
+              "content": "This operation lists or finds Product entities",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "product"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "The status of the product"
+                },
+                {
+                  "disabled": false,
+                  "key": "productSpecificationId",
+                  "value": "<string>",
+                  "description": "A reference to a product spec by id"
+                },
+                {
+                  "disabled": false,
+                  "key": "productOfferingId",
+                  "value": "<string>",
+                  "description": "A reference to a product offering by id"
+                },
+                {
+                  "disabled": false,
+                  "key": "externalId",
+                  "value": "<string>",
+                  "description": "A reference to the externalId provided in the order"
+                },
+                {
+                  "disabled": false,
+                  "key": "geographicAddressId",
+                  "value": "<string>",
+                  "description": "A Geographic Address identifier which is associated to the product"
+                },
+                {
+                  "disabled": false,
+                  "key": "geographicSiteId",
+                  "value": "<string>",
+                  "description": "A site identifier which is associated to the product"
+                },
+                {
+                  "disabled": false,
+                  "key": "relatedProductId",
+                  "value": "<string>",
+                  "description": "This criteria allows to retrieve all Product records with a Product Relationship to a specified Product.\nE.g. All Products related to Product with ID 5"
+                },
+                {
+                  "disabled": false,
+                  "key": "billingAccountId",
+                  "value": "<string>",
+                  "description": "The Billing Account associated with the Product."
+                },
+                {
+                  "disabled": false,
+                  "key": "productOrderId",
+                  "value": "<string>",
+                  "description": "Identifies Product Order associated with the Product"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Less than the date that is the initial install date for the Product"
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Greater than the date that is the initial install date for the Product"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastUpdateDate.lt",
+                  "value": "<dateTime>",
+                  "description": "Less than date that the last change affecting this Product was completed"
+                },
+                {
+                  "disabled": false,
+                  "key": "lastUpdateDate.gt",
+                  "value": "<dateTime>",
+                  "description": "Greater than the date that the last change affecting this Product was completed"
+                },
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Requested index for start of item to be provided in response requested by client. Note that the index starts with \"0\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Requested number of items to be provided in response requested by client"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1598cbdf-8f2d-434e-a28d-064302654dd4",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productSpecificationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOfferingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicAddressId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicSiteId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedProductId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Used to indicate that result page was throttled to maximum possible size  and there are additional results that can be fetched\n",
+                  "key": "X-Pagination-Throttled",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of matching items. E.g. if there are 50 matching items in total, but the request has offset=10 and limit=10, then the X-Total-Count is 50.\n",
+                  "key": "X-Total-Count",
+                  "value": "757"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of items included in the response",
+                  "key": "X-Result-Count",
+                  "value": "757"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"status\": \"<string>\",\n    \"productSpecification\": {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    \"place\": [\n      {\n        \"place\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"role\": \"string\",\n        \"contact\": [\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          },\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          }\n        ]\n      },\n      {\n        \"place\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"role\": \"string\",\n        \"contact\": [\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          },\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"productOffering\": {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    \"lastUpdateDate\": \"1989-08-31T02:27:38.581Z\",\n    \"externalId\": \"string\",\n    \"productRelationship\": [\n      {\n        \"id\": \"string\",\n        \"relationshipType\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"relationshipType\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"href\": \"string\",\n    \"billingAccount\": {\n      \"id\": \"string\"\n    },\n    \"productOrderItem\": [\n      {\n        \"productOrderId\": \"string\",\n        \"productOrderItemId\": \"string\",\n        \"productOrderHref\": \"string\"\n      },\n      {\n        \"productOrderId\": \"string\",\n        \"productOrderItemId\": \"string\",\n        \"productOrderHref\": \"string\"\n      }\n    ],\n    \"startDate\": \"1947-08-28T15:29:06.237Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"status\": \"<string>\",\n    \"productSpecification\": {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    \"place\": [\n      {\n        \"place\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"role\": \"string\",\n        \"contact\": [\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          },\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          }\n        ]\n      },\n      {\n        \"place\": {\n          \"@type\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"href\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"role\": \"string\",\n        \"contact\": [\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          },\n          {\n            \"emailAddress\": \"string\",\n            \"name\": \"string\",\n            \"number\": \"string\",\n            \"postalAddress\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"organization\": \"string\",\n            \"numberExtension\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"productOffering\": {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    \"lastUpdateDate\": \"1993-05-20T19:32:00.600Z\",\n    \"externalId\": \"string\",\n    \"productRelationship\": [\n      {\n        \"id\": \"string\",\n        \"relationshipType\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"relationshipType\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"href\": \"string\",\n    \"billingAccount\": {\n      \"id\": \"string\"\n    },\n    \"productOrderItem\": [\n      {\n        \"productOrderId\": \"string\",\n        \"productOrderItemId\": \"string\",\n        \"productOrderHref\": \"string\"\n      },\n      {\n        \"productOrderId\": \"string\",\n        \"productOrderItemId\": \"string\",\n        \"productOrderHref\": \"string\"\n      }\n    ],\n    \"startDate\": \"1980-01-27T21:53:29.551Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c01e0ba5-43bd-4dd5-9e46-74bd47c3ed25",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productSpecificationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOfferingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicAddressId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicSiteId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedProductId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jzCsBPVGnvGvVYEcmJfhcBKzV.ahjmOXcM2-Klxt7ZwMoXt.ExzA8aYwrUSM8mFX4nbax2gdYJkcJhh2lByj8f\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "544df30c-8d63-4398-92ed-2b409ff73e93",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productSpecificationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOfferingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicAddressId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicSiteId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedProductId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://CmPyyiZQIOhIIvAXImkNBQS.avuF.fsLQdt.gyU-7W3KcH,YUQlvRcCrPAVfVzAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ba7a7a42-f733-4d5d-b7bb-f61f3b429809",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productSpecificationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOfferingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicAddressId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicSiteId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedProductId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lIQbmLEvHCRWsil.posvWuzxYBj+WK.BzIecPRNPNVShkIksE9riTdTSh.2dM-FpbHsDoxcD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "87f56a9b-7ddd-41dd-90d1-49512ac553a7",
+              "name": "Unprocessable entity due to the business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productSpecificationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOfferingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicAddressId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicSiteId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedProductId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"unexpectedProperty\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://IKsbBhNHGxoFhNG.mowNc\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://WjjMXCGWWKLxPkzRulYsiUitp.qvTuqSYVQPNT40UN+WupX6iNeAHJ1idOOHAXcTqjQ\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64d48002-7be5-4741-a62e-e23f2d25e28b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productSpecificationId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOfferingId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "externalId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicAddressId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "geographicSiteId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "relatedProductId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "billingAccountId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "productOrderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "startDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "startDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "lastUpdateDate.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://kRJARGgDWcqvkhnv.oikfy28fnf,gYsJtQtogHAP3KQTRkmlJlagUDLP6F1cqhTySo3gDoISdn\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b34be110-50bf-4acc-aba0-1f20057f3bf9",
+          "name": "Retrieves a Product by ID",
+          "request": {
+            "name": "Retrieves a Product by ID",
+            "description": {
+              "content": "This operation retrieves a Product entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "product",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the Product"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8bf64d5-3791-4371-92e5-ccea8381eba0",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Product"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"startDate\": \"2021-05-09T17:02:13.607Z\",\n  \"status\": \"<string>\",\n  \"statusChange\": [\n    {\n      \"changeDate\": \"2010-05-17T15:48:39.562Z\",\n      \"status\": \"<string>\",\n      \"changeReason\": \"string\"\n    },\n    {\n      \"changeDate\": \"1986-06-04T07:09:10.740Z\",\n      \"status\": \"<string>\",\n      \"changeReason\": \"string\"\n    }\n  ],\n  \"href\": \"string\",\n  \"externalId\": \"string\",\n  \"lastUpdateDate\": \"1962-12-17T03:56:33.172Z\",\n  \"agreementName\": \"string\",\n  \"productSpecification\": {\n    \"id\": \"string\",\n    \"href\": \"string\"\n  },\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"GeographicAddressRef\",\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      \"role\": \"string\",\n      \"contact\": [\n        {\n          \"emailAddress\": \"string\",\n          \"name\": \"string\",\n          \"number\": \"string\",\n          \"postalAddress\": {\n            \"streetNr\": \"string\",\n            \"streetNrSuffix\": \"string\",\n            \"streetNrLast\": \"string\",\n            \"streetNrLastSuffix\": \"string\",\n            \"streetPreDirection\": \"string\",\n            \"streetName\": \"string\",\n            \"streetType\": \"string\",\n            \"streetPostDirection\": \"string\",\n            \"poBox\": \"string\",\n            \"locality\": \"string\",\n            \"city\": \"string\",\n            \"postcode\": \"string\",\n            \"postcodeExtension\": \"string\",\n            \"stateOrProvince\": \"string\",\n            \"countryCode\": \"st\",\n            \"subUnit\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"buildingName\": \"string\",\n            \"privateStreetNumber\": \"string\",\n            \"privateStreetName\": \"string\",\n            \"language\": \"st\"\n          },\n          \"organization\": \"string\",\n          \"numberExtension\": \"string\"\n        },\n        {\n          \"emailAddress\": \"string\",\n          \"name\": \"string\",\n          \"number\": \"string\",\n          \"postalAddress\": {\n            \"streetNr\": \"string\",\n            \"streetNrSuffix\": \"string\",\n            \"streetNrLast\": \"string\",\n            \"streetNrLastSuffix\": \"string\",\n            \"streetPreDirection\": \"string\",\n            \"streetName\": \"string\",\n            \"streetType\": \"string\",\n            \"streetPostDirection\": \"string\",\n            \"poBox\": \"string\",\n            \"locality\": \"string\",\n            \"city\": \"string\",\n            \"postcode\": \"string\",\n            \"postcodeExtension\": \"string\",\n            \"stateOrProvince\": \"string\",\n            \"countryCode\": \"st\",\n            \"subUnit\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"buildingName\": \"string\",\n            \"privateStreetNumber\": \"string\",\n            \"privateStreetName\": \"string\",\n            \"language\": \"st\"\n          },\n          \"organization\": \"string\",\n          \"numberExtension\": \"string\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"GeographicAddressRef\",\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      \"role\": \"string\",\n      \"contact\": [\n        {\n          \"emailAddress\": \"string\",\n          \"name\": \"string\",\n          \"number\": \"string\",\n          \"postalAddress\": {\n            \"streetNr\": \"string\",\n            \"streetNrSuffix\": \"string\",\n            \"streetNrLast\": \"string\",\n            \"streetNrLastSuffix\": \"string\",\n            \"streetPreDirection\": \"string\",\n            \"streetName\": \"string\",\n            \"streetType\": \"string\",\n            \"streetPostDirection\": \"string\",\n            \"poBox\": \"string\",\n            \"locality\": \"string\",\n            \"city\": \"string\",\n            \"postcode\": \"string\",\n            \"postcodeExtension\": \"string\",\n            \"stateOrProvince\": \"string\",\n            \"countryCode\": \"st\",\n            \"subUnit\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"buildingName\": \"string\",\n            \"privateStreetNumber\": \"string\",\n            \"privateStreetName\": \"string\",\n            \"language\": \"st\"\n          },\n          \"organization\": \"string\",\n          \"numberExtension\": \"string\"\n        },\n        {\n          \"emailAddress\": \"string\",\n          \"name\": \"string\",\n          \"number\": \"string\",\n          \"postalAddress\": {\n            \"streetNr\": \"string\",\n            \"streetNrSuffix\": \"string\",\n            \"streetNrLast\": \"string\",\n            \"streetNrLastSuffix\": \"string\",\n            \"streetPreDirection\": \"string\",\n            \"streetName\": \"string\",\n            \"streetType\": \"string\",\n            \"streetPostDirection\": \"string\",\n            \"poBox\": \"string\",\n            \"locality\": \"string\",\n            \"city\": \"string\",\n            \"postcode\": \"string\",\n            \"postcodeExtension\": \"string\",\n            \"stateOrProvince\": \"string\",\n            \"countryCode\": \"st\",\n            \"subUnit\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"buildingName\": \"string\",\n            \"privateStreetNumber\": \"string\",\n            \"privateStreetName\": \"string\",\n            \"language\": \"st\"\n          },\n          \"organization\": \"string\",\n          \"numberExtension\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"productOffering\": {\n    \"id\": \"string\",\n    \"href\": \"string\"\n  },\n  \"relatedContactInformation\": [\n    {\n      \"emailAddress\": \"string\",\n      \"name\": \"string\",\n      \"number\": \"string\",\n      \"role\": \"string\",\n      \"postalAddress\": {\n        \"streetNr\": \"string\",\n        \"streetNrSuffix\": \"string\",\n        \"streetNrLast\": \"string\",\n        \"streetNrLastSuffix\": \"string\",\n        \"streetPreDirection\": \"string\",\n        \"streetName\": \"string\",\n        \"streetType\": \"string\",\n        \"streetPostDirection\": \"string\",\n        \"poBox\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"postcode\": \"string\",\n        \"postcodeExtension\": \"string\",\n        \"stateOrProvince\": \"string\",\n        \"countryCode\": \"st\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"string\",\n            \"subUnitType\": \"string\"\n          },\n          {\n            \"subUnitNumber\": \"string\",\n            \"subUnitType\": \"string\"\n          }\n        ],\n        \"buildingName\": \"string\",\n        \"privateStreetNumber\": \"string\",\n        \"privateStreetName\": \"string\",\n        \"language\": \"st\"\n      },\n      \"organization\": \"string\",\n      \"numberExtension\": \"string\"\n    },\n    {\n      \"emailAddress\": \"string\",\n      \"name\": \"string\",\n      \"number\": \"string\",\n      \"role\": \"string\",\n      \"postalAddress\": {\n        \"streetNr\": \"string\",\n        \"streetNrSuffix\": \"string\",\n        \"streetNrLast\": \"string\",\n        \"streetNrLastSuffix\": \"string\",\n        \"streetPreDirection\": \"string\",\n        \"streetName\": \"string\",\n        \"streetType\": \"string\",\n        \"streetPostDirection\": \"string\",\n        \"poBox\": \"string\",\n        \"locality\": \"string\",\n        \"city\": \"string\",\n        \"postcode\": \"string\",\n        \"postcodeExtension\": \"string\",\n        \"stateOrProvince\": \"string\",\n        \"countryCode\": \"st\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"string\",\n            \"subUnitType\": \"string\"\n          },\n          {\n            \"subUnitNumber\": \"string\",\n            \"subUnitType\": \"string\"\n          }\n        ],\n        \"buildingName\": \"string\",\n        \"privateStreetNumber\": \"string\",\n        \"privateStreetName\": \"string\",\n        \"language\": \"st\"\n      },\n      \"organization\": \"string\",\n      \"numberExtension\": \"string\"\n    }\n  ],\n  \"billingAccount\": {\n    \"id\": \"string\"\n  },\n  \"productOrderItem\": [\n    {\n      \"productOrderId\": \"string\",\n      \"productOrderItemId\": \"string\",\n      \"productOrderHref\": \"string\"\n    },\n    {\n      \"productOrderId\": \"string\",\n      \"productOrderItemId\": \"string\",\n      \"productOrderHref\": \"string\"\n    }\n  ],\n  \"productTerm\": [\n    {\n      \"duration\": {\n        \"amount\": 528,\n        \"units\": \"businessDays\"\n      },\n      \"endOfTermAction\": \"roll\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"rollInterval\": {\n        \"amount\": 6372,\n        \"units\": \"minutes\"\n      }\n    },\n    {\n      \"duration\": {\n        \"amount\": 2054,\n        \"units\": \"minutes\"\n      },\n      \"endOfTermAction\": \"autoRenew\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"rollInterval\": {\n        \"amount\": 4399,\n        \"units\": \"months\"\n      }\n    }\n  ],\n  \"terminationDate\": \"1958-07-08T19:22:09.562Z\",\n  \"productConfiguration\": {\n    \"@type\": \"string\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"string\",\n      \"relationshipType\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"relationshipType\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"productPrice\": [\n    {\n      \"price\": {\n        \"dutyFreeAmount\": {\n          \"unit\": \"string\",\n          \"value\": 4390.150735877476\n        },\n        \"taxRate\": 9799.80097291015,\n        \"taxIncludedAmount\": {\n          \"unit\": \"string\",\n          \"value\": 3266.9038696061634\n        }\n      },\n      \"priceType\": \"recurring\",\n      \"unitOfMeasure\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"recurringChargePeriod\": {\n        \"amount\": 6112,\n        \"units\": \"months\"\n      }\n    },\n    {\n      \"price\": {\n        \"dutyFreeAmount\": {\n          \"unit\": \"string\",\n          \"value\": 5146.694032976908\n        },\n        \"taxRate\": 1000.1052705160573,\n        \"taxIncludedAmount\": {\n          \"unit\": \"string\",\n          \"value\": 3277.9271450050087\n        }\n      },\n      \"priceType\": \"nonRecurring\",\n      \"unitOfMeasure\": \"string\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"recurringChargePeriod\": {\n        \"amount\": 6435,\n        \"units\": \"businessDays\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "035b15dc-25d5-4e46-9220-61f2c846267a",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Product"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryParameter\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://jzCsBPVGnvGvVYEcmJfhcBKzV.ahjmOXcM2-Klxt7ZwMoXt.ExzA8aYwrUSM8mFX4nbax2gdYJkcJhh2lByj8f\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c361c45-f181-4b71-a008-ea74ce300ee8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Product"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://CmPyyiZQIOhIIvAXImkNBQS.avuF.fsLQdt.gyU-7W3KcH,YUQlvRcCrPAVfVzAP\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3511ac00-7422-4e7b-b358-b8d6ce46b5b5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Product"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lIQbmLEvHCRWsil.posvWuzxYBj+WK.BzIecPRNPNVShkIksE9riTdTSh.2dM-FpbHsDoxcD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf641e8f-ec36-42c8-8c0d-97feaf8ab6d3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Product"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://sVRXDguQoOTSlkEYF.qtftNtN8T1si\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97ad1310-3e92-4b26-8004-466045d8d109",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "product",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Product"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://kRJARGgDWcqvkhnv.oikfy28fnf,gYsJtQtogHAP3KQTRkmlJlagUDLP6F1cqhTySo3gDoISdn\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ce9b0d03-e269-4e51-9b14-d41da08625e3",
+      "name": "events subscription",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Seller's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/cantata/productInventory/v2/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c4b24483-6a4c-45df-a118-5e3bb5807be1",
+    "name": "Product Inventory Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 116.1**\n\nThis API implements Business Requirements described in MEF 81 and MEF 81.0.1\n\nIt allows the Buyer to retrieve the information about existing Product\ninstances from Seller's Product Inventory.\n\nList of supported use cases:\n\n- Retrieve Product List\n\n- Retrieve Product by Identifier\n\nCopyright 2025 Mplify Alliance and its contributors.\n\nThis file includes content based on the TM Forum Product Inventory\nManagement API (TMF637 v4.0.0) available at\nhttps://github.com/tmforum-apis/TMF637_ProductInventory, which is licensed\nby the TM Forum under the Apache License version 2.0. Such content has been\nmodified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

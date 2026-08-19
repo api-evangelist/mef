@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Service Ordering Notification",
+    "version": "1.0.1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification listeners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Service Order Create Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/serviceOrderingNotification/v1/listener/serviceOrderCreateEvent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on Service Order Create"
+        },
+        {
+          "info": {
+            "name": "Service Order State Change Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/serviceOrderingNotification/v1/listener/serviceOrderStateChangeEvent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on Service Order State Change"
+        },
+        {
+          "info": {
+            "name": "Service Order Information Required Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/serviceOrderingNotification/v1/listener/serviceOrderInformationRequiredEvent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on Service Order Information Required"
+        },
+        {
+          "info": {
+            "name": "Service Order Item State Change Notification endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/serviceOrderingNotification/v1/listener/serviceOrderItemStateChangeEvent",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint is used to receive notifications on Service Order Item State Change"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

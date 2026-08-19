@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Streaming Management",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "topic",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Available Topics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/streamingManagement/v1/topic",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Category of the available topic"
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "query",
+                "description": "A communication protocol supported by the available topic"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of elements to be provided in response requested by client"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of elements to be provided in response requested by the client. Note that the index starts with \"0\"."
+              }
+            ]
+          },
+          "docs": "List topics available for subscription to performance monitoring data"
+        },
+        {
+          "info": {
+            "name": "Retrieve Available Topic by an Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/streamingManagement/v1/topic/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the topic"
+              }
+            ]
+          },
+          "docs": "Information about the topic available for subscription"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Topic Subscriptions List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/streamingManagement/v1/subscription",
+            "params": [
+              {
+                "name": "topicId",
+                "value": "",
+                "type": "query",
+                "description": "Identifier of a topic subscription belongs to"
+              },
+              {
+                "name": "protocol",
+                "value": "",
+                "type": "query",
+                "description": "A communication protocol supported by the available topic"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of elements to be provided in response requested by client"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for the start of elements to be provided in response requested by the client. Note that the index starts with \"0\"."
+              }
+            ]
+          },
+          "docs": "List all the subscriptions to all the topics"
+        },
+        {
+          "info": {
+            "name": "Subscribe To a Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/allegro/streamingManagement/v1/subscription",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe to the selected topic"
+        },
+        {
+          "info": {
+            "name": "Retrieve Topic Subscription By an Identifier",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/allegro/streamingManagement/v1/subscription/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the subscription"
+              }
+            ]
+          },
+          "docs": "Retrieve information about a subscription to a topic"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe From a Topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/allegro/streamingManagement/v1/subscription/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the subscription"
+              }
+            ]
+          },
+          "docs": "Remove a subscription for a  topic"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

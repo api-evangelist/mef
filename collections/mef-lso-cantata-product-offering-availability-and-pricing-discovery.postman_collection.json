@@ -1,0 +1,890 @@
+{
+  "item": [
+    {
+      "id": "0dc6e292-cee7-4f93-8122-3437ff7e31ae",
+      "name": "Product Offering Availability",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "24d64c53-de52-4911-8f29-c8ba421155d1",
+          "name": "The Buyer requests a list of available Product Offering Configurations from the Seller for a specific Product Specification within the specified Delivery Context. The Seller responds to the Buyer with a list of Product Configurations meeting the Buyer's criteria and the Installation Interval for each of these. Each Product Configuration has a unique identifier that is passed to the Buyer by the Seller. This identifier is used to Retrieve Pricing and Terms.",
+          "request": {
+            "name": "The Buyer requests a list of available Product Offering Configurations from the Seller for a specific Product Specification within the specified Delivery Context. The Seller responds to the Buyer with a list of Product Configurations meeting the Buyer's criteria and the Installation Interval for each of these. Each Product Configuration has a unique identifier that is passed to the Buyer by the Seller. This identifier is used to Retrieve Pricing and Terms.",
+            "description": {},
+            "url": {
+              "path": [
+                "productOfferingAvailability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cab04113-ba97-4377-8fe4-c151d7ad5282",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"action\": \"<string>\",\n  \"availableProductOfferingConfiguration\": [\n    {\n      \"installationInterval\": {\n        \"amount\": 1526,\n        \"units\": \"minutes\"\n      },\n      \"productConfiguration\": {\n        \"@type\": \"string\"\n      },\n      \"productOffering\": {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      \"productOfferingConfigurationIdentifier\": \"string\"\n    },\n    {\n      \"installationInterval\": {\n        \"amount\": 9815,\n        \"units\": \"months\"\n      },\n      \"productConfiguration\": {\n        \"@type\": \"string\"\n      },\n      \"productOffering\": {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      \"productOfferingConfigurationIdentifier\": \"string\"\n    }\n  ],\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ed121f3-9497-44a7-ac18-22c2b86da957",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://tVypZ.gbqxqGsvktSN8h9xuVlUH6z1Y9q7wrJHGeejVlHcnVaMFvkVlDY3dD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0078455-9b3e-483a-8fa9-2c88ef2cfe30",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mnnJGUIlVQpRpYSFUeudPEnjz.qjlzACRUJpi+Cp,t6Bc2EjhatMKJEgk,+P4ft9rX,fI7cYXv2H-U--EA+CTCPyMhaa\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8554830-ec08-4324-9bcf-587352396098",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GFUegn.xqcu2Au29MmL7M-CLPENJT99INl9WEprncg0H.sII-VVFaX,fFoHNnRpIIYgBPkh9--ht\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "517abdd5-d271-4898-b1fa-b60df391d973",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"referenceNotFound\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://e.dlgoeH5rEeE6suCi+j07Wny25TyL7RtsMVY\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://IGSmcLorvzCpjp.wxpjIpsiiSXLu4e+YJ\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8478f20-9605-475c-8974-638051d4c2d0",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "productOfferingAvailability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productSpecification\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://DcIpFRNSDj.qtuHp-sUagcRM-Vz4Pkt7uz,Q2HGxFGniJ3PUIZXrAPuiCn\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e858ceca-3e82-4443-864c-78b785be4a2a",
+      "name": "Pricing Discovery",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe5e7afe-d91e-424e-923d-3c7bda26b514",
+          "name": "The Buyer requests a list of Pricing and Terms from the Seller for a specific Product Configuration Identifier within a specific Delivery Context. The Seller responds to the Buyer with a list of Pricing and Terms.",
+          "request": {
+            "name": "The Buyer requests a list of Pricing and Terms from the Seller for a specific Product Configuration Identifier within a specific Delivery Context. The Seller responds to the Buyer with a list of Pricing and Terms.",
+            "description": {},
+            "url": {
+              "path": [
+                "pricingDiscovery"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2878943-ab77-4495-8b0e-89cd200eea32",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricingDiscovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"action\": \"<string>\",\n  \"pricingAndTerm\": [\n    {\n      \"identifier\": \"string\",\n      \"installationInterval\": {\n        \"amount\": 1221,\n        \"units\": \"years\"\n      },\n      \"price\": [\n        {\n          \"name\": \"string\",\n          \"price\": {\n            \"dutyFreeAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taxRate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taxIncludedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"priceType\": \"nonRecurring\",\n          \"unitOfMeasure\": \"string\",\n          \"description\": \"string\",\n          \"recurringChargePeriod\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"units\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"subjectToAdditionalNonrecurringCharges\": false,\n      \"term\": {\n        \"duration\": {\n          \"amount\": 9811,\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"endOfTermAction\": \"autoRenew\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"rollInterval\": {\n          \"amount\": 7484,\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    },\n    {\n      \"identifier\": \"string\",\n      \"installationInterval\": {\n        \"amount\": 3743,\n        \"units\": \"months\"\n      },\n      \"price\": [\n        {\n          \"name\": \"string\",\n          \"price\": {\n            \"dutyFreeAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taxRate\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"taxIncludedAmount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"priceType\": \"nonRecurring\",\n          \"unitOfMeasure\": \"string\",\n          \"description\": \"string\",\n          \"recurringChargePeriod\": {\n            \"amount\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"units\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      ],\n      \"subjectToAdditionalNonrecurringCharges\": false,\n      \"term\": {\n        \"duration\": {\n          \"amount\": 4281,\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"endOfTermAction\": \"roll\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"rollInterval\": {\n          \"amount\": 3829,\n          \"units\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        }\n      }\n    }\n  ],\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"href\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "684be3ca-d009-4a75-b517-5a10d75bdeb0",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricingDiscovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://tVypZ.gbqxqGsvktSN8h9xuVlUH6z1Y9q7wrJHGeejVlHcnVaMFvkVlDY3dD\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9e759e3-5265-497b-b208-f8a545270b9b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricingDiscovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://mnnJGUIlVQpRpYSFUeudPEnjz.qjlzACRUJpi+Cp,t6Bc2EjhatMKJEgk,+P4ft9rX,fI7cYXv2H-U--EA+CTCPyMhaa\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bad5ccaa-e437-4d9f-b683-5d166aa06841",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricingDiscovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"tooManyUsers\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://GFUegn.xqcu2Au29MmL7M-CLPENJT99INl9WEprncg0H.sII-VVFaX,fFoHNnRpIIYgBPkh9--ht\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99feca88-044a-41e0-916a-0c2aeee3da8e",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricingDiscovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"referenceNotFound\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://e.dlgoeH5rEeE6suCi+j07Wny25TyL7RtsMVY\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"tooManyRecords\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://IGSmcLorvzCpjp.wxpjIpsiiSXLu4e+YJ\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3495a9c7-9297-4a13-a3f6-cdd5550bb306",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "pricingDiscovery"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"action\": \"<string>\",\n  \"productOfferingConfigurationIdentifier\": \"<string>\",\n  \"productRef\": {\n    \"id\": \"<string>\",\n    \"href\": \"<string>\"\n  },\n  \"productRelationship\": [\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"relationshipType\": \"<string>\",\n      \"href\": \"<string>\"\n    }\n  ],\n  \"place\": [\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"place\": {\n        \"@type\": \"<string>\",\n        \"id\": \"<string>\",\n        \"href\": \"<string>\"\n      },\n      \"role\": \"<string>\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        },\n        {\n          \"subUnitNumber\": \"<string>\",\n          \"subUnitType\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://DcIpFRNSDj.qtuHp-sUagcRM-Vz4Pkt7uz,Q2HGxFGniJ3PUIZXrAPuiCn\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Seller's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mef.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/cantata/productOfferingAvailabilityAndPricingDiscovery/v4/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d96ed367-c1fb-4c99-9ee7-eb046ee7ccc9",
+    "name": "Product Offering Availability And Pricing Discovery Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 160**\n \n**This API implements Business Requirements described in Mplify 110**\n\nProduct Offering Availability Discovery is a way for the Buyer to specify a\nProduct Specification to the Seller and to receive from the Seller a list\nof zero or more Product Configurations.\n\nPricing Discovery allows the Buyer to receive from the Seller a list of\none or more terms and pricing information for the Product Configuration\nspecified by the Buyer.\n\nThe following use cases are managed: \n\n- Retrieve Product Offering Availability\n- Retrieve Pricing and Terms\n",
+      "type": "text/plain"
+    }
+  }
+}

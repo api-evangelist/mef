@@ -1,0 +1,2410 @@
+{
+  "item": [
+    {
+      "id": "ee5e416e-ab18-4ba7-96f8-d1def6885f68",
+      "name": "alarm",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "93934e0f-4f3b-473d-878f-05c2b8086a43",
+          "name": "List or find Alarm objects.",
+          "request": {
+            "name": "List or find Alarm objects.",
+            "description": {
+              "content": "The Buyer/Client  requests a list of Alarms using none or more of the filter criteria. The Seller/Server returns a summarized list of  Alarms. For each Alarm returned, the Seller/Server also  provides a Alarm Identifier that uniquely identifiers this  Alarm within the Seller/Server. The order of the elements  returned to the Buyer/Client is defined by the Seller/Server (e.g.  natural order) and does not change between the pages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alarm"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "The identifier of the Alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmChangedTime.gt",
+                  "value": "<dateTime>",
+                  "description": "Date when the alarm was changed - greater than."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmChangedTime.lt",
+                  "value": "<dateTime>",
+                  "description": "Date when the alarm was changed - lower than."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmClearedTime.gt",
+                  "value": "<dateTime>",
+                  "description": "Date when the alarm was cleared - greater than."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmClearedTime.lt",
+                  "value": "<dateTime>",
+                  "description": "Date when the alarm was cleared - lower than."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmReportingTime.gt",
+                  "value": "<dateTime>",
+                  "description": "Date when the alarm was reported - greater than."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmReportingTime.lt",
+                  "value": "<dateTime>",
+                  "description": "Date when the alarm was reported - lower than."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmType",
+                  "value": "<string>",
+                  "description": "Type of the Alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "alarmedObjectType",
+                  "value": "<string>",
+                  "description": "Type of the Alarm Object."
+                },
+                {
+                  "disabled": false,
+                  "key": "perceivedSeverity",
+                  "value": "<string>",
+                  "description": "Perceived Severity of the Alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "plannedOutageIndicator",
+                  "value": "<string>",
+                  "description": "Planned Outage Indicator of the Alarm."
+                },
+                {
+                  "disabled": false,
+                  "key": "reportingSystemId",
+                  "value": "<string>",
+                  "description": "Alarm Reporting system identity."
+                },
+                {
+                  "disabled": false,
+                  "key": "serviceAffecting",
+                  "value": "<boolean>",
+                  "description": "Service Affecting Alarms."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Alarm state."
+                },
+                {
+                  "disabled": false,
+                  "key": "affectedServiceId",
+                  "value": "<string>",
+                  "description": "Affected Service Id."
+                },
+                {
+                  "disabled": false,
+                  "key": "correlatedAlarmId",
+                  "value": "<string>",
+                  "description": "Correlated Alarm Id."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Requested index for start of item to be provided in response requested by the client. Note that the index starts with \"0\"."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Requested number of resources to be provided in response."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fccfeb7a-0b58-4dca-a4c8-f6309d5a4530",
+              "name": "'OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)'",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmChangedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmChangedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmedObjectType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "perceivedSeverity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plannedOutageIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceAffecting",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affectedServiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "correlatedAlarmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Used to indicate that result page was throttled to maximum possible size  and there are additional results that can be fetched.",
+                  "key": "X-Pagination-Throttled",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "description": "The total number of matching items. E.g. if there are 50 matching items in total, but the request has offset=10 and limit=10, then the X-Total-Count is 50.",
+                  "key": "X-Total-Count",
+                  "value": "3748"
+                },
+                {
+                  "disabled": false,
+                  "description": "The number of items included in the response.",
+                  "key": "X-Result-Count",
+                  "value": "3748"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"alarmDetails\": \"string\",\n    \"alarmRaisedTime\": \"1981-03-16T07:08:05.671Z\",\n    \"alarmReportingTime\": \"1988-08-29T13:09:46.537Z\",\n    \"alarmType\": \"<string>\",\n    \"id\": \"string\",\n    \"perceivedSeverity\": \"<string>\",\n    \"state\": \"<string>\",\n    \"serviceAffecting\": false,\n    \"href\": \"https://VnWQaZjmzbiWLfKzOv.flSlI6KK9GDgMFt7VsqqiGepcQBcHYa\",\n    \"affectedService\": [\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"alarmChangedTime\": \"2026-04-30T19:56:19.030Z\",\n    \"alarmClearedTime\": \"2004-06-09T19:46:46.706Z\",\n    \"alarmedObjectType\": \"string\",\n    \"correlatedAlarm\": [\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"plannedOutageIndicator\": \"<string>\",\n    \"reportingSystemId\": \"string\"\n  },\n  {\n    \"alarmDetails\": \"string\",\n    \"alarmRaisedTime\": \"2018-12-23T11:42:51.656Z\",\n    \"alarmReportingTime\": \"1991-09-01T01:15:08.208Z\",\n    \"alarmType\": \"<string>\",\n    \"id\": \"string\",\n    \"perceivedSeverity\": \"<string>\",\n    \"state\": \"<string>\",\n    \"serviceAffecting\": false,\n    \"href\": \"http://zqavUdIQMzAnSpukbrLKkFg.dcMbwrmX,JoWaCPiMRTEm-MABXHvoA\",\n    \"affectedService\": [\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"alarmChangedTime\": \"1953-01-25T07:21:33.356Z\",\n    \"alarmClearedTime\": \"1961-11-12T02:14:23.377Z\",\n    \"alarmedObjectType\": \"string\",\n    \"correlatedAlarm\": [\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"href\": \"string\"\n      }\n    ],\n    \"plannedOutageIndicator\": \"<string>\",\n    \"reportingSystemId\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a27130c-c68b-4931-b11d-6c8e769328fe",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmChangedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmChangedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmedObjectType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "perceivedSeverity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plannedOutageIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceAffecting",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affectedServiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "correlatedAlarmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidQuery\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://lRbHqhsVQ.woD56nD2uTsu4mJFfTOuJPa55BYFmsqq+t-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64891f9a-313c-4d8b-9cef-29669ffb3bab",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmChangedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmChangedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmedObjectType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "perceivedSeverity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plannedOutageIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceAffecting",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affectedServiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "correlatedAlarmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSfKdcTQxdPvGXPptKUfrIbaxrkIOf.rindDxl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94d1539f-ae61-46e5-a97b-a47a34911ce9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmChangedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmChangedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmedObjectType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "perceivedSeverity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plannedOutageIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceAffecting",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affectedServiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "correlatedAlarmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://eRYpIQiKCdwn.fuO5lRw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6f858e8-9a28-49a7-9000-430a5f83fc9c",
+              "name": "Unprocessable entity due to the business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmChangedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmChangedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmedObjectType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "perceivedSeverity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plannedOutageIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceAffecting",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affectedServiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "correlatedAlarmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"missingProperty\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"http://ZTwPpblrksvbXb.pbalNPQB6p54ke+d9gaEOtqTC2LK\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"referenceNotFound\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://LiCFCLSQtFb.wrcXfgcF-tk5HXc61spIPzAd2-TjXi1\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54f65959-2131-4485-8326-3db52cbb8da8",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmChangedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmChangedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmClearedTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.gt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmReportingTime.lt",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "alarmType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "alarmedObjectType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "perceivedSeverity",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plannedOutageIndicator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reportingSystemId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "serviceAffecting",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "affectedServiceId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "correlatedAlarmId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lkygosKsfaDNhXIQEvrBVjw.ccmgY6sG2.EaPUe4gY-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a66a03d9-b88b-4e36-bfdd-03f60187c3eb",
+          "name": "Retrieves an Alarm by ID.",
+          "request": {
+            "name": "Retrieves an Alarm by ID.",
+            "description": {
+              "content": "The Buyer/Client requests detailed information about a single Alarm based on the Alarm Identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alarm",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the Alarm"
+                },
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40be546a-59db-48dc-af0f-3d6c50489c9b",
+              "name": "'OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1)'",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Alarm"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"alarmDetails\": \"string\",\n  \"alarmRaisedTime\": \"1967-12-21T22:36:28.998Z\",\n  \"alarmReportingTime\": \"2021-01-01T15:24:52.790Z\",\n  \"alarmType\": \"<string>\",\n  \"alarmedObject\": [\n    {\n      \"id\": \"string\",\n      \"@referredType\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"@referredType\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"id\": \"string\",\n  \"isRootCause\": false,\n  \"perceivedSeverity\": \"<string>\",\n  \"serviceAffecting\": false,\n  \"state\": \"<string>\",\n  \"href\": \"https://BXISrVlvPgkcxmYOHoKqHne.msxtvo4HcFVBT,pzgaN8BhZn-r0qJ-xbjDCPgvXTx6GxRYGdi8TV3\",\n  \"affectedService\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"alarmChangedTime\": \"1955-05-20T19:29:21.080Z\",\n  \"alarmClearedTime\": \"1984-06-22T10:52:26.821Z\",\n  \"alarmedObjectType\": \"string\",\n  \"correlatedAlarm\": [\n    {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    },\n    {\n      \"id\": \"string\",\n      \"href\": \"string\"\n    }\n  ],\n  \"plannedOutageIndicator\": \"<string>\",\n  \"reportingSystemId\": \"string\",\n  \"comment\": [\n    {\n      \"description\": \"string\",\n      \"systemIdentifier\": \"string\",\n      \"time\": \"1953-05-12T01:10:19.315Z\",\n      \"userIdentifier\": \"string\"\n    },\n    {\n      \"description\": \"string\",\n      \"systemIdentifier\": \"string\",\n      \"time\": \"2022-08-30T00:27:06.149Z\",\n      \"userIdentifier\": \"string\"\n    }\n  ],\n  \"externalAlarmId\": \"string\",\n  \"parentAlarm\": {\n    \"id\": \"string\",\n    \"href\": \"string\"\n  },\n  \"probableCause\": \"versionMismatch\",\n  \"alarmSpecificAttributes\": {\n    \"@type\": \"string\"\n  },\n  \"sourceSystemId\": \"string\",\n  \"specificProblem\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d44856a-e737-43c7-934c-3f844d17010b",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Alarm"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidQuery\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://lRbHqhsVQ.woD56nD2uTsu4mJFfTOuJPa55BYFmsqq+t-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfcb3600-b6a9-473d-a39b-f28760b58144",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Alarm"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSfKdcTQxdPvGXPptKUfrIbaxrkIOf.rindDxl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3778a20-1bba-4c13-9643-ce20aa53762c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Alarm"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://eRYpIQiKCdwn.fuO5lRw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b9e953d-f77f-43b7-afee-0191a8f3b4fc",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Alarm"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://HzTYgOveHcAreCthlUEJaOfDZDvng.txQBVlpwoQdeqOgcfOeCNfC-YP96mCjWfqAX8xDU9T7-Qvo7cdLJfVjnmN,IpjEVF\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96397441-0f79-4947-b838-b7713781d55c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alarm",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Alarm"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lkygosKsfaDNhXIQEvrBVjw.ccmgY6sG2.EaPUe4gY-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f2e5f57a-f8f2-49cf-acbc-1313672fae6f",
+      "name": "events subscription",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20249cf9-fbac-4a52-b764-d178bcabd7c9",
+          "name": "Register a listener",
+          "request": {
+            "name": "Register a listener",
+            "description": {
+              "content": "The Buyer/Client or Administrator requests to subscribe to  Alarm Notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "097fceb9-48a4-4a2e-9287-de9761a30eaf",
+              "name": "Subscribed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"<string>\",\n  \"id\": \"string\",\n  \"query\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a182f2b4-2f8d-48fa-ad64-41783337681c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidQuery\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://lRbHqhsVQ.woD56nD2uTsu4mJFfTOuJPa55BYFmsqq+t-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0ec9747-da33-4fb5-bdcd-6c5b617458ee",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSfKdcTQxdPvGXPptKUfrIbaxrkIOf.rindDxl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "543507a8-3e4d-4bb7-96ef-614840b10870",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://eRYpIQiKCdwn.fuO5lRw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "01613954-c597-40c8-a200-b84ebd3f26e3",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lkygosKsfaDNhXIQEvrBVjw.ccmgY6sG2.EaPUe4gY-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c35e16a-4873-4d83-85cd-c48b31f026db",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lHaJX.eotc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d3bcb4f-1598-4a4d-a95f-0d3d3cf7f3ab",
+          "name": "Retrieves a Hub by ID.",
+          "request": {
+            "name": "Retrieves a Hub by ID.",
+            "description": {
+              "content": "The Buyer/Client requests detailed information about  a single Notification Hub based on the Hub Identifier.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the Hub"
+                },
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7971a0a2-c492-4253-8877-15d764799a36",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"<string>\",\n  \"id\": \"string\",\n  \"query\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c63c3409-178b-4643-bb4e-000cd51f9e72",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidQuery\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://lRbHqhsVQ.woD56nD2uTsu4mJFfTOuJPa55BYFmsqq+t-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "580ae0d1-4ac6-4f9c-beaa-4d400e5802d2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSfKdcTQxdPvGXPptKUfrIbaxrkIOf.rindDxl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02b4a5ae-83e4-4432-95f7-ffd04c8381e6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://eRYpIQiKCdwn.fuO5lRw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "aeb7abd1-256c-481f-bdb2-e6f676cd93a3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://HzTYgOveHcAreCthlUEJaOfDZDvng.txQBVlpwoQdeqOgcfOeCNfC-YP96mCjWfqAX8xDU9T7-Qvo7cdLJfVjnmN,IpjEVF\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f421c8e-56f5-4202-913d-97161196449c",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lkygosKsfaDNhXIQEvrBVjw.ccmgY6sG2.EaPUe4gY-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85ffbad7-3e07-4097-9e42-dae10cc4b704",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lHaJX.eotc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9947b09f-287f-49f0-86e1-7c9bbee18edb",
+          "name": "Unregister a listener",
+          "request": {
+            "name": "Unregister a listener",
+            "description": {
+              "content": "The Buyer/Client or Administrator requests to unsubscribe from  Alarm Notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the registered listener"
+                },
+                {
+                  "description": "The base of SOF's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "056bd36b-dc7a-4313-a744-085f0e48f7eb",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a418ad6e-4789-48fe-9b44-9f8655e92298",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidQuery\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://lRbHqhsVQ.woD56nD2uTsu4mJFfTOuJPa55BYFmsqq+t-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fef1b938-9bed-4c11-aa67-958039c27924",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://vSfKdcTQxdPvGXPptKUfrIbaxrkIOf.rindDxl\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4c40a55-c9a2-41d2-b118-4bd130c880d7",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"accessDenied\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://eRYpIQiKCdwn.fuO5lRw\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "271afec1-808b-4cb3-b5e4-22fee0694701",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://HzTYgOveHcAreCthlUEJaOfDZDvng.txQBVlpwoQdeqOgcfOeCNfC-YP96mCjWfqAX8xDU9T7-Qvo7cdLJfVjnmN,IpjEVF\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4d4a5f29-69f4-4ff8-bbb3-1f3392f78f6b",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lkygosKsfaDNhXIQEvrBVjw.ccmgY6sG2.EaPUe4gY-\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d23777b-f0bc-4f01-9cfb-77962aa5f028",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of SOF's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://lHaJX.eotc\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of SOF's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/allegro/alarmManagement/v3/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "618354f7-3caa-4db7-b3db-4ac26b8a3eca",
+    "name": "Alarm Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 146**\n\n**This API implements part of Business Requirements & Use Cases described\nin Mplify 133.1**\n\nMplify Alarm Management is used to notify listening client about a specific event that has occurred.\nAn alarm may or may not represent an error. The Alarm can indicate that a TCA has been crossed.\nNot all alarms are an indication of a failure.\n\n\nList of use cases by supported the API:\n- Retrieve Alarm List\n- Retrieve Alarm by ID\n- Subscribe for Alarms\n- Unsubscribe to Alarms\n\nCopyright 2025 Mplify Alliance and its contributors\nThis file includes content based on the TM Forum Alarm Management API (TMF642 v5.0.0) available at https://www.tmforum.org/oda/open-apis/directory/alarm-management-api-TMF642/v5.0, which is licensed by the TM Forum under the Apache License version 2.0. Such content has been modified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

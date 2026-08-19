@@ -1,0 +1,2923 @@
+{
+  "item": [
+    {
+      "id": "17fcd014-3599-46f2-89d3-57817e0c5cab",
+      "name": "geographicAddressValidation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3421be01-a816-4365-92bc-b18cf92edd42",
+          "name": "Creates a GeographicAddressValidation",
+          "request": {
+            "name": "Creates a GeographicAddressValidation",
+            "description": {
+              "content": "This operation creates a GeographicAddressValidation entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geographicAddressValidation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb2409fc-af36-4079-939c-1473b46356d7",
+              "name": "OK. (https://tools.ietf.org/html/rfc7231#section-6.3.1). MUST be be used in case of an immediate response. In immediate response the `id` MUST NOT be provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"alternateGeographicAddress\": [\n    {\n      \"allowsNewSite\": \"true\",\n      \"hasPublicSite\": \"true\",\n      \"id\": \"string\",\n      \"@type\": \"GeographicAddress\",\n      \"href\": \"string\",\n      \"fieldedAddressRepresentation\": [\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"formattedAddressRepresentation\": [\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"geographicPointRepresentation\": [\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        },\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        }\n      ],\n      \"labelRepresentation\": [\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"allowsNewSite\": \"false\",\n      \"hasPublicSite\": \"false\",\n      \"id\": \"string\",\n      \"@type\": \"GeographicAddress\",\n      \"href\": \"string\",\n      \"fieldedAddressRepresentation\": [\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"formattedAddressRepresentation\": [\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"geographicPointRepresentation\": [\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        },\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        }\n      ],\n      \"labelRepresentation\": [\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"instantSyncValidation\": \"<boolean>\",\n  \"state\": \"rejected\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"string\",\n  \"bestMatchGeographicAddress\": {\n    \"allowsNewSite\": \"true\",\n    \"hasPublicSite\": \"true\",\n    \"id\": \"string\",\n    \"@type\": \"GeographicAddress\",\n    \"href\": \"string\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65cb619f-1328-4892-9232-0148e143e1ac",
+              "name": "Created (https://tools.ietf.org/html/rfc7231#section-6.3.2). MUST used in case of a deferred response. In deferred response the `id` MUST be provided.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"alternateGeographicAddress\": [\n    {\n      \"allowsNewSite\": \"unknown\",\n      \"hasPublicSite\": \"unknown\",\n      \"id\": \"string\",\n      \"@type\": \"GeographicAddress\",\n      \"href\": \"string\",\n      \"fieldedAddressRepresentation\": [\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"formattedAddressRepresentation\": [\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"geographicPointRepresentation\": [\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        },\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        }\n      ],\n      \"labelRepresentation\": [\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"allowsNewSite\": \"true\",\n      \"hasPublicSite\": \"unknown\",\n      \"id\": \"string\",\n      \"@type\": \"GeographicAddress\",\n      \"href\": \"string\",\n      \"fieldedAddressRepresentation\": [\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"formattedAddressRepresentation\": [\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"geographicPointRepresentation\": [\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        },\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        }\n      ],\n      \"labelRepresentation\": [\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"instantSyncValidation\": \"<boolean>\",\n  \"state\": \"ready\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"string\",\n  \"bestMatchGeographicAddress\": {\n    \"allowsNewSite\": \"true\",\n    \"hasPublicSite\": \"false\",\n    \"id\": \"string\",\n    \"@type\": \"GeographicAddress\",\n    \"href\": \"string\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "302242cb-c0cf-4a49-a7fa-88637ee0f3f7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://R.zePf1Qgo,-tNZ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df2641bf-b65b-41d8-8ddf-8276a5692253",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://yianyF.mhwvs1vDsjbLH6VOZVKMCIc0lLpnMq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ab92d27-20ff-421a-bcf9-682100c96c7c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://dUgG.awvkXiTML85OqL0GxyNty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34fd6b3e-3734-4a8c-b534-1456133fbf13",
+              "name": "Unprocessable entity due to the business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://oSbZjoLxksKdndbT.wkxGViFiV2PLBoCFB6Pm4w8ma5V+d7ps,Wt,J8\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://vCtfChzZrRTOOAFeeqgKNPdAdncb.mgvwP5CNDTNyoXNIW\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "420c0579-def6-4d1b-9ab9-b17db4d4055f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"instantSyncValidation\": \"<boolean>\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          },\n          {\n            \"subUnitNumber\": \"<string>\",\n            \"subUnitType\": \"<string>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://JCOHTuIdcs.rnus9GejbhAXw60-EGvPKMCLWt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62d5ea91-e943-41f9-9373-471e0afb66a1",
+          "name": "Retrieves a GeographicAddressValidation by ID",
+          "request": {
+            "name": "Retrieves a GeographicAddressValidation by ID",
+            "description": {
+              "content": "This operation retrieves a GeographicAddressValidation entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geographicAddressValidation",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the GeographicAddressValidation"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23872044-39df-4f2f-8bad-3d9a2afd0fad",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"alternateGeographicAddress\": [\n    {\n      \"allowsNewSite\": \"unknown\",\n      \"hasPublicSite\": \"unknown\",\n      \"id\": \"string\",\n      \"@type\": \"GeographicAddress\",\n      \"href\": \"string\",\n      \"fieldedAddressRepresentation\": [\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"formattedAddressRepresentation\": [\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"geographicPointRepresentation\": [\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        },\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        }\n      ],\n      \"labelRepresentation\": [\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"allowsNewSite\": \"true\",\n      \"hasPublicSite\": \"unknown\",\n      \"id\": \"string\",\n      \"@type\": \"GeographicAddress\",\n      \"href\": \"string\",\n      \"fieldedAddressRepresentation\": [\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"streetNr\": \"<string>\",\n          \"streetNrSuffix\": \"<string>\",\n          \"streetNrLast\": \"<string>\",\n          \"streetNrLastSuffix\": \"<string>\",\n          \"streetPreDirection\": \"<string>\",\n          \"streetName\": \"<string>\",\n          \"streetType\": \"<string>\",\n          \"streetPostDirection\": \"<string>\",\n          \"poBox\": \"<string>\",\n          \"locality\": \"<string>\",\n          \"city\": \"<string>\",\n          \"postcode\": \"<string>\",\n          \"postcodeExtension\": \"<string>\",\n          \"stateOrProvince\": \"<string>\",\n          \"countryCode\": \"<string>\",\n          \"subUnit\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"buildingName\": \"<string>\",\n          \"privateStreetNumber\": \"<string>\",\n          \"privateStreetName\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"formattedAddressRepresentation\": [\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"formattedAddress\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ],\n      \"geographicPointRepresentation\": [\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        },\n        {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\",\n          \"spatialRef\": \"<string>\",\n          \"elevation\": \"<string>\"\n        }\n      ],\n      \"labelRepresentation\": [\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        },\n        {\n          \"administrativeAuthority\": \"<string>\",\n          \"label\": \"<string>\",\n          \"language\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"instantSyncValidation\": \"<boolean>\",\n  \"state\": \"ready\",\n  \"submittedGeographicAddress\": {\n    \"@type\": \"<string>\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  },\n  \"id\": \"string\",\n  \"bestMatchGeographicAddress\": {\n    \"allowsNewSite\": \"true\",\n    \"hasPublicSite\": \"false\",\n    \"id\": \"string\",\n    \"@type\": \"GeographicAddress\",\n    \"href\": \"string\",\n    \"fieldedAddressRepresentation\": [\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"streetNr\": \"<string>\",\n        \"streetNrSuffix\": \"<string>\",\n        \"streetNrLast\": \"<string>\",\n        \"streetNrLastSuffix\": \"<string>\",\n        \"streetPreDirection\": \"<string>\",\n        \"streetName\": \"<string>\",\n        \"streetType\": \"<string>\",\n        \"streetPostDirection\": \"<string>\",\n        \"poBox\": \"<string>\",\n        \"locality\": \"<string>\",\n        \"city\": \"<string>\",\n        \"postcode\": \"<string>\",\n        \"postcodeExtension\": \"<string>\",\n        \"stateOrProvince\": \"<string>\",\n        \"countryCode\": \"<string>\",\n        \"subUnit\": [\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"subUnitNumber\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"subUnitType\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"buildingName\": \"<string>\",\n        \"privateStreetNumber\": \"<string>\",\n        \"privateStreetName\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"formattedAddressRepresentation\": [\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"formattedAddress\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ],\n    \"geographicPointRepresentation\": [\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      },\n      {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\",\n        \"spatialRef\": \"<string>\",\n        \"elevation\": \"<string>\"\n      }\n    ],\n    \"labelRepresentation\": [\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      },\n      {\n        \"administrativeAuthority\": \"<string>\",\n        \"label\": \"<string>\",\n        \"language\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "477b1d2f-397e-448e-b4c9-a70d856b5ae7",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://R.zePf1Qgo,-tNZ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a16ce00d-ba47-4718-af96-5ab911c59ea5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://yianyF.mhwvs1vDsjbLH6VOZVKMCIc0lLpnMq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e6dc471-6a4b-4d20-8f69-eb51d2b4b249",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://dUgG.awvkXiTML85OqL0GxyNty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65d0e6fc-1bdb-4414-b518-71322755e48e",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PrwjaD.waO24\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9222ed6-18ed-4f9a-9bf9-d9855135ea74",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://JCOHTuIdcs.rnus9GejbhAXw60-EGvPKMCLWt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd1610ea-5bde-4544-80bd-1a7be41d578c",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddressValidation",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddressValidation"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://tBhAvQPGCHugGarQInxx.iqmMJ+uGslBX7ld+s16waBMKRv13W0KDo2aUA2t\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "08757d09-67f9-4dbf-9a19-46bf929b55dc",
+      "name": "geographicAddress",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb6aa70f-a72d-4d6f-a160-61b9d390d2b2",
+          "name": "Retrieves a GeographicAddress by ID",
+          "request": {
+            "name": "Retrieves a GeographicAddress by ID",
+            "description": {
+              "content": "This operation retrieves a GeographicAddress entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geographicAddress",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the GeographicAddress"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e70828c7-d38e-43b3-91f3-0b1d57b5d929",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddress",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddress"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"allowsNewSite\": \"unknown\",\n  \"hasPublicSite\": \"true\",\n  \"id\": \"string\",\n  \"@type\": \"GeographicAddress\",\n  \"href\": \"string\",\n  \"fieldedAddressRepresentation\": [\n    {\n      \"streetNr\": \"string\",\n      \"streetNrSuffix\": \"string\",\n      \"streetNrLast\": \"string\",\n      \"streetNrLastSuffix\": \"string\",\n      \"streetPreDirection\": \"string\",\n      \"streetName\": \"string\",\n      \"streetType\": \"string\",\n      \"streetPostDirection\": \"string\",\n      \"poBox\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"postcode\": \"string\",\n      \"postcodeExtension\": \"string\",\n      \"stateOrProvince\": \"string\",\n      \"countryCode\": \"st\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"string\",\n          \"subUnitType\": \"string\"\n        },\n        {\n          \"subUnitNumber\": \"string\",\n          \"subUnitType\": \"string\"\n        }\n      ],\n      \"buildingName\": \"string\",\n      \"privateStreetNumber\": \"string\",\n      \"privateStreetName\": \"string\",\n      \"language\": \"st\"\n    },\n    {\n      \"streetNr\": \"string\",\n      \"streetNrSuffix\": \"string\",\n      \"streetNrLast\": \"string\",\n      \"streetNrLastSuffix\": \"string\",\n      \"streetPreDirection\": \"string\",\n      \"streetName\": \"string\",\n      \"streetType\": \"string\",\n      \"streetPostDirection\": \"string\",\n      \"poBox\": \"string\",\n      \"locality\": \"string\",\n      \"city\": \"string\",\n      \"postcode\": \"string\",\n      \"postcodeExtension\": \"string\",\n      \"stateOrProvince\": \"string\",\n      \"countryCode\": \"st\",\n      \"subUnit\": [\n        {\n          \"subUnitNumber\": \"string\",\n          \"subUnitType\": \"string\"\n        },\n        {\n          \"subUnitNumber\": \"string\",\n          \"subUnitType\": \"string\"\n        }\n      ],\n      \"buildingName\": \"string\",\n      \"privateStreetNumber\": \"string\",\n      \"privateStreetName\": \"string\",\n      \"language\": \"st\"\n    }\n  ],\n  \"formattedAddressRepresentation\": [\n    {\n      \"formattedAddress\": \"string\",\n      \"language\": \"st\"\n    },\n    {\n      \"formattedAddress\": \"string\",\n      \"language\": \"st\"\n    }\n  ],\n  \"geographicPointRepresentation\": [\n    {\n      \"latitude\": \"string\",\n      \"longitude\": \"string\",\n      \"spatialRef\": \"string\",\n      \"elevation\": \"string\"\n    },\n    {\n      \"latitude\": \"string\",\n      \"longitude\": \"string\",\n      \"spatialRef\": \"string\",\n      \"elevation\": \"string\"\n    }\n  ],\n  \"labelRepresentation\": [\n    {\n      \"administrativeAuthority\": \"string\",\n      \"label\": \"string\",\n      \"language\": \"st\"\n    },\n    {\n      \"administrativeAuthority\": \"string\",\n      \"label\": \"string\",\n      \"language\": \"st\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27a44a7a-7f61-4e52-a819-b74cc7dd0dac",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddress",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddress"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://R.zePf1Qgo,-tNZ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfdea216-9985-4f1d-9e2b-1540365fe0c1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddress",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddress"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://yianyF.mhwvs1vDsjbLH6VOZVKMCIc0lLpnMq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79f7f250-dfc3-4b9b-b654-99aead38b3ad",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddress",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddress"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://dUgG.awvkXiTML85OqL0GxyNty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a3f6b16-ca8b-4fb8-88b9-4eab53661940",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddress",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddress"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PrwjaD.waO24\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9aa5280-112d-4bea-bf5e-3dc02f66ff41",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geographicAddress",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the GeographicAddress"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://JCOHTuIdcs.rnus9GejbhAXw60-EGvPKMCLWt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9dee71f4-4d4a-4bea-939d-dfe7639263b1",
+      "name": "events subscription",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "71264379-93b0-4e89-95d4-a1325f9072be",
+          "name": "Register a listener",
+          "request": {
+            "name": "Register a listener",
+            "description": {
+              "content": "Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer.\nReference: Mplify 150 (Sn 8.8)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller.\nReference: Mplify 150 (Sn 8.8)"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;charset=utf-8"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "100d7caf-4729-447e-a5af-720db646ea2c",
+              "name": "Subscribed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33c01e91-c2be-4575-94ef-543687e09b66",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://R.zePf1Qgo,-tNZ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fc707cb-f146-437e-aa4a-13df9daaca98",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://yianyF.mhwvs1vDsjbLH6VOZVKMCIc0lLpnMq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a163117-ecf5-478a-98c8-7368d2e3fb0a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://dUgG.awvkXiTML85OqL0GxyNty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51485f15-2041-4f61-8e1b-09f6e4f4f370",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://oSbZjoLxksKdndbT.wkxGViFiV2PLBoCFB6Pm4w8ma5V+d7ps,Wt,J8\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://vCtfChzZrRTOOAFeeqgKNPdAdncb.mgvwP5CNDTNyoXNIW\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5f8e231-ff1c-401c-901b-c29bfc1140d5",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://JCOHTuIdcs.rnus9GejbhAXw60-EGvPKMCLWt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "042727b5-7b07-4ad7-b8ac-8ef35984adc7",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"callback\": \"<string>\",\n  \"query\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://tBhAvQPGCHugGarQInxx.iqmMJ+uGslBX7ld+s16waBMKRv13W0KDo2aUA2t\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dceb9c35-cc40-4db0-873c-73ded38ea5a8",
+          "name": "Retrieves a Hub by ID",
+          "request": {
+            "name": "Retrieves a Hub by ID",
+            "description": {
+              "content": "This operation retrieves a hub entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Identifier of the Hub"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "654c20d7-90d5-498a-946c-e6e9346ba417",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"callback\": \"string\",\n  \"id\": \"string\",\n  \"query\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f513a4e-b55a-45da-8091-8235c23b1d6c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://R.zePf1Qgo,-tNZ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7b3d392-4183-4339-a4c8-d40a4ad91caf",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://yianyF.mhwvs1vDsjbLH6VOZVKMCIc0lLpnMq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3756de93-19d4-4777-93e0-c49bbb0c9b22",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://dUgG.awvkXiTML85OqL0GxyNty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d843353f-9ba8-440e-8a15-f37adb508252",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PrwjaD.waO24\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8dae45bd-5fd0-4d8f-bffc-d306ca34b895",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://JCOHTuIdcs.rnus9GejbhAXw60-EGvPKMCLWt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65d58852-6f70-4d5b-9b16-f5d7ef27ed2c",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Identifier of the Hub"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://tBhAvQPGCHugGarQInxx.iqmMJ+uGslBX7ld+s16waBMKRv13W0KDo2aUA2t\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "981bca43-813b-49c8-8a68-c9075b852cf0",
+          "name": "Unregister a listener",
+          "request": {
+            "name": "Unregister a listener",
+            "description": {
+              "content": "Resets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hub",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "buyerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer.\nReference: Mplify 150 (Sn 8.8)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sellerId",
+                  "value": "<string>",
+                  "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller.\nReference: Mplify 150 (Sn 8.8)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) The id of the registered listener"
+                },
+                {
+                  "description": "The base of Seller's URL.",
+                  "type": "any",
+                  "value": "{{serverBase}}",
+                  "key": "serverBase"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;charset=utf-8"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1672bd71-1fa4-4bf0-a572-ee871e937cf9",
+              "name": "Deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7007baa-24bc-4137-bec1-10bc8f91f41a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"missingQueryValue\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://R.zePf1Qgo,-tNZ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3a97111d-a1bd-45be-af7d-0fe7dab93cc3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"invalidCredentials\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://yianyF.mhwvs1vDsjbLH6VOZVKMCIc0lLpnMq\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "58fe5a2c-0aa1-4e5e-9869-8ca2a698aaee",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"forbiddenRequester\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"http://dUgG.awvkXiTML85OqL0GxyNty\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83a5fdd1-0ba6-4a4f-bbf3-c0f14808cd71",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notFound\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://PrwjaD.waO24\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c2c2462-e083-4e87-b00b-1123ea561634",
+              "name": "Unprocessable entity due to business validation problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "[\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://oSbZjoLxksKdndbT.wkxGViFiV2PLBoCFB6Pm4w8ma5V+d7ps,Wt,J8\",\n    \"propertyPath\": \"string\"\n  },\n  {\n    \"code\": \"invalidFormat\",\n    \"reason\": \"string\",\n    \"message\": \"string\",\n    \"referenceError\": \"https://vCtfChzZrRTOOAFeeqgKNPdAdncb.mgvwP5CNDTNyoXNIW\",\n    \"propertyPath\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bca5358b-c05f-4d05-b875-f576338a756f",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"internalError\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://JCOHTuIdcs.rnus9GejbhAXw60-EGvPKMCLWt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6649ee03-e486-4eb2-8509-234509221ac0",
+              "name": "Method not implemented.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hub",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "buyerId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sellerId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) The id of the registered listener"
+                    },
+                    {
+                      "description": "The base of Seller's URL.",
+                      "type": "any",
+                      "value": "{{serverBase}}",
+                      "key": "serverBase"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;charset=utf-8"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Implemented",
+              "code": 501,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;charset=utf-8"
+                }
+              ],
+              "body": "{\n  \"code\": \"notImplemented\",\n  \"reason\": \"string\",\n  \"message\": \"string\",\n  \"referenceError\": \"https://tBhAvQPGCHugGarQInxx.iqmMJ+uGslBX7ld+s16waBMKRv13W0KDo2aUA2t\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The base of Seller's URL.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mplify.net",
+      "key": "serverBase"
+    },
+    {
+      "type": "string",
+      "value": "https://{{serverBase}}/mefApi/sonata/geographicAddressManagement/v8/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "699a2049-b41e-467a-b4eb-7ac5275094a2",
+    "name": "Geographic Address Management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "**This file forms part of Mplify 121.1**\nThis API implements Business Requirements described in Mplify 150\n\nIt allows the Buyer to retrieve address information from the Seller, including exact formats, for addresses known to the Seller.\n\nList of supported use cases:\n- Validate Geographic Address\n- Retrieve a Geographic Address Validation\n- Retrieve a Geographic Address by Identifier\n- Register for Notifications\n\nCopyright 2025 Mplify Alliance and its contributors.\nThis file includes content based on the TM Forum Geographic Address API (TMF673 v4.0.1) available at https://github.com/tmforum-apis/TMF673_GeographicAddress, which is licensed by the TM Forum under the Apache License version 2.0. Such content has been modified by the Mplify Alliance and its contributors.\n",
+      "type": "text/plain"
+    }
+  }
+}

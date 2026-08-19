@@ -1,0 +1,616 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trouble Ticket and Incident Management",
+    "version": "5.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "troubleTicket",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or found Trouble Ticket objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket",
+            "params": [
+              {
+                "name": "externalId",
+                "value": "",
+                "type": "query",
+                "description": "ID given by the consumer and only understandable by him (to facilitate his searches afterward)"
+              },
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "The priority (ITIL) is based on the assessment of the impact and urgency of how quickly the Ticket should be resolved as evaluated by the Buyer. The Priority is used by the Seller to determine the order in which Tickets get resolved across Buyers."
+              },
+              {
+                "name": "sellerPriority",
+                "value": "",
+                "type": "query",
+                "description": "The priority (ITIL) is based on the assessment of the impact and urgency of how quickly the Ticket should be resolved after evaluation by the Seller of the impact of the Issue on the Buyer."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "The severity or impact (ITIL) of the Ticket as evaluated by the Buyer."
+              },
+              {
+                "name": "sellerSeverity",
+                "value": "",
+                "type": "query",
+                "description": "The severity or impact (ITIL) of the Ticket on the Buyer as evaluated by the Seller."
+              },
+              {
+                "name": "ticketType",
+                "value": "",
+                "type": "query",
+                "description": "The presumed cause of the Trouble Ticket as evaluated by the Buyer."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The current status of the Trouble Ticket"
+              },
+              {
+                "name": "observedImpact",
+                "value": "",
+                "type": "query",
+                "description": "The type of impact observed by the Buyer."
+              },
+              {
+                "name": "relatedEntityId",
+                "value": "",
+                "type": "query",
+                "description": "ID of a related entity that this ticket is related to and is present in the `relatedEntity` list"
+              },
+              {
+                "name": "relatedEntityType",
+                "value": "",
+                "type": "query",
+                "description": "Type of a related entity that this ticket is related to and is present in the `relatedEntity` list"
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date on which the Trouble Ticket was created - greater than"
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date on which the Trouble Ticket was created - lower than"
+              },
+              {
+                "name": "expectedResolutionDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date provided by the Seller to indicate when the Ticket is expected to be resolved - greater than"
+              },
+              {
+                "name": "expectedResolutionDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date provided by the Seller to indicate when the Ticket is expected to be resolved - lower than"
+              },
+              {
+                "name": "resolutionDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Ticket status was set to resolved by the Seller - greater than"
+              },
+              {
+                "name": "resolutionDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Ticket status was set to resolved by the Seller - lower than"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of resources to be provided in response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response"
+              }
+            ]
+          },
+          "docs": "The Buyer requests a list of Trouble Tickets from the Seller based on a set of specified filter criteria. The Seller returns a summarized list of Trouble Tickets.\n"
+        },
+        {
+          "info": {
+            "name": "Creates a TroubleTicket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request initiated by the Buyer to create a Ticket in the Seller's system to report an Issue experienced by the Buyer"
+        },
+        {
+          "info": {
+            "name": "Retrieves a TroubleTicket by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TroubleTicket"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests detailed information about a single Ticket based on a Ticket Identifier."
+        },
+        {
+          "info": {
+            "name": "Updates partially a TroubleTicket",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TroubleTicket"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A request by the Buyer to patch a Ticket created by the Buyer in the Seller's system."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "troubleTicket operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancels a Trouble Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket/:id/cancel",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TroubleTicket"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity\n represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation sends a cancellation request."
+        },
+        {
+          "info": {
+            "name": "Closes a Trouble Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket/:id/close",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TroubleTicket"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity\n represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation allows the Buyer to send Ticket Resolution Confirmation by closing it"
+        },
+        {
+          "info": {
+            "name": "Reopens a Trouble Ticket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/troubleTicket/:id/reopen",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the TroubleTicket"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity\n represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The operation allows the Buyer to send Ticket Resolution Confirmation by reopening it"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "incident",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or found Incident objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/incident",
+            "params": [
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "The priority (ITIL) is based on the assessment of the impact and urgency of how quickly the Incident should be resolved after evaluation by the Seller of the impact of the Incident."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "The severity or impact (ITIL) of the Incident as evaluated by the Seller."
+              },
+              {
+                "name": "impact",
+                "value": "",
+                "type": "query",
+                "description": "The type of impact observed by the Buyer."
+              },
+              {
+                "name": "incidentType",
+                "value": "",
+                "type": "query",
+                "description": "The presumed cause of the Incident as evaluated by the Seller."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The current status of the Incident"
+              },
+              {
+                "name": "relatedEntityId",
+                "value": "",
+                "type": "query",
+                "description": "ID of a related entity that this Incident is related to and is present in the `relatedEntity` list"
+              },
+              {
+                "name": "relatedEntityType",
+                "value": "",
+                "type": "query",
+                "description": "Type of a related entity that this Incident is related to and is present in the `relatedEntity` list"
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date on which the Incident was created - greater than"
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date on which the Trouble Ticket was created - lower than"
+              },
+              {
+                "name": "situationStartDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date when the Incident was first identified, for example via error logs - greater than"
+              },
+              {
+                "name": "situationStartDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date when the Incident was first identified, for example via error logs - lower than"
+              },
+              {
+                "name": "expectedClosedDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date provided by the Seller to indicate when the Incident is expected to be closed - greater than"
+              },
+              {
+                "name": "expectedClosedDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date provided by the Seller to indicate when the Incident is expected to be closed - lower than"
+              },
+              {
+                "name": "closedDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Incident status was set to closed by the Seller - greater than"
+              },
+              {
+                "name": "closedDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date the Incident status was set to closed by the Seller - lower than"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of resources to be provided in response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response"
+              }
+            ]
+          },
+          "docs": "The Buyer requests a list of Incidents from the Seller based on a set of specified filter criteria. The Seller returns a summarized list of Incidents.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieves ac Incident by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/incident/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Incident"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests detailed information about a single Incident based on a Incident Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allows the Buyer to register to Trouble Ticket state change notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer requests to subscribe to Ticket and Incident Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves listener information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/sonata/troubleTicket/v5/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the EventSubscription"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests to unsubscribe from Ticket and Incident Notifications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

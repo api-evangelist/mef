@@ -1,0 +1,275 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Circuit Impairment and Maintenance",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CIM Incident",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or found CIM Incident objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncident/v1/cimIncident",
+            "params": [
+              {
+                "name": "priority",
+                "value": "",
+                "type": "query",
+                "description": "The priority (ITIL) is based on the assessment of the impact and urgency of how quickly the CIM Incident should be resolved after evaluation by the Seller of the impact of the CIM Incident."
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query",
+                "description": "The severity or impact (ITIL) of the CIM Incident as evaluated by the Seller."
+              },
+              {
+                "name": "impact",
+                "value": "",
+                "type": "query",
+                "description": "The type of impact observed by the Buyer."
+              },
+              {
+                "name": "incidentType",
+                "value": "",
+                "type": "query",
+                "description": "The presumed cause of the CIM Incident as evaluated by the Seller."
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "The current status of the CIM Incident"
+              },
+              {
+                "name": "relatedEntityId",
+                "value": "",
+                "type": "query",
+                "description": "ID of a related entity that this CIM Incident is related to and is present in the `relatedEntity` list"
+              },
+              {
+                "name": "relatedEntityType",
+                "value": "",
+                "type": "query",
+                "description": "Type of a related entity that this CIM Incident is related to and is present in the `relatedEntity` list"
+              },
+              {
+                "name": "creationDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date on which the CIM Incident was created - greater than"
+              },
+              {
+                "name": "creationDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date on which CIM Incident was created - lower than"
+              },
+              {
+                "name": "situationStartDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date when the CIM Incident was first identified, for example via error logs - greater than"
+              },
+              {
+                "name": "situationStartDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date when the CIM Incident was first identified, for example via error logs - lower than"
+              },
+              {
+                "name": "expectedClosedDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date provided by the Seller to indicate when the CIM Incident is expected to be closed - greater than"
+              },
+              {
+                "name": "expectedClosedDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date provided by the Seller to indicate when the CIM Incident is expected to be closed - lower than"
+              },
+              {
+                "name": "closedDate.gt",
+                "value": "",
+                "type": "query",
+                "description": "The date the CIM Incident status was set to closed by the Seller - greater than"
+              },
+              {
+                "name": "closedDate.lt",
+                "value": "",
+                "type": "query",
+                "description": "The date the CIM Incident status was set to closed by the Seller - lower than"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Requested index for start of resources to be provided in response"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Requested number of resources to be provided in response"
+              }
+            ]
+          },
+          "docs": "The Buyer requests a list of CIM Incidents from the Seller based on a set of specified filter criteria. The Seller returns a summarized list of CIM Incidents.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieves ac CIM Incident by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncident/v1/cimIncident/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the CIM Incident"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests detailed information about a single CIM Incident based on a CIM Incident Identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "events subscription",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Allows the Buyer to register to CIM Incident status change notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncident/v1/hub",
+            "params": [
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Buyer requests to subscribe to CIM Incident Notifications."
+        },
+        {
+          "info": {
+            "name": "Retrieves listener information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncident/v1/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Identifier of the Hub"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity  represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "This operation retrieves a hub entity."
+        },
+        {
+          "info": {
+            "name": "Unregister a listener",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{serverBase}/mefApi/sonata/cimIncident/v1/hub/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The id of the EventSubscription"
+              },
+              {
+                "name": "buyerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the a Buyer. MUST be specified in the request only when the requester represents more than one Buyer."
+              },
+              {
+                "name": "sellerId",
+                "value": "",
+                "type": "query",
+                "description": "The unique identifier of the organization that is acting as the Seller. MUST be specified in the request only when responding entity represents more than one Seller."
+              }
+            ]
+          },
+          "docs": "The Buyer requests to unsubscribe from CIM Incident Notifications"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
