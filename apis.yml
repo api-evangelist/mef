@@ -68,23 +68,16 @@ apis:
       https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/blob/kylie/serviceApi/pm/streaming/performance.template.asyncapi.yaml
   - type: Overlay
     url: overlays/mef-lso-interlude-performance.template-overlay.yaml
-- aid: mef:mef-lso-legato-service-catalog-api
-  name: MEF LSO Legato Legato Service Catalog API
-  description: >-
-    Legato Service Catalog API — the OpenAPI definition published by Mplify (formerly MEF) in the MEF
-    LSO Legato SDK, Kylie release. LSO Legato is the Interface Reference Point between Business Applications
-    (BUS) and the Service Orchestration Functionality (SOF) inside a single Service Provider. 4 path(s),
-    5 operation(s). Apache-2.0 licensed and openly downloadable from public GitHub.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/tree/kylie
+- aid: mef:mef-alarm-api
+  name: MEF Alarm API
+  description: The alarm API from MEF — 2 operation(s) for alarm.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
   tags:
-  - Telecommunications
-  - LSO
-  - LSO Legato
-  - Catalog
-  - Standards
+  - alarm
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-legato-service-catalog-api-openapi.yml
+    url: openapi/mef-alarm-api-openapi.yml
   - type: Documentation
     url: https://lso.mplify.net/api-catalog
   - type: APIReference
@@ -93,813 +86,1268 @@ apis:
   - type: SourceCode
     url: >-
       https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
-  - type: Overlay
-    url: overlays/mef-lso-legato-service-catalog-api-overlay.yaml
-  baseURL: https://{server}:{port}{basePath}
-- aid: mef:mef-lso-legato-service-catalog-notification-api
-  name: MEF LSO Legato Legato Service Catalog Notification API
-  description: >-
-    Legato Service Catalog Notification API — the OpenAPI definition published by Mplify (formerly MEF)
-    in the MEF LSO Legato SDK, Kylie release. LSO Legato is the Interface Reference Point between Business
-    Applications (BUS) and the Service Orchestration Functionality (SOF) inside a single Service Provider.
-    3 path(s), 3 operation(s). Apache-2.0 licensed and openly downloadable from public GitHub.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/tree/kylie
-  tags:
-  - Telecommunications
-  - LSO
-  - LSO Legato
-  - Catalog
-  - Standards
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-catalog-notification-api-openapi.yml
-  - type: Documentation
-    url: https://lso.mplify.net/api-catalog
   - type: APIReference
     url: >-
       https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
   - type: SourceCode
     url: >-
       https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
-  - type: Overlay
-    url: overlays/mef-lso-legato-service-catalog-notification-api-overlay.yaml
-  baseURL: https://{server}:{port}{basePath}
-- aid: mef:mef-lso-allegro-alarm-management-openapi
-  name: MEF Alarm Management (Mef Lso Allegro Alarm Management)
-  description: MEF Alarm Management from MEF — 4 path(s) described in OpenAPI.
+- aid: mef:mef-appointment-api
+  name: MEF Appointment API
+  description: The appointment API from MEF — 2 operation(s) for appointment.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - appointment
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-alarm-management-openapi.yml
-- aid: mef:mef-lso-allegro-alarm-notification-openapi
-  name: MEF Alarm Notification (Mef Lso Allegro Alarm Notification)
-  description: MEF Alarm Notification from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-appointment-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-appointment-operations-api
+  name: MEF appointment operations API
+  description: The appointment operations API from MEF — 1 operation(s) for appointment operations.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - appointment operations
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-alarm-notification-openapi.yml
-- aid: mef:mef-lso-allegro-fault-management-openapi
-  name: MEF Fault Management (Mef Lso Allegro Fault Management)
-  description: MEF Fault Management from MEF — 15 path(s) described in OpenAPI.
+    url: openapi/mef-appointment-operations-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-cancelproductorder-api
+  name: MEF Cancel Product Order API
+  description: The cancelProductOrder API from MEF — 2 operation(s) for cancelproductorder.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - cancelProductOrder
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-fault-management-openapi.yml
-- aid: mef:mef-lso-allegro-fault-notification-openapi
-  name: MEF Fault Management Notification (Mef Lso Allegro Fault Notification)
-  description: MEF Fault Management Notification from MEF — 9 path(s) described in OpenAPI.
+    url: openapi/mef-cancelproductorder-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-canceltestjob-api
+  name: MEF Cancel Test Job API
+  description: The cancelTestJob API from MEF — 2 operation(s) for canceltestjob.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - cancelTestJob
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-fault-notification-openapi.yml
-- aid: mef:mef-lso-allegro-performance-monitoring-openapi
-  name: MEF Performance Monitoring (Mef Lso Allegro Performance Monitoring)
-  description: MEF Performance Monitoring from MEF — 17 path(s) described in OpenAPI.
+    url: openapi/mef-canceltestjob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-category-api
+  name: MEF Category API
+  description: The category API from MEF — 2 operation(s) for category.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - category
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-performance-monitoring-openapi.yml
-- aid: mef:mef-lso-allegro-performance-notification-openapi
-  name: MEF Performance Monitoring Notification (Mef Lso Allegro Performance Notification)
-  description: MEF Performance Monitoring Notification from MEF — 12 path(s) described in OpenAPI.
+    url: openapi/mef-category-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-charge-api
+  name: MEF Charge API
+  description: The charge API from MEF — 2 operation(s) for charge.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - charge
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-performance-notification-openapi.yml
-- aid: mef:mef-lso-allegro-service-function-test-notification-openapi
-  name: >-
-    MEF Service Function Testing Notification (Mef Lso Allegro Service Function Test Notification)
-  description: MEF Service Function Testing Notification from MEF — 12 path(s) described in OpenAPI.
+    url: openapi/mef-charge-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-cim-incident-api
+  name: MEF CIM Incident API
+  description: The CIM Incident API from MEF — 2 operation(s) for cim incident.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - CIM Incident
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-service-function-test-notification-openapi.yml
-- aid: mef:mef-lso-allegro-service-function-test-openapi
-  name: MEF Service Function Testing (Mef Lso Allegro Service Function Test)
-  description: MEF Service Function Testing from MEF — 16 path(s) described in OpenAPI.
+    url: openapi/mef-cim-incident-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-customer-bill-api
+  name: MEF Customer Bill API
+  description: The Customer Bill API from MEF — 3 operation(s) for customer bill.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Customer Bill
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-service-function-test-openapi.yml
-- aid: mef:mef-lso-allegro-service-inventory-management-openapi
-  name: MEF Service Inventory Management (Mef Lso Allegro Service Inventory Management)
-  description: MEF Service Inventory Management from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-customer-bill-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-event-listeners-api
+  name: MEF Event listeners API
+  description: Mechanism for SOF to publish *Service* notifications to BUS
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Event listeners
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-service-inventory-management-openapi.yml
-- aid: mef:mef-lso-allegro-service-inventory-notification-openapi
-  name: MEF Service Inventory Notification (Mef Lso Allegro Service Inventory Notification)
-  description: MEF Service Inventory Notification from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-event-listeners-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-events-subscription-api
+  name: MEF events subscription API
+  description: The events subscription API from MEF — 2 operation(s) for events subscription.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - events subscription
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-service-inventory-notification-openapi.yml
-- aid: mef:mef-lso-allegro-service-ordering-management-openapi
-  name: MEF Service Ordering Management (Mef Lso Allegro Service Ordering Management)
-  description: MEF Service Ordering Management from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-events-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-eventsubscriptionhub-api
+  name: MEF Event Subscription Hub API
+  description: Mechanisms for BUS to subscribe/unsubscribe to *Notifications*.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - EventSubscriptionHub
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-service-ordering-management-openapi.yml
-- aid: mef:mef-lso-allegro-service-ordering-notification-openapi
-  name: MEF Service Ordering Notification (Mef Lso Allegro Service Ordering Notification)
-  description: MEF Service Ordering Notification from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-eventsubscriptionhub-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-faultmanagementjob-api
+  name: MEF Fault Management Job API
+  description: The faultManagementJob API from MEF — 9 operation(s) for faultmanagementjob.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - faultManagementJob
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-service-ordering-notification-openapi.yml
-- aid: mef:mef-lso-allegro-streaming-management-all-in-one-openapi
-  name: MEF Streaming Management (Mef Lso Allegro Streaming Management All In One)
-  description: MEF Streaming Management from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-faultmanagementjob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-faultmanagementreport-api
+  name: MEF Fault Management Report API
+  description: The faultManagementReport API from MEF — 3 operation(s) for faultmanagementreport.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - faultManagementReport
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-streaming-management-all-in-one-openapi.yml
-- aid: mef:mef-lso-allegro-streaming-management-openapi
-  name: MEF Streaming Management (Mef Lso Allegro Streaming Management)
-  description: MEF Streaming Management from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-faultmanagementreport-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-geographicaddress-api
+  name: MEF Geographic Address API
+  description: The geographicAddress API from MEF — 1 operation(s) for geographicaddress.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - geographicAddress
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-allegro-streaming-management-openapi.yml
-- aid: mef:mef-lso-cantata-appointment-management-openapi
-  name: MEF Appointment Management (Mef Lso Cantata Appointment Management)
-  description: MEF Appointment Management from MEF — 6 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-appointment-management-openapi.yml
-- aid: mef:mef-lso-cantata-appointment-notification-openapi
-  name: MEF Appointment Management Notification (Mef Lso Cantata Appointment Notification)
-  description: MEF Appointment Management Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-appointment-notification-openapi.yml
-- aid: mef:mef-lso-cantata-billing-management-openapi
-  name: MEF Billing Management (Mef Lso Cantata Billing Management)
-  description: MEF Billing Management from MEF — 5 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-billing-management-openapi.yml
-- aid: mef:mef-lso-cantata-billing-notification-openapi
-  name: MEF Billing Notification (Mef Lso Cantata Billing Notification)
-  description: MEF Billing Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-billing-notification-openapi.yml
-- aid: mef:mef-lso-cantata-circuit-impairment-and-maintenance-notification-openapi
-  name: >-
-    MEF Circuit Impairment and Maintenance Notification (Mef Lso Cantata Circuit Impairment And Maintenance
-    Notification)
+    url: openapi/mef-geographicaddress-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-geographicaddressvalidation-api
+  name: MEF Geographic Address Validation API
   description: >-
-    MEF Circuit Impairment and Maintenance Notification from MEF — 3 path(s) described in OpenAPI.
+    The geographicAddressValidation API from MEF — 2 operation(s) for geographicaddressvalidation.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - geographicAddressValidation
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-notification-openapi.yml
-- aid: mef:mef-lso-cantata-circuit-impairment-and-maintenance-openapi
-  name: >-
-    MEF Circuit Impairment and Maintenance (Mef Lso Cantata Circuit Impairment And Maintenance)
-  description: MEF Circuit Impairment and Maintenance from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-geographicaddressvalidation-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-geographicsite-api
+  name: MEF Geographic Site API
+  description: The geographicSite API from MEF — 2 operation(s) for geographicsite.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - geographicSite
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-cantata-circuit-impairment-and-maintenance-openapi.yml
-- aid: mef:mef-lso-cantata-geographic-address-management-openapi
-  name: MEF Geographic Address Management (Mef Lso Cantata Geographic Address Management)
-  description: MEF Geographic Address Management from MEF — 5 path(s) described in OpenAPI.
+    url: openapi/mef-geographicsite-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-incident-api
+  name: MEF Incident API
+  description: The incident API from MEF — 2 operation(s) for incident.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - incident
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-cantata-geographic-address-management-openapi.yml
-- aid: mef:mef-lso-cantata-geographic-address-notification-openapi
-  name: MEF Geographic Address Notification (Mef Lso Cantata Geographic Address Notification)
-  description: MEF Geographic Address Notification from MEF — 1 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-geographic-address-notification-openapi.yml
-- aid: mef:mef-lso-cantata-geographic-site-management-openapi
-  name: MEF Geographic Site Management (Mef Lso Cantata Geographic Site Management)
-  description: MEF Geographic Site Management from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-geographic-site-management-openapi.yml
-- aid: mef:mef-lso-cantata-product-catalog-notification-openapi
-  name: MEF Product Catalog Notification (Mef Lso Cantata Product Catalog Notification)
-  description: MEF Product Catalog Notification from MEF — 8 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-catalog-notification-openapi.yml
-- aid: mef:mef-lso-cantata-product-catalog-openapi
-  name: MEF Product Catalog (Mef Lso Cantata Product Catalog)
-  description: MEF Product Catalog from MEF — 8 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-catalog-openapi.yml
-- aid: mef:mef-lso-cantata-product-inventory-management-openapi
-  name: MEF Product Inventory Management (Mef Lso Cantata Product Inventory Management)
-  description: MEF Product Inventory Management from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-inventory-management-openapi.yml
-- aid: mef:mef-lso-cantata-product-offering-availability-and-pricing-discovery-openapi
-  name: >-
-    MEF Product Offering Availability And Pricing Discovery Management (Mef Lso Cantata Product Offering
-    Availability And Pricing Discovery)
+    url: openapi/mef-incident-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-modifyproductorderitemrequesteddeliverydate-api
+  name: MEF Modify Product Order Item Requested Delivery Date API
   description: >-
-    MEF Product Offering Availability And Pricing Discovery Management from MEF — 2 path(s) described
-    in OpenAPI.
+    The modifyProductOrderItemRequestedDeliveryDate API from MEF — 2 operation(s) for modifyproductorderitemrequesteddeliverydate.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - modifyProductOrderItemRequestedDeliveryDate
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-offering-availability-and-pricing-discovery-openapi.yml
-- aid: mef:mef-lso-cantata-product-offering-qualification-management-openapi
-  name: >-
-    MEF Product Offering Qualification Management (Mef Lso Cantata Product Offering Qualification Management)
-  description: MEF Product Offering Qualification Management from MEF — 4 path(s) described in OpenAPI.
+    url: openapi/mef-modifyproductorderitemrequesteddeliverydate-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-modifytestjob-api
+  name: MEF Modify Test Job API
+  description: The modifyTestJob API from MEF — 2 operation(s) for modifytestjob.
   humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
   baseURL: https://{server}:{port}{basePath}
+  tags:
+  - modifyTestJob
   properties:
   - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-offering-qualification-management-openapi.yml
-- aid: mef:mef-lso-cantata-product-offering-qualification-notification-openapi
-  name: >-
-    MEF Product Offering Qualification Notification (Mef Lso Cantata Product Offering Qualification Notification)
+    url: openapi/mef-modifytestjob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-notification-listeners-api
+  name: MEF Notification listeners API
+  description: The Buyer/Client's endpoint to send particular event types notifications to.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Notification listeners
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-notification-listeners-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-performancejob-api
+  name: MEF Performance Job API
+  description: The performanceJob API from MEF — 9 operation(s) for performancejob.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - performanceJob
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-performancejob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-performanceprofile-api
+  name: MEF Performance Profile API
+  description: The performanceProfile API from MEF — 2 operation(s) for performanceprofile.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - performanceProfile
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-performanceprofile-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-performancereport-api
+  name: MEF Performance Report API
+  description: The performanceReport API from MEF — 3 operation(s) for performancereport.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - performanceReport
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-performancereport-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-pricing-discovery-api
+  name: MEF Pricing Discovery API
+  description: The Pricing Discovery API from MEF — 1 operation(s) for pricing discovery.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Pricing Discovery
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-pricing-discovery-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-product-api
+  name: MEF Product API
+  description: The product API from MEF — 2 operation(s) for product.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - product
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-product-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-product-offering-availability-api
+  name: MEF Product Offering Availability API
   description: >-
-    MEF Product Offering Qualification Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-offering-qualification-notification-openapi.yml
-- aid: mef:mef-lso-cantata-product-order-management-openapi
-  name: MEF Product Ordering Management (Mef Lso Cantata Product Order Management)
-  description: MEF Product Ordering Management from MEF — 10 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-order-management-openapi.yml
-- aid: mef:mef-lso-cantata-product-order-notification-openapi
-  name: MEF Product Ordering Notification (Mef Lso Cantata Product Order Notification)
-  description: MEF Product Ordering Notification from MEF — 9 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-product-order-notification-openapi.yml
-- aid: mef:mef-lso-cantata-quote-management-openapi
-  name: MEF Quote Management (Mef Lso Cantata Quote Management)
-  description: MEF Quote Management from MEF — 6 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-quote-management-openapi.yml
-- aid: mef:mef-lso-cantata-quote-notification-openapi
-  name: MEF Quote Notification (Mef Lso Cantata Quote Notification)
-  description: MEF Quote Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-quote-notification-openapi.yml
-- aid: mef:mef-lso-cantata-trouble-ticket-management-openapi
-  name: MEF Trouble Ticket and Incident Management (Mef Lso Cantata Trouble Ticket Management)
-  description: MEF Trouble Ticket and Incident Management from MEF — 9 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-trouble-ticket-management-openapi.yml
-- aid: mef:mef-lso-cantata-trouble-ticket-notification-openapi
-  name: >-
-    MEF Trouble Ticket and Incident Notification (Mef Lso Cantata Trouble Ticket Notification)
-  description: MEF Trouble Ticket and Incident Notification from MEF — 7 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-trouble-ticket-notification-openapi.yml
-- aid: mef:mef-lso-cantata-workorder-management-openapi
-  name: MEF WorkOrder Management (Mef Lso Cantata Workorder Management)
-  description: MEF WorkOrder Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-workorder-management-openapi.yml
-- aid: mef:mef-lso-cantata-workorder-notification-openapi
-  name: MEF WorkOrder Management Notification (Mef Lso Cantata Workorder Notification)
-  description: MEF WorkOrder Management Notification from MEF — 3 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-cantata-workorder-notification-openapi.yml
-- aid: mef:mef-lso-interlude-alarm-management-openapi
-  name: MEF Alarm Management (Mef Lso Interlude Alarm Management)
-  description: MEF Alarm Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-alarm-management-openapi.yml
-- aid: mef:mef-lso-interlude-alarm-notification-openapi
-  name: MEF Alarm Notification (Mef Lso Interlude Alarm Notification)
-  description: MEF Alarm Notification from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-alarm-notification-openapi.yml
-- aid: mef:mef-lso-interlude-fault-management-openapi
-  name: MEF Fault Management (Mef Lso Interlude Fault Management)
-  description: MEF Fault Management from MEF — 15 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-fault-management-openapi.yml
-- aid: mef:mef-lso-interlude-fault-notification-openapi
-  name: MEF Fault Management Notification (Mef Lso Interlude Fault Notification)
-  description: MEF Fault Management Notification from MEF — 9 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-fault-notification-openapi.yml
-- aid: mef:mef-lso-interlude-performance-monitoring-openapi
-  name: MEF Performance Monitoring (Mef Lso Interlude Performance Monitoring)
-  description: MEF Performance Monitoring from MEF — 17 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-performance-monitoring-openapi.yml
-- aid: mef:mef-lso-interlude-performance-notification-openapi
-  name: MEF Performance Monitoring Notification (Mef Lso Interlude Performance Notification)
-  description: MEF Performance Monitoring Notification from MEF — 12 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-performance-notification-openapi.yml
-- aid: mef:mef-lso-interlude-service-function-test-notification-openapi
-  name: >-
-    MEF Service Function Testing Notification (Mef Lso Interlude Service Function Test Notification)
-  description: MEF Service Function Testing Notification from MEF — 12 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-service-function-test-notification-openapi.yml
-- aid: mef:mef-lso-interlude-service-function-test-openapi
-  name: MEF Service Function Testing (Mef Lso Interlude Service Function Test)
-  description: MEF Service Function Testing from MEF — 16 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-service-function-test-openapi.yml
-- aid: mef:mef-lso-interlude-service-inventory-management-openapi
-  name: MEF Service Inventory Management (Mef Lso Interlude Service Inventory Management)
-  description: MEF Service Inventory Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-service-inventory-management-openapi.yml
-- aid: mef:mef-lso-interlude-service-inventory-notification-openapi
-  name: MEF Service Inventory Notification (Mef Lso Interlude Service Inventory Notification)
-  description: MEF Service Inventory Notification from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-service-inventory-notification-openapi.yml
-- aid: mef:mef-lso-interlude-service-ordering-management-openapi
-  name: MEF Service Ordering Management (Mef Lso Interlude Service Ordering Management)
-  description: MEF Service Ordering Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-service-ordering-management-openapi.yml
-- aid: mef:mef-lso-interlude-service-ordering-notification-openapi
-  name: MEF Service Ordering Notification (Mef Lso Interlude Service Ordering Notification)
-  description: MEF Service Ordering Notification from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-service-ordering-notification-openapi.yml
-- aid: mef:mef-lso-interlude-streaming-management-all-in-one-openapi
-  name: MEF Streaming Management (Mef Lso Interlude Streaming Management All In One)
-  description: MEF Streaming Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-streaming-management-all-in-one-openapi.yml
-- aid: mef:mef-lso-interlude-streaming-management-openapi
-  name: MEF Streaming Management (Mef Lso Interlude Streaming Management)
-  description: MEF Streaming Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-interlude-streaming-management-openapi.yml
-- aid: mef:mef-lso-legato-alarm-management-openapi
-  name: MEF Alarm Management (Mef Lso Legato Alarm Management)
-  description: MEF Alarm Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-alarm-management-openapi.yml
-- aid: mef:mef-lso-legato-alarm-notification-openapi
-  name: MEF Alarm Notification (Mef Lso Legato Alarm Notification)
-  description: MEF Alarm Notification from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-alarm-notification-openapi.yml
-- aid: mef:mef-lso-legato-fault-management-openapi
-  name: MEF Fault Management (Mef Lso Legato Fault Management)
-  description: MEF Fault Management from MEF — 15 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-fault-management-openapi.yml
-- aid: mef:mef-lso-legato-fault-notification-openapi
-  name: MEF Fault Management Notification (Mef Lso Legato Fault Notification)
-  description: MEF Fault Management Notification from MEF — 9 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-fault-notification-openapi.yml
-- aid: mef:mef-lso-legato-performance-monitoring-openapi
-  name: MEF Performance Monitoring (Mef Lso Legato Performance Monitoring)
-  description: MEF Performance Monitoring from MEF — 17 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-performance-monitoring-openapi.yml
-- aid: mef:mef-lso-legato-performance-notification-openapi
-  name: MEF Performance Monitoring Notification (Mef Lso Legato Performance Notification)
-  description: MEF Performance Monitoring Notification from MEF — 12 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-performance-notification-openapi.yml
-- aid: mef:mef-lso-legato-service-function-test-notification-openapi
-  name: >-
-    MEF Service Function Testing Notification (Mef Lso Legato Service Function Test Notification)
-  description: MEF Service Function Testing Notification from MEF — 12 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-function-test-notification-openapi.yml
-- aid: mef:mef-lso-legato-service-function-test-openapi
-  name: MEF Service Function Testing (Mef Lso Legato Service Function Test)
-  description: MEF Service Function Testing from MEF — 16 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-function-test-openapi.yml
-- aid: mef:mef-lso-legato-service-inventory-management-openapi
-  name: MEF Service Inventory Management (Mef Lso Legato Service Inventory Management)
-  description: MEF Service Inventory Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-inventory-management-openapi.yml
-- aid: mef:mef-lso-legato-service-inventory-notification-openapi
-  name: MEF Service Inventory Notification (Mef Lso Legato Service Inventory Notification)
-  description: MEF Service Inventory Notification from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-inventory-notification-openapi.yml
-- aid: mef:mef-lso-legato-service-ordering-management-openapi
-  name: MEF Service Ordering Management (Mef Lso Legato Service Ordering Management)
-  description: MEF Service Ordering Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-ordering-management-openapi.yml
-- aid: mef:mef-lso-legato-service-ordering-notification-openapi
-  name: MEF Service Ordering Notification (Mef Lso Legato Service Ordering Notification)
-  description: MEF Service Ordering Notification from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-service-ordering-notification-openapi.yml
-- aid: mef:mef-lso-legato-streaming-management-all-in-one-openapi
-  name: MEF Streaming Management (Mef Lso Legato Streaming Management All In One)
-  description: MEF Streaming Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-streaming-management-all-in-one-openapi.yml
-- aid: mef:mef-lso-legato-streaming-management-openapi
-  name: MEF Streaming Management (Mef Lso Legato Streaming Management)
-  description: MEF Streaming Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-legato-streaming-management-openapi.yml
-- aid: mef:mef-lso-presto-nrp-openapi
-  name: MEF Network Resource Provisioning
-  description: MEF Network Resource Provisioning from MEF — 32 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-presto-nrp-openapi.yml
-- aid: mef:mef-lso-presto-nrp-rcp-only-openapi
-  name: >-
-    mef-common,tapi-topology,tapi-common,tapi-connectivity,mef-common-types,nrm-connectivity,nrp-interface
-    API (Mef Lso Presto Nrp Rcp Only)
-  description: >-
-    mef-common,tapi-topology,tapi-common,tapi-connectivity,mef-common-types,nrm-connectivity,nrp-interface
-    API from MEF — 17 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-presto-nrp-rcp-only-openapi.yml
-- aid: mef:mef-lso-presto-nrp-rpc-only-simplified-hierarchy-openapi
-  name: >-
-    mef-common,tapi-topology,tapi-common,tapi-connectivity,mef-common-types,nrm-connectivity,nrp-interface
-    API (Mef Lso Presto Nrp Rpc Only Simplified Hierarchy)
-  description: >-
-    mef-common,tapi-topology,tapi-common,tapi-connectivity,mef-common-types,nrm-connectivity,nrp-interface
-    API from MEF — 14 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-presto-nrp-rpc-only-simplified-hierarchy-openapi.yml
-- aid: mef:mef-lso-presto-nrp-simplified-hierarchy-openapi
-  name: >-
-    mef-common,tapi-topology,tapi-common,tapi-connectivity,mef-common-types,nrm-connectivity,nrp-interface
-    API (Mef Lso Presto Nrp Simplified Hierarchy)
-  description: >-
-    mef-common,tapi-topology,tapi-common,tapi-connectivity,mef-common-types,nrm-connectivity,nrp-interface
-    API from MEF — 32 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-presto-nrp-simplified-hierarchy-openapi.yml
-- aid: mef:mef-lso-sonata-appointment-management-openapi
-  name: MEF Appointment Management (Mef Lso Sonata Appointment Management)
-  description: MEF Appointment Management from MEF — 6 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-appointment-management-openapi.yml
-- aid: mef:mef-lso-sonata-appointment-notification-openapi
-  name: MEF Appointment Management Notification (Mef Lso Sonata Appointment Notification)
-  description: MEF Appointment Management Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-appointment-notification-openapi.yml
-- aid: mef:mef-lso-sonata-billing-management-openapi
-  name: MEF Billing Management (Mef Lso Sonata Billing Management)
-  description: MEF Billing Management from MEF — 5 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-billing-management-openapi.yml
-- aid: mef:mef-lso-sonata-billing-notification-openapi
-  name: MEF Billing Notification (Mef Lso Sonata Billing Notification)
-  description: MEF Billing Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-billing-notification-openapi.yml
-- aid: mef:mef-lso-sonata-circuit-impairment-and-maintenance-notification-openapi
-  name: >-
-    MEF Circuit Impairment and Maintenance Notification (Mef Lso Sonata Circuit Impairment And Maintenance
-    Notification)
-  description: >-
-    MEF Circuit Impairment and Maintenance Notification from MEF — 3 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-notification-openapi.yml
-- aid: mef:mef-lso-sonata-circuit-impairment-and-maintenance-openapi
-  name: >-
-    MEF Circuit Impairment and Maintenance (Mef Lso Sonata Circuit Impairment And Maintenance)
-  description: MEF Circuit Impairment and Maintenance from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-circuit-impairment-and-maintenance-openapi.yml
-- aid: mef:mef-lso-sonata-geographic-address-management-openapi
-  name: MEF Geographic Address Management (Mef Lso Sonata Geographic Address Management)
-  description: MEF Geographic Address Management from MEF — 5 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-geographic-address-management-openapi.yml
-- aid: mef:mef-lso-sonata-geographic-address-notification-openapi
-  name: MEF Geographic Address Notification (Mef Lso Sonata Geographic Address Notification)
-  description: MEF Geographic Address Notification from MEF — 1 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-geographic-address-notification-openapi.yml
-- aid: mef:mef-lso-sonata-geographic-site-management-openapi
-  name: MEF Geographic Site Management (Mef Lso Sonata Geographic Site Management)
-  description: MEF Geographic Site Management from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-geographic-site-management-openapi.yml
-- aid: mef:mef-lso-sonata-product-catalog-notification-openapi
-  name: MEF Product Catalog Notification (Mef Lso Sonata Product Catalog Notification)
-  description: MEF Product Catalog Notification from MEF — 8 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-catalog-notification-openapi.yml
-- aid: mef:mef-lso-sonata-product-catalog-openapi
-  name: MEF Product Catalog (Mef Lso Sonata Product Catalog)
-  description: MEF Product Catalog from MEF — 8 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-catalog-openapi.yml
-- aid: mef:mef-lso-sonata-product-inventory-management-openapi
-  name: MEF Product Inventory Management (Mef Lso Sonata Product Inventory Management)
-  description: MEF Product Inventory Management from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-inventory-management-openapi.yml
-- aid: mef:mef-lso-sonata-product-offering-availability-and-pricing-discovery-openapi
-  name: >-
-    MEF Product Offering Availability And Pricing Discovery Management (Mef Lso Sonata Product Offering
-    Availability And Pricing Discovery)
-  description: >-
-    MEF Product Offering Availability And Pricing Discovery Management from MEF — 2 path(s) described
-    in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-offering-availability-and-pricing-discovery-openapi.yml
-- aid: mef:mef-lso-sonata-product-offering-qualification-management-openapi
-  name: >-
-    MEF Product Offering Qualification Management (Mef Lso Sonata Product Offering Qualification Management)
-  description: MEF Product Offering Qualification Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-offering-qualification-management-openapi.yml
-- aid: mef:mef-lso-sonata-product-offering-qualification-notification-openapi
-  name: >-
-    MEF Product Offering Qualification Notification (Mef Lso Sonata Product Offering Qualification Notification)
-  description: >-
-    MEF Product Offering Qualification Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-offering-qualification-notification-openapi.yml
-- aid: mef:mef-lso-sonata-product-order-management-openapi
-  name: MEF Product Ordering Management (Mef Lso Sonata Product Order Management)
-  description: MEF Product Ordering Management from MEF — 10 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-order-management-openapi.yml
-- aid: mef:mef-lso-sonata-product-order-notification-openapi
-  name: MEF Product Ordering Notification (Mef Lso Sonata Product Order Notification)
-  description: MEF Product Ordering Notification from MEF — 9 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-product-order-notification-openapi.yml
-- aid: mef:mef-lso-sonata-quote-management-openapi
-  name: MEF Quote Management (Mef Lso Sonata Quote Management)
-  description: MEF Quote Management from MEF — 6 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-quote-management-openapi.yml
-- aid: mef:mef-lso-sonata-quote-notification-openapi
-  name: MEF Quote Notification (Mef Lso Sonata Quote Notification)
-  description: MEF Quote Notification from MEF — 2 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-quote-notification-openapi.yml
-- aid: mef:mef-lso-sonata-trouble-ticket-management-openapi
-  name: MEF Trouble Ticket and Incident Management (Mef Lso Sonata Trouble Ticket Management)
-  description: MEF Trouble Ticket and Incident Management from MEF — 9 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-trouble-ticket-management-openapi.yml
-- aid: mef:mef-lso-sonata-trouble-ticket-notification-openapi
-  name: >-
-    MEF Trouble Ticket and Incident Notification (Mef Lso Sonata Trouble Ticket Notification)
-  description: MEF Trouble Ticket and Incident Notification from MEF — 7 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-trouble-ticket-notification-openapi.yml
-- aid: mef:mef-lso-sonata-workorder-management-openapi
-  name: MEF WorkOrder Management (Mef Lso Sonata Workorder Management)
-  description: MEF WorkOrder Management from MEF — 4 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-workorder-management-openapi.yml
-- aid: mef:mef-lso-sonata-workorder-notification-openapi
-  name: MEF WorkOrder Management Notification (Mef Lso Sonata Workorder Notification)
-  description: MEF WorkOrder Management Notification from MEF — 3 path(s) described in OpenAPI.
-  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
-  baseURL: https://{server}:{port}{basePath}
-  properties:
-  - type: OpenAPI
-    url: openapi/mef-lso-sonata-workorder-notification-openapi.yml
+    The Product Offering Availability API from MEF — 1 operation(s) for product offering availability.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Product Offering Availability
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-product-offering-availability-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-productoffering-api
+  name: MEF Product Offering API
+  description: The productOffering API from MEF — 2 operation(s) for productoffering.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - productOffering
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-productoffering-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-productofferingqualification-api
+  name: MEF Product Offering Qualification API
+  description: Operations for managing the Product Offering Qualification request.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - productOfferingQualification
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-productofferingqualification-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-productorder-api
+  name: MEF Product Order API
+  description: The productOrder API from MEF — 2 operation(s) for productorder.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - productOrder
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-productorder-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-productspecification-api
+  name: MEF Product Specification API
+  description: The productSpecification API from MEF — 2 operation(s) for productspecification.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - productSpecification
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-productspecification-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-quote-api
+  name: MEF Quote API
+  description: The quote API from MEF — 2 operation(s) for quote.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - quote
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-quote-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-quote-operations-api
+  name: MEF quote operations API
+  description: The quote operations API from MEF — 2 operation(s) for quote operations.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - quote operations
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-quote-operations-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-resumetestjob-api
+  name: MEF Resume Test Job API
+  description: The resumeTestJob API from MEF — 2 operation(s) for resumetestjob.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - resumeTestJob
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-resumetestjob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-searchtimeslot-api
+  name: MEF Search Time Slot API
+  description: The searchTimeSlot API from MEF — 1 operation(s) for searchtimeslot.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - searchTimeSlot
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-searchtimeslot-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-service-api
+  name: MEF Service API
+  description: Mechanisms for BUS to query and retrieve *ServiceInstances*.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Service
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-service-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-service-order-api
+  name: MEF Service Order API
+  description: Operations for Service Order Resource
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - Service Order
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-service-order-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-servicespecification-api
+  name: MEF Service Specification API
+  description: Mechanisms for BUS to query and retrieve *ServiceSpecifications*.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - ServiceSpecification
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-servicespecification-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-servicespecificationnotification-api
+  name: MEF Service Specification Notification API
+  description: Mechanism for SOF to publish *ServiceSpecification* notifications to BUS
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - serviceSpecificationNotification
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-servicespecificationnotification-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-subscription-api
+  name: MEF Subscription API
+  description: Groups all operations related to subscribed topics and  subscription management.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - subscription
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-subscription-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-suspendtestjob-api
+  name: MEF Suspend Test Job API
+  description: The suspendTestJob API from MEF — 2 operation(s) for suspendtestjob.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - suspendTestJob
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-suspendtestjob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-tapi-common-api
+  name: MEF Tapi Common API
+  description: The tapi-common API from MEF — 18 operation(s) for tapi-common.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - tapi-common
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-tapi-common-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-tapi-connectivity-api
+  name: MEF Tapi Connectivity API
+  description: The tapi-connectivity API from MEF — 6 operation(s) for tapi-connectivity.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - tapi-connectivity
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-tapi-connectivity-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-tapi-path-computation-api
+  name: MEF Tapi Path Computation API
+  description: The tapi-path-computation API from MEF — 3 operation(s) for tapi-path-computation.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - tapi-path-computation
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-tapi-path-computation-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-tapi-topology-api
+  name: MEF Tapi Topology API
+  description: The tapi-topology API from MEF — 5 operation(s) for tapi-topology.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - tapi-topology
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-tapi-topology-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-testjob-api
+  name: MEF Test Job API
+  description: The testJob API from MEF — 2 operation(s) for testjob.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - testJob
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-testjob-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-testprofile-api
+  name: MEF Test Profile API
+  description: The testProfile API from MEF — 2 operation(s) for testprofile.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - testProfile
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-testprofile-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-testresult-api
+  name: MEF Test Result API
+  description: The testResult API from MEF — 2 operation(s) for testresult.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - testResult
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-testresult-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-topic-api
+  name: MEF Topic API
+  description: Groups all operations related to the available topic.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - topic
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-topic-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-trackingrecord-api
+  name: MEF Tracking Record API
+  description: The trackingRecord API from MEF — 1 operation(s) for trackingrecord.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - trackingRecord
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-trackingrecord-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-troubleticket-api
+  name: MEF Trouble Ticket API
+  description: The troubleTicket API from MEF — 2 operation(s) for troubleticket.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - troubleTicket
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-troubleticket-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-troubleticket-operations-api
+  name: MEF troubleTicket operations API
+  description: The troubleTicket operations API from MEF — 3 operation(s) for troubleticket operations.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - troubleTicket operations
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-troubleticket-operations-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+- aid: mef:mef-workorder-api
+  name: MEF Workorder API
+  description: The workorder API from MEF — 2 operation(s) for workorder.
+  humanURL: https://github.com/MEF-GIT/MEF-LSO-Interlude-SDK/tree/kylie
+  baseURL: https://{server}:{port}{basePath}
+  tags:
+  - workorder
+  properties:
+  - type: OpenAPI
+    url: openapi/mef-workorder-api-openapi.yml
+  - type: Documentation
+    url: https://lso.mplify.net/api-catalog
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogApi.openapi.yaml
+  - type: APIReference
+    url: >-
+      https://raw.githubusercontent.com/MEF-GIT/MEF-LSO-Legato-SDK/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
+  - type: SourceCode
+    url: >-
+      https://github.com/MEF-GIT/MEF-LSO-Legato-SDK/blob/kylie/serviceApi/catalog/serviceCatalogNotificationApi.openapi.yaml
 common:
+- type: Overlay
+  url: overlays/mef-lso-legato-service-catalog-api-overlay.yaml
+- type: Overlay
+  url: overlays/mef-lso-legato-service-catalog-notification-api-overlay.yaml
 - type: DomainSecurity
   url: security/mef-domain-security.yml
 - type: Website
