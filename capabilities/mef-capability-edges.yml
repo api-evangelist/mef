@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 17
+edge_count: 21
 edges:
 - tag: productOrder
   spec_file: mef-productorder-api-openapi.yml
@@ -33,6 +33,17 @@ edges:
     "MEFProductOrderChargeRef"
   reason: Cancellation requests against inter-carrier product orders from the LSO product-order-management
     specs — clearly telecom service order handling; sub-capability (capture vs decomposition) not determinable.
+- tag: quote
+  spec_file: mef-quote-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.8
+  evidence: POST /quote createQuote "Send request to perform a quotation"; schemas MEFQuoteItem_Create,
+    MEFProductConfiguration, MEFBuyerQuoteLevel
+  reason: Quotation request/response between buyer and seller carriers with product configuration per
+    quote item — configure/price/quote capability.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: alarm
   spec_file: mef-alarm-api-openapi.yml
   capability_id: BC-2600.10
@@ -185,6 +196,28 @@ edges:
   reason: Reports derived from performance-monitoring jobs on identified services deliver service KPI
     measurement and reporting under telecom service assurance; could also touch service quality reporting,
     hence the L2 is the monitoring sub-capability at moderate confidence.
+- tag: productSpecification
+  spec_file: mef-product-specification-api-openapi.yml
+  capability_id: BC-820.30
+  capability_id_l1: BC-820
+  capability_name: Product Specification Management
+  confidence: 0.7
+  evidence: GET /productSpecification listProductSpecification "List or find ProductSpecification objects";
+    schema ProductSpecificationLifecycleStatusType
+  reason: Read-only product catalog exposing product specifications and their lifecycle status — product
+    specification/definition management within product lifecycle, not a technical plumbing tag.
+  recovered_from: sweep-20260829T005356Z-edges.json
+  reanchored_from: mef-productspecification-api-openapi.yml
+- tag: quote operations
+  spec_file: mef-quote-operations-api-openapi.yml
+  capability_id: BC-410.40
+  capability_id_l1: BC-410
+  capability_name: Quote & Configuration Management
+  confidence: 0.7
+  evidence: POST /cancelQuote "Cancels a Quote"; POST /declineQuote "Declines a Quote"
+  reason: State-transition operations on the same quote object, so still quote lifecycle management; thinner
+    surface (only cancel/decline) so lower confidence.
+  recovered_from: sweep-20260829T005356Z-edges.json
 - tag: tapi-common
   spec_file: mef-tapi-common-api-openapi.yml
   capability_id: BC-2600.40
@@ -195,3 +228,14 @@ edges:
     tapi.topology.NetworkTopologyService
   reason: Read access to TAPI network context — topologies, nodes, links, connections, service interface
     points — i.e. the authoritative record of logical/physical network resources and their relationships.
+- tag: tapi-connectivity
+  spec_file: mef-tapi-connectivity-api-openapi.yml
+  capability_id: BC-600.50
+  capability_id_l1: BC-600
+  capability_name: IT Infrastructure Management
+  confidence: 0.7
+  evidence: POST /operations/create-connectivity-service/; POST /operations/update-connectivity-service/;
+    schema tapi.connectivity.UpdateConnectivityServiceInput
+  reason: Provisioning and modification of network connectivity services across a carrier network — network
+    infrastructure management.
+  recovered_from: sweep-20260829T005356Z-edges.json
