@@ -1,0 +1,195 @@
+slug: mef
+provider: MEF
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 17
+edges:
+- tag: productOrder
+  spec_file: mef-productorder-api-openapi.yml
+  capability_id: BC-2620.10
+  capability_id_l1: BC-2620
+  capability_name: Service Order Capture
+  confidence: 0.82
+  evidence: POST /productOrder 'Creates a ProductOrder'; schemas ProductOrder_Create, MEFProductOrderItem_Common,
+    MEFOrderItemCoordinatedAction, MEFMilestone, MEFProductOrderStateChange
+  reason: Creation, retrieval and patching of telecom product orders with order items, milestones and
+    state changes is service order capture and lifecycle handling in the telecom fulfilment flow.
+- tag: cancelProductOrder
+  spec_file: mef-cancelproductorder-api-openapi.yml
+  capability_id: BC-2620
+  capability_id_l1: BC-2620
+  capability_name: Telecom Service Fulfilment Management
+  confidence: 0.8
+  evidence: POST /cancelProductOrder createCancelProductOrder; schemas "MEFProductOrderRef", "CancellationReasonType",
+    "MEFProductOrderChargeRef"
+  reason: Cancellation requests against inter-carrier product orders from the LSO product-order-management
+    specs — clearly telecom service order handling; sub-capability (capture vs decomposition) not determinable.
+- tag: alarm
+  spec_file: mef-alarm-api-openapi.yml
+  capability_id: BC-2600.10
+  capability_id_l1: BC-2600
+  capability_name: Network Fault Management
+  confidence: 0.78
+  evidence: GET /alarm listAlarms "List or find Alarm objects"; schemas "ProbableCause", "PerceivedSeverity",
+    "AlarmState", "PlannedOutageIndicator"
+  reason: X.733-style alarm objects (probable cause, perceived severity, alarm state) exposed from LSO
+    alarm-management specs — this is telecom network/service fault detection and correlation, not generic
+    alerting. Slight ambiguity between network fault management and service assurance since alarms carry
+    a ServiceRef.
+- tag: incident
+  spec_file: mef-incident-api-openapi.yml
+  capability_id: BC-2630.30
+  capability_id_l1: BC-2630
+  capability_name: Customer-Impacting Incident Management
+  confidence: 0.78
+  evidence: Operations tagged incident across 'mef-lso-cantata-trouble-ticket-management-openapi.yml';
+    schemas IncidentStatusType, IncidentType, TroubleTicketPriorityType, IssueRelationship
+  reason: Trouble-ticket-management Incident objects with status changes and priority represent service-affecting
+    incidents reported between buyer and seller operators — customer-impacting incident management under
+    telecom service assurance, not generic IT monitoring.
+- tag: performanceJob
+  spec_file: mef-performancejob-api-openapi.yml
+  capability_id: BC-2630.20
+  capability_id_l1: BC-2630
+  capability_name: Service Performance Monitoring
+  confidence: 0.78
+  evidence: '''mef-lso-allegro-performance-monitoring-openapi.yml''; POST /performanceJob ''Creates a
+    Performance Job'', schemas PerformanceProfileRefOrValue, MonitoredObjectRef, ServiceRef'
+  reason: Scheduled performance-monitoring jobs against a referenced telecom service constitute continuous
+    end-to-end service performance monitoring in the LSO assurance domain.
+- tag: productOfferingQualification
+  spec_file: mef-productofferingqualification-api-openapi.yml
+  capability_id: BC-2620.10
+  capability_id_l1: BC-2620
+  capability_name: Service Order Capture
+  confidence: 0.78
+  evidence: POST /productOfferingQualification 'Send a request to perform product offering qualification';
+    schemas MEFAlternateProduct, MEFPOQItemTaskStateType, AlternateProductOfferingProposal, PlaceRefOrQuery
+  reason: POQ is the MEF serviceability/feasibility check performed at a location before an order is submitted,
+    matching service order capture with feasibility checks prior to submission.
+- tag: troubleTicket
+  spec_file: mef-troubleticket-api-openapi.yml
+  capability_id: BC-2630.30
+  capability_id_l1: BC-2630
+  capability_name: Customer-Impacting Incident Management
+  confidence: 0.78
+  evidence: '"Creates a TroubleTicket" in mef-lso-cantata-trouble-ticket-management-openapi.yml; schemas
+    "TroubleTicketStatusChange", "TroubleTicketPriorityType", "MEFBuyerSellerType"'
+  reason: Buyer-to-seller trouble ticketing over telecom services is customer-impacting incident/trouble
+    management in the service assurance domain.
+- tag: Service Order
+  spec_file: mef-service-order-api-openapi.yml
+  capability_id: BC-2620.10
+  capability_id_l1: BC-2620
+  capability_name: Service Order Capture
+  confidence: 0.75
+  evidence: createServiceOrder  Creates a ServiceOrder; schemas ServiceOrderItem_Create, ServiceOrderStateType,
+    OrderItemCoordinationDependencyType
+  reason: 'Service ordering management: submission and retrieval of service orders with order items, states
+    and inter-item coordination dependencies — telecom service fulfilment. Order creation/capture is the
+    primary operation, though the coordination-dependency schemas also touch order decomposition, so the
+    L2 carries some ambiguity.'
+- tag: category
+  spec_file: mef-category-api-openapi.yml
+  capability_id: BC-2650
+  capability_id_l1: BC-2650
+  capability_name: Telecom Product Catalogue Management
+  confidence: 0.75
+  evidence: GET /category listCategory "Lists or finds Category objects"; schemas "ProductCategory", "ProductCategoryRef",
+    "ProductOfferingRef"
+  reason: Product-catalog categories and offering references exposed from mef-lso-*-product-catalog specs
+    — catalogue structure for telecom product offers; specific sub-capability (publication vs offer design)
+    not evidenced.
+- tag: faultManagementJob
+  spec_file: mef-faultmanagementjob-api-openapi.yml
+  capability_id: BC-2600.10
+  capability_id_l1: BC-2600
+  capability_name: Network Fault Management
+  confidence: 0.75
+  evidence: POST /faultManagementJob "Creates a Fault Management Job"; "Suspends a Fault Management Job";
+    schemas "MonitoredObjectRef", "ServiceRef", "FaultManagementJobStateType"
+  reason: Jobs that drive fault monitoring of network/service objects in the LSO fault-management APIs
+    — telecom fault detection and handling; some ambiguity vs service assurance because monitored objects
+    are services.
+- tag: troubleTicket operations
+  spec_file: mef-troubleticket-operations-api-openapi.yml
+  capability_id: BC-2630.30
+  capability_id_l1: BC-2630
+  capability_name: Customer-Impacting Incident Management
+  confidence: 0.75
+  evidence: '"Cancels a Trouble Ticket", "Closes a Trouble Ticket", "Reopens a Trouble Ticket"'
+  reason: State transitions on trouble tickets raised against telecom services — lifecycle handling of
+    customer-impacting incidents.
+- tag: faultManagementReport
+  spec_file: mef-faultmanagementreport-api-openapi.yml
+  capability_id: BC-2600.10
+  capability_id_l1: BC-2600
+  capability_name: Network Fault Management
+  confidence: 0.72
+  evidence: GET /faultManagementReport "List or find Fault Management Report objects"; schemas "FaultManagementJobRef",
+    "MonitoredObjectRef", "TerminationError"
+  reason: Reporting output of the fault-management job surface over monitored network/service objects;
+    same fault-management capability, ambiguity only between network fault and service assurance framing.
+- tag: tapi-topology
+  spec_file: mef-tapi-topology-api-openapi.yml
+  capability_id: BC-2600.40
+  capability_id_l1: BC-2600
+  capability_name: Network Inventory Management
+  confidence: 0.72
+  evidence: POST /operations/get-topology-details/; POST /operations/get-node-details/; POST /operations/get-link-details/;
+    schema tapi.topology.GetTopologyListOutput
+  reason: Retrieval of network topology, node, link and node-edge-point records — the authoritative logical/physical
+    network resource inventory and its relationships.
+- tag: Customer Bill
+  spec_file: mef-customer-bill-api-openapi.yml
+  capability_id: BC-2660.40
+  capability_id_l1: BC-2660
+  capability_name: Bill Presentment & Inquiry Management
+  confidence: 0.7
+  evidence: retrieveCustomerBill  Retrieves a CustomerBill by ID; schemas CustomerBill_Find, CustomerBillItem,
+    CustomerBillItemTax, PaymentMethod, BillingAccountRef
+  reason: Billing management API exposing customer bills and bill items with taxes, payment methods and
+    billing account references — telecom billing. Operations are read/find only, i.e. presentment and
+    inquiry over produced bills rather than billing-cycle execution, so the L2 is bill presentment with
+    some residual ambiguity versus Billing Operations.
+- tag: performanceProfile
+  spec_file: mef-performanceprofile-api-openapi.yml
+  capability_id: BC-2630.20
+  capability_id_l1: BC-2630
+  capability_name: Service Performance Monitoring
+  confidence: 0.7
+  evidence: POST /performanceProfile 'Creates a Performance Profile' in 'mef-lso-interlude-performance-monitoring-openapi.yml';
+    schemas ServiceSpecificConfiguration, JobType, TimeDuration
+  reason: Performance profiles define what KPIs/granularity are collected for service performance monitoring
+    jobs, so they configure telecom service performance monitoring rather than any network-element-level
+    counter management.
+- tag: performanceReport
+  spec_file: mef-performancereport-api-openapi.yml
+  capability_id: BC-2630.20
+  capability_id_l1: BC-2630
+  capability_name: Service Performance Monitoring
+  confidence: 0.7
+  evidence: POST /performanceReport 'Creates a Performance Report'; schemas PerformanceJobRef, MonitoredObjectRef,
+    ServiceFromToRef, ReportContentItem
+  reason: Reports derived from performance-monitoring jobs on identified services deliver service KPI
+    measurement and reporting under telecom service assurance; could also touch service quality reporting,
+    hence the L2 is the monitoring sub-capability at moderate confidence.
+- tag: tapi-common
+  spec_file: mef-tapi-common-api-openapi.yml
+  capability_id: BC-2600.40
+  capability_id_l1: BC-2600
+  capability_name: Network Inventory Management
+  confidence: 0.7
+  evidence: GET /data/context/topology={uuid}/node={node-uuid}/; schemas tapi.topology.Link, tapi.common.ServiceInterfacePoint,
+    tapi.topology.NetworkTopologyService
+  reason: Read access to TAPI network context — topologies, nodes, links, connections, service interface
+    points — i.e. the authoritative record of logical/physical network resources and their relationships.
