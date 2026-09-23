@@ -1,8 +1,8 @@
 openapi: 3.2.0
 info:
-  title: Mef Tapi Connectivity API
+  description: MEF 60 (PRESTO NRP) swagger definition
   version: 2018R2
-  description: 'Operations tagged tapi-connectivity across 4 of this provider''s published API definitions: mef-lso-presto-nrp-openapi.yml, mef-lso-presto-nrp-rcp-only-openapi.yml, mef-lso-presto-nrp-rpc-only-simplified-hierarchy-openapi.yml, mef-lso-presto-nrp-simplified-hierarchy-openapi.yml. Each path carries the servers of the definition it was published in.'
+  title: Network Resource Provisioning Tapi Connectivity API
 servers:
 - url: https://localhost:1234/restconf
 tags:
@@ -34,8 +34,10 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/tapi.connectivity.CreateConnectivityServiceInput'
-    servers:
-    - url: https://localhost:1234/restconf
+      summary: Create operations create connectivity service
+      x-summary-source: derived
+      operationId: postOperationsCreateConnectivityService
+      x-operation-id-source: derived
   /operations/delete-connectivity-service/:
     post:
       tags:
@@ -62,8 +64,10 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/tapi.connectivity.DeleteConnectivityServiceInput'
-    servers:
-    - url: https://localhost:1234/restconf
+      summary: Create operations delete connectivity service
+      x-summary-source: derived
+      operationId: postOperationsDeleteConnectivityService
+      x-operation-id-source: derived
   /operations/get-connection-details/:
     post:
       tags:
@@ -90,8 +94,10 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/tapi.connectivity.GetConnectionDetailsInput'
-    servers:
-    - url: https://localhost:1234/restconf
+      summary: Create operations get connection details
+      x-summary-source: derived
+      operationId: postOperationsGetConnectionDetails
+      x-operation-id-source: derived
   /operations/get-connectivity-service-details/:
     post:
       tags:
@@ -118,8 +124,10 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/tapi.connectivity.GetConnectivityServiceDetailsInput'
-    servers:
-    - url: https://localhost:1234/restconf
+      summary: Create operations get connectivity service details
+      x-summary-source: derived
+      operationId: postOperationsGetConnectivityServiceDetails
+      x-operation-id-source: derived
   /operations/get-connectivity-service-list/:
     post:
       tags:
@@ -138,8 +146,10 @@ paths:
           description: No response
         400:
           description: Internal error
-    servers:
-    - url: https://localhost:1234/restconf
+      summary: Create operations get connectivity service list
+      x-summary-source: derived
+      operationId: postOperationsGetConnectivityServiceList
+      x-operation-id-source: derived
   /operations/update-connectivity-service/:
     post:
       tags:
@@ -166,22 +176,58 @@ paths:
           application/xml:
             schema:
               $ref: '#/components/schemas/tapi.connectivity.UpdateConnectivityServiceInput'
-    servers:
-    - url: https://localhost:1234/restconf
+      summary: Create operations update connectivity service
+      x-summary-source: derived
+      operationId: postOperationsUpdateConnectivityService
+      x-operation-id-source: derived
 components:
   schemas:
-    mef.common.types.VlanIdPreservation:
+    tapi.common.OperationalState:
       type: string
       enum:
-      - PRESERVE
-      - RETAIN
-      - STRIP
-    tapi.connectivity.ConnectivityServiceRef:
+      - DISABLED
+      - ENABLED
+    mef.common.types.L2cpProtocol:
       type: object
       properties:
-        connectivity-service-id:
+        sub-type:
+          type: integer
+          format: int64
+          description: This attribute specifies the subtype of the L2CP protocol.
+        llc-address-or-ether-type:
+          type: integer
+          format: int64
+          description: This attribute specifies the LLC address or the EtherType value.
+        l2cp-protocol-type:
+          description: This attribute specifies the type of L2CP protocol, i.e., LLC or EtherType.
+          $ref: '#/components/schemas/mef.common.types.L2cpProtocolType'
+    mef.common.types.PcpOrDiscard:
+      type: string
+      enum:
+      - DISCARD
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+    tapi.connectivity.ConnectionRef:
+      type: object
+      properties:
+        connection-id:
           type: string
-          x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
+          x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
+    tapi.connectivity.RouteComputePolicy:
+      type: object
+      properties:
+        diversity-policy:
+          description: none
+          $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
+        route-objective-function:
+          description: none
+          $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
     nrp.interface.CreateConnectivityServiceInputAugmentation1:
       type: object
       properties:
@@ -191,27 +237,34 @@ components:
       x-augmentation:
         prefix: nrp-interface
         namespace: urn:mef:yang:nrp-interface
-    tapi.common.PortRole:
-      type: string
-      enum:
-      - SYMMETRIC
-      - ROOT
-      - LEAF
-      - TRUNK
-      - UNKNOWN
-    tapi.connectivity.UpdateConnectivityServiceInput:
-      properties:
-        input:
-          $ref: '#/components/schemas/tapi.connectivity.UpdateConnectivityServiceInputInput'
-    mef.common.PcpEecIdPac:
-      type: object
-      properties:
-        pcp-value-list:
-          type: array
-          description: This attribute provides a list of PCP values that map to the Egress Equivalence Class Name.
-          items:
-            type: integer
-            format: int64
+    tapi.connectivity.getconnectivityservicelist.output.Service:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
+      - $ref: '#/components/schemas/tapi.common.AdminStatePac'
+      - $ref: '#/components/schemas/tapi.common.GlobalClass'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
+      - $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
+      - $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
+      - type: object
+        properties:
+          layer-protocol-name:
+            description: none
+            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
+          connection:
+            type: array
+            description: none
+            items:
+              type: string
+              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
+          end-point:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicelist.output.service.EndPoint'
+          direction:
+            description: none
+            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
+        description: none
     tapi.topology.NodeRef:
       allOf:
       - $ref: '#/components/schemas/tapi.topology.TopologyRef'
@@ -220,54 +273,48 @@ components:
           node-id:
             type: string
             x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:uuid
-    tapi.topology.LatencyCharacteristic:
+    nrp.interface.EndPointAugmentation1:
       type: object
       properties:
-        traffic-property-name:
-          type: string
-          description: The identifier of the specific traffic property to which the queuing latency applies.
-        jitter-characteristic:
-          type: string
-          description: "High frequency deviation from true periodicity of a signal and therefore a small high rate of change of transfer latency.\n                    Applies to TDM systems (and not packet)."
-        fixed-latency-characteristic:
-          type: string
-          description: A TopologicalEntity suffers delay caused by the realization of the servers (e.g. distance related; FEC encoding etc.) along with some client specific processing. This is the total average latency effect of the TopologicalEntity
-        wander-characteristic:
-          type: string
-          description: "Low frequency deviation from true periodicity of a signal and therefore a small low rate of change of transfer latency.\n                    Applies to TDM systems (and not packet)."
-        queing-latency-characteristic:
-          type: string
-          description: The specific queuing latency for the traffic property.
-    tapi.topology.ProtectionType:
-      type: string
-      enum:
-      - NO_PROTECTON
-      - ONE_PLUS_ONE_PROTECTION
-      - ONE_PLUS_ONE_PROTECTION_WITH_DYNAMIC_RESTORATION
-      - PERMANENT_ONE_PLUS_ONE_PROTECTION
-      - ONE_FOR_ONE_PROTECTION
-      - DYNAMIC_RESTORATION
-      - PRE_COMPUTED_RESTORATION
-    mef.common.DscpEecIdPac:
-      type: object
-      properties:
-        ip-version:
-          description: This attribute specifies the IP version for the DSCP. It can be IPV4, IPV6 or IPV4_AND_IPV6.
-          $ref: '#/components/schemas/mef.common.types.IpVersion'
-        dscp-value-list:
-          type: array
-          description: 'This attribute is a list of DSCP values that maps to the EEC Name. '
-          items:
-            type: integer
-            format: int64
-    tapi.common.ForwardingDirection:
+        nrp-carrier-eth-connectivity-end-point-resource:
+          description: none
+          $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityEndPointResource'
+      x-augmentation:
+        prefix: nrp-interface
+        namespace: urn:mef:yang:nrp-interface
+    tapi.common.PortDirection:
       type: string
       enum:
       - BIDIRECTIONAL
-      - UNIDIRECTIONAL
-      - UNDEFINED_OR_UNKNOWN
-    mef.common.SepCosIdPac:
-      type: object
+      - INPUT
+      - OUTPUT
+      - UNIDENTIFIED_OR_UNKNOWN
+    tapi.connectivity.UpdateConnectivityServiceInputInput:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.UpdateConnectivityServiceInputAugmentation1'
+      - type: object
+        properties:
+          service-id-or-name:
+            type: string
+            description: none
+          end-point:
+            description: none
+            $ref: '#/components/schemas/tapi.connectivity.updateconnectivityservice.input.EndPoint'
+          resilience-constraint:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
+          topo-constraint:
+            description: none
+            $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
+          state:
+            type: string
+            description: none
+          conn-constraint:
+            description: none
+            $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
+        description: ''
     tapi.connectivity.ResilienceConstraint:
       type: object
       properties:
@@ -312,157 +359,64 @@ components:
         reversion-mode:
           description: Indcates whether the protection scheme is revertive or non-revertive.
           $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
+    tapi.connectivity.SwitchControl:
+      allOf:
+      - $ref: '#/components/schemas/tapi.common.GlobalClass'
+      - $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
+      - type: object
+        properties:
+          sub-switch-control:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.SwitchControlRef'
+          switch:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.Switch'
+        description: Represents the capability to control and coordinate switches, to add/delete/modify FCs and to add/delete/modify LTPs/LPs so as to realize a protection scheme.
+    mef.common.DscpEecIdPac:
+      type: object
+      properties:
+        ip-version:
+          description: This attribute specifies the IP version for the DSCP. It can be IPV4, IPV6 or IPV4_AND_IPV6.
+          $ref: '#/components/schemas/mef.common.types.IpVersion'
+        dscp-value-list:
+          type: array
+          description: 'This attribute is a list of DSCP values that maps to the EEC Name. '
+          items:
+            type: integer
+            format: int64
+    tapi.topology.LinkRef:
+      allOf:
+      - $ref: '#/components/schemas/tapi.topology.TopologyRef'
+      - type: object
+        properties:
+          link-id:
+            type: string
+            x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:link/tapi-topology:uuid
+    tapi.connectivity.createconnectivityservice.output.service.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
     mef.common.types.FrameColor:
       type: string
       enum:
       - GREEN
       - YELLOW
-    mef.common.types.VlanIdMappingType:
-      type: string
-      enum:
-      - ALL
-      - EXCEPT
-      - LIST
-    mef.common.ColorIdentifier:
+    tapi.connectivity.ConnectivityServiceRef:
       type: object
       properties:
-        dei-color-pac:
-          description: This attribute represents the relationship between the ColorIdentifier and the DeiColorIdPac (representing the choice that maps Vlan tag DEI to Color).
-          $ref: '#/components/schemas/mef.common.DeiColorIdPac'
-        color-field-type:
-          description: This attribute determines which conditional package (among EVC/OVC End Point, PCP, DEI or DSCP) to be used as the Color Identifier.
-          $ref: '#/components/schemas/mef.common.types.ColorFieldType'
-        sep-color-pac:
-          description: This attribute represents the relationship between the ColorIdentifier and the SepColorIdPac (representing the choice that maps EVC End Point or OVC End Point to Color).
-          $ref: '#/components/schemas/mef.common.SepColorIdPac'
-        dcsp-color-pac:
-          type: array
-          description: This attribute represents the relationship between the ColorIdentifier and the DscpColorIdPac (representing the choice that maps DSCP values to Color).
-          items:
-            $ref: '#/components/schemas/mef.common.DscpColorIdPac'
-        pcp-color-pac:
-          description: This attribute represents the relationship between the ColorIdentifier and the PcpColorIdPac (representing the choice that maps Vlan tag PCPs to Color).
-          $ref: '#/components/schemas/mef.common.PcpColorIdPac'
-    tapi.connectivity.UpdateConnectivityServiceOutput:
-      properties:
-        output:
-          type: object
-          properties:
-            service:
-              description: none
-              $ref: '#/components/schemas/tapi.connectivity.updateconnectivityservice.output.Service'
-    tapi.topology.RestorationPolicy:
-      type: string
-      enum:
-      - PER_DOMAIN_RESTORATION
-      - END_TO_END_RESTORATION
-      - NA
-    mef.common.types.ColorFieldType:
-      type: string
-      enum:
-      - PCP
-      - DEI
-      - END_POINT
-      - DSCP
-    nrm.connectivity.VlanIdListAndUntag:
-      type: object
-      properties:
-        vlan-id:
-          type: array
-          description: This is for VLAN ID from 1 to 4094
-          items:
-            $ref: '#/components/schemas/mef.common.types.VlanId'
-        vlan-id-mapping-type:
-          description: 'Type=LIST: all listed VLAN IDs. Type=EXCEPT: all VLAN IDs except the listed ones. Type=ALL, all VLAN IDs, hence vlanId list is not applicable.'
-          $ref: '#/components/schemas/mef.common.types.VlanIdMappingType'
-        untagged-and-prio-tagged-included:
-          type: boolean
-          description: If true, then untagged and priority tagged frames are included in the mapping, otherwise not.
-          default: false
-    tapi.common.GlobalClass:
-      type: object
-      properties:
-        name:
-          type: array
-          description: List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.
-          items:
-            $ref: '#/components/schemas/tapi.common.NameAndValue'
-        uuid:
+        connectivity-service-id:
           type: string
-          description: "UUID: An identifier that is universally unique within an identifier space, where the identifier space is itself globally unique, and immutable. An UUID carries no semantics with respect to the purpose or state of the entity.\n                    UUID here uses string representation as defined in RFC 4122.  The canonical representation uses lowercase characters.\n                    Pattern: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-' + '[0-9a-fA-F]{4}-[0-9a-fA-F]{12} \n                    Example of a UUID in string representation: f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
-    nrp.interface.EndPointAugmentation1:
+          x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
+    tapi.path.computation.PathRef:
       type: object
       properties:
-        nrp-carrier-eth-connectivity-end-point-resource:
-          description: none
-          $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityEndPointResource'
-      x-augmentation:
-        prefix: nrp-interface
-        namespace: urn:mef:yang:nrp-interface
-    tapi.connectivity.RouteComputePolicy:
-      type: object
-      properties:
-        diversity-policy:
-          description: none
-          $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-        route-objective-function:
-          description: none
-          $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-    mef.common.SepEecIdPac:
-      type: object
-    tapi.connectivity.createconnectivityservice.output.service.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    mef.common.EecIdentifier:
-      type: object
-      properties:
-        egress-bwp-per-eec:
-          description: This attribute represents the relationship between the EecIdentifier and the BwpFlow, for egress bandwidth profile per EEC Name.
-          $ref: '#/components/schemas/mef.common.BwpFlow'
-        sep-eec-id-pac:
-          description: This attribute represents the relationship between the EecIdentifier and a SepEecIdPac when the eecMappingType of EvcEndPoint or OvcEndPoint is END_POINT and the eecName is not only for L2CP. This not addressed in MEF 10.3 but can be future consideration.
-          $ref: '#/components/schemas/mef.common.SepEecIdPac'
-        l2cp-protocol-list:
-          type: array
-          description: This attribute lists the L2CP Protocols that map to the Egress Equivalence Class Name.
-          items:
-            $ref: '#/components/schemas/mef.common.types.L2cpProtocol'
-        dscp-eec-id-pac:
-          type: array
-          description: This attribute represents the relationship between the EecIdentifier and a DscpEecIdPac when the eecMappingType of EvcEndPoint or OvcEndPoint is DSCP and the eecName is not only for L2CP.
-          items:
-            $ref: '#/components/schemas/mef.common.DscpEecIdPac'
-        pcp-eec-id-pac:
-          description: This attribute represents the relationship between the EecIdentifier and a PcpEecIdPac when the eecMappingType of EvcEndPoint or OvcEndPoint is PCP and the eecName is not only for L2CP.
-          $ref: '#/components/schemas/mef.common.PcpEecIdPac'
-        eec-name:
+        path-id:
           type: string
-          description: This attribute denotes the Egress Equivalence Class Name that the EecIdentifier maps to.
-    nrm.connectivity.FrameDeliveryCondition:
-      type: object
-      properties:
-        action:
-          description: Data Service Frame disposition.
-          $ref: '#/components/schemas/nrm.connectivity.DeliveryActionType'
-        delivery-condition:
-          type: array
-          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list, where name is used to represent the condition name or identifier, and value is used to represent the condition details associated to that name/identifier. Interoperability requires further standardization.
-          items:
-            $ref: '#/components/schemas/tapi.common.NameAndValue'
-    tapi.common.CapacityUnit:
-      type: string
-      enum:
-      - TB
-      - TBPS
-      - GB
-      - GBPS
-      - MB
-      - MBPS
-      - KB
-      - KBPS
-    mef.common.DeiColorIdPac:
-      type: object
+          x-path: /tapi-common:context/tapi-path-computation:path/tapi-path-computation:uuid
     tapi.connectivity.deleteconnectivityservice.output.Service:
       allOf:
       - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
@@ -491,78 +445,108 @@ components:
             description: none
             $ref: '#/components/schemas/tapi.common.ForwardingDirection'
         description: none
-    tapi.connectivity.ConnectionRef:
+    mef.common.CosNameAndColorToDeiPac:
       type: object
       properties:
-        connection-id:
+        ingress-cos-name:
           type: string
-          x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-    nrp.interface.UpdateConnectivityServiceInputAugmentation1:
+          description: This attribute denotes the ingress CoS name.
+        dei-value:
+          description: 'This attribute denotes the egress frame DEI value, mapped from ingress CoS Name and ingress frame color. '
+          $ref: '#/components/schemas/mef.common.types.DeiOrDiscard'
+        ingress-color:
+          description: 'This attribute denotes the ingress frame color as one of the determined factor for Egress Map. '
+          $ref: '#/components/schemas/mef.common.types.FrameColor'
+    tapi.connectivity.ReversionMode:
+      type: string
+      enum:
+      - REVERTIVE
+      - NON-REVERTIVE
+    tapi.topology.RestorationPolicy:
+      type: string
+      enum:
+      - PER_DOMAIN_RESTORATION
+      - END_TO_END_RESTORATION
+      - NA
+    mef.common.types.L2cpProtocolType:
+      type: string
+      enum:
+      - ETHERTYPE
+      - LLC
+    mef.common.ColorIdentifier:
       type: object
       properties:
-        nrp-carrier-eth-connectivity-resource:
+        dei-color-pac:
+          description: This attribute represents the relationship between the ColorIdentifier and the DeiColorIdPac (representing the choice that maps Vlan tag DEI to Color).
+          $ref: '#/components/schemas/mef.common.DeiColorIdPac'
+        color-field-type:
+          description: This attribute determines which conditional package (among EVC/OVC End Point, PCP, DEI or DSCP) to be used as the Color Identifier.
+          $ref: '#/components/schemas/mef.common.types.ColorFieldType'
+        sep-color-pac:
+          description: This attribute represents the relationship between the ColorIdentifier and the SepColorIdPac (representing the choice that maps EVC End Point or OVC End Point to Color).
+          $ref: '#/components/schemas/mef.common.SepColorIdPac'
+        dcsp-color-pac:
+          type: array
+          description: This attribute represents the relationship between the ColorIdentifier and the DscpColorIdPac (representing the choice that maps DSCP values to Color).
+          items:
+            $ref: '#/components/schemas/mef.common.DscpColorIdPac'
+        pcp-color-pac:
+          description: This attribute represents the relationship between the ColorIdentifier and the PcpColorIdPac (representing the choice that maps Vlan tag PCPs to Color).
+          $ref: '#/components/schemas/mef.common.PcpColorIdPac'
+    tapi.common.OperationalStatePac:
+      type: object
+      properties:
+        operational-state:
           description: none
-          $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-      x-augmentation:
-        prefix: nrp-interface
-        namespace: urn:mef:yang:nrp-interface
-    nrp.interface.NrpCarrierEthConnectivityResource:
+          $ref: '#/components/schemas/tapi.common.OperationalState'
+        lifecycle-state:
+          description: none
+          $ref: '#/components/schemas/tapi.common.LifecycleState'
+    tapi.connectivity.SelectionControl:
+      type: string
+      enum:
+      - LOCK_OUT
+      - NORMAL
+      - MANUAL
+      - FORCED
+    tapi.connectivity.GetConnectivityServiceDetailsInput:
+      properties:
+        input:
+          type: object
+          properties:
+            service-id-or-name:
+              type: string
+              description: none
+    nrm.connectivity.VlanIdListAndUntag:
       type: object
       properties:
-        ce-vlan-id-preservation:
-          description: "This attribute describes a relationship between the format of the VLAN ID and related fields values of the frame at one Interface and the format and VLAN ID and related fields values of the corresponding frame at another Interface.\n                        Used the MEF 7.3 OVC type (PRESERVE/STRIP/RETAIN) as it depends on EVC/OVC decomposition performed by SOFs.\n                        "
-          $ref: '#/components/schemas/mef.common.types.VlanIdPreservation'
-        ce-vlan-pcp-preservation:
+        vlan-id:
+          type: array
+          description: This is for VLAN ID from 1 to 4094
+          items:
+            $ref: '#/components/schemas/mef.common.types.VlanId'
+        vlan-id-mapping-type:
+          description: 'Type=LIST: all listed VLAN IDs. Type=EXCEPT: all VLAN IDs except the listed ones. Type=ALL, all VLAN IDs, hence vlanId list is not applicable.'
+          $ref: '#/components/schemas/mef.common.types.VlanIdMappingType'
+        untagged-and-prio-tagged-included:
           type: boolean
-          description: This attribute can be used to preserve the value of the CE-VLAN PCP field in VLAN Tagged Service Frames across a Connectivity Service.
+          description: If true, then untagged and priority tagged frames are included in the mapping, otherwise not.
           default: false
-        s-vlan-dei-preservation:
-          type: boolean
-          description: This attribute describes a relationship between the S-VLAN DEI value of a frame at one ENNI and the S-VLAN DEI of the corresponding frame at another ENNI supported by the Operator CEN where each ENNI has a Connectivity Service End Point that is associated by the Connectivity Service.
-          default: false
-        max-frame-size:
-          type: integer
-          format: int64
-          description: This attribute denotes the maximum frame size in bytes requested for the connectivity service.
-        multipoint-capable:
-          type: boolean
-          description: A value of “true” indicates that the End Points can be added/removed during Connectivity Service lifecycle.
-          default: false
-        broadcast-frame-delivery:
-          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list.
-          $ref: '#/components/schemas/nrm.connectivity.FrameDeliveryCondition'
-        s-vlan-pcp-preservation:
-          type: boolean
-          description: This attribute describes a relationship between the S-VLAN PCP value of a frame at one ENNI and the S-VLAN PCP of the corresponding frame at another ENNI supported by the Operator CEN where each ENNI has a Connectivity Service End Point that is associated by the Connectivity Service.
-          default: false
-        ce-vlan-dei-preservation:
-          type: boolean
-          description: This attribute can be used to preserve the value of the CE-VLAN DEI field in VLAN Tagged Service Frames across a Connectivity Service.
-          default: false
-        multicast-frame-delivery:
-          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list.
-          $ref: '#/components/schemas/nrm.connectivity.FrameDeliveryCondition'
-        unicast-frame-delivery:
-          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list.
-          $ref: '#/components/schemas/nrm.connectivity.FrameDeliveryCondition'
-    tapi.common.PortDirection:
-      type: string
-      enum:
-      - BIDIRECTIONAL
-      - INPUT
-      - OUTPUT
-      - UNIDENTIFIED_OR_UNKNOWN
-    tapi.common.OperationalState:
-      type: string
-      enum:
-      - DISABLED
-      - ENABLED
-    mef.common.types.IpVersion:
-      type: string
-      enum:
-      - IPV4
-      - IPV6
-      - IPV4_AND_IPV6
+    mef.common.PcpColorIdPac:
+      type: object
+      properties:
+        pcp-value-for-yellow-list:
+          type: array
+          description: 'This attribute provides a list PCP values map to the yellow ingress EI frames. The pcpValueForGreenList and the pcpValueForYellowList must disjoint and the union of the two lists must include all possible PCP values. '
+          items:
+            type: integer
+            format: int64
+        pcp-value-for-green-list:
+          type: array
+          description: 'This attribute provides a list PCP values map to the green ingress EI frames. The pcpValueForGreenList and the pcpValueForYellowList must disjoint and the union of the two lists must include all possible PCP values. '
+          items:
+            type: integer
+            format: int64
     tapi.connectivity.createconnectivityservice.output.Service:
       allOf:
       - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
@@ -591,245 +575,231 @@ components:
             description: none
             $ref: '#/components/schemas/tapi.common.ForwardingDirection'
         description: none
-    tapi.connectivity.GetConnectionDetailsInput:
-      properties:
-        input:
-          type: object
-          properties:
-            service-id-or-name:
-              type: string
-              description: none
-            connection-id-or-name:
-              type: string
-              description: none
-    tapi.topology.CostCharacteristic:
-      type: object
-      properties:
-        cost-value:
-          type: string
-          description: The specific cost.
-        cost-algorithm:
-          type: string
-          description: The cost may vary based upon some properties of the TopologicalEntity. The rules for the variation are conveyed by the costAlgorithm.
-        cost-name:
-          type: string
-          description: The cost characteristic will related to some aspect of the TopologicalEntity (e.g. $ cost, routing weight). This aspect will be conveyed by the costName.
-    nrp.interface.ServiceAugmentation1:
-      type: object
-      properties:
-        nrp-carrier-eth-connectivity-resource:
-          description: none
-          $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-      x-augmentation:
-        prefix: nrp-interface
-        namespace: urn:mef:yang:nrp-interface
-    mef.common.types.DeiOrDiscard:
+    mef.common.types.ColorMode:
       type: string
       enum:
-      - DISCARD
-      - '0'
-      - '1'
-    mef.common.types.L2cpProtocol:
-      type: object
-      properties:
-        sub-type:
-          type: integer
-          format: int64
-          description: This attribute specifies the subtype of the L2CP protocol.
-        llc-address-or-ether-type:
-          type: integer
-          format: int64
-          description: This attribute specifies the LLC address or the EtherType value.
-        l2cp-protocol-type:
-          description: This attribute specifies the type of L2CP protocol, i.e., LLC or EtherType.
-          $ref: '#/components/schemas/mef.common.types.L2cpProtocolType'
-    mef.common.types.VlanIdListing:
-      type: object
-      properties:
-        type:
-          description: Can be LIST, or ALL, or EXCEPT.
-          $ref: '#/components/schemas/mef.common.types.VlanIdMappingType'
-        vlan-id-list:
-          type: array
-          description: This is a list of Vlan IDs.
-          items:
-            $ref: '#/components/schemas/mef.common.types.VlanId'
-    tapi.connectivity.SwitchControlRef:
+      - COLOR_AWARE
+      - COLOR_BLIND
+    mef.common.types.VlanIdMappingType:
+      type: string
+      enum:
+      - ALL
+      - EXCEPT
+      - LIST
+    tapi.connectivity.CreateConnectivityServiceInputInput:
       allOf:
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectionRef'
+      - $ref: '#/components/schemas/nrp.interface.CreateConnectivityServiceInputAugmentation1'
       - type: object
         properties:
-          switch-control-id:
-            type: string
-            x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:switch-control/tapi-connectivity:uuid
-    tapi.common.NameAndValue:
-      type: object
-      properties:
-        value-name:
-          type: string
-          description: The name of the value. The value need not have a name.
-        value:
-          type: string
-          description: The value
-    tapi.connectivity.CreateConnectivityServiceInput:
-      properties:
-        input:
-          $ref: '#/components/schemas/tapi.connectivity.CreateConnectivityServiceInputInput'
-    tapi.connectivity.createconnectivityservice.input.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    tapi.topology.TopologyRef:
-      type: object
-      properties:
-        topology-id:
-          type: string
-          x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:uuid
-    tapi.connectivity.deleteconnectivityservice.output.service.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    tapi.connectivity.ConnectivityServiceEndPoint:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.AdminStatePac'
-      - $ref: '#/components/schemas/tapi.common.LocalClass'
-      - type: object
-        properties:
-          protection-role:
-            description: To specify the protection role of this Port when create or update ConnectivityService.
-            $ref: '#/components/schemas/tapi.connectivity.ProtectionRole'
-          role:
-            description: 'Each EP of the FC has a role (e.g., working, protection, protected, symmetric, hub, spoke, leaf, root)  in the context of the FC with respect to the FC function. '
-            $ref: '#/components/schemas/tapi.common.PortRole'
-          service-interface-point:
+          topo-constraint:
             description: none
-            $ref: '#/components/schemas/tapi.common.ServiceInterfacePointRef'
+            $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
+          state:
+            type: string
+            description: none
+          end-point:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.createconnectivityservice.input.EndPoint'
+          conn-constraint:
+            description: none
+            $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
+          resilience-constraint:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
+        description: ''
+    tapi.connectivity.Connection:
+      allOf:
+      - $ref: '#/components/schemas/tapi.common.GlobalClass'
+      - $ref: '#/components/schemas/tapi.common.OperationalStatePac'
+      - type: object
+        properties:
+          lower-connection:
+            type: array
+            description: "An Connection object supports a recursive aggregation relationship such that the internal construction of an Connection can be exposed as multiple lower level Connection objects (partitioning).\n                    Aggregation is used as for the Node/Topology  to allow changes in hierarchy.\n                    Connection aggregation reflects Node/Topology aggregation.\n                    The FC represents a Cross-Connection in an NE. The Cross-Connection in an NE is not necessarily the lowest level of FC partitioning."
+            items:
+              type: string
+              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
+          switch-control:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.SwitchControl'
+          route:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.Route'
           layer-protocol-name:
             description: none
             $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          direction:
-            description: The orientation of defined flow at the EndPoint.
-            $ref: '#/components/schemas/tapi.common.PortDirection'
-          capacity:
+          connection-end-point:
+            type: array
             description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-        description: "The association of the FC to LTPs is made via EndPoints.\n                The EndPoint (EP) object class models the access to the FC function.\n                The traffic forwarding between the associated EPs of the FC depends upon the type of FC and may be associated with FcSwitch object instances.\n                In cases where there is resilience the EndPoint may convey the resilience role of the access to the FC.\n                It can represent a protected (resilient/reliable) point or a protecting (unreliable working or protection) point.\n                The EP replaces the Protection Unit of a traditional protection model.\n                The ForwadingConstruct can be considered as a component and the EndPoint as a Port on that component"
-    nrm.connectivity.DeliveryActionType:
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.ConnectionEndPointRef'
+          direction:
+            description: none
+            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
+        description: "The ForwardingConstruct (FC) object class models enabled potential for forwarding between two or more LTPs and like the LTP supports any transport protocol including all circuit and packet forms.\n                At the lowest level of recursion, a FC represents a cross-connection within an NE."
+    tapi.common.TimeRange:
+      type: object
+      properties:
+        end-time:
+          type: string
+          description: none
+        start-time:
+          type: string
+          description: none
+    mef.common.types.ColorFieldType:
       type: string
       enum:
-      - DISCARD
-      - CONDITIONALLY
-      - UNCONDITIONALLY
-    mef.common.types.SourceMacAddressLimit:
+      - PCP
+      - DEI
+      - END_POINT
+      - DSCP
+    mef.common.SepEecIdPac:
+      type: object
+    mef.common.DscpCosIdPac:
       type: object
       properties:
-        limit:
-          type: integer
-          format: int64
-          description: This attribute denotes the maximum acceptable source MAC addresses.
-        time-interval:
-          type: integer
-          format: int64
-          description: This attribute denotes the time interval in milliseconds.
-    tapi.path.computation.PathRef:
+        ip-version:
+          description: This attribute denotes the IP version for the DSCP. It can be IPV4, IPV6 or IPV4_AND_IPV6.
+          $ref: '#/components/schemas/mef.common.types.IpVersion'
+        dscp-value-list:
+          type: array
+          description: This attribute is a list of DSCP values that maps to a CoS Name.
+          items:
+            type: integer
+            format: int64
+    mef.common.PcpEecIdPac:
       type: object
       properties:
-        path-id:
-          type: string
-          x-path: /tapi-common:context/tapi-path-computation:path/tapi-path-computation:uuid
-    mef.common.BwpFlow:
-      type: object
-      properties:
-        cir-max:
-          type: integer
-          format: int64
-          description: This attribute denotes the maximum Committed Information Rate that limits the rate of tokens added to the committed token bucket. In bits per second.
-        envelope:
-          description: This attribute represents the relationship between the BwpFlow and the Envelope, indicating which Envelope the BwpFlow belongs.
-          $ref: '#/components/schemas/mef.common.Envelope'
-        token-request-offset:
-          type: integer
-          format: int64
-          description: This attribute adjusts the number of tokens requested for each external interface frame.
-        coupling-flag:
-          type: boolean
-          description: This attribute denotes the Coupling Flag that Determines if overflow Green tokens can be used as Yellow tokens. FALSE for 0 (overflow green tokens are discarded) and TRUE for 1 (overflow green tokens can be used as yellow tokens)
-          default: false
-        cbs:
-          type: integer
-          format: int64
-          description: This attribute denotes the Committed Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Green, in bytes,
-        color-mode:
-          description: This attribute denotes the Color Mode that Indicates whether the Color Identifier of the frame is considered by the Bandwidth Profile Algorithm.
-          $ref: '#/components/schemas/mef.common.types.ColorMode'
-        ebs:
-          type: integer
-          format: int64
-          description: This attribute denotes the Excessive Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Yellow, in bytes.
-        rank:
-          type: integer
-          format: int64
-          description: This attribute denotes the rank of the bandwidth profile flow in the envelope.
-        eir-max:
-          type: integer
-          format: int64
-          description: This attribute denotes the Maximum Excess Information Rate that Limits the rate of tokens added to the excess token bucket, in bits per second.
-        cir:
-          type: integer
-          format: int64
-          description: This attribute denotes the Committed Information Rate that limits the average rate of frames that will be declared Green. In bits per second.
-        eir:
-          type: integer
-          format: int64
-          description: This attribute denotes the Excess Information Rate that limits the average rate of frames that will be declared Yellow, in bits per second.
-    tapi.connectivity.TopologyConstraint:
-      type: object
-      properties:
-        include-node:
+        pcp-value-list:
           type: array
-          description: This is a loose constraint - that is it is unordered and could be a partial list
+          description: This attribute provides a list of PCP values that map to the Egress Equivalence Class Name.
           items:
-            $ref: '#/components/schemas/tapi.topology.NodeRef'
-        exclude-link:
-          type: array
-          description: none
-          items:
-            $ref: '#/components/schemas/tapi.topology.LinkRef'
-        avoid-topology:
-          type: array
-          description: none
-          items:
-            $ref: '#/components/schemas/tapi.topology.TopologyRef'
-        exclude-path:
-          type: array
-          description: none
-          items:
-            $ref: '#/components/schemas/tapi.path.computation.PathRef'
-        include-link:
-          type: array
-          description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-          items:
-            $ref: '#/components/schemas/tapi.topology.LinkRef'
-        preferred-transport-layer:
-          type: array
-          description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-          items:
+            type: integer
+            format: int64
+    tapi.topology.OwnedNodeEdgePointRef:
+      allOf:
+      - $ref: '#/components/schemas/tapi.topology.NodeRef'
+      - type: object
+        properties:
+          owned-node-edge-point-id:
+            type: string
+            x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-topology:uuid
+    tapi.connectivity.RouteObjectiveFunction:
+      type: string
+      enum:
+      - MIN_WORK_ROUTE_HOP
+      - MIN_WORK_ROUTE_COST
+      - MIN_WORK_ROUTE_LATENCY
+      - MIN_SUM_OF_WORK_AND_PROTECTION_ROUTE_HOP
+      - MIN_SUM_OF_WORK_AND_PROTECTION_ROUTE_COST
+      - MIN_SUM_OF_WORK_AND_PROTECTION_ROUTE_LATENCY
+      - LOAD_BALANCE_MAX_UNUSED_CAPACITY
+    tapi.connectivity.getconnectivityservicedetails.output.Service:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
+      - $ref: '#/components/schemas/tapi.common.AdminStatePac'
+      - $ref: '#/components/schemas/tapi.common.GlobalClass'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
+      - $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
+      - $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
+      - type: object
+        properties:
+          layer-protocol-name:
+            description: none
             $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-        exclude-node:
-          type: array
+          connection:
+            type: array
+            description: none
+            items:
+              type: string
+              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
+          end-point:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicedetails.output.service.EndPoint'
+          direction:
+            description: none
+            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
+        description: none
+    mef.common.types.VlanId:
+      type: object
+      properties:
+        vlan-id:
+          type: integer
+          format: int64
+          description: This is the Vlan ID value.
+    tapi.common.AdminStatePac:
+      type: object
+      properties:
+        operational-state:
           description: none
-          items:
-            $ref: '#/components/schemas/tapi.topology.NodeRef'
-        include-topology:
-          type: array
+          $ref: '#/components/schemas/tapi.common.OperationalState'
+        lifecycle-state:
           description: none
-          items:
-            $ref: '#/components/schemas/tapi.topology.TopologyRef'
-        include-path:
-          type: array
+          $ref: '#/components/schemas/tapi.common.LifecycleState'
+        administrative-state:
           description: none
-          items:
-            $ref: '#/components/schemas/tapi.path.computation.PathRef'
+          $ref: '#/components/schemas/tapi.common.AdministrativeState'
+    tapi.connectivity.ConnectivityConstraint:
+      allOf:
+      - $ref: '#/components/schemas/tapi.connectivity.RouteComputePolicy'
+      - type: object
+        properties:
+          schedule:
+            description: none
+            $ref: '#/components/schemas/tapi.common.TimeRange'
+          requested-capacity:
+            description: none
+            $ref: '#/components/schemas/tapi.common.Capacity'
+          is-exclusive:
+            type: boolean
+            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
+            default: true
+          diversity-exclusion:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
+          service-level:
+            type: string
+            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
+          service-type:
+            description: none
+            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
+          cost-characteristic:
+            type: array
+            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
+            items:
+              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
+          latency-characteristic:
+            type: array
+            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
+            items:
+              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
+          coroute-inclusion:
+            type: string
+            description: none
+            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
+        description: none
+    tapi.connectivity.UpdateConnectivityServiceInput:
+      properties:
+        input:
+          $ref: '#/components/schemas/tapi.connectivity.UpdateConnectivityServiceInputInput'
+    tapi.common.ForwardingDirection:
+      type: string
+      enum:
+      - BIDIRECTIONAL
+      - UNIDIRECTIONAL
+      - UNDEFINED_OR_UNKNOWN
     nrp.interface.NrpCarrierEthConnectivityEndPointResource:
       type: object
       properties:
@@ -881,244 +851,6 @@ components:
         color-identifier:
           description: This attribute represents the relationship between the Connectivity Service End Point and a Color Identifier.
           $ref: '#/components/schemas/mef.common.ColorIdentifier'
-    tapi.connectivity.SelectionReason:
-      type: string
-      enum:
-      - LOCKOUT
-      - NORMAL
-      - MANUAL
-      - FORCED
-      - WAIT_TO_REVERT
-      - SIGNAL_DEGRADE
-      - SIGNAL_FAIL
-    tapi.topology.ResilienceType:
-      type: object
-      properties:
-        restoration-policy:
-          description: none
-          $ref: '#/components/schemas/tapi.topology.RestorationPolicy'
-        protection-type:
-          description: none
-          $ref: '#/components/schemas/tapi.topology.ProtectionType'
-    tapi.connectivity.ConnectivityConstraint:
-      allOf:
-      - $ref: '#/components/schemas/tapi.connectivity.RouteComputePolicy'
-      - type: object
-        properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-        description: none
-    tapi.connectivity.GetConnectivityServiceListOutput:
-      properties:
-        output:
-          type: object
-          properties:
-            service:
-              type: array
-              description: none
-              items:
-                $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicelist.output.Service'
-    tapi.connectivity.getconnectivityservicedetails.output.service.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    tapi.connectivity.getconnectivityservicedetails.output.Service:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
-      - $ref: '#/components/schemas/tapi.common.AdminStatePac'
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
-      - $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
-      - $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
-      - type: object
-        properties:
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicedetails.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-        description: none
-    mef.common.DscpColorIdPac:
-      type: object
-      properties:
-        dscp-value-for-green-list:
-          type: array
-          description: This attribute provides a list DSCP values map to the green ingress EI frames. The dscpValueForGreenList and the dscpValueForYellowList must disjoint and the union of the two lists must include all possible DSCP values.
-          items:
-            type: integer
-            format: int64
-        ip-version:
-          description: This attribute denotes which IP version is used. It can be IPV4, IPV6 or IPV4_AND_IPV6.
-          $ref: '#/components/schemas/mef.common.types.IpVersion'
-        dscp-value-for-yellow-list:
-          type: array
-          description: This attribute provides a list DSCP values map to the yellow ingress EI frames. The dscpValueForGreenList and the dscpValueForYellowList must disjoint and the union of the two lists must include all possible DSCP values.
-          items:
-            type: integer
-            format: int64
-    tapi.connectivity.CoordinateType:
-      type: string
-      enum:
-      - NO_COORDINATE
-      - HOLD_OFF_TIME
-      - WAIT_FOR_NOTIFICATION
-    tapi.common.AdministrativeState:
-      type: string
-      enum:
-      - LOCKED
-      - UNLOCKED
-    tapi.connectivity.updateconnectivityservice.output.service.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    mef.common.DscpCosIdPac:
-      type: object
-      properties:
-        ip-version:
-          description: This attribute denotes the IP version for the DSCP. It can be IPV4, IPV6 or IPV4_AND_IPV6.
-          $ref: '#/components/schemas/mef.common.types.IpVersion'
-        dscp-value-list:
-          type: array
-          description: This attribute is a list of DSCP values that maps to a CoS Name.
-          items:
-            type: integer
-            format: int64
-    tapi.connectivity.SelectionControl:
-      type: string
-      enum:
-      - LOCK_OUT
-      - NORMAL
-      - MANUAL
-      - FORCED
-    tapi.common.BandwidthProfileType:
-      type: string
-      enum:
-      - MEF_10.x
-      - RFC_2697
-      - RFC_2698
-      - RFC_4115
-    tapi.connectivity.ConnectionEndPointRef:
-      allOf:
-      - $ref: '#/components/schemas/tapi.topology.OwnedNodeEdgePointRef'
-      - type: object
-        properties:
-          connection-end-point-id:
-            type: string
-            x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:connection-end-point/tapi-connectivity:uuid
-    tapi.connectivity.CreateConnectivityServiceInputInput:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.CreateConnectivityServiceInputAugmentation1'
-      - type: object
-        properties:
-          topo-constraint:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
-          state:
-            type: string
-            description: none
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.createconnectivityservice.input.EndPoint'
-          conn-constraint:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
-          resilience-constraint:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
-        description: ''
-    tapi.connectivity.SwitchControl:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
-      - type: object
-        properties:
-          sub-switch-control:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.SwitchControlRef'
-          switch:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.Switch'
-        description: Represents the capability to control and coordinate switches, to add/delete/modify FCs and to add/delete/modify LTPs/LPs so as to realize a protection scheme.
-    mef.common.PcpColorIdPac:
-      type: object
-      properties:
-        pcp-value-for-yellow-list:
-          type: array
-          description: 'This attribute provides a list PCP values map to the yellow ingress EI frames. The pcpValueForGreenList and the pcpValueForYellowList must disjoint and the union of the two lists must include all possible PCP values. '
-          items:
-            type: integer
-            format: int64
-        pcp-value-for-green-list:
-          type: array
-          description: 'This attribute provides a list PCP values map to the green ingress EI frames. The pcpValueForGreenList and the pcpValueForYellowList must disjoint and the union of the two lists must include all possible PCP values. '
-          items:
-            type: integer
-            format: int64
-    mef.common.CosNameAndColorToDeiPac:
-      type: object
-      properties:
-        ingress-cos-name:
-          type: string
-          description: This attribute denotes the ingress CoS name.
-        dei-value:
-          description: 'This attribute denotes the egress frame DEI value, mapped from ingress CoS Name and ingress frame color. '
-          $ref: '#/components/schemas/mef.common.types.DeiOrDiscard'
-        ingress-color:
-          description: 'This attribute denotes the ingress frame color as one of the determined factor for Egress Map. '
-          $ref: '#/components/schemas/mef.common.types.FrameColor'
     tapi.common.LifecycleState:
       type: string
       enum:
@@ -1127,49 +859,14 @@ components:
       - POTENTIAL_BUSY
       - INSTALLED
       - PENDING_REMOVAL
-    mef.common.types.EgressMapType:
+    mef.common.types.DeiOrDiscard:
       type: string
       enum:
-      - CN_C_TAG_PCP
-      - CC_C_TAG_PCP
-      - CC_C_TAG_DEI
-      - CN_S_TAG_PCP
-      - CC_S_TAG_PCP
-      - CC_S_TAG_DEI
-    tapi.connectivity.Connection:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - $ref: '#/components/schemas/tapi.common.OperationalStatePac'
-      - type: object
-        properties:
-          lower-connection:
-            type: array
-            description: "An Connection object supports a recursive aggregation relationship such that the internal construction of an Connection can be exposed as multiple lower level Connection objects (partitioning).\n                    Aggregation is used as for the Node/Topology  to allow changes in hierarchy.\n                    Connection aggregation reflects Node/Topology aggregation.\n                    The FC represents a Cross-Connection in an NE. The Cross-Connection in an NE is not necessarily the lowest level of FC partitioning."
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          switch-control:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.SwitchControl'
-          route:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.Route'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection-end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectionEndPointRef'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-        description: "The ForwardingConstruct (FC) object class models enabled potential for forwarding between two or more LTPs and like the LTP supports any transport protocol including all circuit and packet forms.\n                At the lowest level of recursion, a FC represents a cross-connection within an NE."
+      - DISCARD
+      - '0'
+      - '1'
+    mef.common.SepCosIdPac:
+      type: object
     mef.common.EgressMap:
       type: object
       properties:
@@ -1191,6 +888,10 @@ components:
           description: This attribute represents the relationship between the EgressMap and the CosNameAndColorToDeiPac (representing the attribute set for using CoS Name and ingress color to egress DEI mapping).
           items:
             $ref: '#/components/schemas/mef.common.CosNameAndColorToDeiPac'
+    tapi.connectivity.CreateConnectivityServiceInput:
+      properties:
+        input:
+          $ref: '#/components/schemas/tapi.connectivity.CreateConnectivityServiceInputInput'
     tapi.connectivity.DeleteConnectivityServiceInput:
       properties:
         input:
@@ -1199,217 +900,79 @@ components:
             service-id-or-name:
               type: string
               description: none
-    tapi.common.AdminStatePac:
-      type: object
-      properties:
-        operational-state:
-          description: none
-          $ref: '#/components/schemas/tapi.common.OperationalState'
-        lifecycle-state:
-          description: none
-          $ref: '#/components/schemas/tapi.common.LifecycleState'
-        administrative-state:
-          description: none
-          $ref: '#/components/schemas/tapi.common.AdministrativeState'
-    mef.common.CosIdentifier:
-      type: object
-      properties:
-        pcp-cos-id-pac:
-          description: This attribute represents the relationship between the CosIdentifier and the PcpCosIdPac  when the cosMappingType of EvcEndPoint or OvcEndPoint is PCP and the cosName is not only for L2CP.
-          $ref: '#/components/schemas/mef.common.PcpCosIdPac'
-        sep-cos-id-pac:
-          description: This attribute represents the relationship between the CosIdentifier and the SepCosIdPac when the cosMappingType of EvcEndPoint or OvcEndPoint is END_POINT and the cosName is not only for L2CP.
-          $ref: '#/components/schemas/mef.common.SepCosIdPac'
-        ingress-bwp-per-cos:
-          description: This attribute represents the relationship between the CosIdentifier and the BwpFlow, for ingress bandwidth profile per CoS Name.
-          $ref: '#/components/schemas/mef.common.BwpFlow'
-        l2cp-protocol-list:
-          type: array
-          description: This attribute lists the L2CP Protocols that map to the Class of Service Name.
-          items:
-            $ref: '#/components/schemas/mef.common.types.L2cpProtocol'
-        dscp-cos-id-pac:
-          type: array
-          description: This attribute represents the relationship between the CosIdentifier and the DespCosIdPac when the cosMappingType of EvcEndPoint or OvcEndPoint is DSCP and the cosName is not only for L2CP.
-          items:
-            $ref: '#/components/schemas/mef.common.DscpCosIdPac'
-        cos-name:
-          type: string
-          description: This attribute denotes the Class of Service name that the CosIdentifier map to.
-    mef.common.SepColorIdPac:
-      type: object
-      properties:
-        color:
-          description: This attribute denotes the color of the EI frame, green or yellow.
-          $ref: '#/components/schemas/mef.common.types.FrameColor'
-    tapi.connectivity.UpdateConnectivityServiceInputInput:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.UpdateConnectivityServiceInputAugmentation1'
-      - type: object
-        properties:
-          service-id-or-name:
-            type: string
-            description: none
-          end-point:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.updateconnectivityservice.input.EndPoint'
-          resilience-constraint:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
-          topo-constraint:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
-          state:
-            type: string
-            description: none
-          conn-constraint:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
-        description: ''
-    tapi.common.LocalClass:
-      type: object
-      properties:
-        name:
-          type: array
-          description: List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.
-          items:
-            $ref: '#/components/schemas/tapi.common.NameAndValue'
-        local-id:
-          type: string
-          description: none
-    mef.common.types.PcpOrDiscard:
-      type: string
-      enum:
-      - DISCARD
-      - '0'
-      - '1'
-      - '2'
-      - '3'
-      - '4'
-      - '5'
-      - '6'
-      - '7'
-    tapi.connectivity.GetConnectivityServiceDetailsInput:
-      properties:
-        input:
-          type: object
-          properties:
-            service-id-or-name:
-              type: string
-              description: none
-    tapi.connectivity.CreateConnectivityServiceOutput:
+    tapi.connectivity.UpdateConnectivityServiceOutput:
       properties:
         output:
           type: object
           properties:
             service:
               description: none
-              $ref: '#/components/schemas/tapi.connectivity.createconnectivityservice.output.Service'
-    mef.common.PcpCosIdPac:
+              $ref: '#/components/schemas/tapi.connectivity.updateconnectivityservice.output.Service'
+    nrp.interface.NrpCarrierEthConnectivityResource:
       type: object
       properties:
-        pcp-value-list:
-          type: array
-          description: 'This attribute is a list of PCP values that map to the CoS Name. '
-          items:
-            type: integer
-            format: int64
-    mef.common.CosNameAndColorToPcpPac:
-      type: object
-      properties:
-        ingress-cos-name:
-          type: string
-          description: This attribute denotes the ingress CoS name.
-        pcp-value:
-          description: 'This attribute denotes the egress frame PCP value, mapped from ingress CoS name and ingress frame color. '
-          $ref: '#/components/schemas/mef.common.types.PcpOrDiscard'
-        ingress-color:
-          description: 'This attribute denotes the ingress frame color as one of the determined factor for Egress Map. '
-          $ref: '#/components/schemas/mef.common.types.FrameColor'
-    tapi.connectivity.getconnectivityservicelist.output.Service:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
-      - $ref: '#/components/schemas/tapi.common.AdminStatePac'
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityConstraint'
-      - $ref: '#/components/schemas/tapi.connectivity.ResilienceConstraint'
-      - $ref: '#/components/schemas/tapi.connectivity.TopologyConstraint'
-      - type: object
-        properties:
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicelist.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-        description: none
-    mef.common.types.ColorMode:
-      type: string
-      enum:
-      - COLOR_AWARE
-      - COLOR_BLIND
-    tapi.connectivity.Route:
+        ce-vlan-id-preservation:
+          description: "This attribute describes a relationship between the format of the VLAN ID and related fields values of the frame at one Interface and the format and VLAN ID and related fields values of the corresponding frame at another Interface.\n                        Used the MEF 7.3 OVC type (PRESERVE/STRIP/RETAIN) as it depends on EVC/OVC decomposition performed by SOFs.\n                        "
+          $ref: '#/components/schemas/mef.common.types.VlanIdPreservation'
+        ce-vlan-pcp-preservation:
+          type: boolean
+          description: This attribute can be used to preserve the value of the CE-VLAN PCP field in VLAN Tagged Service Frames across a Connectivity Service.
+          default: false
+        s-vlan-dei-preservation:
+          type: boolean
+          description: This attribute describes a relationship between the S-VLAN DEI value of a frame at one ENNI and the S-VLAN DEI of the corresponding frame at another ENNI supported by the Operator CEN where each ENNI has a Connectivity Service End Point that is associated by the Connectivity Service.
+          default: false
+        max-frame-size:
+          type: integer
+          format: int64
+          description: This attribute denotes the maximum frame size in bytes requested for the connectivity service.
+        multipoint-capable:
+          type: boolean
+          description: A value of “true” indicates that the End Points can be added/removed during Connectivity Service lifecycle.
+          default: false
+        broadcast-frame-delivery:
+          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list.
+          $ref: '#/components/schemas/nrm.connectivity.FrameDeliveryCondition'
+        s-vlan-pcp-preservation:
+          type: boolean
+          description: This attribute describes a relationship between the S-VLAN PCP value of a frame at one ENNI and the S-VLAN PCP of the corresponding frame at another ENNI supported by the Operator CEN where each ENNI has a Connectivity Service End Point that is associated by the Connectivity Service.
+          default: false
+        ce-vlan-dei-preservation:
+          type: boolean
+          description: This attribute can be used to preserve the value of the CE-VLAN DEI field in VLAN Tagged Service Frames across a Connectivity Service.
+          default: false
+        multicast-frame-delivery:
+          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list.
+          $ref: '#/components/schemas/nrm.connectivity.FrameDeliveryCondition'
+        unicast-frame-delivery:
+          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list.
+          $ref: '#/components/schemas/nrm.connectivity.FrameDeliveryCondition'
+    tapi.connectivity.Switch:
       allOf:
       - $ref: '#/components/schemas/tapi.common.LocalClass'
       - type: object
         properties:
-          connection-end-point:
+          selected-connection-end-point:
+            type: array
+            description: none
+            items:
+              $ref: '#/components/schemas/tapi.connectivity.ConnectionEndPointRef'
+          selected-route:
             type: array
             description: none
             items:
               type: string
-              x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:connection-end-point/tapi-connectivity:uuid
-        description: "The FC Route (FcRoute) object class models the individual routes of an FC.\n                The route of an FC object is represented by a list of FCs at a lower level.\n                Note that depending on the service supported by an FC, an the FC can have multiple routes."
-    tapi.topology.OwnedNodeEdgePointRef:
-      allOf:
-      - $ref: '#/components/schemas/tapi.topology.NodeRef'
-      - type: object
-        properties:
-          owned-node-edge-point-id:
-            type: string
-            x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-topology:uuid
-    tapi.connectivity.RouteObjectiveFunction:
-      type: string
-      enum:
-      - MIN_WORK_ROUTE_HOP
-      - MIN_WORK_ROUTE_COST
-      - MIN_WORK_ROUTE_LATENCY
-      - MIN_SUM_OF_WORK_AND_PROTECTION_ROUTE_HOP
-      - MIN_SUM_OF_WORK_AND_PROTECTION_ROUTE_COST
-      - MIN_SUM_OF_WORK_AND_PROTECTION_ROUTE_LATENCY
-      - LOAD_BALANCE_MAX_UNUSED_CAPACITY
-    mef.common.types.VlanId:
-      type: object
-      properties:
-        vlan-id:
-          type: integer
-          format: int64
-          description: This is the Vlan ID value.
-    tapi.connectivity.getconnectivityservicelist.output.service.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    tapi.connectivity.DiversityPolicy:
-      type: string
-      enum:
-      - SRLG
-      - SRNG
-      - SNG
-      - NODE
-      - LINK
+              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:route/tapi-connectivity:local-id
+          selection-control:
+            description: Degree of administrative control applied to the switch selection.
+            $ref: '#/components/schemas/tapi.connectivity.SelectionControl'
+          selection-reason:
+            description: The reason for the current switch selection.
+            $ref: '#/components/schemas/tapi.connectivity.SelectionReason'
+          switch-direction:
+            description: Indicates whether the switch selects from ingress to the FC or to egress of the FC, or both.
+            $ref: '#/components/schemas/tapi.common.PortDirection'
+        description: "The class models the switched forwarding of traffic (traffic flow) between FcPorts (ConnectionEndPoints) and is present where there is protection functionality in the FC (Connection).\n                If an FC exposes protection (having two or more FcPorts that provide alternative identical inputs/outputs), the FC will have one or more associated FcSwitch objects to represent the alternative flow choices visible at the edge of the FC.\n                The FC switch represents and defines a protection switch structure encapsulated in the FC.\n                Essentially performs one of the functions of the Protection Group in a traditional model. It associates to 2 or more FcPorts each playing the role of a Protection Unit.\n                One or more protection, i.e. standby/backup, FcPorts provide protection for one or more working (i.e. regular/main/preferred) FcPorts where either protection or working can feed one or more protected FcPort.\n                The switch may be used in revertive or non-revertive (symmetric) mode. When in revertive mode it may define a waitToRestore time.\n                It may be used in one of several modes including source switch, destination switched, source and destination switched etc (covering cases such as 1+1 and 1:1).\n                It may be locked out (prevented from switching), force switched or manual switched.\n                It will indicate switch state and change of state.\n                The switch can be switched away from all sources such that it becomes open and hence two coordinated switches can both feed the same LTP so long as at least one of the two is switched away from all sources (is 'open').\n                The ability for a Switch to be 'high impedance' allows bidirectional ForwardingConstructs to be overlaid on the same bidirectional LTP where the appropriate control is enabled to prevent signal conflict.\n                This ability allows multiple alternate routes to be present that otherwise would be in conflict."
     mef.common.Envelope:
       type: object
       properties:
@@ -1420,41 +983,196 @@ components:
         envelope-id:
           type: string
           description: This attribute is a string that identifies the Envelope.
-    tapi.connectivity.GetConnectionDetailsOutput:
+    mef.common.types.SourceMacAddressLimit:
+      type: object
+      properties:
+        limit:
+          type: integer
+          format: int64
+          description: This attribute denotes the maximum acceptable source MAC addresses.
+        time-interval:
+          type: integer
+          format: int64
+          description: This attribute denotes the time interval in milliseconds.
+    tapi.common.AdministrativeState:
+      type: string
+      enum:
+      - LOCKED
+      - UNLOCKED
+    tapi.connectivity.SwitchControlRef:
+      allOf:
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectionRef'
+      - type: object
+        properties:
+          switch-control-id:
+            type: string
+            x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:switch-control/tapi-connectivity:uuid
+    tapi.common.CapacityValue:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int32
+          description: none
+        unit:
+          description: none
+          $ref: '#/components/schemas/tapi.common.CapacityUnit'
+    tapi.connectivity.createconnectivityservice.input.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
+    mef.common.PcpCosIdPac:
+      type: object
+      properties:
+        pcp-value-list:
+          type: array
+          description: 'This attribute is a list of PCP values that map to the CoS Name. '
+          items:
+            type: integer
+            format: int64
+    mef.common.types.EgressMapType:
+      type: string
+      enum:
+      - CN_C_TAG_PCP
+      - CC_C_TAG_PCP
+      - CC_C_TAG_DEI
+      - CN_S_TAG_PCP
+      - CC_S_TAG_PCP
+      - CC_S_TAG_DEI
+    mef.common.BwpFlow:
+      type: object
+      properties:
+        cir-max:
+          type: integer
+          format: int64
+          description: This attribute denotes the maximum Committed Information Rate that limits the rate of tokens added to the committed token bucket. In bits per second.
+        envelope:
+          description: This attribute represents the relationship between the BwpFlow and the Envelope, indicating which Envelope the BwpFlow belongs.
+          $ref: '#/components/schemas/mef.common.Envelope'
+        token-request-offset:
+          type: integer
+          format: int64
+          description: This attribute adjusts the number of tokens requested for each external interface frame.
+        coupling-flag:
+          type: boolean
+          description: This attribute denotes the Coupling Flag that Determines if overflow Green tokens can be used as Yellow tokens. FALSE for 0 (overflow green tokens are discarded) and TRUE for 1 (overflow green tokens can be used as yellow tokens)
+          default: false
+        cbs:
+          type: integer
+          format: int64
+          description: This attribute denotes the Committed Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Green, in bytes,
+        color-mode:
+          description: This attribute denotes the Color Mode that Indicates whether the Color Identifier of the frame is considered by the Bandwidth Profile Algorithm.
+          $ref: '#/components/schemas/mef.common.types.ColorMode'
+        ebs:
+          type: integer
+          format: int64
+          description: This attribute denotes the Excessive Burst Size that limits the maximum number of bytes available for a burst of frames that will be declared Yellow, in bytes.
+        rank:
+          type: integer
+          format: int64
+          description: This attribute denotes the rank of the bandwidth profile flow in the envelope.
+        eir-max:
+          type: integer
+          format: int64
+          description: This attribute denotes the Maximum Excess Information Rate that Limits the rate of tokens added to the excess token bucket, in bits per second.
+        cir:
+          type: integer
+          format: int64
+          description: This attribute denotes the Committed Information Rate that limits the average rate of frames that will be declared Green. In bits per second.
+        eir:
+          type: integer
+          format: int64
+          description: This attribute denotes the Excess Information Rate that limits the average rate of frames that will be declared Yellow, in bits per second.
+    mef.common.types.VlanIdListing:
+      type: object
+      properties:
+        type:
+          description: Can be LIST, or ALL, or EXCEPT.
+          $ref: '#/components/schemas/mef.common.types.VlanIdMappingType'
+        vlan-id-list:
+          type: array
+          description: This is a list of Vlan IDs.
+          items:
+            $ref: '#/components/schemas/mef.common.types.VlanId'
+    tapi.connectivity.ConnectivityServiceEndPoint:
+      allOf:
+      - $ref: '#/components/schemas/tapi.common.AdminStatePac'
+      - $ref: '#/components/schemas/tapi.common.LocalClass'
+      - type: object
+        properties:
+          protection-role:
+            description: To specify the protection role of this Port when create or update ConnectivityService.
+            $ref: '#/components/schemas/tapi.connectivity.ProtectionRole'
+          role:
+            description: 'Each EP of the FC has a role (e.g., working, protection, protected, symmetric, hub, spoke, leaf, root)  in the context of the FC with respect to the FC function. '
+            $ref: '#/components/schemas/tapi.common.PortRole'
+          service-interface-point:
+            description: none
+            $ref: '#/components/schemas/tapi.common.ServiceInterfacePointRef'
+          layer-protocol-name:
+            description: none
+            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
+          direction:
+            description: The orientation of defined flow at the EndPoint.
+            $ref: '#/components/schemas/tapi.common.PortDirection'
+          capacity:
+            description: none
+            $ref: '#/components/schemas/tapi.common.Capacity'
+        description: "The association of the FC to LTPs is made via EndPoints.\n                The EndPoint (EP) object class models the access to the FC function.\n                The traffic forwarding between the associated EPs of the FC depends upon the type of FC and may be associated with FcSwitch object instances.\n                In cases where there is resilience the EndPoint may convey the resilience role of the access to the FC.\n                It can represent a protected (resilient/reliable) point or a protecting (unreliable working or protection) point.\n                The EP replaces the Protection Unit of a traditional protection model.\n                The ForwadingConstruct can be considered as a component and the EndPoint as a Port on that component"
+    mef.common.EecIdentifier:
+      type: object
+      properties:
+        egress-bwp-per-eec:
+          description: This attribute represents the relationship between the EecIdentifier and the BwpFlow, for egress bandwidth profile per EEC Name.
+          $ref: '#/components/schemas/mef.common.BwpFlow'
+        sep-eec-id-pac:
+          description: This attribute represents the relationship between the EecIdentifier and a SepEecIdPac when the eecMappingType of EvcEndPoint or OvcEndPoint is END_POINT and the eecName is not only for L2CP. This not addressed in MEF 10.3 but can be future consideration.
+          $ref: '#/components/schemas/mef.common.SepEecIdPac'
+        l2cp-protocol-list:
+          type: array
+          description: This attribute lists the L2CP Protocols that map to the Egress Equivalence Class Name.
+          items:
+            $ref: '#/components/schemas/mef.common.types.L2cpProtocol'
+        dscp-eec-id-pac:
+          type: array
+          description: This attribute represents the relationship between the EecIdentifier and a DscpEecIdPac when the eecMappingType of EvcEndPoint or OvcEndPoint is DSCP and the eecName is not only for L2CP.
+          items:
+            $ref: '#/components/schemas/mef.common.DscpEecIdPac'
+        pcp-eec-id-pac:
+          description: This attribute represents the relationship between the EecIdentifier and a PcpEecIdPac when the eecMappingType of EvcEndPoint or OvcEndPoint is PCP and the eecName is not only for L2CP.
+          $ref: '#/components/schemas/mef.common.PcpEecIdPac'
+        eec-name:
+          type: string
+          description: This attribute denotes the Egress Equivalence Class Name that the EecIdentifier maps to.
+    tapi.connectivity.deleteconnectivityservice.output.service.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
+    tapi.connectivity.GetConnectivityServiceDetailsOutput:
       properties:
         output:
           type: object
           properties:
-            connection:
+            service:
               description: none
-              $ref: '#/components/schemas/tapi.connectivity.Connection'
-    tapi.common.TimeRange:
+              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicedetails.output.Service'
+    mef.common.SepColorIdPac:
       type: object
       properties:
-        end-time:
-          type: string
-          description: none
-        start-time:
-          type: string
-          description: none
-    tapi.connectivity.updateconnectivityservice.input.EndPoint:
-      allOf:
-      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
-      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
-    tapi.topology.LinkRef:
-      allOf:
-      - $ref: '#/components/schemas/tapi.topology.TopologyRef'
-      - type: object
-        properties:
-          link-id:
-            type: string
-            x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:link/tapi-topology:uuid
-    mef.common.types.L2cpAddressSet:
-      type: string
-      enum:
-      - CTA
-      - CTB
-      - CTB2
+        color:
+          description: This attribute denotes the color of the EI frame, green or yellow.
+          $ref: '#/components/schemas/mef.common.types.FrameColor'
+    tapi.connectivity.GetConnectivityServiceListOutput:
+      properties:
+        output:
+          type: object
+          properties:
+            service:
+              type: array
+              description: none
+              items:
+                $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicelist.output.Service'
     tapi.connectivity.updateconnectivityservice.output.Service:
       allOf:
       - $ref: '#/components/schemas/nrp.interface.ServiceAugmentation1'
@@ -1483,92 +1201,134 @@ components:
             description: none
             $ref: '#/components/schemas/tapi.common.ForwardingDirection'
         description: none
-    mef.common.types.L2cpProtocolType:
+    tapi.common.CapacityUnit:
       type: string
       enum:
-      - ETHERTYPE
-      - LLC
+      - TB
+      - TBPS
+      - GB
+      - GBPS
+      - MB
+      - MBPS
+      - KB
+      - KBPS
+    tapi.connectivity.CoordinateType:
+      type: string
+      enum:
+      - NO_COORDINATE
+      - HOLD_OFF_TIME
+      - WAIT_FOR_NOTIFICATION
     tapi.common.ServiceInterfacePointRef:
       type: object
       properties:
         service-interface-point-id:
           type: string
           x-path: /tapi-common:context/tapi-common:service-interface-point/tapi-common:uuid
-    tapi.common.CapacityValue:
+    tapi.connectivity.TopologyConstraint:
       type: object
       properties:
-        value:
-          type: integer
-          format: int32
+        include-node:
+          type: array
+          description: This is a loose constraint - that is it is unordered and could be a partial list
+          items:
+            $ref: '#/components/schemas/tapi.topology.NodeRef'
+        exclude-link:
+          type: array
           description: none
-        unit:
+          items:
+            $ref: '#/components/schemas/tapi.topology.LinkRef'
+        avoid-topology:
+          type: array
           description: none
-          $ref: '#/components/schemas/tapi.common.CapacityUnit'
-    tapi.connectivity.ProtectionRole:
-      type: string
-      enum:
-      - WORK
-      - PROTECT
-      - PROTECTED
-      - NA
-      - WORK_RESTORE
-      - PROTECT_RESTORE
-    tapi.connectivity.GetConnectivityServiceDetailsOutput:
-      properties:
-        output:
-          type: object
-          properties:
-            service:
-              description: none
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicedetails.output.Service'
-    tapi.connectivity.Switch:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.LocalClass'
-      - type: object
-        properties:
-          selected-connection-end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectionEndPointRef'
-          selected-route:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:route/tapi-connectivity:local-id
-          selection-control:
-            description: Degree of administrative control applied to the switch selection.
-            $ref: '#/components/schemas/tapi.connectivity.SelectionControl'
-          selection-reason:
-            description: The reason for the current switch selection.
-            $ref: '#/components/schemas/tapi.connectivity.SelectionReason'
-          switch-direction:
-            description: Indicates whether the switch selects from ingress to the FC or to egress of the FC, or both.
-            $ref: '#/components/schemas/tapi.common.PortDirection'
-        description: "The class models the switched forwarding of traffic (traffic flow) between FcPorts (ConnectionEndPoints) and is present where there is protection functionality in the FC (Connection).\n                If an FC exposes protection (having two or more FcPorts that provide alternative identical inputs/outputs), the FC will have one or more associated FcSwitch objects to represent the alternative flow choices visible at the edge of the FC.\n                The FC switch represents and defines a protection switch structure encapsulated in the FC.\n                Essentially performs one of the functions of the Protection Group in a traditional model. It associates to 2 or more FcPorts each playing the role of a Protection Unit.\n                One or more protection, i.e. standby/backup, FcPorts provide protection for one or more working (i.e. regular/main/preferred) FcPorts where either protection or working can feed one or more protected FcPort.\n                The switch may be used in revertive or non-revertive (symmetric) mode. When in revertive mode it may define a waitToRestore time.\n                It may be used in one of several modes including source switch, destination switched, source and destination switched etc (covering cases such as 1+1 and 1:1).\n                It may be locked out (prevented from switching), force switched or manual switched.\n                It will indicate switch state and change of state.\n                The switch can be switched away from all sources such that it becomes open and hence two coordinated switches can both feed the same LTP so long as at least one of the two is switched away from all sources (is 'open').\n                The ability for a Switch to be 'high impedance' allows bidirectional ForwardingConstructs to be overlaid on the same bidirectional LTP where the appropriate control is enabled to prevent signal conflict.\n                This ability allows multiple alternate routes to be present that otherwise would be in conflict."
-    tapi.connectivity.DeleteConnectivityServiceOutput:
-      properties:
-        output:
-          type: object
-          properties:
-            service:
-              description: none
-              $ref: '#/components/schemas/tapi.connectivity.deleteconnectivityservice.output.Service'
-    tapi.common.Capacity:
+          items:
+            $ref: '#/components/schemas/tapi.topology.TopologyRef'
+        exclude-path:
+          type: array
+          description: none
+          items:
+            $ref: '#/components/schemas/tapi.path.computation.PathRef'
+        include-link:
+          type: array
+          description: 'This is a loose constraint - that is it is unordered and could be a partial list '
+          items:
+            $ref: '#/components/schemas/tapi.topology.LinkRef'
+        preferred-transport-layer:
+          type: array
+          description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
+          items:
+            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
+        exclude-node:
+          type: array
+          description: none
+          items:
+            $ref: '#/components/schemas/tapi.topology.NodeRef'
+        include-topology:
+          type: array
+          description: none
+          items:
+            $ref: '#/components/schemas/tapi.topology.TopologyRef'
+        include-path:
+          type: array
+          description: none
+          items:
+            $ref: '#/components/schemas/tapi.path.computation.PathRef'
+    tapi.topology.LatencyCharacteristic:
       type: object
       properties:
-        bandwidth-profile:
-          description: none
-          $ref: '#/components/schemas/tapi.common.BandwidthProfile'
-        total-size:
-          description: Total capacity of the TopologicalEntity in MB/s. In case of bandwidthProfile, this is expected to same as the committedInformationRate.
-          $ref: '#/components/schemas/tapi.common.CapacityValue'
-    tapi.connectivity.ReversionMode:
+        traffic-property-name:
+          type: string
+          description: The identifier of the specific traffic property to which the queuing latency applies.
+        jitter-characteristic:
+          type: string
+          description: "High frequency deviation from true periodicity of a signal and therefore a small high rate of change of transfer latency.\n                    Applies to TDM systems (and not packet)."
+        fixed-latency-characteristic:
+          type: string
+          description: A TopologicalEntity suffers delay caused by the realization of the servers (e.g. distance related; FEC encoding etc.) along with some client specific processing. This is the total average latency effect of the TopologicalEntity
+        wander-characteristic:
+          type: string
+          description: "Low frequency deviation from true periodicity of a signal and therefore a small low rate of change of transfer latency.\n                    Applies to TDM systems (and not packet)."
+        queing-latency-characteristic:
+          type: string
+          description: The specific queuing latency for the traffic property.
+    tapi.connectivity.SelectionReason:
       type: string
       enum:
-      - REVERTIVE
-      - NON-REVERTIVE
+      - LOCKOUT
+      - NORMAL
+      - MANUAL
+      - FORCED
+      - WAIT_TO_REVERT
+      - SIGNAL_DEGRADE
+      - SIGNAL_FAIL
+    tapi.common.GlobalClass:
+      type: object
+      properties:
+        name:
+          type: array
+          description: List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.
+          items:
+            $ref: '#/components/schemas/tapi.common.NameAndValue'
+        uuid:
+          type: string
+          description: "UUID: An identifier that is universally unique within an identifier space, where the identifier space is itself globally unique, and immutable. An UUID carries no semantics with respect to the purpose or state of the entity.\n                    UUID here uses string representation as defined in RFC 4122.  The canonical representation uses lowercase characters.\n                    Pattern: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-' + '[0-9a-fA-F]{4}-[0-9a-fA-F]{12} \n                    Example of a UUID in string representation: f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+    mef.common.DscpColorIdPac:
+      type: object
+      properties:
+        dscp-value-for-green-list:
+          type: array
+          description: This attribute provides a list DSCP values map to the green ingress EI frames. The dscpValueForGreenList and the dscpValueForYellowList must disjoint and the union of the two lists must include all possible DSCP values.
+          items:
+            type: integer
+            format: int64
+        ip-version:
+          description: This attribute denotes which IP version is used. It can be IPV4, IPV6 or IPV4_AND_IPV6.
+          $ref: '#/components/schemas/mef.common.types.IpVersion'
+        dscp-value-for-yellow-list:
+          type: array
+          description: This attribute provides a list DSCP values map to the yellow ingress EI frames. The dscpValueForGreenList and the dscpValueForYellowList must disjoint and the union of the two lists must include all possible DSCP values.
+          items:
+            type: integer
+            format: int64
     mef.common.CosNameToPcpPac:
       type: object
       properties:
@@ -1578,13 +1338,185 @@ components:
         ingress-cos-name:
           type: string
           description: This attribute denotes the ingress CoS name.
-    tapi.connectivity.ServiceType:
+    nrm.connectivity.DeliveryActionType:
       type: string
       enum:
-      - POINT_TO_POINT_CONNECTIVITY
-      - POINT_TO_MULTIPOINT_CONNECTIVITY
-      - MULTIPOINT_CONNECTIVITY
-      - ROOTED_MULTIPOINT_CONNECTIVITY
+      - DISCARD
+      - CONDITIONALLY
+      - UNCONDITIONALLY
+    tapi.connectivity.updateconnectivityservice.input.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
+    tapi.connectivity.GetConnectionDetailsInput:
+      properties:
+        input:
+          type: object
+          properties:
+            service-id-or-name:
+              type: string
+              description: none
+            connection-id-or-name:
+              type: string
+              description: none
+    mef.common.types.CosOrEecMappingType:
+      type: string
+      enum:
+      - END_POINT
+      - PCP
+      - DSCP
+    mef.common.types.VlanIdPreservation:
+      type: string
+      enum:
+      - PRESERVE
+      - RETAIN
+      - STRIP
+    tapi.connectivity.getconnectivityservicelist.output.service.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
+    mef.common.types.IpVersion:
+      type: string
+      enum:
+      - IPV4
+      - IPV6
+      - IPV4_AND_IPV6
+    mef.common.CosNameAndColorToPcpPac:
+      type: object
+      properties:
+        ingress-cos-name:
+          type: string
+          description: This attribute denotes the ingress CoS name.
+        pcp-value:
+          description: 'This attribute denotes the egress frame PCP value, mapped from ingress CoS name and ingress frame color. '
+          $ref: '#/components/schemas/mef.common.types.PcpOrDiscard'
+        ingress-color:
+          description: 'This attribute denotes the ingress frame color as one of the determined factor for Egress Map. '
+          $ref: '#/components/schemas/mef.common.types.FrameColor'
+    nrp.interface.ServiceAugmentation1:
+      type: object
+      properties:
+        nrp-carrier-eth-connectivity-resource:
+          description: none
+          $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
+      x-augmentation:
+        prefix: nrp-interface
+        namespace: urn:mef:yang:nrp-interface
+    tapi.common.BandwidthProfileType:
+      type: string
+      enum:
+      - MEF_10.x
+      - RFC_2697
+      - RFC_2698
+      - RFC_4115
+    tapi.connectivity.updateconnectivityservice.output.service.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
+    tapi.connectivity.getconnectivityservicedetails.output.service.EndPoint:
+      allOf:
+      - $ref: '#/components/schemas/nrp.interface.EndPointAugmentation1'
+      - $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceEndPoint'
+    tapi.connectivity.ProtectionRole:
+      type: string
+      enum:
+      - WORK
+      - PROTECT
+      - PROTECTED
+      - NA
+      - WORK_RESTORE
+      - PROTECT_RESTORE
+    tapi.common.NameAndValue:
+      type: object
+      properties:
+        value-name:
+          type: string
+          description: The name of the value. The value need not have a name.
+        value:
+          type: string
+          description: The value
+    mef.common.DeiColorIdPac:
+      type: object
+    mef.common.types.L2cpAddressSet:
+      type: string
+      enum:
+      - CTA
+      - CTB
+      - CTB2
+    tapi.common.Capacity:
+      type: object
+      properties:
+        bandwidth-profile:
+          description: none
+          $ref: '#/components/schemas/tapi.common.BandwidthProfile'
+        total-size:
+          description: Total capacity of the TopologicalEntity in MB/s. In case of bandwidthProfile, this is expected to same as the committedInformationRate.
+          $ref: '#/components/schemas/tapi.common.CapacityValue'
+    tapi.connectivity.DiversityPolicy:
+      type: string
+      enum:
+      - SRLG
+      - SRNG
+      - SNG
+      - NODE
+      - LINK
+    tapi.topology.ProtectionType:
+      type: string
+      enum:
+      - NO_PROTECTON
+      - ONE_PLUS_ONE_PROTECTION
+      - ONE_PLUS_ONE_PROTECTION_WITH_DYNAMIC_RESTORATION
+      - PERMANENT_ONE_PLUS_ONE_PROTECTION
+      - ONE_FOR_ONE_PROTECTION
+      - DYNAMIC_RESTORATION
+      - PRE_COMPUTED_RESTORATION
+    tapi.topology.CostCharacteristic:
+      type: object
+      properties:
+        cost-value:
+          type: string
+          description: The specific cost.
+        cost-algorithm:
+          type: string
+          description: The cost may vary based upon some properties of the TopologicalEntity. The rules for the variation are conveyed by the costAlgorithm.
+        cost-name:
+          type: string
+          description: The cost characteristic will related to some aspect of the TopologicalEntity (e.g. $ cost, routing weight). This aspect will be conveyed by the costName.
+    tapi.common.PortRole:
+      type: string
+      enum:
+      - SYMMETRIC
+      - ROOT
+      - LEAF
+      - TRUNK
+      - UNKNOWN
+    tapi.common.LocalClass:
+      type: object
+      properties:
+        name:
+          type: array
+          description: List of names. A property of an entity with a value that is unique in some namespace but may change during the life of the entity. A name carries no semantics with respect to the purpose of the entity.
+          items:
+            $ref: '#/components/schemas/tapi.common.NameAndValue'
+        local-id:
+          type: string
+          description: none
+    tapi.topology.TopologyRef:
+      type: object
+      properties:
+        topology-id:
+          type: string
+          x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:uuid
+    tapi.common.LayerProtocolName:
+      type: string
+      enum:
+      - OTSiA
+      - OCH
+      - OTU
+      - ODU
+      - ETH
+      - ETY
+      - DSR
     tapi.common.BandwidthProfile:
       type: object
       properties:
@@ -1611,1633 +1543,108 @@ components:
           type: boolean
           description: none
           default: false
-    mef.common.types.CosOrEecMappingType:
+    tapi.connectivity.CreateConnectivityServiceOutput:
+      properties:
+        output:
+          type: object
+          properties:
+            service:
+              description: none
+              $ref: '#/components/schemas/tapi.connectivity.createconnectivityservice.output.Service'
+    tapi.connectivity.ConnectionEndPointRef:
+      allOf:
+      - $ref: '#/components/schemas/tapi.topology.OwnedNodeEdgePointRef'
+      - type: object
+        properties:
+          connection-end-point-id:
+            type: string
+            x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:connection-end-point/tapi-connectivity:uuid
+    tapi.connectivity.ServiceType:
       type: string
       enum:
-      - END_POINT
-      - PCP
-      - DSCP
-    tapi.common.LayerProtocolName:
-      type: string
-      enum:
-      - OTSiA
-      - OCH
-      - OTU
-      - ODU
-      - ETH
-      - ETY
-      - DSR
-    tapi.common.OperationalStatePac:
+      - POINT_TO_POINT_CONNECTIVITY
+      - POINT_TO_MULTIPOINT_CONNECTIVITY
+      - MULTIPOINT_CONNECTIVITY
+      - ROOTED_MULTIPOINT_CONNECTIVITY
+    nrp.interface.UpdateConnectivityServiceInputAugmentation1:
       type: object
       properties:
-        operational-state:
+        nrp-carrier-eth-connectivity-resource:
           description: none
-          $ref: '#/components/schemas/tapi.common.OperationalState'
-        lifecycle-state:
+          $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
+      x-augmentation:
+        prefix: nrp-interface
+        namespace: urn:mef:yang:nrp-interface
+    nrm.connectivity.FrameDeliveryCondition:
+      type: object
+      properties:
+        action:
+          description: Data Service Frame disposition.
+          $ref: '#/components/schemas/nrm.connectivity.DeliveryActionType'
+        delivery-condition:
+          type: array
+          description: When the value is conditionally, the conditions that determine whether a Data Service Frame is delivered or discarded MUST be specified. Conditions can be described in the name-value pair list, where name is used to represent the condition name or identifier, and value is used to represent the condition details associated to that name/identifier. Interoperability requires further standardization.
+          items:
+            $ref: '#/components/schemas/tapi.common.NameAndValue'
+    tapi.connectivity.GetConnectionDetailsOutput:
+      properties:
+        output:
+          type: object
+          properties:
+            connection:
+              description: none
+              $ref: '#/components/schemas/tapi.connectivity.Connection'
+    tapi.connectivity.DeleteConnectivityServiceOutput:
+      properties:
+        output:
+          type: object
+          properties:
+            service:
+              description: none
+              $ref: '#/components/schemas/tapi.connectivity.deleteconnectivityservice.output.Service'
+    tapi.connectivity.Route:
+      allOf:
+      - $ref: '#/components/schemas/tapi.common.LocalClass'
+      - type: object
+        properties:
+          connection-end-point:
+            type: array
+            description: none
+            items:
+              type: string
+              x-path: /tapi-common:context/tapi-topology:topology/tapi-topology:node/tapi-topology:owned-node-edge-point/tapi-connectivity:connection-end-point/tapi-connectivity:uuid
+        description: "The FC Route (FcRoute) object class models the individual routes of an FC.\n                The route of an FC object is represented by a list of FCs at a lower level.\n                Note that depending on the service supported by an FC, an the FC can have multiple routes."
+    mef.common.CosIdentifier:
+      type: object
+      properties:
+        pcp-cos-id-pac:
+          description: This attribute represents the relationship between the CosIdentifier and the PcpCosIdPac  when the cosMappingType of EvcEndPoint or OvcEndPoint is PCP and the cosName is not only for L2CP.
+          $ref: '#/components/schemas/mef.common.PcpCosIdPac'
+        sep-cos-id-pac:
+          description: This attribute represents the relationship between the CosIdentifier and the SepCosIdPac when the cosMappingType of EvcEndPoint or OvcEndPoint is END_POINT and the cosName is not only for L2CP.
+          $ref: '#/components/schemas/mef.common.SepCosIdPac'
+        ingress-bwp-per-cos:
+          description: This attribute represents the relationship between the CosIdentifier and the BwpFlow, for ingress bandwidth profile per CoS Name.
+          $ref: '#/components/schemas/mef.common.BwpFlow'
+        l2cp-protocol-list:
+          type: array
+          description: This attribute lists the L2CP Protocols that map to the Class of Service Name.
+          items:
+            $ref: '#/components/schemas/mef.common.types.L2cpProtocol'
+        dscp-cos-id-pac:
+          type: array
+          description: This attribute represents the relationship between the CosIdentifier and the DespCosIdPac when the cosMappingType of EvcEndPoint or OvcEndPoint is DSCP and the cosName is not only for L2CP.
+          items:
+            $ref: '#/components/schemas/mef.common.DscpCosIdPac'
+        cos-name:
+          type: string
+          description: This attribute denotes the Class of Service name that the CosIdentifier map to.
+    tapi.topology.ResilienceType:
+      type: object
+      properties:
+        restoration-policy:
           description: none
-          $ref: '#/components/schemas/tapi.common.LifecycleState'
-    tapi.connectivity.deleteconnectivityservice.output.Service_2:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.deleteconnectivityservice.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-    tapi.connectivity.createconnectivityservice.output.Service_2:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.createconnectivityservice.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-    tapi.connectivity.getconnectivityservicedetails.output.Service_2:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicedetails.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-    tapi.connectivity.getconnectivityservicelist.output.Service_2:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicelist.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-    tapi.connectivity.updateconnectivityservice.output.Service_2:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.updateconnectivityservice.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-    tapi.connectivity.deleteconnectivityservice.output.Service_3:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.deleteconnectivityservice.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-    tapi.connectivity.createconnectivityservice.output.Service_3:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.createconnectivityservice.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-    tapi.connectivity.getconnectivityservicedetails.output.Service_3:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicedetails.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-    tapi.connectivity.getconnectivityservicelist.output.Service_3:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.getconnectivityservicelist.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-    tapi.connectivity.updateconnectivityservice.output.Service_3:
-      allOf:
-      - $ref: '#/components/schemas/tapi.common.GlobalClass'
-      - properties:
-          schedule:
-            description: none
-            $ref: '#/components/schemas/tapi.common.TimeRange'
-          requested-capacity:
-            description: none
-            $ref: '#/components/schemas/tapi.common.Capacity'
-          is-exclusive:
-            type: boolean
-            description: To distinguish if the resources are exclusive to the service  - for example between EPL(isExclusive=true) and EVPL (isExclusive=false), or between EPLAN (isExclusive=true) and EVPLAN (isExclusive=false)
-            default: true
-          diversity-exclusion:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.ConnectivityServiceRef'
-          service-level:
-            type: string
-            description: An abstract value the meaning of which is mutually agreed – typically represents metrics such as - Class of service, priority, resiliency, availability
-          service-type:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.ServiceType'
-          cost-characteristic:
-            type: array
-            description: The list of costs where each cost relates to some aspect of the TopologicalEntity.
-            items:
-              $ref: '#/components/schemas/tapi.topology.CostCharacteristic'
-          latency-characteristic:
-            type: array
-            description: The effect on the latency of a queuing process. This only has significant effect for packet based systems and has a complex characteristic.
-            items:
-              $ref: '#/components/schemas/tapi.topology.LatencyCharacteristic'
-          coroute-inclusion:
-            type: string
-            description: none
-            x-path: /tapi-common:context/tapi-connectivity:connectivity-service/tapi-connectivity:uuid
-          diversity-policy:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.DiversityPolicy'
-          route-objective-function:
-            description: none
-            $ref: '#/components/schemas/tapi.connectivity.RouteObjectiveFunction'
-          layer-protocol-name:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          connection:
-            type: array
-            description: none
-            items:
-              type: string
-              x-path: /tapi-common:context/tapi-connectivity:connection/tapi-connectivity:uuid
-          end-point:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.connectivity.updateconnectivityservice.output.service.EndPoint'
-          direction:
-            description: none
-            $ref: '#/components/schemas/tapi.common.ForwardingDirection'
-          operational-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.OperationalState'
-          lifecycle-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.LifecycleState'
-          administrative-state:
-            description: none
-            $ref: '#/components/schemas/tapi.common.AdministrativeState'
-          nrp-carrier-eth-connectivity-resource:
-            description: none
-            $ref: '#/components/schemas/nrp.interface.NrpCarrierEthConnectivityResource'
-          is-lock-out:
-            type: boolean
-            description: "The resource is configured to temporarily not be available for use in the protection scheme(s) it is part of.\n                    This overrides all other protection control states including forced.\n                    If the item is locked out then it cannot be used under any circumstances.\n                    Note: Only relevant when part of a protection scheme."
-            default: false
-          max-switch-times:
-            type: integer
-            format: int32
-            description: Used to limit the maximum swtich times. When work fault disappears , and traffic return to the original work path, switch counter reset.
-          restoration-coordinate-type:
-            description: ' The coordination mechanism between multi-layers.'
-            $ref: '#/components/schemas/tapi.connectivity.CoordinateType'
-          is-coordinated-switching-both-ends:
-            type: boolean
-            description: Is operating such that switching at both ends of each flow acorss the FC is coordinated at both ingress and egress ends.
-            default: false
-          hold-off-time:
-            type: integer
-            format: int32
-            description: This attribute indicates the time, in milliseconds, between declaration of signal degrade or signal fail, and the initialization of the protection switching algorithm.
-          is-frozen:
-            type: boolean
-            description: "Temporarily prevents any switch action to be taken and, as such, freezes the current state.\n                    Until the freeze is cleared, additional near-end external commands are rejected and fault condition changes and received APS messages are ignored.\n                    All administrative controls of any aspect of protection are rejected."
-            default: false
-          wait-to-revert-time:
-            type: integer
-            format: int32
-            description: If the protection system is revertive, this attribute specifies the time, in minutes, to wait after a fault clears on a higher priority (preferred) resource before reverting to the preferred resource.
-            default: 15
-          layer-protocol:
-            description: Indicate which layer this resilience parameters package configured for.
-            $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          resilience-type:
-            description: none
-            $ref: '#/components/schemas/tapi.topology.ResilienceType'
-          restore-priority:
-            type: integer
-            format: int32
-            description: none
-          reversion-mode:
-            description: Indcates whether the protection scheme is revertive or non-revertive.
-            $ref: '#/components/schemas/tapi.connectivity.ReversionMode'
-          include-node:
-            type: array
-            description: This is a loose constraint - that is it is unordered and could be a partial list
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          exclude-link:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          avoid-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          exclude-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-          include-link:
-            type: array
-            description: 'This is a loose constraint - that is it is unordered and could be a partial list '
-            items:
-              $ref: '#/components/schemas/tapi.topology.LinkRef'
-          preferred-transport-layer:
-            type: array
-            description: soft constraint requested by client to indicate the layer(s) of transport connection that it prefers to carry the service. This could be same as the service layer or one of the supported server layers
-            items:
-              $ref: '#/components/schemas/tapi.common.LayerProtocolName'
-          exclude-node:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.NodeRef'
-          include-topology:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.topology.TopologyRef'
-          include-path:
-            type: array
-            description: none
-            items:
-              $ref: '#/components/schemas/tapi.path.computation.PathRef'
-x-refined-from:
-- mef-lso-presto-nrp-openapi.yml
-- mef-lso-presto-nrp-rcp-only-openapi.yml
-- mef-lso-presto-nrp-rpc-only-simplified-hierarchy-openapi.yml
-- mef-lso-presto-nrp-simplified-hierarchy-openapi.yml
+          $ref: '#/components/schemas/tapi.topology.RestorationPolicy'
+        protection-type:
+          description: none
+          $ref: '#/components/schemas/tapi.topology.ProtectionType'

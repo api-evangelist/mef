@@ -1,15 +1,16 @@
 openapi: 3.2.0
 info:
-  title: Mef Search Time Slot API
+  title: Appointment Management Search Time Slot API
+  description: '**This file forms part of Mplify 137.1**
+
+
+    **This API implements Business Requirements described in MEF 113.**
+
+
+    An Appointment is an arrangement to do something or meet someone at a particular time and place.'
   version: 3.0.1
-  description: 'Operations tagged searchTimeSlot across 2 of this provider''s published API definitions: mef-lso-cantata-appointment-management-openapi.yml, mef-lso-sonata-appointment-management-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{serverBase}/mefApi/cantata/appointment/v3/
-  variables:
-    serverBase:
-      description: The base of Seller's URL.
-      default: mplify.net
-- url: https://{serverBase}/mefApi/sonata/appointment/v3/
   variables:
     serverBase:
       description: The base of Seller's URL.
@@ -83,63 +84,62 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/cantata/appointment/v3/
-      variables:
-        serverBase:
-          description: The base of Seller's URL.
-          default: mplify.net
 components:
   schemas:
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+            description: 'The following error code:
 
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
             type: string
+            enum:
+            - internalError
         required:
         - code
-    Error400Code:
-      description: 'One of the following error codes:
+    TimePeriod:
+      description: A period of time, either as a deadline (endDateTime only) a startDateTime only, or both
+      type: object
+      properties:
+        endDateTime:
+          description: End of the time period, using IETC-RFC-3339 format
+          type: string
+          format: date-time
+        startDateTime:
+          description: Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end
+          type: string
+          format: date-time
+      required:
+      - endDateTime
+      - startDateTime
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
 
-        - missingQueryParameter: The URI is missing a required query-string parameter
+              - missingCredentials: No credentials provided.
 
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      type: string
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-    SearchTimeSlot_Create:
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+    SearchTimeSlot:
       description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
       type: object
       properties:
+        availableTimeSlot:
+          description: A set of time slots with the availability of a Seller Technician returned by the Seller, which the Buyer may select for creating or rescheduling an Appointment.
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSlot'
         requestedTimeSlot:
           description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
           type: array
@@ -149,6 +149,7 @@ components:
           description: A reference to a WorkOrder for which the Appointment is created.
           $ref: '#/components/schemas/WorkOrderRef'
       required:
+      - availableTimeSlot
       - requestedTimeSlot
       - workOrder
     Error403:
@@ -172,6 +173,29 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
+    SearchTimeSlot_Create:
+      description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
+      type: object
+      properties:
+        requestedTimeSlot:
+          description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSlot'
+        workOrder:
+          description: A reference to a WorkOrder for which the Appointment is created.
+          $ref: '#/components/schemas/WorkOrderRef'
+      required:
+      - requestedTimeSlot
+      - workOrder
+    TimeSlot:
+      type: object
+      properties:
+        validFor:
+          description: Start date and end date of the timeSlot
+          $ref: '#/components/schemas/TimePeriod'
+      required:
+      - validFor
     WorkOrderRef:
       description: 'A reference to an WorkOrder resource.
 
@@ -188,29 +212,6 @@ components:
           type: string
       required:
       - id
-    TimeSlot:
-      type: object
-      properties:
-        validFor:
-          description: Start date and end date of the timeSlot
-          $ref: '#/components/schemas/TimePeriod'
-      required:
-      - validFor
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
     Error401Code:
       description: 'One of the following error codes:
 
@@ -240,74 +241,6 @@ components:
             $ref: '#/components/schemas/Error400Code'
         required:
         - code
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    TimePeriod:
-      description: A period of time, either as a deadline (endDateTime only) a startDateTime only, or both
-      type: object
-      properties:
-        endDateTime:
-          description: End of the time period, using IETC-RFC-3339 format
-          type: string
-          format: date-time
-        startDateTime:
-          description: Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end
-          type: string
-          format: date-time
-      required:
-      - endDateTime
-      - startDateTime
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
-    SearchTimeSlot:
-      description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
-      type: object
-      properties:
-        availableTimeSlot:
-          description: A set of time slots with the availability of a Seller Technician returned by the Seller, which the Buyer may select for creating or rescheduling an Appointment.
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSlot'
-        requestedTimeSlot:
-          description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSlot'
-        workOrder:
-          description: A reference to a WorkOrder for which the Appointment is created.
-          $ref: '#/components/schemas/WorkOrderRef'
-      required:
-      - availableTimeSlot
-      - requestedTimeSlot
-      - workOrder
     Error:
       description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
 
@@ -327,6 +260,65 @@ components:
           format: uri
       required:
       - reason
-x-refined-from:
-- mef-lso-cantata-appointment-management-openapi.yml
-- mef-lso-sonata-appointment-management-openapi.yml
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string parameter
+
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue

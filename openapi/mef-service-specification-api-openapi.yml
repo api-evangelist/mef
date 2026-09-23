@@ -2,7 +2,9 @@ openapi: 3.2.0
 info:
   title: Legato Service Catalog Service Specification API
   version: 4.0.0-RC
-  description: "The Service Catalog API provides a standardized mechanism for retrieving \n*ServiceSpecifications*. Using these APIs Business Applications (BUS) \nsystems query the **Service Catalog** for *ServiceSpecifications* supported \nby the Service Orchestration Function (SOF).\n\nAdditionally, the APIs also allow the BUS to register listeners to be \nnotified of the changes to the *ServiceSpecifications*.  \n\n- MEF Developer Guide Reference : MEF_W99 v1.0\n\n- TMF API Reference : TMF 633 v18.5.1\n\nCopyright © MEF 2020. All Rights Reserved\n\nThis file includes content based on the TM Forum Service Catalog Management API\n(TMF633 v3.0.0) available at\nhttps://github.com/tmforum-apis/TMF633_ServiceCatalog, which is licensed\nby the TM Forum under the Apache License version 2.0. Such content has been\nmodified by the MEF Forum and its contributors."
+  description: 'The Service Catalog API provides a standardized mechanism for retrieving
+
+    *ServiceSpecifications*.'
 servers:
 - url: https://{server}:{port}{basePath}
   variables:
@@ -16,13 +18,13 @@ servers:
     basePath:
       default: /mefApi/legato/serviceCatalog/v4
 tags:
-- name: ServiceSpecification
+- name: Service Specification
   description: Mechanisms for BUS to query and retrieve *ServiceSpecifications*.
 paths:
   /serviceSpecification:
     get:
       tags:
-      - ServiceSpecification
+      - Service Specification
       operationId: serviceSpecificationFind
       summary: List service specifications
       description: This operation returns service specifications from a catalog
@@ -84,7 +86,7 @@ paths:
   /serviceSpecification/{id}:
     get:
       tags:
-      - ServiceSpecification
+      - Service Specification
       operationId: serviceSpecificationGet
       summary: Retrieve a service specification
       description: This operation returns a service specification by its id from a catalog. Attribute selection is enabled using the fields attribute.

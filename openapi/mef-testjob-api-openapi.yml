@@ -1,20 +1,18 @@
 openapi: 3.2.0
 info:
-  title: Mef Test Job API
+  title: Service Function Testing Test Job API
+  description: '**This file forms part of Mplify 149**
+
+    **This API implements part of Business Requirements & Use Cases described in Mplify 136.1**
+
+    Mplify Service Function Testing is defined as testing that is performed either
+
+    as a part of service verification, service activation, or service
+
+    maintenance.'
   version: 3.0.0
-  description: 'Operations tagged testJob across 3 of this provider''s published API definitions: mef-lso-allegro-service-function-test-openapi.yml, mef-lso-interlude-service-function-test-openapi.yml, mef-lso-legato-service-function-test-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/
-  variables:
-    serverBase:
-      description: The base of SOF's URL.
-      default: mplify.net
-- url: https://{serverBase}/mefApi/interlude/serviceFunctionTesting/v3/
-  variables:
-    serverBase:
-      description: The base of SOF's URL.
-      default: mplify.net
-- url: https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/
   variables:
     serverBase:
       description: The base of SOF's URL.
@@ -26,7 +24,7 @@ paths:
     get:
       tags:
       - testJob
-      summary: List or find TestJob objects.
+      summary: List or find TestJob objects
       description: The Buyer/Client requests a list of Test Jobs using none or more of the filter criteria. The Seller/Server returns a summarized list of Test Jobs. For each Test Job returned, the Seller/Server also provides a Test Job Identifier that uniquely identifiers this Test Job within the Seller/Server. The order of the elements returned to the Buyer/Client is defined by the Seller/Server (e.g. natural order) and does not change between the pages.
       operationId: listTestJob
       parameters:
@@ -152,7 +150,7 @@ paths:
     post:
       tags:
       - testJob
-      summary: Creates a TestJob.
+      summary: Creates a TestJob
       description: A request initiated by the Buyer/Client to create a Test Job in the Seller/Server that specifies the service to be tested.
       operationId: createTestJob
       requestBody:
@@ -201,17 +199,11 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/
-      variables:
-        serverBase:
-          description: The base of SOF's URL.
-          default: mplify.net
   /testJob/{id}:
     get:
       tags:
       - testJob
-      summary: Retrieves a TestJob by ID.
+      summary: Retrieves a TestJob by ID
       description: The Buyer/Client requests detailed information about a single Test Jobs based on the Test Job Identifier.
       operationId: retrieveTestJob
       parameters:
@@ -258,45 +250,8 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/
-      variables:
-        serverBase:
-          description: The base of SOF's URL.
-          default: mplify.net
 components:
   schemas:
-    TimeUnit:
-      description: 'Represents a unit of time.
-
-        '
-      type: string
-      enum:
-      - seconds
-      - minutes
-      - businessHours
-      - calendarHours
-      - businessDays
-      - calendarDays
-      - months
-      - years
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
     TerminationError:
       description: This indicates an error that caused an Item to be terminated. The code and propertyPath should be used like in Error422.
       type: object
@@ -314,20 +269,82 @@ components:
         value:
           description: Text to describe the reason of the termination.
           type: string
-    Duration:
-      description: A Duration in a given unit of time e.g. 3 hours, or 5 days.
-      type: object
-      properties:
-        amount:
-          description: Duration (number of seconds, minutes, hours, etc.)
-          type: integer
-          minimum: 0
-        units:
-          description: Time unit enumerated
-          $ref: '#/components/schemas/TimeUnit'
-      required:
-      - amount
-      - units
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource
+
+              not found
+
+              '
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required
+
+              query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string
+
+              parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body
+
+              '
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+    TimeUnit:
+      description: 'Represents a unit of time.
+
+        '
+      type: string
+      enum:
+      - seconds
+      - minutes
+      - businessHours
+      - calendarHours
+      - businessDays
+      - calendarDays
+      - months
+      - years
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
     TestJob:
       allOf:
       - $ref: '#/components/schemas/TestJob_Common'
@@ -370,53 +387,6 @@ components:
         - id
         - lastModifiedDate
         - state
-    ServiceRef:
-      description: Reference to a Service instance.
-      type: object
-      properties:
-        href:
-          description: Hyperlink reference to Service
-          type: string
-        id:
-          description: unique identifier of Service
-          type: string
-      required:
-      - id
-    TestJob_Common:
-      description: A definition of Test Job for a specific Service Identifier.
-      type: object
-      properties:
-        name:
-          description: The name of the Test Job.
-          type: string
-        description:
-          description: A description of the Test Job.
-          type: string
-        requestedStartDateTime:
-          description: The start date and time of the Test Job. If the Buyer desires to schedule a test, this is a future date/time. If the Buyer desires an immediate test, this is empty.
-          type: string
-          format: date-time
-        requestedEndDateTime:
-          description: The end date and time of the Test Job.
-          type: string
-          format: date-time
-        recurrencePeriod:
-          $ref: '#/components/schemas/Duration'
-        testProfile:
-          $ref: '#/components/schemas/TestProfileRefOrValue'
-        relatedServiceFrom:
-          $ref: '#/components/schemas/ServiceRef'
-        relatedServiceTo:
-          $ref: '#/components/schemas/ServiceRef'
-        serviceSpecificTestJobConfiguration:
-          $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
-      required:
-      - name
-      - relatedServiceFrom
-      - relatedServiceTo
-      - requestedEndDateTime
-      - serviceSpecificTestJobConfiguration
-      - testProfile
     TestJob_Find:
       description: This class represents a single list item for the response of `listTestJob`
       type: object
@@ -447,64 +417,6 @@ components:
       - requestedEndDateTime
       - requestedStartDateTime
       - testProfile
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired
-
-        '
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required
-
-              query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string
-
-              parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body
-
-              '
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered
-
-              an unexpected condition that prevented it from fulfilling the
-
-              request.
-
-              '
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
     Error400Code:
       description: 'One of the following error codes:
 
@@ -527,86 +439,8 @@ components:
       - missingQueryValue
       - invalidQuery
       - invalidBody
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or
-
-              expired
-
-              '
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-    ServiceSpecificTestJobConfiguration:
-      description: ServiceSpecificTestJobConfiguration is used as an extension point for schema to be used that defines the Test Measure attributes. The `@type` attribute is used as a discriminator.
-      type: object
-      properties:
-        '@type':
-          description: The named type must be a subclass of ServiceSpecificTestJobConfiguration.
-          type: string
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      type: string
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
@@ -614,14 +448,16 @@ components:
           code:
             description: 'The following error code:
 
-              - notFound: A current representation for the target resource
+              - internalError: Internal server error - the server encountered
 
-              not found
+              an unexpected condition that prevented it from fulfilling the
+
+              request.
 
               '
             type: string
             enum:
-            - notFound
+            - internalError
         required:
         - code
     TestProfileRefOrValue:
@@ -658,6 +494,115 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired
+
+        '
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    TestJob_Common:
+      description: A definition of Test Job for a specific Service Identifier.
+      type: object
+      properties:
+        name:
+          description: The name of the Test Job.
+          type: string
+        description:
+          description: A description of the Test Job.
+          type: string
+        requestedStartDateTime:
+          description: The start date and time of the Test Job. If the Buyer desires to schedule a test, this is a future date/time. If the Buyer desires an immediate test, this is empty.
+          type: string
+          format: date-time
+        requestedEndDateTime:
+          description: The end date and time of the Test Job.
+          type: string
+          format: date-time
+        recurrencePeriod:
+          $ref: '#/components/schemas/Duration'
+        testProfile:
+          $ref: '#/components/schemas/TestProfileRefOrValue'
+        relatedServiceFrom:
+          $ref: '#/components/schemas/ServiceRef'
+        relatedServiceTo:
+          $ref: '#/components/schemas/ServiceRef'
+        serviceSpecificTestJobConfiguration:
+          $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
+      required:
+      - name
+      - relatedServiceFrom
+      - relatedServiceTo
+      - requestedEndDateTime
+      - serviceSpecificTestJobConfiguration
+      - testProfile
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    Duration:
+      description: A Duration in a given unit of time e.g. 3 hours, or 5 days.
+      type: object
+      properties:
+        amount:
+          description: Duration (number of seconds, minutes, hours, etc.)
+          type: integer
+          minimum: 0
+        units:
+          description: Time unit enumerated
+          $ref: '#/components/schemas/TimeUnit'
+      required:
+      - amount
+      - units
+    ServiceRef:
+      description: Reference to a Service instance.
+      type: object
+      properties:
+        href:
+          description: Hyperlink reference to Service
+          type: string
+        id:
+          description: unique identifier of Service
+          type: string
+      required:
+      - id
     TestJobStateType:
       description: 'The state of the Test Job.
 
@@ -694,7 +639,44 @@ components:
       - rejected
       - scheduled
       - suspended
-x-refined-from:
-- mef-lso-allegro-service-function-test-openapi.yml
-- mef-lso-interlude-service-function-test-openapi.yml
-- mef-lso-legato-service-function-test-openapi.yml
+    ServiceSpecificTestJobConfiguration:
+      description: ServiceSpecificTestJobConfiguration is used as an extension point for schema to be used that defines the Test Measure attributes. The `@type` attribute is used as a discriminator.
+      type: object
+      properties:
+        '@type':
+          description: The named type must be a subclass of ServiceSpecificTestJobConfiguration.
+          type: string
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or
+
+              expired
+
+              '
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue

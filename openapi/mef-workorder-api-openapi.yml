@@ -1,15 +1,18 @@
 openapi: 3.2.0
 info:
-  title: Mef Workorder API
+  title: Management Workorder API
+  description: '**This file forms part of Mplify 137.1**
+
+
+    **This API implements Business Requirements described in MEF 113.**
+
+
+    It allows the Buyer to create, retrieve, and update WorkOrders as well
+
+    as receive notifications about Incidents and WorkOrders updates.'
   version: 3.0.0
-  description: 'Operations tagged workorder across 2 of this provider''s published API definitions: mef-lso-cantata-workorder-management-openapi.yml, mef-lso-sonata-workorder-management-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{serverBase}/mefApi/cantata/workOrderManagement/v3/
-  variables:
-    serverBase:
-      description: The base of Seller's URL.
-      default: mplify.net
-- url: https://{serverBase}/mefApi/sonata/workOrderManagement/v3/
   variables:
     serverBase:
       description: The base of Seller's URL.
@@ -80,12 +83,6 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/cantata/workOrderManagement/v3/
-      variables:
-        serverBase:
-          description: The base of Seller's URL.
-          default: mplify.net
   /workorder:
     get:
       tags:
@@ -207,153 +204,8 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/cantata/workOrderManagement/v3/
-      variables:
-        serverBase:
-          description: The base of Seller's URL.
-          default: mplify.net
 components:
   schemas:
-    RelatedPlaceRefOrQuery:
-      description: Allows pointing to a place by referring to a GeographicAddress, GeographicSite, or providing GeographicAddress by value. It also provides additional information like the `role` the place plays for given Product and `contact` needed access to this place.
-      type: object
-      properties:
-        place:
-          $ref: '#/components/schemas/PlaceRefOrQuery'
-        role:
-          description: Role of this place. The values that can be specified here are described by Product Specification (e.g. "INSTALL_LOCATION").
-          type: string
-        contact:
-          description: The person to call to get access to this place in case such access is required to complete the evaluation of this POQ Item.
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInformation'
-      required:
-      - place
-      - role
-    Note:
-      description: Extra information about a given entity. Only useful in processes involving human interaction. Not applicable to an automated process.
-      type: object
-      properties:
-        author:
-          description: Author of the note
-          type: string
-        date:
-          description: Date of the note
-          type: string
-          format: date-time
-        id:
-          description: Identifier of the note within its containing entity (may or may not be globally unique, depending on provider implementation)
-          type: string
-        source:
-          description: Indicates if this Note was added by the Buyer or Seller.
-          $ref: '#/components/schemas/MEFBuyerSellerType'
-        text:
-          description: Text of the note
-          type: string
-      required:
-      - author
-      - date
-      - id
-      - source
-      - text
-    ContactInformation:
-      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
-      type: object
-      properties:
-        number:
-          description: Phone number
-          type: string
-        emailAddress:
-          description: Email address
-          type: string
-        postalAddress:
-          description: Identifies the postal address of the person or office to be contacted.
-          $ref: '#/components/schemas/FieldedAddressRepresentation'
-        organization:
-          description: The organization or company that the contact belongs to
-          type: string
-        name:
-          description: Name of the contact
-          type: string
-        numberExtension:
-          description: Phone number extension
-          type: string
-      required:
-      - emailAddress
-      - name
-      - number
-    PlaceRefOrQuery:
-      description: A place described by reference to a Geographic Address, Geographic Site or by Geographic Address Representations.
-      type: object
-      discriminator:
-        propertyName: '@type'
-        mapping:
-          GeographicAddressRef: '#/components/schemas/GeographicAddressRef'
-          GeographicSiteRef: '#/components/schemas/GeographicSiteRef'
-          GeographicAddress_Query: '#/components/schemas/GeographicAddress_Query'
-      oneOf:
-      - $ref: '#/components/schemas/GeographicAddressRef'
-      - $ref: '#/components/schemas/GeographicSiteRef'
-      - $ref: '#/components/schemas/GeographicAddress_Query'
-    GeographicAddressRef:
-      description: 'A reference to a Geographic Address resource available through Address Validation API.
-
-        '
-      type: object
-      properties:
-        href:
-          description: 'Hyperlink to the referenced Address. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
-
-            '
-          type: string
-        id:
-          description: Identifier of the referenced Geographic Address. This identifier is assigned during a successful address validation request (Geographic Address Management API)
-          type: string
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - GeographicAddressRef
-      required:
-      - '@type'
-      - id
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    LabelRepresentation:
-      description: A unique identifier controlled by a generally accepted independent administrative authority that specifies a fixed geographical location.
-      type: object
-      properties:
-        label:
-          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
-          type: string
-        administrativeAuthority:
-          description: The organization or standard from the organization that administers this Geographic Address Label ensuring it is unique within the Administrative Authority.
-          type: string
-        language:
-          description: The language in which the label is expressed. Based on ISO 639:2023
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - administrativeAuthority
-      - label
     WorkOrder:
       description: 'A set of tasks to be scheduled and performed under the responsibility of a Seller Technician(s)
 
@@ -421,6 +273,128 @@ components:
       - relatedEntity
       - state
       - task
+    ContactInformation:
+      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
+      type: object
+      properties:
+        number:
+          description: Phone number
+          type: string
+        emailAddress:
+          description: Email address
+          type: string
+        postalAddress:
+          description: Identifies the postal address of the person or office to be contacted.
+          $ref: '#/components/schemas/FieldedAddressRepresentation'
+        organization:
+          description: The organization or company that the contact belongs to
+          type: string
+        name:
+          description: Name of the contact
+          type: string
+        numberExtension:
+          description: Phone number extension
+          type: string
+      required:
+      - emailAddress
+      - name
+      - number
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    MEFBuyerSellerType:
+      description: An enumeration with buyer and seller values.
+      type: string
+      enum:
+      - buyer
+      - seller
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+    GeographicPointRepresentation:
+      description: 'A GeographicPointRepresentation defines a geographic point through coordinates.
+
+        '
+      type: object
+      properties:
+        spatialRef:
+          description: The spatial reference system used to determine the coordinates. The system used and the value of this field are to be agreed during the onboarding process.
+          type: string
+        latitude:
+          description: The latitude expressed in the format specified by the `spacialRef`
+          type: string
+        longitude:
+          description: The longitude expressed in the format specified by the `spacialRef`
+          type: string
+        elevation:
+          description: The elevation expressed in the format specified by the `spacialRef`
+          type: string
+      required:
+      - latitude
+      - longitude
+      - spatialRef
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
+    AppointmentRef:
+      description: 'A reference to an Appointment resource available through Appointment API.
+
+        '
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to the referenced Appointment. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request
+
+            '
+          type: string
+        id:
+          description: Identifier of the referenced Appointment.
+          type: string
+      required:
+      - id
     FieldedAddressRepresentation:
       description: A type of Address that has a discrete field and value for each type of boundary or identifier down to the lowest level of detail. For example "street number" is one field, "street name" is another field, etc.
       type: object
@@ -493,50 +467,36 @@ components:
           type: string
           minLength: 2
           maxLength: 2
-    Error401Code:
+    Error400Code:
       description: 'One of the following error codes:
 
-        - missingCredentials: No credentials provided.
+        - missingQueryParameter: The URI is missing a required query-string parameter
 
-        - invalidCredentials: Provided credentials are invalid or expired'
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
       type: string
       enum:
-      - missingCredentials
-      - invalidCredentials
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    FormattedAddressRepresentation:
+      description: 'A freeform text representation agreed to by the Buyer and Seller. '
+      type: object
+      properties:
+        formattedAddress:
+          description: A formatted Address Representation that contains a non-fielded address.
+          type: string
+        language:
+          description: The language in which the address is expressed. Based on ISO 639:2023
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+      - formattedAddress
     WorkOrderStateType:
       description: 'Possible values for the state of the WorkOrder
 
@@ -566,28 +526,6 @@ components:
       - open
       - planned
       - unableToComplete
-    GeographicSiteRef:
-      description: 'A reference to a Geographic Site resource available through Service Site API
-
-        '
-      type: object
-      properties:
-        href:
-          description: 'Hyperlink to the referenced Site. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
-
-            '
-          type: string
-        id:
-          description: Identifier of the referenced Geographic Site.
-          type: string
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - GeographicSiteRef
-      required:
-      - '@type'
-      - id
     TimeDurationUnits:
       description: The unit of measure in the duration. For example, if an interval is 2ms, this element is MS.
       type: string
@@ -602,224 +540,8 @@ components:
       - WEEK
       - MONTH
       - YEAR
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string parameter
-
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    GeographicPointRepresentation:
-      description: 'A GeographicPointRepresentation defines a geographic point through coordinates.
-
-        '
-      type: object
-      properties:
-        spatialRef:
-          description: The spatial reference system used to determine the coordinates. The system used and the value of this field are to be agreed during the onboarding process.
-          type: string
-        latitude:
-          description: The latitude expressed in the format specified by the `spacialRef`
-          type: string
-        longitude:
-          description: The longitude expressed in the format specified by the `spacialRef`
-          type: string
-        elevation:
-          description: The elevation expressed in the format specified by the `spacialRef`
-          type: string
-      required:
-      - latitude
-      - longitude
-      - spatialRef
-    RelatedEntity:
-      description: A reference to an entity, where the type of the entity is not known in advance.
-      type: object
-      properties:
-        '@referredType':
-          description: The actual type of the target instance when needed for disambiguation.
-          type: string
-          default: Product
-        href:
-          description: Reference of the related entity.
-          type: string
-        id:
-          description: Unique identifier of a related entity.
-          type: string
-        role:
-          description: The role of an entity.
-          type: string
-      required:
-      - '@referredType'
-      - id
-      - role
-    MEFBuyerSellerType:
-      description: An enumeration with buyer and seller values.
-      type: string
-      enum:
-      - buyer
-      - seller
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-    SubUnit:
-      description: Allows for sub unit identification
-      type: object
-      properties:
-        subUnitNumber:
-          description: The discriminator used for the subunit, often just a simple number but may also be a range.
-          type: string
-        subUnitType:
-          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
-          type: string
-      required:
-      - subUnitNumber
-      - subUnitType
-    RelatedContactInformation:
-      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
-      type: object
-      properties:
-        role:
-          description: The role of the particular contact in the request
-          type: string
-        number:
-          description: Phone number
-          type: string
-        emailAddress:
-          description: Email address
-          type: string
-        postalAddress:
-          description: Identifies the postal address of the person or office to be contacted.
-          $ref: '#/components/schemas/FieldedAddressRepresentation'
-        organization:
-          description: The organization or company that the contact belongs to
-          type: string
-        name:
-          description: Name of the contact
-          type: string
-        numberExtension:
-          description: Phone number extension
-          type: string
-      required:
-      - emailAddress
-      - name
-      - number
-      - role
-    GeographicAddress_Query:
-      description: A list of representations being a subset of Geographic Address entity. This is to be used when providing a list of representations to validate or search for a Geographic Address
-      type: object
-      properties:
-        fieldedAddressRepresentation:
-          description: A list of Fielded Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldedAddressRepresentation'
-        formattedAddressRepresentation:
-          description: A list of Formatted Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/FormattedAddressRepresentation'
-        geographicPointRepresentation:
-          description: A list of Geographic Point Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/GeographicPointRepresentation'
-        labelRepresentation:
-          description: A list of Label Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/LabelRepresentation'
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - GeographicAddress_Query
-      required:
-      - '@type'
-      minProperties: 2
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      type: string
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-    TimeDuration:
-      description: This class is used to describe durations expressed as a 2-tuple, (value, units). The units from nanoseconds to years.
-      type: object
-      properties:
-        timeDurationValue:
-          description: The value of the duration. For example, if the duration is 20 ms, this element is 20.
-          type: integer
-        timeDurationUnits:
-          description: The unit of measure in the duration. For example, if an interval is 2ms, this element is MS.
-          $ref: '#/components/schemas/TimeDurationUnits'
-      required:
-      - timeDurationUnits
-      - timeDurationValue
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
@@ -827,10 +549,10 @@ components:
           code:
             description: 'The following error code:
 
-              - notFound: A current representation for the target resource not found'
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
             type: string
             enum:
-            - notFound
+            - internalError
         required:
         - code
     Error403:
@@ -854,22 +576,51 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
-    AppointmentRef:
-      description: 'A reference to an Appointment resource available through Appointment API.
+    GeographicAddressRef:
+      description: 'A reference to a Geographic Address resource available through Address Validation API.
 
         '
       type: object
       properties:
         href:
-          description: 'Hyperlink to the referenced Appointment. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request
+          description: 'Hyperlink to the referenced Address. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
 
             '
           type: string
         id:
-          description: Identifier of the referenced Appointment.
+          description: Identifier of the referenced Geographic Address. This identifier is assigned during a successful address validation request (Geographic Address Management API)
+          type: string
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - GeographicAddressRef
+      required:
+      - '@type'
+      - id
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    SubUnit:
+      description: Allows for sub unit identification
+      type: object
+      properties:
+        subUnitNumber:
+          description: The discriminator used for the subunit, often just a simple number but may also be a range.
+          type: string
+        subUnitType:
+          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
           type: string
       required:
-      - id
+      - subUnitNumber
+      - subUnitType
     WorkOrder_Find:
       description: 'A set of tasks to be scheduled and performed under the responsibility of a Seller Technician(s)
 
@@ -902,20 +653,257 @@ components:
       - place
       - relatedEntity
       - state
-    FormattedAddressRepresentation:
-      description: 'A freeform text representation agreed to by the Buyer and Seller. '
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    RelatedPlaceRefOrQuery:
+      description: Allows pointing to a place by referring to a GeographicAddress, GeographicSite, or providing GeographicAddress by value. It also provides additional information like the `role` the place plays for given Product and `contact` needed access to this place.
       type: object
       properties:
-        formattedAddress:
-          description: A formatted Address Representation that contains a non-fielded address.
+        place:
+          $ref: '#/components/schemas/PlaceRefOrQuery'
+        role:
+          description: Role of this place. The values that can be specified here are described by Product Specification (e.g. "INSTALL_LOCATION").
+          type: string
+        contact:
+          description: The person to call to get access to this place in case such access is required to complete the evaluation of this POQ Item.
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInformation'
+      required:
+      - place
+      - role
+    LabelRepresentation:
+      description: A unique identifier controlled by a generally accepted independent administrative authority that specifies a fixed geographical location.
+      type: object
+      properties:
+        label:
+          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
+          type: string
+        administrativeAuthority:
+          description: The organization or standard from the organization that administers this Geographic Address Label ensuring it is unique within the Administrative Authority.
           type: string
         language:
-          description: The language in which the address is expressed. Based on ISO 639:2023
+          description: The language in which the label is expressed. Based on ISO 639:2023
           type: string
           minLength: 2
           maxLength: 2
       required:
-      - formattedAddress
-x-refined-from:
-- mef-lso-cantata-workorder-management-openapi.yml
-- mef-lso-sonata-workorder-management-openapi.yml
+      - administrativeAuthority
+      - label
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    Note:
+      description: Extra information about a given entity. Only useful in processes involving human interaction. Not applicable to an automated process.
+      type: object
+      properties:
+        author:
+          description: Author of the note
+          type: string
+        date:
+          description: Date of the note
+          type: string
+          format: date-time
+        id:
+          description: Identifier of the note within its containing entity (may or may not be globally unique, depending on provider implementation)
+          type: string
+        source:
+          description: Indicates if this Note was added by the Buyer or Seller.
+          $ref: '#/components/schemas/MEFBuyerSellerType'
+        text:
+          description: Text of the note
+          type: string
+      required:
+      - author
+      - date
+      - id
+      - source
+      - text
+    GeographicAddress_Query:
+      description: A list of representations being a subset of Geographic Address entity. This is to be used when providing a list of representations to validate or search for a Geographic Address
+      type: object
+      properties:
+        fieldedAddressRepresentation:
+          description: A list of Fielded Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldedAddressRepresentation'
+        formattedAddressRepresentation:
+          description: A list of Formatted Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/FormattedAddressRepresentation'
+        geographicPointRepresentation:
+          description: A list of Geographic Point Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/GeographicPointRepresentation'
+        labelRepresentation:
+          description: A list of Label Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelRepresentation'
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - GeographicAddress_Query
+      required:
+      - '@type'
+      minProperties: 2
+    GeographicSiteRef:
+      description: 'A reference to a Geographic Site resource available through Service Site API
+
+        '
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to the referenced Site. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
+
+            '
+          type: string
+        id:
+          description: Identifier of the referenced Geographic Site.
+          type: string
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - GeographicSiteRef
+      required:
+      - '@type'
+      - id
+    RelatedContactInformation:
+      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
+      type: object
+      properties:
+        role:
+          description: The role of the particular contact in the request
+          type: string
+        number:
+          description: Phone number
+          type: string
+        emailAddress:
+          description: Email address
+          type: string
+        postalAddress:
+          description: Identifies the postal address of the person or office to be contacted.
+          $ref: '#/components/schemas/FieldedAddressRepresentation'
+        organization:
+          description: The organization or company that the contact belongs to
+          type: string
+        name:
+          description: Name of the contact
+          type: string
+        numberExtension:
+          description: Phone number extension
+          type: string
+      required:
+      - emailAddress
+      - name
+      - number
+      - role
+    TimeDuration:
+      description: This class is used to describe durations expressed as a 2-tuple, (value, units). The units from nanoseconds to years.
+      type: object
+      properties:
+        timeDurationValue:
+          description: The value of the duration. For example, if the duration is 20 ms, this element is 20.
+          type: integer
+        timeDurationUnits:
+          description: The unit of measure in the duration. For example, if an interval is 2ms, this element is MS.
+          $ref: '#/components/schemas/TimeDurationUnits'
+      required:
+      - timeDurationUnits
+      - timeDurationValue
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+    RelatedEntity:
+      description: A reference to an entity, where the type of the entity is not known in advance.
+      type: object
+      properties:
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+          default: Product
+        href:
+          description: Reference of the related entity.
+          type: string
+        id:
+          description: Unique identifier of a related entity.
+          type: string
+        role:
+          description: The role of an entity.
+          type: string
+      required:
+      - '@referredType'
+      - id
+      - role
+    PlaceRefOrQuery:
+      description: A place described by reference to a Geographic Address, Geographic Site or by Geographic Address Representations.
+      type: object
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          GeographicAddressRef: '#/components/schemas/GeographicAddressRef'
+          GeographicSiteRef: '#/components/schemas/GeographicSiteRef'
+          GeographicAddress_Query: '#/components/schemas/GeographicAddress_Query'
+      oneOf:
+      - $ref: '#/components/schemas/GeographicAddressRef'
+      - $ref: '#/components/schemas/GeographicSiteRef'
+      - $ref: '#/components/schemas/GeographicAddress_Query'
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue

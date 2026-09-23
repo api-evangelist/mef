@@ -1,20 +1,18 @@
 openapi: 3.2.0
 info:
-  title: Mef Cancel Test Job API
+  title: Service Function Testing Cancel Test Job API
+  description: '**This file forms part of Mplify 149**
+
+    **This API implements part of Business Requirements & Use Cases described in Mplify 136.1**
+
+    Mplify Service Function Testing is defined as testing that is performed either
+
+    as a part of service verification, service activation, or service
+
+    maintenance.'
   version: 3.0.0
-  description: 'Operations tagged cancelTestJob across 3 of this provider''s published API definitions: mef-lso-allegro-service-function-test-openapi.yml, mef-lso-interlude-service-function-test-openapi.yml, mef-lso-legato-service-function-test-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/
-  variables:
-    serverBase:
-      description: The base of SOF's URL.
-      default: mplify.net
-- url: https://{serverBase}/mefApi/interlude/serviceFunctionTesting/v3/
-  variables:
-    serverBase:
-      description: The base of SOF's URL.
-      default: mplify.net
-- url: https://{serverBase}/mefApi/legato/serviceFunctionTesting/v3/
   variables:
     serverBase:
       description: The base of SOF's URL.
@@ -26,7 +24,7 @@ paths:
     get:
       tags:
       - cancelTestJob
-      summary: Lists or finds CancelTestJob objects.
+      summary: Lists or finds CancelTestJob objects
       description: The Buyer/Client requests a list of Cancel Test Job based on a set of filter criteria.
       operationId: listCancelTestJob
       parameters:
@@ -179,17 +177,13 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/
-      variables:
-        serverBase:
-          description: The base of SOF's URL.
-          default: mplify.net
+      summary: Create cancel test job
+      x-summary-source: derived
   /cancelTestJob/{id}:
     get:
       tags:
       - cancelTestJob
-      summary: Retrieves a CancelTestJob by ID.
+      summary: Retrieves a CancelTestJob by ID
       description: The Buyer/Client requests detailed information about a single Cancel Test Job based on the Cancel Test Job Identifier.
       operationId: retrieveCancelTestJob
       parameters:
@@ -236,67 +230,10 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/allegro/serviceFunctionTesting/v3/
-      variables:
-        serverBase:
-          description: The base of SOF's URL.
-          default: mplify.net
 components:
   schemas:
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string
-
-        parameter
-
-        - missingQueryValue: The URI is missing a required query-string
-
-        parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body
-
-        '
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      type: string
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
@@ -304,14 +241,58 @@ components:
           code:
             description: 'The following error code:
 
-              - notFound: A current representation for the target resource
+              - internalError: Internal server error - the server encountered
 
-              not found
+              an unexpected condition that prevented it from fulfilling the
+
+              request.
 
               '
             type: string
             enum:
-            - notFound
+            - internalError
+        required:
+        - code
+    CancelTestJob_Common:
+      description: Request for cancellation of an existing Test Job
+      type: object
+      properties:
+        cancellationReason:
+          description: An optional attribute that allows the Buyer/Client to provide additional detail to the Seller/Server on the reason for cancelling Test Job.
+          type: string
+        testJob:
+          $ref: '#/components/schemas/TestJobRef'
+      required:
+      - testJob
+    TestJobRef:
+      description: A reference to a Test Job resource
+      type: object
+      properties:
+        href:
+          description: Hyperlink to the referenced Test Job
+          type: string
+        id:
+          description: Identifier of the referenced Test Job
+          type: string
+      required:
+      - id
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or
+
+              expired
+
+              '
+            $ref: '#/components/schemas/Error401Code'
         required:
         - code
     TestJobProcessStateType:
@@ -353,49 +334,25 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'One of the following error codes:
+            description: 'The following error code:
 
-              - missingCredentials: No credentials provided.
+              - notFound: A current representation for the target resource
 
-              - invalidCredentials: Provided credentials are invalid or
-
-              expired
+              not found
 
               '
-            $ref: '#/components/schemas/Error401Code'
+            type: string
+            enum:
+            - notFound
         required:
         - code
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired
-
-        '
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
-    TestJobRef:
-      description: A reference to a Test Job resource
-      type: object
-      properties:
-        href:
-          description: Hyperlink to the referenced Test Job
-          type: string
-        id:
-          description: Identifier of the referenced Test Job
-          type: string
-      required:
-      - id
     CancelTestJob:
       allOf:
       - $ref: '#/components/schemas/CancelTestJob_Common'
@@ -422,6 +379,18 @@ components:
         - href
         - id
         - state
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired
+
+        '
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
     Error400:
       description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
       allOf:
@@ -447,55 +416,6 @@ components:
             $ref: '#/components/schemas/Error400Code'
         required:
         - code
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered
-
-              an unexpected condition that prevented it from fulfilling the
-
-              request.
-
-              '
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
-    CancelTestJob_Common:
-      description: Request for cancellation of an existing Test Job
-      type: object
-      properties:
-        cancellationReason:
-          description: An optional attribute that allows the Buyer/Client to provide additional detail to the Seller/Server on the reason for cancelling Test Job.
-          type: string
-        testJob:
-          $ref: '#/components/schemas/TestJobRef'
-      required:
-      - testJob
     Error:
       description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
 
@@ -515,7 +435,71 @@ components:
           format: uri
       required:
       - reason
-x-refined-from:
-- mef-lso-allegro-service-function-test-openapi.yml
-- mef-lso-interlude-service-function-test-openapi.yml
-- mef-lso-legato-service-function-test-openapi.yml
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string
+
+        parameter
+
+        - missingQueryValue: The URI is missing a required query-string
+
+        parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body
+
+        '
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue

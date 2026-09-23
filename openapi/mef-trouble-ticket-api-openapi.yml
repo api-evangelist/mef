@@ -1,30 +1,31 @@
 openapi: 3.2.0
 info:
-  title: Mef Trouble Ticket API
+  title: Incident Management Trouble Ticket API
+  description: '**This file forms part of Mplify 124.1**
+
+
+    This API implements Business Requirements described in MEF 113
+
+
+    It allows the Buyer to create, retrieve, and update Trouble Tickets as well
+
+    as receive notifications about Incidents'' and Trouble Tickets'' updates.'
   version: 5.0.0
-  description: 'Operations tagged troubleTicket across 2 of this provider''s published API definitions: mef-lso-cantata-trouble-ticket-management-openapi.yml, mef-lso-sonata-trouble-ticket-management-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://{serverBase}/mefApi/cantata/troubleTicket/v5/
   variables:
     serverBase:
       description: The base of Seller's URL.
       default: mplify.net
-- url: https://{serverBase}/mefApi/sonata/troubleTicket/v5/
-  variables:
-    serverBase:
-      description: The base of Seller's URL.
-      default: mplify.net
 tags:
-- name: troubleTicket
+- name: Trouble Ticket
 paths:
   /troubleTicket:
     get:
       tags:
-      - troubleTicket
+      - Trouble Ticket
       summary: List or found Trouble Ticket objects
-      description: 'The Buyer requests a list of Trouble Tickets from the Seller based on a set of specified filter criteria. The Seller returns a summarized list of Trouble Tickets.
-
-        '
+      description: The Buyer requests a list of Trouble Tickets from the Seller based on a set of specified filter criteria. The Seller returns a summarized list of Trouble Tickets.
       operationId: listTroubleTicket
       parameters:
       - name: externalId
@@ -215,7 +216,7 @@ paths:
                 $ref: '#/components/schemas/Error500'
     post:
       tags:
-      - troubleTicket
+      - Trouble Ticket
       summary: Creates a TroubleTicket
       description: A request initiated by the Buyer to create a Ticket in the Seller's system to report an Issue experienced by the Buyer
       operationId: createTroubleTicket
@@ -278,16 +279,10 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/cantata/troubleTicket/v5/
-      variables:
-        serverBase:
-          description: The base of Seller's URL.
-          default: mplify.net
   /troubleTicket/{id}:
     get:
       tags:
-      - troubleTicket
+      - Trouble Ticket
       summary: Retrieves a TroubleTicket by ID
       description: The Buyer requests detailed information about a single Ticket based on a Ticket Identifier.
       operationId: retrieveTroubleTicket
@@ -349,7 +344,7 @@ paths:
                 $ref: '#/components/schemas/Error500'
     patch:
       tags:
-      - troubleTicket
+      - Trouble Ticket
       summary: Updates partially a TroubleTicket
       description: A request by the Buyer to patch a Ticket created by the Buyer in the Seller's system.
       operationId: patchTroubleTicket
@@ -430,95 +425,66 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: https://{serverBase}/mefApi/cantata/troubleTicket/v5/
-      variables:
-        serverBase:
-          description: The base of Seller's URL.
-          default: mplify.net
 components:
   schemas:
-    TroubleTicket_Create:
-      description: A Trouble Ticket is a record of an issue that is created, tracked, and managed by a Trouble Ticket management system The modeling pattern introduces the `Common` supertype to aggregate attributes that are common to both `TroubleTicket` and `TroubleTicket_Create`. It this case the Create type has a subset of attributes of the response type and does not introduce any new, thus the `Create` type has an empty definition.
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
       allOf:
-      - $ref: '#/components/schemas/TroubleTicket_Common'
+      - $ref: '#/components/schemas/Error'
       - type: object
-    Note:
-      description: Extra information about a given entity. Only useful in processes involving human interaction. Not applicable for an automated process.
-      type: object
-      properties:
-        author:
-          description: Author of the note
-          type: string
-        date:
-          description: Date of the note
-          type: string
-          format: date-time
-        id:
-          description: Identifier of the note within its containing entity (may or may not be globally unique, depending on provider implementation)
-          type: string
-        source:
-          description: Indicates if this Note was added by the Buyer or Seller.
-          $ref: '#/components/schemas/MEFBuyerSellerType'
-        text:
-          description: Text of the note
-          type: string
-      required:
-      - author
-      - date
-      - id
-      - source
-      - text
-    Error403Code:
-      description: 'This code indicates that the server understood
+        properties:
+          code:
+            description: 'The following error code:
 
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    MEFBuyerSellerType:
+      description: An enumeration with buyer and seller values.
       type: string
       enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    IssueRelationship:
-      description: Represents relationships to other Trouble Tickets and Incidents
-      type: object
-      properties:
-        '@referredType':
-          description: The type of the referred Issue (Incident or TroubleTicket)
-          type: string
-        creationDate:
-          description: The date the relationship was created
-          type: string
-          format: date-time
-        description:
-          description: A description of the reason for the Relation Source to set the relationship
-          type: string
-        href:
-          description: Reference of the Trouble Ticket or Incident
-          type: string
-        id:
-          description: Unique identifier of the referenced Issue (Trouble Ticket od Incident)
-          type: string
-        relationshipType:
-          description: Type of the Trouble Ticket relationship can be blocks, depends on, duplicates, causes, etc...
-          type: string
-        source:
-          description: Indicates if this Related Issue was added by the Buyer or the Seller.
-          $ref: '#/components/schemas/MEFBuyerSellerType'
-      required:
-      - '@referredType'
-      - creationDate
-      - description
-      - id
-      - relationshipType
-      - source
+      - buyer
+      - seller
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
     TroubleTicketStatusType:
       description: 'Possible values for the status of the Trouble Ticket
 
@@ -554,37 +520,6 @@ components:
       - pending
       - resolved
       - reopened
-    DataSizeUnit:
-      description: The unit of measure in the data size.
-      type: string
-      enum:
-      - BYTES
-      - KBYTES
-      - MBYTES
-      - GBYTES
-      - TBYTES
-      - PBYTES
-      - EBYTES
-      - ZBYTES
-      - YBYTES
-    TroubleTicketType:
-      description: 'Possible values for the type of the Trouble Ticket:
-
-        - assistance: Requesting help for a situation (not a failure) requiring attention that is not categorized.
-
-        - information: Buyer is requesting information on the Issue
-
-        - installation: Related to installation issue. Provisioning is complete, but Product is not operational.
-
-        - maintenance: Any scheduled or non-scheduled maintenance related Issue.
-
-        '
-      type: string
-      enum:
-      - assistance
-      - information
-      - installation
-      - maintenance
     FieldedAddressRepresentation:
       description: A type of Address that has a discrete field and value for each type of boundary or identifier down to the lowest level of detail. For example "street number" is one field, "street name" is another field, etc.
       type: object
@@ -657,50 +592,6 @@ components:
           type: string
           minLength: 2
           maxLength: 2
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired'
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
     Error400Code:
       description: 'One of the following error codes:
 
@@ -717,41 +608,19 @@ components:
       - missingQueryValue
       - invalidQuery
       - invalidBody
-    AttachmentValue:
-      description: Complements the description of an element (for instance a product) through video, pictures...
-      type: object
-      properties:
-        author:
-          description: The name of the person or organization who added the Attachment.
-          type: string
-        creationDate:
-          description: The date the Attachment was added.
-          type: string
-          format: date-time
-        description:
-          description: A narrative text describing the content of the attachment
-          type: string
-        mimeType:
-          description: Attachment mime type such as extension file for video, picture and document
-          type: string
-        name:
-          description: The name of the attachment
-          type: string
-        size:
-          description: The size of the attachment.
-          $ref: '#/components/schemas/MEFByteSize'
-        source:
-          description: Indicates if the attachment was added by the Buyer or the Seller.
-          $ref: '#/components/schemas/MEFBuyerSellerType'
-        url:
-          description: URL where the attachment is located.
-          type: string
-      required:
-      - author
-      - creationDate
-      - name
-      - source
-      - url
+    MEFObservedImpactType:
+      description: 'An enumeration of the possible values of impact observed by the Buyer.
+
+        - degraded: When the Product is impacted and not meeting the Product specifications.
+
+        - intermittent: When the Product is not operational as intended on an intermittent basis.
+
+        - down: When the Product is non-operational.'
+      type: string
+      enum:
+      - degraded
+      - intermittent
+      - down
     TroubleTicket:
       allOf:
       - $ref: '#/components/schemas/TroubleTicket_Common'
@@ -803,77 +672,83 @@ components:
         - sellerSeverity
         - status
         - statusChange
-    MEFByteSize:
-      description: A size represented by value and Byte units
-      type: object
-      properties:
-        amount:
-          description: Numeric value in a given unit
-          type: number
-          format: float
-        units:
-          description: Byte Unit
-          $ref: '#/components/schemas/DataSizeUnit'
-      required:
-      - amount
-      - units
-    RelatedEntity:
-      description: A reference to an entity, where the type of the entity is not known in advance.
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
+            type: string
+            enum:
+            - internalError
+        required:
+        - code
+    IssueRelationship:
+      description: Represents relationships to other Trouble Tickets and Incidents
       type: object
       properties:
         '@referredType':
-          description: The actual type of the target instance when needed for disambiguation.
+          description: The type of the referred Issue (Incident or TroubleTicket)
           type: string
-          default: Product
-        href:
-          description: Reference of the related entity.
-          type: string
-        id:
-          description: Unique identifier of a related entity.
-          type: string
-        role:
-          description: The role of an entity.
-          type: string
-      required:
-      - '@referredType'
-      - id
-      - role
-    MEFBuyerSellerType:
-      description: An enumeration with buyer and seller values.
-      type: string
-      enum:
-      - buyer
-      - seller
-    TroubleTicketStatusChange:
-      description: Holds the status notification reasons and associated date the status changed, populated by the server
-      type: object
-      properties:
-        changeDate:
-          description: The date and time the status changed.
+        creationDate:
+          description: The date the relationship was created
           type: string
           format: date-time
-        changeReason:
-          description: The reason why the status changed.
+        description:
+          description: A description of the reason for the Relation Source to set the relationship
           type: string
-        status:
-          description: Reached status
-          $ref: '#/components/schemas/TroubleTicketStatusType'
-    WorkOrderRef:
-      description: 'A reference to an WorkOrder resource.
-
-        '
-      type: object
-      properties:
         href:
-          description: 'Hyperlink to the referenced WorkOrder.
-
-            '
+          description: Reference of the Trouble Ticket or Incident
           type: string
         id:
-          description: Identifier of the referenced WorkOrder.
+          description: Unique identifier of the referenced Issue (Trouble Ticket od Incident)
           type: string
+        relationshipType:
+          description: Type of the Trouble Ticket relationship can be blocks, depends on, duplicates, causes, etc...
+          type: string
+        source:
+          description: Indicates if this Related Issue was added by the Buyer or the Seller.
+          $ref: '#/components/schemas/MEFBuyerSellerType'
       required:
+      - '@referredType'
+      - creationDate
+      - description
       - id
+      - relationshipType
+      - source
+    Error403:
+      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'This code indicates that the server understood
+
+              the request but refuses to authorize it because
+
+              of one of the following error codes:
+
+              - accessDenied: Access denied
+
+              - forbiddenRequester: Forbidden requester
+
+              - tooManyUsers: Too many users'
+            $ref: '#/components/schemas/Error403Code'
+        required:
+        - code
+    TroubleTicketSeverityType:
+      description: Possible values for the severity of the Trouble Ticket
+      type: string
+      enum:
+      - minor
+      - moderate
+      - significant
+      - extensive
     TroubleTicketPriorityType:
       description: Possible values for the priority of the Trouble Ticket
       type: string
@@ -882,21 +757,6 @@ components:
       - medium
       - high
       - critical
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
     SubUnit:
       description: Allows for sub unit identification
       type: object
@@ -910,55 +770,141 @@ components:
       required:
       - subUnitNumber
       - subUnitType
-    RelatedContactInformation:
-      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
-      type: object
-      properties:
-        role:
-          description: A role of the particular contact in the request
-          type: string
-        number:
-          description: Phone number
-          type: string
-        emailAddress:
-          description: Email address
-          type: string
-        postalAddress:
-          description: Identifies the postal address of the person or office to be contacted.
-          $ref: '#/components/schemas/FieldedAddressRepresentation'
-        organization:
-          description: The organization or company that the contact belongs to
-          type: string
-        name:
-          description: Name of the contact
-          type: string
-        numberExtension:
-          description: Phone number extension
-          type: string
-      required:
-      - emailAddress
-      - name
-      - number
-      - role
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+    Error409:
+      description: Conflict (https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - conflict: The client has provided a value whose semantics are not appropriate for the property.'
+            type: string
+            enum:
+            - conflict
+        required:
+        - code
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    TroubleTicketType:
+      description: 'Possible values for the type of the Trouble Ticket:
+
+        - assistance: Requesting help for a situation (not a failure) requiring attention that is not categorized.
+
+        - information: Buyer is requesting information on the Issue
+
+        - installation: Related to installation issue. Provisioning is complete, but Product is not operational.
+
+        - maintenance: Any scheduled or non-scheduled maintenance related Issue.
 
         '
+      type: string
+      enum:
+      - assistance
+      - information
+      - installation
+      - maintenance
+    AttachmentValue:
+      description: Complements the description of an element (for instance a product) through video, pictures...
       type: object
       properties:
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+        author:
+          description: The name of the person or organization who added the Attachment.
           type: string
-        reason:
-          description: Text that explains the reason the for error. This can be shown to a client user.
+        creationDate:
+          description: The date the Attachment was added.
           type: string
-          maxLength: 255
-        referenceError:
-          description: URL pointing to documentation describing the error
+          format: date-time
+        description:
+          description: A narrative text describing the content of the attachment
           type: string
-          format: uri
+        mimeType:
+          description: Attachment mime type such as extension file for video, picture and document
+          type: string
+        name:
+          description: The name of the attachment
+          type: string
+        size:
+          description: The size of the attachment.
+          $ref: '#/components/schemas/MEFByteSize'
+        source:
+          description: Indicates if the attachment was added by the Buyer or the Seller.
+          $ref: '#/components/schemas/MEFBuyerSellerType'
+        url:
+          description: URL where the attachment is located.
+          type: string
       required:
-      - reason
+      - author
+      - creationDate
+      - name
+      - source
+      - url
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    TroubleTicket_Update:
+      description: A Trouble Ticket is a record of an issue that is created, tracked, and managed by a Trouble Ticket management system
+      type: object
+      properties:
+        attachment:
+          description: Attachments to the Ticket, such as a file, screen shot or embedded content.
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentValue'
+        externalId:
+          description: Additional identifier coming from an external system
+          type: string
+        issueStartDate:
+          description: The date indicating when the Buyer first observed the Issue, to provide the Seller with additional insight.
+          type: string
+          format: date-time
+        observedImpact:
+          description: The type of impact observed by the Buyer.
+          $ref: '#/components/schemas/MEFObservedImpactType'
+        note:
+          description: A set of comments or information associated to the Ticket. This list can be empty. Notes may be added but may not be modified or deleted (for historical reasons).
+          type: array
+          items:
+            $ref: '#/components/schemas/Note'
+        priority:
+          description: The priority (ITIL) is based on the assessment of the impact and urgency of how quickly the Ticket should be resolved as evaluated by the Buyer. The Priority is used by the Seller to determine the order in which Tickets get resolved across Buyers.
+          $ref: '#/components/schemas/TroubleTicketPriorityType'
+        relatedContactInformation:
+          description: Contact information for this Ticket.
+          type: array
+          items:
+            $ref: '#/components/schemas/RelatedContactInformation'
+        relatedIssue:
+          description: A list of Related Issue relationships. Represents relationships to other Trouble Tickets and Incidents.
+          type: array
+          items:
+            $ref: '#/components/schemas/IssueRelationship'
+        severity:
+          description: The severity of the issue. Indicate the implication of the issue on the expected functionality e.g. of a system, application, service etc...
+          $ref: '#/components/schemas/TroubleTicketSeverityType'
     TroubleTicket_Find:
       description: 'This class represents a single list item for the response of `listTroubleTicket` operation.
 
@@ -1028,147 +974,174 @@ components:
       - severity
       - status
       - ticketType
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      type: string
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-    TroubleTicket_Update:
-      description: A Trouble Ticket is a record of an issue that is created, tracked, and managed by a Trouble Ticket management system
+    MEFByteSize:
+      description: A size represented by value and Byte units
       type: object
       properties:
-        attachment:
-          description: Attachments to the Ticket, such as a file, screen shot or embedded content.
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentValue'
-        externalId:
-          description: Additional identifier coming from an external system
+        amount:
+          description: Numeric value in a given unit
+          type: number
+          format: float
+        units:
+          description: Byte Unit
+          $ref: '#/components/schemas/DataSizeUnit'
+      required:
+      - amount
+      - units
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
           type: string
-        issueStartDate:
-          description: The date indicating when the Buyer first observed the Issue, to provide the Seller with additional insight.
+        reason:
+          description: Text that explains the reason the for error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    Note:
+      description: Extra information about a given entity. Only useful in processes involving human interaction. Not applicable for an automated process.
+      type: object
+      properties:
+        author:
+          description: Author of the note
+          type: string
+        date:
+          description: Date of the note
           type: string
           format: date-time
-        observedImpact:
-          description: The type of impact observed by the Buyer.
-          $ref: '#/components/schemas/MEFObservedImpactType'
-        note:
-          description: A set of comments or information associated to the Ticket. This list can be empty. Notes may be added but may not be modified or deleted (for historical reasons).
-          type: array
-          items:
-            $ref: '#/components/schemas/Note'
-        priority:
-          description: The priority (ITIL) is based on the assessment of the impact and urgency of how quickly the Ticket should be resolved as evaluated by the Buyer. The Priority is used by the Seller to determine the order in which Tickets get resolved across Buyers.
-          $ref: '#/components/schemas/TroubleTicketPriorityType'
-        relatedContactInformation:
-          description: Contact information for this Ticket.
-          type: array
-          items:
-            $ref: '#/components/schemas/RelatedContactInformation'
-        relatedIssue:
-          description: A list of Related Issue relationships. Represents relationships to other Trouble Tickets and Incidents.
-          type: array
-          items:
-            $ref: '#/components/schemas/IssueRelationship'
-        severity:
-          description: The severity of the issue. Indicate the implication of the issue on the expected functionality e.g. of a system, application, service etc...
-          $ref: '#/components/schemas/TroubleTicketSeverityType'
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+        id:
+          description: Identifier of the note within its containing entity (may or may not be globally unique, depending on provider implementation)
+          type: string
+        source:
+          description: Indicates if this Note was added by the Buyer or Seller.
+          $ref: '#/components/schemas/MEFBuyerSellerType'
+        text:
+          description: Text of the note
+          type: string
+      required:
+      - author
+      - date
+      - id
+      - source
+      - text
+    TroubleTicketStatusChange:
+      description: Holds the status notification reasons and associated date the status changed, populated by the server
+      type: object
+      properties:
+        changeDate:
+          description: The date and time the status changed.
+          type: string
+          format: date-time
+        changeReason:
+          description: The reason why the status changed.
+          type: string
+        status:
+          description: Reached status
+          $ref: '#/components/schemas/TroubleTicketStatusType'
+    RelatedContactInformation:
+      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
+      type: object
+      properties:
+        role:
+          description: A role of the particular contact in the request
+          type: string
+        number:
+          description: Phone number
+          type: string
+        emailAddress:
+          description: Email address
+          type: string
+        postalAddress:
+          description: Identifies the postal address of the person or office to be contacted.
+          $ref: '#/components/schemas/FieldedAddressRepresentation'
+        organization:
+          description: The organization or company that the contact belongs to
+          type: string
+        name:
+          description: Name of the contact
+          type: string
+        numberExtension:
+          description: Phone number extension
+          type: string
+      required:
+      - emailAddress
+      - name
+      - number
+      - role
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'The following error code:
+            description: 'One of the following error codes:
 
-              - notFound: A current representation for the target resource not found'
-            type: string
-            enum:
-            - notFound
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
         required:
         - code
-    TroubleTicketSeverityType:
-      description: Possible values for the severity of the Trouble Ticket
+    WorkOrderRef:
+      description: 'A reference to an WorkOrder resource.
+
+        '
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to the referenced WorkOrder.
+
+            '
+          type: string
+        id:
+          description: Identifier of the referenced WorkOrder.
+          type: string
+      required:
+      - id
+    DataSizeUnit:
+      description: The unit of measure in the data size.
       type: string
       enum:
-      - minor
-      - moderate
-      - significant
-      - extensive
-    Error403:
-      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'This code indicates that the server understood
-
-              the request but refuses to authorize it because
-
-              of one of the following error codes:
-
-              - accessDenied: Access denied
-
-              - forbiddenRequester: Forbidden requester
-
-              - tooManyUsers: Too many users'
-            $ref: '#/components/schemas/Error403Code'
-        required:
-        - code
-    Error409:
-      description: Conflict (https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.8)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - conflict: The client has provided a value whose semantics are not appropriate for the property.'
-            type: string
-            enum:
-            - conflict
-        required:
-        - code
-    MEFObservedImpactType:
-      description: 'An enumeration of the possible values of impact observed by the Buyer.
-
-        - degraded: When the Product is impacted and not meeting the Product specifications.
-
-        - intermittent: When the Product is not operational as intended on an intermittent basis.
-
-        - down: When the Product is non-operational.'
-      type: string
-      enum:
-      - degraded
-      - intermittent
-      - down
+      - BYTES
+      - KBYTES
+      - MBYTES
+      - GBYTES
+      - TBYTES
+      - PBYTES
+      - EBYTES
+      - ZBYTES
+      - YBYTES
+    RelatedEntity:
+      description: A reference to an entity, where the type of the entity is not known in advance.
+      type: object
+      properties:
+        '@referredType':
+          description: The actual type of the target instance when needed for disambiguation.
+          type: string
+          default: Product
+        href:
+          description: Reference of the related entity.
+          type: string
+        id:
+          description: Unique identifier of a related entity.
+          type: string
+        role:
+          description: The role of an entity.
+          type: string
+      required:
+      - '@referredType'
+      - id
+      - role
     TroubleTicket_Common:
       description: 'A Trouble Ticket is a record of an issue that is created, tracked, and managed by a Trouble Ticket management system Skipped properties: id,href
 
@@ -1233,6 +1206,19 @@ components:
       - relatedEntity
       - severity
       - ticketType
-x-refined-from:
-- mef-lso-cantata-trouble-ticket-management-openapi.yml
-- mef-lso-sonata-trouble-ticket-management-openapi.yml
+    TroubleTicket_Create:
+      description: A Trouble Ticket is a record of an issue that is created, tracked, and managed by a Trouble Ticket management system The modeling pattern introduces the `Common` supertype to aggregate attributes that are common to both `TroubleTicket` and `TroubleTicket_Create`. It this case the Create type has a subset of attributes of the response type and does not introduce any new, thus the `Create` type has an empty definition.
+      allOf:
+      - $ref: '#/components/schemas/TroubleTicket_Common'
+      - type: object
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue

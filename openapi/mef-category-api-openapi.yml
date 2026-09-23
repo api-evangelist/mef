@@ -1,26 +1,24 @@
 openapi: 3.2.0
 info:
-  title: Mef Category API
+  title: Product Catalog Category API
+  description: '**This file forms part of Mplify 142**
+
+
+    This API implements the Business Requirements described in Mplify 127.1.'
   version: 4.0.1
-  description: 'Operations tagged category across 2 of this provider''s published API definitions: mef-lso-cantata-product-catalog-openapi.yml, mef-lso-sonata-product-catalog-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: http://{serverBase}/mefApi/cantata/productCatalog/v4/
   variables:
     serverBase:
       description: The base of Buyer's URL.
       default: mplify.net
-- url: http://{serverBase}/mefApi/sonata/productCatalog/v4/
-  variables:
-    serverBase:
-      description: The base of Buyer's URL.
-      default: mplify.net
 tags:
-- name: category
+- name: Category
 paths:
   /category:
     get:
       tags:
-      - category
+      - Category
       summary: Lists or finds Category objects
       description: This operation lists or finds Category entities
       operationId: listCategory
@@ -129,16 +127,10 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: http://{serverBase}/mefApi/cantata/productCatalog/v4/
-      variables:
-        serverBase:
-          description: The base of Buyer's URL.
-          default: mplify.net
   /category/{id}:
     get:
       tags:
-      - category
+      - Category
       summary: Retrieves a Category by ID
       description: This operation retrieves a Category entity.
       operationId: retrieveCategory
@@ -198,14 +190,147 @@ paths:
             application/json;charset=utf-8:
               schema:
                 $ref: '#/components/schemas/Error500'
-    servers:
-    - url: http://{serverBase}/mefApi/cantata/productCatalog/v4/
-      variables:
-        serverBase:
-          description: The base of Buyer's URL.
-          default: mplify.net
 components:
   schemas:
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
+            type: string
+            enum:
+            - internalError
+        required:
+        - code
+    ProductCategoryRef:
+      description: Represents the reference to Category
+      type: object
+      properties:
+        id:
+          description: Unique (within the Seller domain) identifier for the Category
+          type: string
+        href:
+          description: Hyperlink to access the Category
+          type: string
+          format: uri
+      required:
+      - id
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+    Error403:
+      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'This code indicates that the server understood
+
+              the request but refuses to authorize it because
+
+              of one of the following error codes:
+
+              - accessDenied: Access denied
+
+              - forbiddenRequester: Forbidden requester
+
+              - tooManyUsers: Too many users'
+            $ref: '#/components/schemas/Error403Code'
+        required:
+        - code
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    ProductOfferingRef:
+      description: ProductOffering reference. A product offering represents entities that are launched from the provider of the catalog.
+      type: object
+      properties:
+        id:
+          description: Unique (within the Seller domain) identifier for the Product Offering.
+          type: string
+        href:
+          description: Hyperlink to access the Product Offering
+          type: string
+      required:
+      - id
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
     Error422:
       allOf:
       - $ref: '#/components/schemas/Error'
@@ -224,48 +349,6 @@ components:
         - code
         type: object
       description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string parameter
-
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-      type: string
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - notFound: A current representation for the target resource not found'
-            type: string
-            enum:
-            - notFound
-        required:
-        - code
     ProductCategory:
       description: The Product Category is a grouping of Product Offerings in logical containers defined by the Seller. A Product Category may contain other (sub)Product Categories and/or Product Offerings.
       type: object
@@ -305,99 +388,6 @@ components:
       - name
       - description
       - lastUpdate
-    ProductCategoryRef:
-      description: Represents the reference to Category
-      type: object
-      properties:
-        id:
-          description: Unique (within the Seller domain) identifier for the Category
-          type: string
-        href:
-          description: Hyperlink to access the Category
-          type: string
-          format: uri
-      required:
-      - id
-    Error403:
-      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'This code indicates that the server understood
-
-              the request but refuses to authorize it because
-
-              of one of the following error codes:
-
-              - accessDenied: Access denied
-
-              - forbiddenRequester: Forbidden requester
-
-              - tooManyUsers: Too many users'
-            $ref: '#/components/schemas/Error403Code'
-        required:
-        - code
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired'
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
     Error403Code:
       description: 'This code indicates that the server understood
 
@@ -415,37 +405,30 @@ components:
       - accessDenied
       - forbiddenRequester
       - tooManyUsers
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+    Error400Code:
+      description: 'One of the following error codes:
 
-        '
-      type: object
-      properties:
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    ProductOfferingRef:
-      description: ProductOffering reference. A product offering represents entities that are launched from the provider of the catalog.
-      type: object
-      properties:
-        id:
-          description: Unique (within the Seller domain) identifier for the Product Offering.
-          type: string
-        href:
-          description: Hyperlink to access the Product Offering
-          type: string
-      required:
-      - id
-x-refined-from:
-- mef-lso-cantata-product-catalog-openapi.yml
-- mef-lso-sonata-product-catalog-openapi.yml
+        - missingQueryParameter: The URI is missing a required query-string parameter
+
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue
+      type: string
