@@ -160,80 +160,24 @@ paths:
                 $ref: '#/components/schemas/Error501'
 components:
   schemas:
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - notFound: A current representation for the target resource not found'
-            type: string
-            enum:
-            - notFound
-        required:
-        - code
-    Error400:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-        type: object
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-    GeographicPointRepresentation:
-      description: 'A type of Representation where coordinates (latitude, longitude and sometimes elevation) are used to specify a particular place on Earth.
-
-        '
+    LabelRepresentation:
+      description: A type of Geographic Address Representation that is a unique combination of label and Administrative Authority (any organization that distributes labels) that controls assignment of the label and that specifies either a place which may or may not be fixed on Earth.It can be used to identify things that do not have a static Address, such as airplanes or ships
       type: object
       properties:
-        spatialRef:
-          description: The spatial reference system used to determine the coordinates. The system used and the value of this field are to be agreed during the onboarding process.
+        label:
+          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
           type: string
-        latitude:
-          description: The latitude expressed in the format specified by the `spacialRef`
+        administrativeAuthority:
+          description: The organization or standard from the organization that administers this Label ensuring it is unique within the Administrative Authority.
           type: string
-        longitude:
-          description: The longitude expressed in the format specified by the `spacialRef`
+        language:
+          description: The language in which the label is expressed. It MUST use the ISO 639:2023 two letter code'
           type: string
-        elevation:
-          description: The elevation expressed in the format specified by the `spacialRef`
-          type: string
+          minLength: 2
+          maxLength: 2
       required:
-      - latitude
-      - longitude
-      - spatialRef
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
+      - administrativeAuthority
+      - label
     FieldedAddressRepresentation:
       description: A type of Address that has a discrete field and value for each type of boundary or identifier down to the lowest level of detail. For example "street number" is one field, "street name" is another field, etc.
       type: object
@@ -306,36 +250,6 @@ components:
           type: string
           minLength: 2
           maxLength: 2
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string parameter
-
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    FormattedAddressRepresentation:
-      description: A type of Representation using single string based on local postal addressing conventions.
-      type: object
-      properties:
-        formattedAddress:
-          description: A string containing the address representation
-          type: string
-        language:
-          description: The language in which the address is expressed.  It MUST use the ISO 639:2023 two letter code
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - formattedAddress
     Error500:
       description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
       allOf:
@@ -351,21 +265,29 @@ components:
             - internalError
         required:
         - code
-    Error501:
-      description: Not Implemented. Used in case Seller is not supporting an optional operation (https://tools.ietf.org/html/rfc7231#section-6.6.2)
+    GeographicAddressValidation:
       allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
+      - $ref: '#/components/schemas/GeographicAddressValidation_Create'
+      - description: This resource is used to manage address validation response.
+        type: object
         properties:
-          code:
-            description: 'The following error code:
-
-              - notImplemented: Method not supported by the server'
+          id:
+            description: An identifier that the Seller assigns to the Validate Geographic Address request when the response is Deferred.
             type: string
-            enum:
-            - notImplemented
+          state:
+            description: The state of a GeographicAddressValidation.
+            $ref: '#/components/schemas/GeographicAddressValidationStateType'
+          alternateGeographicAddress:
+            description: An array of zero or more GeographicAddresses known to the Seller that are considered by the Seller to be an alternate to the Buyer's `submittedGeographicAddress`
+            type: array
+            items:
+              $ref: '#/components/schemas/GeographicAddress'
+          bestMatchGeographicAddress:
+            description: Specifies the GeographicAddress which the Seller believes is the best match to the Buyer's `submittedGeographicAddress`.
+            $ref: '#/components/schemas/GeographicAddress'
         required:
-        - code
+        - state
+        - alternateGeographicAddress
     Error403:
       allOf:
       - $ref: '#/components/schemas/Error'
@@ -387,29 +309,134 @@ components:
         - code
         type: object
       description: Forbidden. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
-    Error401Code:
+    Error400Code:
       description: 'One of the following error codes:
 
-        - missingCredentials: No credentials provided.
+        - missingQueryParameter: The URI is missing a required query-string parameter
 
-        - invalidCredentials: Provided credentials are invalid or expired'
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
       type: string
       enum:
-      - missingCredentials
-      - invalidCredentials
-    SubUnit:
-      description: Allows for sub unit identification
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    GeographicPointRepresentation:
+      description: 'A type of Representation where coordinates (latitude, longitude and sometimes elevation) are used to specify a particular place on Earth.
+
+        '
       type: object
       properties:
-        subUnitNumber:
-          description: The discriminator used for the subunit, often just a simple number but may also be a range.
+        spatialRef:
+          description: The spatial reference system used to determine the coordinates. The system used and the value of this field are to be agreed during the onboarding process.
           type: string
-        subUnitType:
-          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
+        latitude:
+          description: The latitude expressed in the format specified by the `spacialRef`
+          type: string
+        longitude:
+          description: The longitude expressed in the format specified by the `spacialRef`
+          type: string
+        elevation:
+          description: The elevation expressed in the format specified by the `spacialRef`
           type: string
       required:
-      - subUnitNumber
-      - subUnitType
+      - latitude
+      - longitude
+      - spatialRef
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    Error401:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+        type: object
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+    GeographicAddressValidationStateType:
+      description: 'A list of possible `state` values for GeographicAddressValidation.
+
+
+
+        | Name         | Description                                                                                                                                                                                                                                                                                                                  |
+
+        | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+        | acknowledged | A GeographicAddressValidation request has been received by the Seller and has passed basic validation. A `GeographicAddressValidation.id` is assigned in the `acknowledged` state and moves to `inProgress` when it passes business validation. If it does not pass business validation, it moves to the `rejected` state. |
+
+        | inProgress   | The GeographicAddressValidation request is currently being worked on by the Seller.                                                                                                                                                                                                                                          |
+
+        | ready        | The GeographicAddressValidation processing is completed by the Seller and it is ready to be retrieved or the Immediate Response has been returned.                                                                                                                                                                           |
+
+        | rejected     | The GeographicAddressValidation processing has failed at least one of the validation checks the Seller performs after it reached the `acknowledged` state.                                                                                                                                                                   |
+
+        '
+      type: string
+      enum:
+      - acknowledged
+      - inProgress
+      - ready
+      - rejected
+    Error400:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+        type: object
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
     GeographicAddress:
       description: A place on Earth, which may or may not be fixed, described using one or more Geographic Address Representations.
       type: object
@@ -456,41 +483,6 @@ components:
       - hasPublicSite
       - id
       - '@type'
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    LabelRepresentation:
-      description: A type of Geographic Address Representation that is a unique combination of label and Administrative Authority (any organization that distributes labels) that controls assignment of the label and that specifies either a place which may or may not be fixed on Earth.It can be used to identify things that do not have a static Address, such as airplanes or ships
-      type: object
-      properties:
-        label:
-          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
-          type: string
-        administrativeAuthority:
-          description: The organization or standard from the organization that administers this Label ensuring it is unique within the Administrative Authority.
-          type: string
-        language:
-          description: The language in which the label is expressed. It MUST use the ISO 639:2023 two letter code'
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - administrativeAuthority
-      - label
     Error:
       description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
 
@@ -510,6 +502,21 @@ components:
           format: uri
       required:
       - reason
+    Error501:
+      description: Not Implemented. Used in case Seller is not supporting an optional operation (https://tools.ietf.org/html/rfc7231#section-6.6.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notImplemented: Method not supported by the server'
+            type: string
+            enum:
+            - notImplemented
+        required:
+        - code
     GeographicAddress_Query:
       description: A list of representations being a subset of Geographic Address entity. This is to be used when providing a list of representations to validate or search for a Geographic Address
       type: object
@@ -549,45 +556,20 @@ components:
       - 'true'
       - 'false'
       - unknown
-    GeographicAddressValidationStateType:
-      description: 'A list of possible `state` values for GeographicAddressValidation.
-
-
-
-        | Name         | Description                                                                                                                                                                                                                                                                                                                  |
-
-        | ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
-        | acknowledged | A GeographicAddressValidation request has been received by the Seller and has passed basic validation. A `GeographicAddressValidation.id` is assigned in the `acknowledged` state and moves to `inProgress` when it passes business validation. If it does not pass business validation, it moves to the `rejected` state. |
-
-        | inProgress   | The GeographicAddressValidation request is currently being worked on by the Seller.                                                                                                                                                                                                                                          |
-
-        | ready        | The GeographicAddressValidation processing is completed by the Seller and it is ready to be retrieved or the Immediate Response has been returned.                                                                                                                                                                           |
-
-        | rejected     | The GeographicAddressValidation processing has failed at least one of the validation checks the Seller performs after it reached the `acknowledged` state.                                                                                                                                                                   |
-
-        '
-      type: string
-      enum:
-      - acknowledged
-      - inProgress
-      - ready
-      - rejected
-    Error401:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-        type: object
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+    FormattedAddressRepresentation:
+      description: A type of Representation using single string based on local postal addressing conventions.
+      type: object
+      properties:
+        formattedAddress:
+          description: A string containing the address representation
+          type: string
+        language:
+          description: The language in which the address is expressed.  It MUST use the ISO 639:2023 two letter code
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+      - formattedAddress
     GeographicAddressValidation_Create:
       description: This resource is used to manage address validation requests.
       type: object
@@ -601,29 +583,37 @@ components:
       required:
       - instantSyncValidation
       - submittedGeographicAddress
-    GeographicAddressValidation:
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
       allOf:
-      - $ref: '#/components/schemas/GeographicAddressValidation_Create'
-      - description: This resource is used to manage address validation response.
-        type: object
+      - $ref: '#/components/schemas/Error'
+      - type: object
         properties:
-          id:
-            description: An identifier that the Seller assigns to the Validate Geographic Address request when the response is Deferred.
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
             type: string
-          state:
-            description: The state of a GeographicAddressValidation.
-            $ref: '#/components/schemas/GeographicAddressValidationStateType'
-          alternateGeographicAddress:
-            description: An array of zero or more GeographicAddresses known to the Seller that are considered by the Seller to be an alternate to the Buyer's `submittedGeographicAddress`
-            type: array
-            items:
-              $ref: '#/components/schemas/GeographicAddress'
-          bestMatchGeographicAddress:
-            description: Specifies the GeographicAddress which the Seller believes is the best match to the Buyer's `submittedGeographicAddress`.
-            $ref: '#/components/schemas/GeographicAddress'
         required:
-        - state
-        - alternateGeographicAddress
+        - code
+    SubUnit:
+      description: Allows for sub unit identification
+      type: object
+      properties:
+        subUnitNumber:
+          description: The discriminator used for the subunit, often just a simple number but may also be a range.
+          type: string
+        subUnitType:
+          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
+          type: string
+      required:
+      - subUnitNumber
+      - subUnitType
     Error422Code:
       description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
       type: string
@@ -635,3 +625,13 @@ components:
       - unexpectedProperty
       - tooManyRecords
       - otherIssue
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials

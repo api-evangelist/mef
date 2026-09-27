@@ -82,103 +82,13 @@ paths:
                 $ref: '#/components/schemas/Error500'
 components:
   schemas:
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
-    Error401:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-        type: object
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-    Error403:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - properties:
-          code:
-            description: 'This code indicates that the server understood
-
-              the request but refuses to authorize it because
-
-              of one of the following error codes:
-
-              - accessDenied: Access denied
-
-              - forbiddenRequester: Forbidden requester
-
-              - tooManyUsers: Too many users'
-            $ref: '#/components/schemas/Error403Code'
-        required:
-        - code
-        type: object
-      description: Forbidden. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - notFound: A current representation for the target resource not found'
-            type: string
-            enum:
-            - notFound
-        required:
-        - code
-    LabelRepresentation:
-      description: A type of Geographic Address Representation that is a unique combination of label and Administrative Authority (any organization that distributes labels) that controls assignment of the label and that specifies either a place which may or may not be fixed on Earth.It can be used to identify things that do not have a static Address, such as airplanes or ships
-      type: object
-      properties:
-        label:
-          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
-          type: string
-        administrativeAuthority:
-          description: The organization or standard from the organization that administers this Label ensuring it is unique within the Administrative Authority.
-          type: string
-        language:
-          description: The language in which the label is expressed. It MUST use the ISO 639:2023 two letter code'
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - administrativeAuthority
-      - label
-    SubUnit:
-      description: Allows for sub unit identification
-      type: object
-      properties:
-        subUnitNumber:
-          description: The discriminator used for the subunit, often just a simple number but may also be a range.
-          type: string
-        subUnitType:
-          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
-          type: string
-      required:
-      - subUnitNumber
-      - subUnitType
+    TrueFalseUnknown:
+      description: An enumeration used to represent one of three states
+      type: string
+      enum:
+      - 'true'
+      - 'false'
+      - unknown
     GeographicAddress:
       description: A place on Earth, which may or may not be fixed, described using one or more Geographic Address Representations.
       type: object
@@ -225,6 +135,143 @@ components:
       - hasPublicSite
       - id
       - '@type'
+    FormattedAddressRepresentation:
+      description: A type of Representation using single string based on local postal addressing conventions.
+      type: object
+      properties:
+        formattedAddress:
+          description: A string containing the address representation
+          type: string
+        language:
+          description: The language in which the address is expressed.  It MUST use the ISO 639:2023 two letter code
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+      - formattedAddress
+    Error400:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+        type: object
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+    LabelRepresentation:
+      description: A type of Geographic Address Representation that is a unique combination of label and Administrative Authority (any organization that distributes labels) that controls assignment of the label and that specifies either a place which may or may not be fixed on Earth.It can be used to identify things that do not have a static Address, such as airplanes or ships
+      type: object
+      properties:
+        label:
+          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
+          type: string
+        administrativeAuthority:
+          description: The organization or standard from the organization that administers this Label ensuring it is unique within the Administrative Authority.
+          type: string
+        language:
+          description: The language in which the label is expressed. It MUST use the ISO 639:2023 two letter code'
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+      - administrativeAuthority
+      - label
+    Error403:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - properties:
+          code:
+            description: 'This code indicates that the server understood
+
+              the request but refuses to authorize it because
+
+              of one of the following error codes:
+
+              - accessDenied: Access denied
+
+              - forbiddenRequester: Forbidden requester
+
+              - tooManyUsers: Too many users'
+            $ref: '#/components/schemas/Error403Code'
+        required:
+        - code
+        type: object
+      description: Forbidden. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string parameter
+
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    SubUnit:
+      description: Allows for sub unit identification
+      type: object
+      properties:
+        subUnitNumber:
+          description: The discriminator used for the subunit, often just a simple number but may also be a range.
+          type: string
+        subUnitType:
+          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
+          type: string
+      required:
+      - subUnitNumber
+      - subUnitType
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        reason:
+          description: Text that explains the reason for error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
     GeographicPointRepresentation:
       description: 'A type of Representation where coordinates (latitude, longitude and sometimes elevation) are used to specify a particular place on Earth.
 
@@ -247,54 +294,21 @@ components:
       - latitude
       - longitude
       - spatialRef
-    Error400:
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
       allOf:
       - $ref: '#/components/schemas/Error'
-      - properties:
+      - type: object
+        properties:
           code:
-            description: 'One of the following error codes:
+            description: 'The following error code:
 
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
         required:
         - code
-        type: object
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        reason:
-          description: Text that explains the reason for error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired'
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
     FieldedAddressRepresentation:
       description: A type of Address that has a discrete field and value for each type of boundary or identifier down to the lowest level of detail. For example "street number" is one field, "street name" is another field, etc.
       type: object
@@ -367,57 +381,43 @@ components:
           type: string
           minLength: 2
           maxLength: 2
-    Error403Code:
-      description: 'This code indicates that the server understood
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
 
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    Error400Code:
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
+            type: string
+            enum:
+            - internalError
+        required:
+        - code
+    Error401Code:
       description: 'One of the following error codes:
 
-        - missingQueryParameter: The URI is missing a required query-string parameter
+        - missingCredentials: No credentials provided.
 
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
+        - invalidCredentials: Provided credentials are invalid or expired'
       type: string
       enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    FormattedAddressRepresentation:
-      description: A type of Representation using single string based on local postal addressing conventions.
-      type: object
-      properties:
-        formattedAddress:
-          description: A string containing the address representation
-          type: string
-        language:
-          description: The language in which the address is expressed.  It MUST use the ISO 639:2023 two letter code
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - formattedAddress
-    TrueFalseUnknown:
-      description: An enumeration used to represent one of three states
-      type: string
-      enum:
-      - 'true'
-      - 'false'
-      - unknown
+      - missingCredentials
+      - invalidCredentials
+    Error401:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+        type: object
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)

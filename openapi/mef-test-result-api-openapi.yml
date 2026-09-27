@@ -206,6 +206,31 @@ paths:
                 $ref: '#/components/schemas/Error500'
 components:
   schemas:
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingQueryParameter: The URI is missing a required
+
+              query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string
+
+              parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body
+
+              '
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
     TestResult_Common:
       description: The execution of a Test Job creates Test Result that provide Buyer/Client with the results of the Job.
       type: object
@@ -239,38 +264,6 @@ components:
       - relatedServiceFrom
       - relatedServiceTo
       - testJob
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered
-
-              an unexpected condition that prevented it from fulfilling the
-
-              request.
-
-              '
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
-    ServiceSpecificTestResultConfiguration:
-      description: ServiceSpecificTestResultConfiguration is used as an extension point for schema to be used that defines the Test Result attributes. The `@type` attribute is used as a discriminator.
-      type: object
-      properties:
-        '@type':
-          description: The named type must be a subclass of ServiceSpecificTestJobResult.
-          type: string
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
     TestJobRef:
       description: A reference to a Test Job resource
       type: object
@@ -283,23 +276,22 @@ components:
           type: string
       required:
       - id
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'One of the following error codes:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
 
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or
-
-              expired
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
 
               '
-            $ref: '#/components/schemas/Error401Code'
+            type: string
         required:
         - code
     Error403:
@@ -323,109 +315,28 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - notFound: A current representation for the target resource
-
-              not found
-
-              '
-            type: string
-            enum:
-            - notFound
-        required:
-        - code
-    TestResult:
-      allOf:
-      - $ref: '#/components/schemas/TestResult_Common'
-      - description: The execution of a Test Job creates Test Result that provide Buyer/Client with the results of the Job.
-        type: object
-        properties:
-          serviceSpecificTestResultConfiguration:
-            $ref: '#/components/schemas/ServiceSpecificTestResultConfiguration'
-        required:
-        - serviceSpecificTestResultConfiguration
-    Error401Code:
+    Error400Code:
       description: 'One of the following error codes:
 
-        - missingCredentials: No credentials provided.
+        - missingQueryParameter: The URI is missing a required query-string
 
-        - invalidCredentials: Provided credentials are invalid or expired
+        parameter
+
+        - missingQueryValue: The URI is missing a required query-string
+
+        parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body
 
         '
       type: string
       enum:
-      - missingCredentials
-      - invalidCredentials
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required
-
-              query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string
-
-              parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body
-
-              '
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
     ServiceRef:
       description: Reference to a Service instance.
       type: object
@@ -455,28 +366,76 @@ components:
       - accessDenied
       - forbiddenRequester
       - tooManyUsers
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string
-
-        parameter
-
-        - missingQueryValue: The URI is missing a required query-string
-
-        parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
 
         '
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
+      type: object
+      properties:
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource
+
+              not found
+
+              '
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    ServiceSpecificTestResultConfiguration:
+      description: ServiceSpecificTestResultConfiguration is used as an extension point for schema to be used that defines the Test Result attributes. The `@type` attribute is used as a discriminator.
+      type: object
+      properties:
+        '@type':
+          description: The named type must be a subclass of ServiceSpecificTestJobResult.
+          type: string
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - internalError: Internal server error - the server encountered
+
+              an unexpected condition that prevented it from fulfilling the
+
+              request.
+
+              '
+            type: string
+            enum:
+            - internalError
+        required:
+        - code
     Error422Code:
       description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
       type: string
@@ -488,3 +447,44 @@ components:
       - unexpectedProperty
       - tooManyRecords
       - otherIssue
+    TestResult:
+      allOf:
+      - $ref: '#/components/schemas/TestResult_Common'
+      - description: The execution of a Test Job creates Test Result that provide Buyer/Client with the results of the Job.
+        type: object
+        properties:
+          serviceSpecificTestResultConfiguration:
+            $ref: '#/components/schemas/ServiceSpecificTestResultConfiguration'
+        required:
+        - serviceSpecificTestResultConfiguration
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired
+
+        '
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or
+
+              expired
+
+              '
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
