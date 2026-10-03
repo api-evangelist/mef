@@ -86,6 +86,53 @@ paths:
                 $ref: '#/components/schemas/Error500'
 components:
   schemas:
+    SearchTimeSlot:
+      description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
+      type: object
+      properties:
+        availableTimeSlot:
+          description: A set of time slots with the availability of a Seller Technician returned by the Seller, which the Buyer may select for creating or rescheduling an Appointment.
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSlot'
+        requestedTimeSlot:
+          description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSlot'
+        workOrder:
+          description: A reference to a WorkOrder for which the Appointment is created.
+          $ref: '#/components/schemas/WorkOrderRef'
+      required:
+      - availableTimeSlot
+      - requestedTimeSlot
+      - workOrder
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string parameter
+
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
     TimePeriod:
       description: A period of time, either as a deadline (endDateTime only) a startDateTime only, or both
       type: object
@@ -101,40 +148,6 @@ components:
       required:
       - endDateTime
       - startDateTime
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    SearchTimeSlot_Create:
-      description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
-      type: object
-      properties:
-        requestedTimeSlot:
-          description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSlot'
-        workOrder:
-          description: A reference to a WorkOrder for which the Appointment is created.
-          $ref: '#/components/schemas/WorkOrderRef'
-      required:
-      - requestedTimeSlot
-      - workOrder
     Error422:
       description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
       allOf:
@@ -174,22 +187,6 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string parameter
-
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
     Error403Code:
       description: 'This code indicates that the server understood
 
@@ -207,46 +204,36 @@ components:
       - accessDenied
       - forbiddenRequester
       - tooManyUsers
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
 
-        '
-      type: object
-      properties:
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    SearchTimeSlot:
-      description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
-      type: object
-      properties:
-        availableTimeSlot:
-          description: A set of time slots with the availability of a Seller Technician returned by the Seller, which the Buyer may select for creating or rescheduling an Appointment.
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSlot'
-        requestedTimeSlot:
-          description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
-          type: array
-          items:
-            $ref: '#/components/schemas/TimeSlot'
-        workOrder:
-          description: A reference to a WorkOrder for which the Appointment is created.
-          $ref: '#/components/schemas/WorkOrderRef'
-      required:
-      - availableTimeSlot
-      - requestedTimeSlot
-      - workOrder
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue
     WorkOrderRef:
       description: 'A reference to an WorkOrder resource.
 
@@ -278,35 +265,6 @@ components:
             - internalError
         required:
         - code
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-      type: string
-      enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
-    TimeSlot:
-      type: object
-      properties:
-        validFor:
-          description: Start date and end date of the timeSlot
-          $ref: '#/components/schemas/TimePeriod'
-      required:
-      - validFor
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired'
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
     Error401:
       description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
       allOf:
@@ -322,3 +280,45 @@ components:
             $ref: '#/components/schemas/Error401Code'
         required:
         - code
+    TimeSlot:
+      type: object
+      properties:
+        validFor:
+          description: Start date and end date of the timeSlot
+          $ref: '#/components/schemas/TimePeriod'
+      required:
+      - validFor
+    SearchTimeSlot_Create:
+      description: This task resource is used to retrieve available time slots. One of this available time slot is after used to create or reschedule an appointment
+      type: object
+      properties:
+        requestedTimeSlot:
+          description: A set of preferred time slots the Buyer is requesting the Seller to verify for availability by a Sellers Technician at the Place referenced in the Appointment Related Entity. For example Monday thru Friday, or a set of specific time slots.
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSlot'
+        workOrder:
+          description: A reference to a WorkOrder for which the Appointment is created.
+          $ref: '#/components/schemas/WorkOrderRef'
+      required:
+      - requestedTimeSlot
+      - workOrder
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason

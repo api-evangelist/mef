@@ -207,6 +207,206 @@ paths:
                 $ref: '#/components/schemas/Error500'
 components:
   schemas:
+    ProductSpecification_Find:
+      allOf:
+      - $ref: '#/components/schemas/ProductSpecification_Common'
+      - description: Is a lightweight version of the Product Specification object used in Get List use case.
+        required:
+        - id
+        - lastUpdate
+        - lifecycleStatus
+        - name
+    AttachmentValue:
+      description: Complements the description of an element (for instance a product) through video, pictures...
+      type: object
+      properties:
+        author:
+          description: The name of the person or organization who added the Attachment.
+          type: string
+        creationDate:
+          description: The date the Attachment was added.
+          type: string
+          format: date-time
+        description:
+          description: A narrative text describing the content of the attachment
+          type: string
+        mimeType:
+          description: Attachment mime type such as extension file for video, picture and document
+          type: string
+        name:
+          description: The name of the attachment
+          type: string
+        size:
+          description: The size of the attachment.
+          $ref: '#/components/schemas/MEFByteSize'
+        source:
+          description: Indicates if the attachment was added by the Buyer or the Seller.
+          $ref: '#/components/schemas/MEFBuyerSellerType'
+        url:
+          description: URL where the attachment is located.
+          type: string
+      required:
+      - author
+      - creationDate
+      - name
+      - source
+      - url
+    Error401Code:
+      description: 'One of the following error codes:
+
+        - missingCredentials: No credentials provided.
+
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    Error422:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - properties:
+          code:
+            $ref: '#/components/schemas/Error422Code'
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
+        type: object
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    DataSizeUnit:
+      description: The unit of measure in the data size.
+      type: string
+      enum:
+      - BYTES
+      - KBYTES
+      - MBYTES
+      - GBYTES
+      - TBYTES
+      - PBYTES
+      - EBYTES
+      - ZBYTES
+      - YBYTES
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+    ProductRelationshipConstraint:
+      description: Allows definition and constraining of Product Relationship that can be specified for the ordered Product.
+      type: object
+      properties:
+        productSpecification:
+          description: The identifier of the associated Product Specification to define the allowable target Product types
+          type: string
+        relationshipType:
+          description: Specifies the nature of productRelationship between Products. This must be one of the relationshipTypes as defined by the main product specification.
+          type: string
+        isModifiable:
+          description: Specifies if the Product Relationship can be modified on an active Product.
+          type: boolean
+        minCardinality:
+          description: The minimum required number of ProductRelationships (of given relationshipType and target productSpecification) that must configured for ordered Product. For example, as specified in the 'Relationship Between Entities' Section of MEF 106. `0` means the relation is optional.
+          type: integer
+          minimum: 0
+        maxCardinality:
+          description: The maximum required number of ProductRelationships (of given relationshipType and target productSpecification) that must configured for ordered Product. `-1` stands for infinity i.e. any number of instances of the given type could be related to the considered instance.
+          type: integer
+          minimum: -1
+      required:
+      - productSpecification
+      - relationshipType
+      - isModifiable
+      - minCardinality
+      - maxCardinality
+    MEFBuyerSellerType:
+      description: An enumeration with buyer and seller values.
+      type: string
+      enum:
+      - buyer
+      - seller
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string parameter
+
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
     PlaceRelationshipConstraint:
       description: Allows definition and constraining of PlaceRelationship that can be specified for the ordered Product.
       type: object
@@ -230,34 +430,111 @@ components:
       - maxCardinality
       - minCardinality
       - relationshipRole
-    DataSizeUnit:
-      description: The unit of measure in the data size.
-      type: string
-      enum:
-      - BYTES
-      - KBYTES
-      - MBYTES
-      - GBYTES
-      - TBYTES
-      - PBYTES
-      - EBYTES
-      - ZBYTES
-      - YBYTES
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+    ProductMilestoneDefinition:
+      description: Allows specifying the different stages of the Product provisioning process.
+      type: object
+      properties:
+        name:
+          description: The unique identifier of the milestone (as specified e.g. in the corresponding MEF Product Specification).
+          type: string
+        description:
+          description: The explanation of what the milestone represents and when it occurs.
+          type: string
+      required:
+      - description
+      - name
+    MEFByteSize:
+      description: A size represented by value and Byte units
+      type: object
+      properties:
+        amount:
+          description: Numeric value in a given unit
+          type: number
+          format: float
+        units:
+          description: Byte Unit
+          $ref: '#/components/schemas/DataSizeUnit'
+      required:
+      - amount
+      - units
+    ProductSpecification:
+      allOf:
+      - $ref: '#/components/schemas/ProductSpecification_Common'
+      - description: Is a detailed description of a tangible or intangible object made available externally in the form of a ProductOffering to customers or other parties playing a party role.
+        properties:
+          description:
+            description: Description of the Product Specification.
+            type: string
+          attachment:
+            description: 'Complements the Product Offering description with presentation, video, pictures, etc. Note: The Seller should include all documents describing the Standard Framework Agreement as an Attachment.'
+            type: array
+            items:
+              $ref: '#/components/schemas/AttachmentValue'
+          productRelationship:
+            description: Specifies the relationships with their names between Products described by related Product Specifications. As an example, an Access E-Line OVC references an Operator UNI and an ENNI Product Specification.
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductRelationshipConstraint'
+          placeRelationship:
+            description: Specifies the relationships with their names between Product described by this Product Specifications and Place(s).
+            type: array
+            items:
+              $ref: '#/components/schemas/PlaceRelationshipConstraint'
+          milestone:
+            description: Specifies the different milestones during the fulfillment process
+            type: array
+            items:
+              $ref: '#/components/schemas/ProductMilestoneDefinition'
+          note:
+            description: 'A set of comments for additional information.
+
+              '
+            type: array
+            items:
+              $ref: '#/components/schemas/Note'
+          sourceSchema:
+            description: A reference to or value of the schemaProduct Schema as included in the Product Specification.
+            $ref: '#/components/schemas/SchemaRefOrValue'
+        required:
+        - id
+        - lastUpdate
+        - lifecycleStatus
+        - name
+        - sourceSchema
+        - description
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'The following error code:
+            description: 'One of the following error codes:
 
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            type: string
-            enum:
-            - internalError
+              - missingQueryParameter: The URI is missing a required query-string parameter
+
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
         required:
         - code
+    ProductSpecificationLifecycleStatusType:
+      description: '| Name         | Mplify 127.1 Name | Description                                                                                                                                                                                                                                                                                                                                                                                                  |
+
+        | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+
+        | obsolete     | OBSOLETE          | The Product Specification is only available in the Product Catalog for historical documentation reasons. There are no active Products on the Seller''s Network based on the Product Specification. A Product Specification that is no longer available transitions to `obsolete` and may be removed at the Seller''s discretion from the Product Catalog. This is a final state. |
+
+        | published    | PUBLISHED         | A Product Specification has been defined in the Product Catalog. Product Offerings based on the Product Specification may be available for ordering.                                                                                                                                                                                                                                                         |
+
+        '
+      type: string
+      enum:
+      - obsolete
+      - published
     SchemaRefOrValue:
       description: Reference to the JSON schema location or the exact value of the JSON schema. **Note:** One of the properties must be provided i.e. schemaLocation or schema.
       type: object
@@ -269,6 +546,30 @@ components:
           description: This field provides a link to the schema describing the target product
           type: string
           format: uri
+    ProductSpecification_Common:
+      description: Is the basis for all Production Specification representations.
+      type: object
+      properties:
+        id:
+          description: Unique identifier for the Product Specification. For Mplify standardized products, this should be the Mplify assigned URN.
+          type: string
+        href:
+          description: Reference of the Product Specification
+          type: string
+          format: uri
+        name:
+          description: Name of the Product Specification
+          type: string
+        lifecycleStatus:
+          description: The current lifecycle status of the Product Specification.
+          $ref: '#/components/schemas/ProductSpecificationLifecycleStatusType'
+        lastUpdate:
+          description: The date and time of an attribute within this Product Specification was created or most recently updated.
+          type: string
+          format: date-time
+        agreement:
+          description: The name of the Seller's standard offer arrangement (such as a framework agreement). The name is unique within the Seller domain. This should be the name of the Seller's standard offer arrangement or framework agreement for the Product Specification.
+          type: string
     Note:
       description: Extra information about a given entity. Only useful in processes involving human interaction. Not applicable for the automated process.
       type: object
@@ -316,298 +617,6 @@ components:
             $ref: '#/components/schemas/Error403Code'
         required:
         - code
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string parameter
-
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    ProductMilestoneDefinition:
-      description: Allows specifying the different stages of the Product provisioning process.
-      type: object
-      properties:
-        name:
-          description: The unique identifier of the milestone (as specified e.g. in the corresponding MEF Product Specification).
-          type: string
-        description:
-          description: The explanation of what the milestone represents and when it occurs.
-          type: string
-      required:
-      - description
-      - name
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - notFound: A current representation for the target resource not found'
-            type: string
-            enum:
-            - notFound
-        required:
-        - code
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-    MEFBuyerSellerType:
-      description: An enumeration with buyer and seller values.
-      type: string
-      enum:
-      - buyer
-      - seller
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    ProductSpecificationLifecycleStatusType:
-      description: '| Name         | Mplify 127.1 Name | Description                                                                                                                                                                                                                                                                                                                                                                                                  |
-
-        | ------------ | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-
-        | obsolete     | OBSOLETE          | The Product Specification is only available in the Product Catalog for historical documentation reasons. There are no active Products on the Seller''s Network based on the Product Specification. A Product Specification that is no longer available transitions to `obsolete` and may be removed at the Seller''s discretion from the Product Catalog. This is a final state. |
-
-        | published    | PUBLISHED         | A Product Specification has been defined in the Product Catalog. Product Offerings based on the Product Specification may be available for ordering.                                                                                                                                                                                                                                                         |
-
-        '
-      type: string
-      enum:
-      - obsolete
-      - published
-    ProductSpecification_Find:
-      allOf:
-      - $ref: '#/components/schemas/ProductSpecification_Common'
-      - description: Is a lightweight version of the Product Specification object used in Get List use case.
-        required:
-        - id
-        - lastUpdate
-        - lifecycleStatus
-        - name
-    ProductSpecification:
-      allOf:
-      - $ref: '#/components/schemas/ProductSpecification_Common'
-      - description: Is a detailed description of a tangible or intangible object made available externally in the form of a ProductOffering to customers or other parties playing a party role.
-        properties:
-          description:
-            description: Description of the Product Specification.
-            type: string
-          attachment:
-            description: 'Complements the Product Offering description with presentation, video, pictures, etc. Note: The Seller should include all documents describing the Standard Framework Agreement as an Attachment.'
-            type: array
-            items:
-              $ref: '#/components/schemas/AttachmentValue'
-          productRelationship:
-            description: Specifies the relationships with their names between Products described by related Product Specifications. As an example, an Access E-Line OVC references an Operator UNI and an ENNI Product Specification.
-            type: array
-            items:
-              $ref: '#/components/schemas/ProductRelationshipConstraint'
-          placeRelationship:
-            description: Specifies the relationships with their names between Product described by this Product Specifications and Place(s).
-            type: array
-            items:
-              $ref: '#/components/schemas/PlaceRelationshipConstraint'
-          milestone:
-            description: Specifies the different milestones during the fulfillment process
-            type: array
-            items:
-              $ref: '#/components/schemas/ProductMilestoneDefinition'
-          note:
-            description: 'A set of comments for additional information.
-
-              '
-            type: array
-            items:
-              $ref: '#/components/schemas/Note'
-          sourceSchema:
-            description: A reference to or value of the schemaProduct Schema as included in the Product Specification.
-            $ref: '#/components/schemas/SchemaRefOrValue'
-        required:
-        - id
-        - lastUpdate
-        - lifecycleStatus
-        - name
-        - sourceSchema
-        - description
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Error422:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - properties:
-          code:
-            $ref: '#/components/schemas/Error422Code'
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
-        type: object
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired'
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
-    ProductRelationshipConstraint:
-      description: Allows definition and constraining of Product Relationship that can be specified for the ordered Product.
-      type: object
-      properties:
-        productSpecification:
-          description: The identifier of the associated Product Specification to define the allowable target Product types
-          type: string
-        relationshipType:
-          description: Specifies the nature of productRelationship between Products. This must be one of the relationshipTypes as defined by the main product specification.
-          type: string
-        isModifiable:
-          description: Specifies if the Product Relationship can be modified on an active Product.
-          type: boolean
-        minCardinality:
-          description: The minimum required number of ProductRelationships (of given relationshipType and target productSpecification) that must configured for ordered Product. For example, as specified in the 'Relationship Between Entities' Section of MEF 106. `0` means the relation is optional.
-          type: integer
-          minimum: 0
-        maxCardinality:
-          description: The maximum required number of ProductRelationships (of given relationshipType and target productSpecification) that must configured for ordered Product. `-1` stands for infinity i.e. any number of instances of the given type could be related to the considered instance.
-          type: integer
-          minimum: -1
-      required:
-      - productSpecification
-      - relationshipType
-      - isModifiable
-      - minCardinality
-      - maxCardinality
-    AttachmentValue:
-      description: Complements the description of an element (for instance a product) through video, pictures...
-      type: object
-      properties:
-        author:
-          description: The name of the person or organization who added the Attachment.
-          type: string
-        creationDate:
-          description: The date the Attachment was added.
-          type: string
-          format: date-time
-        description:
-          description: A narrative text describing the content of the attachment
-          type: string
-        mimeType:
-          description: Attachment mime type such as extension file for video, picture and document
-          type: string
-        name:
-          description: The name of the attachment
-          type: string
-        size:
-          description: The size of the attachment.
-          $ref: '#/components/schemas/MEFByteSize'
-        source:
-          description: Indicates if the attachment was added by the Buyer or the Seller.
-          $ref: '#/components/schemas/MEFBuyerSellerType'
-        url:
-          description: URL where the attachment is located.
-          type: string
-      required:
-      - author
-      - creationDate
-      - name
-      - source
-      - url
-    MEFByteSize:
-      description: A size represented by value and Byte units
-      type: object
-      properties:
-        amount:
-          description: Numeric value in a given unit
-          type: number
-          format: float
-        units:
-          description: Byte Unit
-          $ref: '#/components/schemas/DataSizeUnit'
-      required:
-      - amount
-      - units
     Error422Code:
       description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
       enum:
@@ -619,27 +628,18 @@ components:
       - tooManyRecords
       - otherIssue
       type: string
-    ProductSpecification_Common:
-      description: Is the basis for all Production Specification representations.
-      type: object
-      properties:
-        id:
-          description: Unique identifier for the Product Specification. For Mplify standardized products, this should be the Mplify assigned URN.
-          type: string
-        href:
-          description: Reference of the Product Specification
-          type: string
-          format: uri
-        name:
-          description: Name of the Product Specification
-          type: string
-        lifecycleStatus:
-          description: The current lifecycle status of the Product Specification.
-          $ref: '#/components/schemas/ProductSpecificationLifecycleStatusType'
-        lastUpdate:
-          description: The date and time of an attribute within this Product Specification was created or most recently updated.
-          type: string
-          format: date-time
-        agreement:
-          description: The name of the Seller's standard offer arrangement (such as a framework agreement). The name is unique within the Seller domain. This should be the name of the Seller's standard offer arrangement or framework agreement for the Product Specification.
-          type: string
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
+            type: string
+            enum:
+            - internalError
+        required:
+        - code

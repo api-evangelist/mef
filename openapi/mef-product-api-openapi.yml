@@ -261,240 +261,48 @@ paths:
                 $ref: '#/components/schemas/Error500'
 components:
   schemas:
-    LabelRepresentation:
-      description: A unique identifier controlled by a generally accepted independent administrative authority that specifies a fixed geographical location.
-      type: object
-      properties:
-        label:
-          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
-          type: string
-        administrativeAuthority:
-          description: The organization or standard from the organization that administers this Geographic Address Label ensuring it is unique within the Administrative Authority.
-          type: string
-        language:
-          description: The language in which the label is expressed. Based on ISO 639:2023
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - administrativeAuthority
-      - label
-    GeographicSiteRef:
-      description: 'A reference to a Geographic Site resource available through Service Site API
+    TimeUnit:
+      description: 'Represents a unit of time.
 
         '
-      type: object
-      properties:
-        href:
-          description: 'Hyperlink to the referenced Site. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
+      type: string
+      enum:
+      - seconds
+      - minutes
+      - businessHours
+      - calendarHours
+      - businessDays
+      - calendarDays
+      - months
+      - years
+    Error401Code:
+      description: 'One of the following error codes:
 
-            '
-          type: string
-        id:
-          description: Identifier of the referenced Geographic Site.
-          type: string
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - GeographicSiteRef
-      required:
-      - '@type'
-      - id
-    Price:
-      description: Provides all amounts (tax included, duty-free, tax rate) and used currency of a Price
-      type: object
-      properties:
-        taxRate:
-          description: 'Price Tax Rate. Unit: [%]. E.g. value 16 stand for 16% tax.'
-          type: number
-          format: float
-        taxIncludedAmount:
-          description: All taxes included amount (expressed in the given currency)
-          $ref: '#/components/schemas/Money'
-        dutyFreeAmount:
-          description: All taxes excluded amount (expressed in the given currency)
-          $ref: '#/components/schemas/Money'
-      required:
-      - dutyFreeAmount
-    ProductPrice:
-      description: An amount, usually of money, that represents the actual price paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined period of time.
-      type: object
-      properties:
-        unitOfMeasure:
-          description: Unit of Measure if price depending on it (Gb, SMS volume, etc..)
-          type: string
-        price:
-          description: Value of the Price
-          $ref: '#/components/schemas/Price'
-        name:
-          description: A short descriptive name such as "Subscription price".
-          type: string
-        priceType:
-          description: A category that describes the price, such as recurring, nonRecurring, usageBased
-          $ref: '#/components/schemas/MEFPriceType'
-        description:
-          description: A narrative that explains in detail the semantics of this product price.
-          type: string
-        recurringChargePeriod:
-          description: Used for a recurring charge to indicate a period
-          $ref: '#/components/schemas/Duration'
-      required:
-      - price
-      - priceType
-    ContactInformation:
-      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
-      type: object
-      properties:
-        number:
-          description: Phone number
-          type: string
-        emailAddress:
-          description: Email address
-          type: string
-        postalAddress:
-          description: Identifies the postal address of the person or office to be contacted.
-          $ref: '#/components/schemas/FieldedAddressRepresentation'
-        organization:
-          description: The organization or company that the contact belongs to
-          type: string
-        name:
-          description: Name of the contact
-          type: string
-        numberExtension:
-          description: Phone number extension
-          type: string
-      required:
-      - emailAddress
-      - name
-      - number
-    FieldedAddressRepresentation:
-      description: A type of Address that has a discrete field and value for each type of boundary or identifier down to the lowest level of detail. For example "street number" is one field, "street name" is another field, etc.
-      type: object
-      properties:
-        streetNr:
-          description: Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses.
-          type: string
-        streetNrSuffix:
-          description: The first street number suffix (in a street number range) or the suffix for the street number if there is no range
-          type: string
-        streetNrLast:
-          description: Last number in a range of street numbers allocated to an Address
-          type: string
-        streetNrLastSuffix:
-          description: Last street number suffix for a ranged Address
-          type: string
-        streetPreDirection:
-          description: The direction of the street that appears before the Street Name
-          type: string
-        streetName:
-          description: Name of the street or other street type
-          type: string
-        streetType:
-          description: The type of street (e.g., alley, avenue, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf)
-          type: string
-        streetPostDirection:
-          description: A modifier denoting a relative direction that appears after the Street Name.
-          type: string
-        poBox:
-          description: Number identifying a specific location in a post office.
-          type: string
-        locality:
-          description: An area of defined or undefined boundaries within a local authority or other legislatively defined area.
-          type: string
-        city:
-          description: City in which the Address is located.
-          type: string
-        postcode:
-          description: A descriptor for a postal delivery area used to speed and simplify the delivery of mail (also known as zip code)
-          type: string
-        postcodeExtension:
-          description: 'The extension used on a postal code. Note: there are different use codes for this attribute depending upon the country.'
-          type: string
-        stateOrProvince:
-          description: The State or Province in which the Address is located.
-          type: string
-        countryCode:
-          description: Country in which the Address is located, defined using two characters as defined in ISO 3166
-          type: string
-          minLength: 2
-          maxLength: 2
-        subUnit:
-          description: The Sub Unit represented as a list. This is a list to allow complex sub-unit information such as SUITE 42 ROOM A
-          type: array
-          items:
-            $ref: '#/components/schemas/SubUnit'
-        buildingName:
-          description: 'The well-known name of a building that is located at this Address (e.g., where there is one Address for a campus).
+        - missingCredentials: No credentials provided.
 
-            '
-          type: string
-        privateStreetNumber:
-          description: Street number on a private street within the Address.
-          type: string
-        privateStreetName:
-          description: Private streets internal to a property (e.g., a university) may have internal names that are not recorded by the land title office.
-          type: string
-        language:
-          description: The language in which the address is expressed. It MUST use the ISO 639:2023 two letter code 639:2023
-          type: string
-          minLength: 2
-          maxLength: 2
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+        - invalidCredentials: Provided credentials are invalid or expired'
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'The following error code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
 
-              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
             type: string
-            enum:
-            - internalError
         required:
         - code
-    MEFPriceType:
-      description: Indicates if the price is for recurring or non-recurring charges.
-      type: string
-      enum:
-      - recurring
-      - nonRecurring
-      - usageBased
-    MEFProductStatusType:
-      description: 'Possible values for the status of a MEF product
-
-
-        | name                        | MEF 81 name                 |
-
-        | --------------------------- | --------------------------- |
-
-        | `active`                    | ACTIVE                      |
-
-        | `active.pendingChange`      | ACTIVE_PENDING_CHANGE       |
-
-        | `pendingTerminate`          | ACTIVE_PENDING_TERMINATE    |
-
-        | `cancelled`                 | CANCELLED                   |
-
-        | `pendingActive`             | PENDING                     |
-
-        | `suspended`                 | SUSPENDED                   |
-
-        | `suspendedPendingTerminate` | SUSPENDED_PENDING_TERMINATE |
-
-        | `terminated`                | TERMINATED                  |'
-      type: string
-      enum:
-      - active
-      - active.pendingChange
-      - cancelled
-      - pendingActive
-      - pendingTerminate
-      - suspended
-      - suspendedPendingTerminate
-      - terminated
     RelatedContactInformation:
       description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
       type: object
@@ -525,91 +333,21 @@ components:
       - name
       - number
       - role
-    Duration:
-      description: A Duration in a given unit of time e.g. 3 hours, or 5 days.
-      type: object
-      properties:
-        amount:
-          description: Duration (number of seconds, minutes, hours, etc.)
-          type: integer
-          minimum: 0
-        units:
-          description: Time unit enumerated
-          $ref: '#/components/schemas/TimeUnit'
-      required:
-      - amount
-      - units
-    Error403:
-      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'This code indicates that the server understood
+            description: 'The following error code:
 
-              the request but refuses to authorize it because
-
-              of one of the following error codes:
-
-              - accessDenied: Access denied
-
-              - forbiddenRequester: Forbidden requester
-
-              - tooManyUsers: Too many users'
-            $ref: '#/components/schemas/Error403Code'
+              - notFound: A current representation for the target resource not found'
+            type: string
+            enum:
+            - notFound
         required:
         - code
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string parameter
-
-        - missingQueryValue: The URI is missing a required query-string parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body'
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    RelatedPlaceRefOrQuery:
-      description: Allows pointing to a place by referring to a GeographicAddress, GeographicSite, or providing GeographicAddress by value. It also provides additional information like the `role` the place plays for given Product and `contact` needed access to this place.
-      type: object
-      properties:
-        place:
-          $ref: '#/components/schemas/PlaceRefOrQuery'
-        role:
-          description: Role of this place. The values that can be specified here are described by Product Specification (e.g. "INSTALL_LOCATION").
-          type: string
-        contact:
-          description: The person to call to get access to this place in case such access is required to complete the evaluation of this POQ Item.
-          type: array
-          items:
-            $ref: '#/components/schemas/ContactInformation'
-      required:
-      - place
-      - role
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
     MEFProductOrderItemRef:
       description: A reference to a ProductOrder item
       type: object
@@ -626,6 +364,63 @@ components:
       required:
       - productOrderId
       - productOrderItemId
+    ProductPrice:
+      description: An amount, usually of money, that represents the actual price paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined period of time.
+      type: object
+      properties:
+        unitOfMeasure:
+          description: Unit of Measure if price depending on it (Gb, SMS volume, etc..)
+          type: string
+        price:
+          description: Value of the Price
+          $ref: '#/components/schemas/Price'
+        name:
+          description: A short descriptive name such as "Subscription price".
+          type: string
+        priceType:
+          description: A category that describes the price, such as recurring, nonRecurring, usageBased
+          $ref: '#/components/schemas/MEFPriceType'
+        description:
+          description: A narrative that explains in detail the semantics of this product price.
+          type: string
+        recurringChargePeriod:
+          description: Used for a recurring charge to indicate a period
+          $ref: '#/components/schemas/Duration'
+      required:
+      - price
+      - priceType
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    PlaceRefOrQuery:
+      description: A place described by reference to a Geographic Address, Geographic Site or by Geographic Address Representations.
+      type: object
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          GeographicAddressRef: '#/components/schemas/GeographicAddressRef'
+          GeographicSiteRef: '#/components/schemas/GeographicSiteRef'
+          GeographicAddress_Query: '#/components/schemas/GeographicAddress_Query'
+      oneOf:
+      - $ref: '#/components/schemas/GeographicAddressRef'
+      - $ref: '#/components/schemas/GeographicSiteRef'
+      - $ref: '#/components/schemas/GeographicAddress_Query'
     GeographicPointRepresentation:
       description: 'A GeographicPointRepresentation defines a geographic point through coordinates.
 
@@ -648,19 +443,36 @@ components:
       - latitude
       - longitude
       - spatialRef
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            description: 'The following error code:
+            description: 'One of the following error codes:
 
-              - notFound: A current representation for the target resource not found'
-            type: string
-            enum:
-            - notFound
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or expired'
+            $ref: '#/components/schemas/Error401Code'
         required:
         - code
     MEFProduct:
@@ -746,294 +558,6 @@ components:
       - startDate
       - status
       - statusChange
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingCredentials: No credentials provided.
-
-              - invalidCredentials: Provided credentials are invalid or expired'
-            $ref: '#/components/schemas/Error401Code'
-        required:
-        - code
-    GeographicAddressRef:
-      description: 'A reference to a Geographic Address resource available through Address Validation API.
-
-        '
-      type: object
-      properties:
-        href:
-          description: 'Hyperlink to the referenced Address. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
-
-            '
-          type: string
-        id:
-          description: Identifier of the referenced Geographic Address. This identifier is assigned during a successful address validation request (Geographic Address Management API)
-          type: string
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - GeographicAddressRef
-      required:
-      - '@type'
-      - id
-    ProductSpecificationRef:
-      description: A reference to a structured set of well-defined technical attributes and/or behaviors that are used to construct a Product Offering for sale to a market.
-      type: object
-      properties:
-        href:
-          description: 'Hyperlink to a Product Specification in Sellers catalog. In case Seller is not providing a catalog API this field is not used. The catalog is provided by the Seller to the Buyer during onboarding.
-
-            '
-          type: string
-        id:
-          description: Unique identifier of the product specification
-          type: string
-      required:
-      - id
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
-
-              - missingQueryParameter: The URI is missing a required query-string parameter
-
-              - missingQueryValue: The URI is missing a required query-string parameter value
-
-              - invalidQuery: The query section of the URI is invalid.
-
-              - invalidBody: The request has an invalid body'
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
-    MEFItemTerm:
-      description: The term of the Item
-      type: object
-      properties:
-        duration:
-          description: Duration of the term
-          $ref: '#/components/schemas/Duration'
-        endOfTermAction:
-          description: The action that needs to be taken by the Seller once the term expires
-          $ref: '#/components/schemas/MEFEndOfTermAction'
-        name:
-          description: Name of the term
-          type: string
-        description:
-          description: Description of the term
-          type: string
-        rollInterval:
-          description: The recurring period that the Buyer is willing to pay to the end of upon disconnecting the Product after the original term has expired.
-          $ref: '#/components/schemas/Duration'
-      required:
-      - duration
-      - endOfTermAction
-      - name
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Money:
-      description: A base / value business entity used to represent money
-      type: object
-      properties:
-        unit:
-          description: Currency (ISO4217 norm uses 3 letters to define the currency)
-          type: string
-        value:
-          description: A positive floating point number
-          type: number
-          format: float
-      required:
-      - unit
-      - value
-    ProductOfferingRef:
-      description: A reference to a Product Offering offered by the Seller to the Buyer. A Product Offering contains the commercial and technical details of a Product sold by a particular Seller. A Product Offering defines all of the commercial terms and, through association with a particular Product Specification, defines all the technical attributes and behaviors of the Product. A Product Offering may constrain the allowable set of configurable technical attributes and/or behaviors specified in the associated Product Specification.
-      type: object
-      properties:
-        href:
-          description: 'Hyperlink to a Product Offering in Sellers catalog. In case Seller is not providing a catalog API this field is not used. The catalog is provided by the Seller to the Buyer during onboarding.
-
-            '
-          type: string
-        id:
-          description: id of a Product Offering. It is assigned by the Seller. The Buyer and the Seller exchange information about offerings' ids during the onboarding process.
-          type: string
-      required:
-      - id
-    MEFBillingAccountRef:
-      description: A reference to the Buyer's Billing Account
-      type: object
-      properties:
-        id:
-          description: Identifies the buyer's billing account to which the recurring and non-recurring charges for this order or order item will be billed. Required if the Buyer has more than one Billing Account with the Seller and for all new Product Orders.
-          type: string
-      required:
-      - id
-    MEFEndOfTermAction:
-      description: The action the Seller will take once the term expires.
-      type: string
-      enum:
-      - roll
-      - autoDisconnect
-      - autoRenew
-    MEFProductConfiguration:
-      description: MEFProductConfiguration is used as an extension point for MEF specific product/service payload. The `@type` attribute is used as a discriminator
-      type: object
-      properties:
-        '@type':
-          description: The name of the type, defined in the JSON schema specified  above, for the product that is the subject of the POQ Request. The named type must be a subclass of MEFProductConfiguration.
-          type: string
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
-    TimeUnit:
-      description: 'Represents a unit of time.
-
-        '
-      type: string
-      enum:
-      - seconds
-      - minutes
-      - businessHours
-      - calendarHours
-      - businessDays
-      - calendarDays
-      - months
-      - years
-    GeographicAddress_Query:
-      description: A list of representations being a subset of Geographic Address entity. This is to be used when providing a list of representations to validate or search for a Geographic Address
-      type: object
-      properties:
-        fieldedAddressRepresentation:
-          description: A list of Fielded Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/FieldedAddressRepresentation'
-        formattedAddressRepresentation:
-          description: A list of Formatted Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/FormattedAddressRepresentation'
-        geographicPointRepresentation:
-          description: A list of Geographic Point Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/GeographicPointRepresentation'
-        labelRepresentation:
-          description: A list of Label Address representations
-          type: array
-          items:
-            $ref: '#/components/schemas/LabelRepresentation'
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - GeographicAddress_Query
-      required:
-      - '@type'
-      minProperties: 2
-    FormattedAddressRepresentation:
-      description: 'A freeform text representation agreed to by the Buyer and Seller. '
-      type: object
-      properties:
-        formattedAddress:
-          description: A formatted Address Representation that contains a non-fielded address.
-          type: string
-        language:
-          description: The language in which the address is expressed. Based on ISO 639:2023
-          type: string
-          minLength: 2
-          maxLength: 2
-      required:
-      - formattedAddress
-    PlaceRefOrQuery:
-      description: A place described by reference to a Geographic Address, Geographic Site or by Geographic Address Representations.
-      type: object
-      discriminator:
-        propertyName: '@type'
-        mapping:
-          GeographicAddressRef: '#/components/schemas/GeographicAddressRef'
-          GeographicSiteRef: '#/components/schemas/GeographicSiteRef'
-          GeographicAddress_Query: '#/components/schemas/GeographicAddress_Query'
-      oneOf:
-      - $ref: '#/components/schemas/GeographicAddressRef'
-      - $ref: '#/components/schemas/GeographicSiteRef'
-      - $ref: '#/components/schemas/GeographicAddress_Query'
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
-
-              '
-            type: string
-        required:
-        - code
-    SubUnit:
-      description: Allows for sub unit identification
-      type: object
-      properties:
-        subUnitNumber:
-          description: The discriminator used for the subunit, often just a simple number but may also be a range.
-          type: string
-        subUnitType:
-          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
-          type: string
-      required:
-      - subUnitNumber
-      - subUnitType
-    MEFProductStatusChange:
-      description: Holds the reached status, reasons and associated date the Product Order status changed, populated by the Seller.
-      type: object
-      properties:
-        changeReason:
-          description: The reason why the status changed.
-          type: string
-        changeDate:
-          description: The date and time the status changed.
-          type: string
-          format: date-time
-        status:
-          description: Status of the product
-          $ref: '#/components/schemas/MEFProductStatusType'
-      required:
-      - changeDate
-      - status
     MEFProduct_Find:
       description: Class used to provide product overview retrieved in GET (by list) operation
       type: object
@@ -1085,17 +609,73 @@ components:
       required:
       - id
       - status
-    Error422Code:
-      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string parameter
+
+        - missingQueryValue: The URI is missing a required query-string parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body'
       type: string
       enum:
-      - missingProperty
-      - invalidValue
-      - invalidFormat
-      - referenceNotFound
-      - unexpectedProperty
-      - tooManyRecords
-      - otherIssue
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    ProductOfferingRef:
+      description: A reference to a Product Offering offered by the Seller to the Buyer. A Product Offering contains the commercial and technical details of a Product sold by a particular Seller. A Product Offering defines all of the commercial terms and, through association with a particular Product Specification, defines all the technical attributes and behaviors of the Product. A Product Offering may constrain the allowable set of configurable technical attributes and/or behaviors specified in the associated Product Specification.
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to a Product Offering in Sellers catalog. In case Seller is not providing a catalog API this field is not used. The catalog is provided by the Seller to the Buyer during onboarding.
+
+            '
+          type: string
+        id:
+          description: id of a Product Offering. It is assigned by the Seller. The Buyer and the Seller exchange information about offerings' ids during the onboarding process.
+          type: string
+      required:
+      - id
+    Price:
+      description: Provides all amounts (tax included, duty-free, tax rate) and used currency of a Price
+      type: object
+      properties:
+        taxRate:
+          description: 'Price Tax Rate. Unit: [%]. E.g. value 16 stand for 16% tax.'
+          type: number
+          format: float
+        taxIncludedAmount:
+          description: All taxes included amount (expressed in the given currency)
+          $ref: '#/components/schemas/Money'
+        dutyFreeAmount:
+          description: All taxes excluded amount (expressed in the given currency)
+          $ref: '#/components/schemas/Money'
+      required:
+      - dutyFreeAmount
+    Duration:
+      description: A Duration in a given unit of time e.g. 3 hours, or 5 days.
+      type: object
+      properties:
+        amount:
+          description: Duration (number of seconds, minutes, hours, etc.)
+          type: integer
+          minimum: 0
+        units:
+          description: Time unit enumerated
+          $ref: '#/components/schemas/TimeUnit'
+      required:
+      - amount
+      - units
+    MEFPriceType:
+      description: Indicates if the price is for recurring or non-recurring charges.
+      type: string
+      enum:
+      - recurring
+      - nonRecurring
+      - usageBased
     ProductRelationship:
       description: A relationship to existing Product. The requirements for usage for given Product are described in the Product Specification.
       type: object
@@ -1112,13 +692,433 @@ components:
       required:
       - id
       - relationshipType
-    Error401Code:
-      description: 'One of the following error codes:
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
 
-        - missingCredentials: No credentials provided.
+              - missingQueryParameter: The URI is missing a required query-string parameter
 
-        - invalidCredentials: Provided credentials are invalid or expired'
+              - missingQueryValue: The URI is missing a required query-string parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body'
+            $ref: '#/components/schemas/Error400Code'
+        required:
+        - code
+    FieldedAddressRepresentation:
+      description: A type of Address that has a discrete field and value for each type of boundary or identifier down to the lowest level of detail. For example "street number" is one field, "street name" is another field, etc.
+      type: object
+      properties:
+        streetNr:
+          description: Number identifying a specific property on a public street. It may be combined with streetNrLast for ranged addresses.
+          type: string
+        streetNrSuffix:
+          description: The first street number suffix (in a street number range) or the suffix for the street number if there is no range
+          type: string
+        streetNrLast:
+          description: Last number in a range of street numbers allocated to an Address
+          type: string
+        streetNrLastSuffix:
+          description: Last street number suffix for a ranged Address
+          type: string
+        streetPreDirection:
+          description: The direction of the street that appears before the Street Name
+          type: string
+        streetName:
+          description: Name of the street or other street type
+          type: string
+        streetType:
+          description: The type of street (e.g., alley, avenue, boulevard, brae, crescent, drive, highway, lane, terrace, parade, place, tarn, way, wharf)
+          type: string
+        streetPostDirection:
+          description: A modifier denoting a relative direction that appears after the Street Name.
+          type: string
+        poBox:
+          description: Number identifying a specific location in a post office.
+          type: string
+        locality:
+          description: An area of defined or undefined boundaries within a local authority or other legislatively defined area.
+          type: string
+        city:
+          description: City in which the Address is located.
+          type: string
+        postcode:
+          description: A descriptor for a postal delivery area used to speed and simplify the delivery of mail (also known as zip code)
+          type: string
+        postcodeExtension:
+          description: 'The extension used on a postal code. Note: there are different use codes for this attribute depending upon the country.'
+          type: string
+        stateOrProvince:
+          description: The State or Province in which the Address is located.
+          type: string
+        countryCode:
+          description: Country in which the Address is located, defined using two characters as defined in ISO 3166
+          type: string
+          minLength: 2
+          maxLength: 2
+        subUnit:
+          description: The Sub Unit represented as a list. This is a list to allow complex sub-unit information such as SUITE 42 ROOM A
+          type: array
+          items:
+            $ref: '#/components/schemas/SubUnit'
+        buildingName:
+          description: 'The well-known name of a building that is located at this Address (e.g., where there is one Address for a campus).
+
+            '
+          type: string
+        privateStreetNumber:
+          description: Street number on a private street within the Address.
+          type: string
+        privateStreetName:
+          description: Private streets internal to a property (e.g., a university) may have internal names that are not recorded by the land title office.
+          type: string
+        language:
+          description: The language in which the address is expressed. It MUST use the ISO 639:2023 two letter code 639:2023
+          type: string
+          minLength: 2
+          maxLength: 2
+    GeographicSiteRef:
+      description: 'A reference to a Geographic Site resource available through Service Site API
+
+        '
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to the referenced Site. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
+
+            '
+          type: string
+        id:
+          description: Identifier of the referenced Geographic Site.
+          type: string
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - GeographicSiteRef
+      required:
+      - '@type'
+      - id
+    RelatedPlaceRefOrQuery:
+      description: Allows pointing to a place by referring to a GeographicAddress, GeographicSite, or providing GeographicAddress by value. It also provides additional information like the `role` the place plays for given Product and `contact` needed access to this place.
+      type: object
+      properties:
+        place:
+          $ref: '#/components/schemas/PlaceRefOrQuery'
+        role:
+          description: Role of this place. The values that can be specified here are described by Product Specification (e.g. "INSTALL_LOCATION").
+          type: string
+        contact:
+          description: The person to call to get access to this place in case such access is required to complete the evaluation of this POQ Item.
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactInformation'
+      required:
+      - place
+      - role
+    ContactInformation:
+      description: Contact data for a person or organization that is involved in the product offering qualification. In a given context it is always specified by the Seller (e.g. Seller Contact Information) or by the Buyer.
+      type: object
+      properties:
+        number:
+          description: Phone number
+          type: string
+        emailAddress:
+          description: Email address
+          type: string
+        postalAddress:
+          description: Identifies the postal address of the person or office to be contacted.
+          $ref: '#/components/schemas/FieldedAddressRepresentation'
+        organization:
+          description: The organization or company that the contact belongs to
+          type: string
+        name:
+          description: Name of the contact
+          type: string
+        numberExtension:
+          description: Phone number extension
+          type: string
+      required:
+      - emailAddress
+      - name
+      - number
+    SubUnit:
+      description: Allows for sub unit identification
+      type: object
+      properties:
+        subUnitNumber:
+          description: The discriminator used for the subunit, often just a simple number but may also be a range.
+          type: string
+        subUnitType:
+          description: The type of subunit e.g. BERTH, FLAT, PIER, SUITE, SHOP, TOWER, UNIT, WHARF.
+          type: string
+      required:
+      - subUnitNumber
+      - subUnitType
+    GeographicAddress_Query:
+      description: A list of representations being a subset of Geographic Address entity. This is to be used when providing a list of representations to validate or search for a Geographic Address
+      type: object
+      properties:
+        fieldedAddressRepresentation:
+          description: A list of Fielded Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldedAddressRepresentation'
+        formattedAddressRepresentation:
+          description: A list of Formatted Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/FormattedAddressRepresentation'
+        geographicPointRepresentation:
+          description: A list of Geographic Point Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/GeographicPointRepresentation'
+        labelRepresentation:
+          description: A list of Label Address representations
+          type: array
+          items:
+            $ref: '#/components/schemas/LabelRepresentation'
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - GeographicAddress_Query
+      required:
+      - '@type'
+      minProperties: 2
+    FormattedAddressRepresentation:
+      description: 'A freeform text representation agreed to by the Buyer and Seller. '
+      type: object
+      properties:
+        formattedAddress:
+          description: A formatted Address Representation that contains a non-fielded address.
+          type: string
+        language:
+          description: The language in which the address is expressed. Based on ISO 639:2023
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+      - formattedAddress
+    Money:
+      description: A base / value business entity used to represent money
+      type: object
+      properties:
+        unit:
+          description: Currency (ISO4217 norm uses 3 letters to define the currency)
+          type: string
+        value:
+          description: A positive floating point number
+          type: number
+          format: float
+      required:
+      - unit
+      - value
+    MEFItemTerm:
+      description: The term of the Item
+      type: object
+      properties:
+        duration:
+          description: Duration of the term
+          $ref: '#/components/schemas/Duration'
+        endOfTermAction:
+          description: The action that needs to be taken by the Seller once the term expires
+          $ref: '#/components/schemas/MEFEndOfTermAction'
+        name:
+          description: Name of the term
+          type: string
+        description:
+          description: Description of the term
+          type: string
+        rollInterval:
+          description: The recurring period that the Buyer is willing to pay to the end of upon disconnecting the Product after the original term has expired.
+          $ref: '#/components/schemas/Duration'
+      required:
+      - duration
+      - endOfTermAction
+      - name
+    MEFProductConfiguration:
+      description: MEFProductConfiguration is used as an extension point for MEF specific product/service payload. The `@type` attribute is used as a discriminator
+      type: object
+      properties:
+        '@type':
+          description: The name of the type, defined in the JSON schema specified  above, for the product that is the subject of the POQ Request. The named type must be a subclass of MEFProductConfiguration.
+          type: string
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+    MEFProductStatusType:
+      description: 'Possible values for the status of a MEF product
+
+
+        | name                        | MEF 81 name                 |
+
+        | --------------------------- | --------------------------- |
+
+        | `active`                    | ACTIVE                      |
+
+        | `active.pendingChange`      | ACTIVE_PENDING_CHANGE       |
+
+        | `pendingTerminate`          | ACTIVE_PENDING_TERMINATE    |
+
+        | `cancelled`                 | CANCELLED                   |
+
+        | `pendingActive`             | PENDING                     |
+
+        | `suspended`                 | SUSPENDED                   |
+
+        | `suspendedPendingTerminate` | SUSPENDED_PENDING_TERMINATE |
+
+        | `terminated`                | TERMINATED                  |'
       type: string
       enum:
-      - missingCredentials
-      - invalidCredentials
+      - active
+      - active.pendingChange
+      - cancelled
+      - pendingActive
+      - pendingTerminate
+      - suspended
+      - suspendedPendingTerminate
+      - terminated
+    GeographicAddressRef:
+      description: 'A reference to a Geographic Address resource available through Address Validation API.
+
+        '
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to the referenced Address. Hyperlink MAY be used by the Seller in responses. Hyperlink MUST be ignored by the Seller in case it is provided by the Buyer in a request.
+
+            '
+          type: string
+        id:
+          description: Identifier of the referenced Geographic Address. This identifier is assigned during a successful address validation request (Geographic Address Management API)
+          type: string
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - GeographicAddressRef
+      required:
+      - '@type'
+      - id
+    MEFEndOfTermAction:
+      description: The action the Seller will take once the term expires.
+      type: string
+      enum:
+      - roll
+      - autoDisconnect
+      - autoRenew
+    Error403:
+      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'This code indicates that the server understood
+
+              the request but refuses to authorize it because
+
+              of one of the following error codes:
+
+              - accessDenied: Access denied
+
+              - forbiddenRequester: Forbidden requester
+
+              - tooManyUsers: Too many users'
+            $ref: '#/components/schemas/Error403Code'
+        required:
+        - code
+    ProductSpecificationRef:
+      description: A reference to a structured set of well-defined technical attributes and/or behaviors that are used to construct a Product Offering for sale to a market.
+      type: object
+      properties:
+        href:
+          description: 'Hyperlink to a Product Specification in Sellers catalog. In case Seller is not providing a catalog API this field is not used. The catalog is provided by the Seller to the Buyer during onboarding.
+
+            '
+          type: string
+        id:
+          description: Unique identifier of the product specification
+          type: string
+      required:
+      - id
+    Error422Code:
+      description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+      type: string
+      enum:
+      - missingProperty
+      - invalidValue
+      - invalidFormat
+      - referenceNotFound
+      - unexpectedProperty
+      - tooManyRecords
+      - otherIssue
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
+            type: string
+            enum:
+            - internalError
+        required:
+        - code
+    MEFBillingAccountRef:
+      description: A reference to the Buyer's Billing Account
+      type: object
+      properties:
+        id:
+          description: Identifies the buyer's billing account to which the recurring and non-recurring charges for this order or order item will be billed. Required if the Buyer has more than one Billing Account with the Seller and for all new Product Orders.
+          type: string
+      required:
+      - id
+    LabelRepresentation:
+      description: A unique identifier controlled by a generally accepted independent administrative authority that specifies a fixed geographical location.
+      type: object
+      properties:
+        label:
+          description: The unique reference to a Geographic Address assigned by the Administrative Authority.
+          type: string
+        administrativeAuthority:
+          description: The organization or standard from the organization that administers this Geographic Address Label ensuring it is unique within the Administrative Authority.
+          type: string
+        language:
+          description: The language in which the label is expressed. Based on ISO 639:2023
+          type: string
+          minLength: 2
+          maxLength: 2
+      required:
+      - administrativeAuthority
+      - label
+    MEFProductStatusChange:
+      description: Holds the reached status, reasons and associated date the Product Order status changed, populated by the Seller.
+      type: object
+      properties:
+        changeReason:
+          description: The reason why the status changed.
+          type: string
+        changeDate:
+          description: The date and time the status changed.
+          type: string
+          format: date-time
+        status:
+          description: Status of the product
+          $ref: '#/components/schemas/MEFProductStatusType'
+      required:
+      - changeDate
+      - status
