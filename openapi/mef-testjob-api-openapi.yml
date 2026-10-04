@@ -252,67 +252,42 @@ paths:
                 $ref: '#/components/schemas/Error500'
 components:
   schemas:
-    TerminationError:
-      description: This indicates an error that caused an Item to be terminated. The code and propertyPath should be used like in Error422.
-      type: object
-      properties:
-        code:
-          description: "One of the following error codes:\n  - missingProperty: The property the SOF has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the SOF system\n  - unexpectedProperty: Additional property, not expected by the SOF has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the SOF's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-          $ref: '#/components/schemas/Error422Code'
-        propertyPath:
-          description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+    TestJobStateType:
+      description: 'The state of the Test Job.
 
-            Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
 
-            '
-          type: string
-        value:
-          description: Text to describe the reason of the termination.
-          type: string
-    Error404:
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
+        | State                    | Mplify 136.1 name        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-              - notFound: A current representation for the target resource
+        | -------------------------| -----------------------| -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 
-              not found
+        | `acknowledged`           | ACKNOWLEDGED           | The Create Test Job request has been received from the Buyer/Client and the Seller/Server has assigned a Test Job Identifier to it. If the request attributes fail validation, the Create Test Job moves to the REJECTED state. If the attributes pass validation, it is then determined if the Create Test Job Start Date Time is immediate or if the Create Test Job Start Date Time indicates that the Test Job is to be scheduled for a later date time. If the Test Job is to be scheduled the Test Job moves to the SCHEDULED state and awaits the scheduled date and time. If the Test Job is to be performed immediately, the Test Job moves to the IN_PROGRESS state and Test Results begin.|
 
-              '
-            type: string
-            enum:
-            - notFound
-        required:
-        - code
-    Error400:
-      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'One of the following error codes:
+        | `assessingCancellation`   | ASSESSING_CANCELLATION | A Cancel Test Job  request is received while the Test Job is in the IN_PROGRESS, SUSPENDED or SCHEDULED state. If the Cancel Test Job request is approved, the Test Job moves to the CANCELLED state. If not, the Test Job returns to the IN_PROGRESS, SUSPENDED or SCHEDULED state.                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
-              - missingQueryParameter: The URI is missing a required
+        | `assessingModification`  | ASSESSING_MODIFICATION | A Modify Test Job request was received while the Test Job is in the SUSPENDED or SCHEDULED state. If the Modify Test Job is accepted, the Test Job is updated. If the Modify Test Job is declined, the Test Job is not updated and returns to the SUSPENDED or SCHEDULED state.                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
-              query-string parameter
+        | `cancelled`              | CANCELLED              | A Cancel Test Job request is received from the Buyer/Client.  If the request is accepted, the Test Job moves to the CANCELLED state.  The Test Job must be in the IN_PROGRESS, SCHEDULED, or SUSPENDED, state.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
-              - missingQueryValue: The URI is missing a required query-string
+        | `completed`              | COMPLETED              | The Test Job has reached the End Date Time or has completed all Test Measurements and provided Test Results.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
-              parameter value
+        | `inProgress`             | IN_PROGRESS            | Whether an immediate request or a scheduled request, the Test Job moves to the IN_PROGRESS state when it begins performing Test Results. If a Cancel Test Job request is received and accepted, the Test Job moves to the CANCELLED state. If the Cancel Test Job request is declined, the Test Job returns to the IN_PROGRESS state and continues Test Results until they are completed. If a Suspend Test Job request is received, the Test Job moves to the SUSPENDED state.                                                                                                                                                                                                                      |
 
-              - invalidQuery: The query section of the URI is invalid.
+        | `rejected`               | REJECTED               | The Create Test Job request fails validation and is rejected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-              - invalidBody: The request has an invalid body
+        | `scheduled`              | SCHEDULED              | The Test Job is scheduled to start at a later time. The Test Job stays in the SCHEDULED state until the Start Date and Time is reached. The Test Job moves to IN_PROGRESS when the Start Date and Time is reached. A Test Job with the state SCHEDULED can be moved to the SUSPENDED or CANCELLED state.                                                                                                                                                                                                                                                                                                                                                                                             |
 
-              '
-            $ref: '#/components/schemas/Error400Code'
-        required:
-        - code
+        | `suspended`              | SUSPENDED              | A Test Job in the IN_PROGRESS or SCHEDULED state receives a Suspend Test Job request. The Test Job moves to the SUSPENDED state.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |'
+      type: string
+      enum:
+      - acknowledged
+      - assessingCancellation
+      - assessingModification
+      - cancelled
+      - completed
+      - inProgress
+      - rejected
+      - scheduled
+      - suspended
     TimeUnit:
       description: 'Represents a unit of time.
 
@@ -327,24 +302,161 @@ components:
       - calendarDays
       - months
       - years
-    Error422:
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+    Error401Code:
+      description: 'One of the following error codes:
 
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+        - missingCredentials: No credentials provided.
 
-              '
-            type: string
-        required:
-        - code
+        - invalidCredentials: Provided credentials are invalid or expired
+
+        '
+      type: string
+      enum:
+      - missingCredentials
+      - invalidCredentials
+    Duration:
+      description: A Duration in a given unit of time e.g. 3 hours, or 5 days.
+      type: object
+      properties:
+        amount:
+          description: Duration (number of seconds, minutes, hours, etc.)
+          type: integer
+          minimum: 0
+        units:
+          description: Time unit enumerated
+          $ref: '#/components/schemas/TimeUnit'
+      required:
+      - amount
+      - units
+    Error403Code:
+      description: 'This code indicates that the server understood
+
+        the request but refuses to authorize it because
+
+        of one of the following error codes:
+
+        - accessDenied: Access denied
+
+        - forbiddenRequester: Forbidden requester
+
+        - tooManyUsers: Too many users'
+      type: string
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    ServiceRef:
+      description: Reference to a Service instance.
+      type: object
+      properties:
+        href:
+          description: Hyperlink reference to Service
+          type: string
+        id:
+          description: unique identifier of Service
+          type: string
+      required:
+      - id
+    TestProfileRefOrValue:
+      description: Defines the reference to Test Profile or defines values from TestProfile type.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          TestProfileRef: '#/components/schemas/TestProfileRef'
+          TestProfileValue: '#/components/schemas/TestProfileValue'
+      properties:
+        '@type':
+          type: string
+          description: This field is used as a discriminator to differentiate if object relates directly to Test Profile entity or defines values from TestProfile type.
+      required:
+      - '@type'
+    Error400Code:
+      description: 'One of the following error codes:
+
+        - missingQueryParameter: The URI is missing a required query-string
+
+        parameter
+
+        - missingQueryValue: The URI is missing a required query-string
+
+        parameter value
+
+        - invalidQuery: The query section of the URI is invalid.
+
+        - invalidBody: The request has an invalid body
+
+        '
+      type: string
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    Error:
+      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+
+        '
+      type: object
+      properties:
+        message:
+          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
+          type: string
+        reason:
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          type: string
+          maxLength: 255
+        referenceError:
+          description: URL pointing to documentation describing the error
+          type: string
+          format: uri
+      required:
+      - reason
+    ServiceSpecificTestJobConfiguration:
+      description: ServiceSpecificTestJobConfiguration is used as an extension point for schema to be used that defines the Test Measure attributes. The `@type` attribute is used as a discriminator.
+      type: object
+      properties:
+        '@type':
+          description: The named type must be a subclass of ServiceSpecificTestJobConfiguration.
+          type: string
+      required:
+      - '@type'
+      discriminator:
+        propertyName: '@type'
+    TestJob_Common:
+      description: A definition of Test Job for a specific Service Identifier.
+      type: object
+      properties:
+        name:
+          description: The name of the Test Job.
+          type: string
+        description:
+          description: A description of the Test Job.
+          type: string
+        requestedStartDateTime:
+          description: The start date and time of the Test Job. If the Buyer desires to schedule a test, this is a future date/time. If the Buyer desires an immediate test, this is empty.
+          type: string
+          format: date-time
+        requestedEndDateTime:
+          description: The end date and time of the Test Job.
+          type: string
+          format: date-time
+        recurrencePeriod:
+          $ref: '#/components/schemas/Duration'
+        testProfile:
+          $ref: '#/components/schemas/TestProfileRefOrValue'
+        relatedServiceFrom:
+          $ref: '#/components/schemas/ServiceRef'
+        relatedServiceTo:
+          $ref: '#/components/schemas/ServiceRef'
+        serviceSpecificTestJobConfiguration:
+          $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
+      required:
+      - name
+      - relatedServiceFrom
+      - relatedServiceTo
+      - requestedEndDateTime
+      - serviceSpecificTestJobConfiguration
+      - testProfile
     TestJob:
       allOf:
       - $ref: '#/components/schemas/TestJob_Common'
@@ -387,6 +499,85 @@ components:
         - id
         - lastModifiedDate
         - state
+    Error500:
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - internalError: Internal server error - the server encountered
+
+              an unexpected condition that prevented it from fulfilling the
+
+              request.
+
+              '
+            type: string
+            enum:
+            - internalError
+        required:
+        - code
+    Error403:
+      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'This code indicates that the server understood
+
+              the request but refuses to authorize it because
+
+              of one of the following error codes:
+
+              - accessDenied: Access denied
+
+              - forbiddenRequester: Forbidden requester
+
+              - tooManyUsers: Too many users'
+            $ref: '#/components/schemas/Error403Code'
+        required:
+        - code
+    Error401:
+      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'One of the following error codes:
+
+              - missingCredentials: No credentials provided.
+
+              - invalidCredentials: Provided credentials are invalid or
+
+              expired
+
+              '
+            $ref: '#/components/schemas/Error401Code'
+        required:
+        - code
+    Error422:
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+              '
+            type: string
+        required:
+        - code
     TestJob_Find:
       description: This class represents a single list item for the response of `listTestJob`
       type: object
@@ -417,241 +608,8 @@ components:
       - requestedEndDateTime
       - requestedStartDateTime
       - testProfile
-    Error400Code:
-      description: 'One of the following error codes:
-
-        - missingQueryParameter: The URI is missing a required query-string
-
-        parameter
-
-        - missingQueryValue: The URI is missing a required query-string
-
-        parameter value
-
-        - invalidQuery: The query section of the URI is invalid.
-
-        - invalidBody: The request has an invalid body
-
-        '
-      type: string
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    Error500:
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'The following error code:
-
-              - internalError: Internal server error - the server encountered
-
-              an unexpected condition that prevented it from fulfilling the
-
-              request.
-
-              '
-            type: string
-            enum:
-            - internalError
-        required:
-        - code
-    TestProfileRefOrValue:
-      description: Defines the reference to Test Profile or defines values from TestProfile type.
-      discriminator:
-        propertyName: '@type'
-        mapping:
-          TestProfileRef: '#/components/schemas/TestProfileRef'
-          TestProfileValue: '#/components/schemas/TestProfileValue'
-      properties:
-        '@type':
-          type: string
-          description: This field is used as a discriminator to differentiate if object relates directly to Test Profile entity or defines values from TestProfile type.
-      required:
-      - '@type'
-    Error403:
-      description: Forbidden. This code indicates that the server understood the request but refuses to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            description: 'This code indicates that the server understood
-
-              the request but refuses to authorize it because
-
-              of one of the following error codes:
-
-              - accessDenied: Access denied
-
-              - forbiddenRequester: Forbidden requester
-
-              - tooManyUsers: Too many users'
-            $ref: '#/components/schemas/Error403Code'
-        required:
-        - code
-    Error401Code:
-      description: 'One of the following error codes:
-
-        - missingCredentials: No credentials provided.
-
-        - invalidCredentials: Provided credentials are invalid or expired
-
-        '
-      type: string
-      enum:
-      - missingCredentials
-      - invalidCredentials
-    Error403Code:
-      description: 'This code indicates that the server understood
-
-        the request but refuses to authorize it because
-
-        of one of the following error codes:
-
-        - accessDenied: Access denied
-
-        - forbiddenRequester: Forbidden requester
-
-        - tooManyUsers: Too many users'
-      type: string
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    TestJob_Common:
-      description: A definition of Test Job for a specific Service Identifier.
-      type: object
-      properties:
-        name:
-          description: The name of the Test Job.
-          type: string
-        description:
-          description: A description of the Test Job.
-          type: string
-        requestedStartDateTime:
-          description: The start date and time of the Test Job. If the Buyer desires to schedule a test, this is a future date/time. If the Buyer desires an immediate test, this is empty.
-          type: string
-          format: date-time
-        requestedEndDateTime:
-          description: The end date and time of the Test Job.
-          type: string
-          format: date-time
-        recurrencePeriod:
-          $ref: '#/components/schemas/Duration'
-        testProfile:
-          $ref: '#/components/schemas/TestProfileRefOrValue'
-        relatedServiceFrom:
-          $ref: '#/components/schemas/ServiceRef'
-        relatedServiceTo:
-          $ref: '#/components/schemas/ServiceRef'
-        serviceSpecificTestJobConfiguration:
-          $ref: '#/components/schemas/ServiceSpecificTestJobConfiguration'
-      required:
-      - name
-      - relatedServiceFrom
-      - relatedServiceTo
-      - requestedEndDateTime
-      - serviceSpecificTestJobConfiguration
-      - testProfile
-    Error:
-      description: 'Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-
-        '
-      type: object
-      properties:
-        message:
-          description: Text that provides mode details and corrective actions related to the error. This can be shown to a client user.
-          type: string
-        reason:
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          type: string
-          maxLength: 255
-        referenceError:
-          description: URL pointing to documentation describing the error
-          type: string
-          format: uri
-      required:
-      - reason
-    Duration:
-      description: A Duration in a given unit of time e.g. 3 hours, or 5 days.
-      type: object
-      properties:
-        amount:
-          description: Duration (number of seconds, minutes, hours, etc.)
-          type: integer
-          minimum: 0
-        units:
-          description: Time unit enumerated
-          $ref: '#/components/schemas/TimeUnit'
-      required:
-      - amount
-      - units
-    ServiceRef:
-      description: Reference to a Service instance.
-      type: object
-      properties:
-        href:
-          description: Hyperlink reference to Service
-          type: string
-        id:
-          description: unique identifier of Service
-          type: string
-      required:
-      - id
-    TestJobStateType:
-      description: 'The state of the Test Job.
-
-
-        | State                    | Mplify 136.1 name        | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-        | -------------------------| -----------------------| -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-
-        | `acknowledged`           | ACKNOWLEDGED           | The Create Test Job request has been received from the Buyer/Client and the Seller/Server has assigned a Test Job Identifier to it. If the request attributes fail validation, the Create Test Job moves to the REJECTED state. If the attributes pass validation, it is then determined if the Create Test Job Start Date Time is immediate or if the Create Test Job Start Date Time indicates that the Test Job is to be scheduled for a later date time. If the Test Job is to be scheduled the Test Job moves to the SCHEDULED state and awaits the scheduled date and time. If the Test Job is to be performed immediately, the Test Job moves to the IN_PROGRESS state and Test Results begin.|
-
-        | `assessingCancellation`   | ASSESSING_CANCELLATION | A Cancel Test Job  request is received while the Test Job is in the IN_PROGRESS, SUSPENDED or SCHEDULED state. If the Cancel Test Job request is approved, the Test Job moves to the CANCELLED state. If not, the Test Job returns to the IN_PROGRESS, SUSPENDED or SCHEDULED state.                                                                                                                                                                                                                                                                                                                                                                                                                 |
-
-        | `assessingModification`  | ASSESSING_MODIFICATION | A Modify Test Job request was received while the Test Job is in the SUSPENDED or SCHEDULED state. If the Modify Test Job is accepted, the Test Job is updated. If the Modify Test Job is declined, the Test Job is not updated and returns to the SUSPENDED or SCHEDULED state.                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-        | `cancelled`              | CANCELLED              | A Cancel Test Job request is received from the Buyer/Client.  If the request is accepted, the Test Job moves to the CANCELLED state.  The Test Job must be in the IN_PROGRESS, SCHEDULED, or SUSPENDED, state.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-
-        | `completed`              | COMPLETED              | The Test Job has reached the End Date Time or has completed all Test Measurements and provided Test Results.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-
-        | `inProgress`             | IN_PROGRESS            | Whether an immediate request or a scheduled request, the Test Job moves to the IN_PROGRESS state when it begins performing Test Results. If a Cancel Test Job request is received and accepted, the Test Job moves to the CANCELLED state. If the Cancel Test Job request is declined, the Test Job returns to the IN_PROGRESS state and continues Test Results until they are completed. If a Suspend Test Job request is received, the Test Job moves to the SUSPENDED state.                                                                                                                                                                                                                      |
-
-        | `rejected`               | REJECTED               | The Create Test Job request fails validation and is rejected.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-
-        | `scheduled`              | SCHEDULED              | The Test Job is scheduled to start at a later time. The Test Job stays in the SCHEDULED state until the Start Date and Time is reached. The Test Job moves to IN_PROGRESS when the Start Date and Time is reached. A Test Job with the state SCHEDULED can be moved to the SUSPENDED or CANCELLED state.                                                                                                                                                                                                                                                                                                                                                                                             |
-
-        | `suspended`              | SUSPENDED              | A Test Job in the IN_PROGRESS or SCHEDULED state receives a Suspend Test Job request. The Test Job moves to the SUSPENDED state.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |'
-      type: string
-      enum:
-      - acknowledged
-      - assessingCancellation
-      - assessingModification
-      - cancelled
-      - completed
-      - inProgress
-      - rejected
-      - scheduled
-      - suspended
-    ServiceSpecificTestJobConfiguration:
-      description: ServiceSpecificTestJobConfiguration is used as an extension point for schema to be used that defines the Test Measure attributes. The `@type` attribute is used as a discriminator.
-      type: object
-      properties:
-        '@type':
-          description: The named type must be a subclass of ServiceSpecificTestJobConfiguration.
-          type: string
-      required:
-      - '@type'
-      discriminator:
-        propertyName: '@type'
-    Error401:
-      description: Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)
+    Error400:
+      description: Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
@@ -659,16 +617,39 @@ components:
           code:
             description: 'One of the following error codes:
 
-              - missingCredentials: No credentials provided.
+              - missingQueryParameter: The URI is missing a required
 
-              - invalidCredentials: Provided credentials are invalid or
+              query-string parameter
 
-              expired
+              - missingQueryValue: The URI is missing a required query-string
+
+              parameter value
+
+              - invalidQuery: The query section of the URI is invalid.
+
+              - invalidBody: The request has an invalid body
 
               '
-            $ref: '#/components/schemas/Error401Code'
+            $ref: '#/components/schemas/Error400Code'
         required:
         - code
+    TerminationError:
+      description: This indicates an error that caused an Item to be terminated. The code and propertyPath should be used like in Error422.
+      type: object
+      properties:
+        code:
+          description: "One of the following error codes:\n  - missingProperty: The property the SOF has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the SOF system\n  - unexpectedProperty: Additional property, not expected by the SOF has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the SOF's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
+          $ref: '#/components/schemas/Error422Code'
+        propertyPath:
+          description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+            Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).
+
+            '
+          type: string
+        value:
+          description: Text to describe the reason of the termination.
+          type: string
     Error422Code:
       description: "One of the following error codes:\n  - missingProperty: The property the Seller has expected is not present in the payload\n  - invalidValue: The property has an incorrect value\n  - invalidFormat: The property value does not comply with the expected value format\n  - referenceNotFound: The object referenced by the property cannot be identified in the Seller system\n  - unexpectedProperty: Additional property, not expected by the Seller has been provided\n  - tooManyRecords: the number of records to be provided in the response exceeds the Seller's threshold.\n  - otherIssue: Other problem was identified (detailed information provided in a reason)\n"
       type: string
@@ -680,3 +661,22 @@ components:
       - unexpectedProperty
       - tooManyRecords
       - otherIssue
+    Error404:
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            description: 'The following error code:
+
+              - notFound: A current representation for the target resource
+
+              not found
+
+              '
+            type: string
+            enum:
+            - notFound
+        required:
+        - code
