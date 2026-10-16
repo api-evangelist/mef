@@ -905,35 +905,49 @@ paths:
       - faultManagementJob
 components:
   schemas:
-    FaultManagementJobProcessStateType:
+    ServiceSpecificConfiguration:
+      type: object
+      description: ServiceSpecificConfiguration is used as an extension point for Mplify-specific service fault management configuration. The `@type` attribute is used as a discriminator.
+      discriminator:
+        propertyName: '@type'
+      properties:
+        '@type':
+          description: Uniquely identifies the type of fault management job configuration. In the case of Mplify services, this is the URN provided in the fault management configuration specification. The named type must be a  subclass of ServiceSpecificConfiguration.
+          type: string
+      required:
+      - '@type'
+    TimeDurationUnits:
+      description: The unit of measure in the duration. For example, if an interval is 2ms, this element is MS.
       type: string
-      description: 'The state of the process related to the Fault Management Job
-
-
-        | state          | Mplify 133.1 name | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-
-        | -------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-
-        | `acknowledged` | Acknowledged      | The Cancel/Modify Fault Management Job request has been received by the Seller/Server and has passed basic validation. Fault Management Job Process Identifier is assigned in the Acknowledged state. The request remains Acknowledged until all validations as applicable are completed. If the attributes are validated, the request moves to the In-Progress state. If not all attributes are validated, the request moves to the Rejected state. |
-
-        | `completed`    | Completed         | The Cancel/Modify Fault Management Job request has been completed by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                              |
-
-        | `inProgress`   | In-Progress       | The Cancel/Modify Fault Management Job request has been validated and accepted by the Seller/Server and is in-progress.                                                                                                                                                                                                                                                                                                                              |
-
-        | `rejected`     | Rejected          | The Cancel/Modify Fault Management Job request has failed validation and has been declined by the Seller/Server.                                                                                                                                                                                                                                                                                                                                     |'
       enum:
-      - acknowledged
-      - completed
-      - inProgress
-      - rejected
-    OutputFormat:
-      type: string
-      description: List of possible output formats for the Report.
-      enum:
-      - json
-      - xml
-      - avro
-      - csv
+      - NS
+      - US
+      - MS
+      - SEC
+      - MIN
+      - HOUR
+      - DAY
+      - WEEK
+      - MONTH
+      - YEAR
+    ScheduleDefinition:
+      type: object
+      description: The schedule definition for running jobs.
+      properties:
+        scheduleDefinitionStartTime:
+          type: string
+          format: date-time
+          description: The start time of the Schedule Definition. If the attribute is empty the Schedule starts immediately after provisioning of the Job.
+        scheduleDefinitionEndTime:
+          type: string
+          format: date-time
+          description: The end time of the Schedule Definition. If the attribute is empty the Schedule runs forever, not having a time constraint.
+        recurringSchedule:
+          $ref: '#/components/schemas/RecurringSchedule'
+          description: A recurring frequency to run a job within a timeframe defined  by schedule definition, for example, every 5 minutes, 15 minutes,  1 hour, 1 day. If the attribute is empty, job runs non-stop.
+        executionDuration:
+          $ref: '#/components/schemas/TimeDuration'
+          description: "Total time for running one execution of a schedule. Depending  on the reportingPeriod attribute, one execution of a schedule might produce multiple reports (e.g., when reporting period is 15 minutes\n and executionDuration is 1 hour, every execution of a schedule\nwill produce 4 reports)."
     Error401Code:
       type: string
       description: 'One of the following error codes:
@@ -944,118 +958,71 @@ components:
       enum:
       - missingCredentials
       - invalidCredentials
-    MonitoredObjectRef:
+    ServiceFromToRef:
       type: object
-      description: Defines the reference to object which is a subject of fault management.
-      discriminator:
-        propertyName: '@type'
-        mapping:
-          EntityRef: '#/components/schemas/EntityRef'
-          ServiceFromToRef: '#/components/schemas/ServiceFromToRef'
-          ServiceRef: '#/components/schemas/ServiceRef'
-      oneOf:
-      - $ref: '#/components/schemas/EntityRef'
-      - $ref: '#/components/schemas/ServiceFromToRef'
-      - $ref: '#/components/schemas/ServiceRef'
-    Error403Code:
-      type: string
-      description: 'This code indicates that the server understood the request but refuses to authorize it because of one of the following error codes: - accessDenied: Access denied - forbiddenRequester: Forbidden requester - tooManyUsers: Too many users.'
-      enum:
-      - accessDenied
-      - forbiddenRequester
-      - tooManyUsers
-    FaultManagementJobRef:
-      type: object
-      description: A reference to a Fault Management Job resource.
+      description: Reference to Service From and Service To endpoints.
       properties:
-        faultManagementJobHref:
-          type: string
-          description: Hyperlink to the referenced Fault Management Job.
-        faultManagementJobId:
-          type: string
-          description: Identifier of the referenced Fault Management Job.
+        serviceFrom:
+          type: object
+          description: A reference to a Service From endpoint resource.
+          properties:
+            serviceFromHref:
+              type: string
+              description: Hyperlink to the Service From endpoint.
+            serviceFromId:
+              type: string
+              description: Identifier of the Service From endpoint.
+          required:
+          - serviceFromId
+        serviceTo:
+          type: object
+          description: A reference to a Service To endpoint resource.
+          properties:
+            serviceToHref:
+              type: string
+              description: Hyperlink to the Service To endpoint.
+            serviceToId:
+              type: string
+              description: Identifier of the Service To endpoint.
+          required:
+          - serviceToId
         '@type':
           description: Used to unambiguously designate the class type when using `oneOf`
           type: string
           enum:
-          - FaultManagementJobRef
+          - ServiceFromToRef
       required:
       - '@type'
-      - faultManagementJobId
-    EntityRef:
-      type: object
-      description: Reference to Entity.
-      properties:
-        '@referredType':
-          type: string
-          description: The type of the referred object. This is used to distinguish between different types of objects that can be referred to by the EntityId.
-        entityHref:
-          type: string
-          description: Hyperlink to the Entity resource. This is used to provide a link to the Entity resource in the Seller/Server system.
-        entityId:
-          type: string
-          description: Identifier of an Entity.
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - EntityRef
-      required:
-      - '@type'
-      - '@referredType'
-      - entityId
-    ModifyFaultManagementJob_Create:
-      type: object
-      description: Request for modification of an existing Fault Management Job.
-      properties:
-        description:
-          type: string
-          description: A free-text description of the Fault Management Job.
-        faultManagementJob:
-          $ref: '#/components/schemas/FaultManagementJobRef'
-          description: A reference to a Fault Management Job resource.
-        granularity:
-          $ref: '#/components/schemas/TimeDuration'
-          description: Sampling rate of the collection or production of Fault Management Job results.
-        jobPriority:
-          type: integer
-          default: 5
-          description: The priority of the Fault Management Job. The way the management application will use the Job priority to schedule Job execution is application-specific and out the scope.
-        outputFormat:
-          $ref: '#/components/schemas/OutputFormat'
-          description: List of possible output formats for the Fault Management Report.
-        reportingPeriod:
-          $ref: '#/components/schemas/TimeDuration'
-          description: Defines the interval for the report generation.
-        resultFormat:
-          $ref: '#/components/schemas/ResultFormat'
-          description: List of possible result formats that define how Seller/Server will deliver Fault Management Report to the Buyer/Client.
-        scheduleDefinition:
-          $ref: '#/components/schemas/ScheduleDefinition'
-          description: The schedule definition for running jobs.
-        serviceSpecificConfiguration:
-          $ref: '#/components/schemas/ServiceSpecificConfiguration'
-          description: ServiceSpecificConfiguration is used as an extension point for Mplify-specific service fault management configuration.
-      required:
-      - faultManagementJob
-    ServiceRef:
-      type: object
-      description: Reference to a Service.
-      properties:
-        serviceHref:
-          type: string
-          description: Hyperlink to the Service resource.
-        serviceId:
-          type: string
-          description: Identifier of the Service.
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - ServiceRef
-      required:
-      - '@type'
-      - serviceId
+      - serviceFrom
+      - serviceTo
+    Error422:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            $ref: '#/components/schemas/Error422Code'
+          propertyPath:
+            type: string
+            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
+
+              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).'
+        required:
+        - code
+      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+    Error404:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            type: string
+            description: "The following error code:\n- notFound: A current representation of the target resource \n  not found."
+            enum:
+            - notFound
+        required:
+        - code
+      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
     FaultManagementJob:
       allOf:
       - $ref: '#/components/schemas/FaultManagementJob_Create'
@@ -1089,54 +1056,6 @@ components:
         - id
         - state
         description: A Fault Management Job specifies the configuration of the job to be executed by Seller/Server as part of the troubleshooting or diagnostic process of a service, an ordered pair (e.g., two UNIs), or an entity (e.g., port).
-    CancelFaultManagementJob_Create:
-      type: object
-      description: Request for cancellation of an existing Fault Management Job.
-      properties:
-        faultManagementJob:
-          $ref: '#/components/schemas/FaultManagementJobRef'
-          description: A reference to a Fault Management Job resource.
-      required:
-      - faultManagementJob
-    Error:
-      type: object
-      description: Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
-      properties:
-        message:
-          type: string
-          description: Text that provides more details and corrective actions related to the error. This can be shown to a client user.
-        reason:
-          type: string
-          description: Text that explains the reason for the error. This can be shown to a client user.
-          maxLength: 255
-        referenceError:
-          type: string
-          description: URL pointing to documentation describing the error.
-          format: uri
-      required:
-      - reason
-    Error400Code:
-      type: string
-      description: "One of the following error codes:\n- missingQueryParameter: The URI is missing a required query-string \n  parameter.\n- missingQueryValue: The URI is missing a required query-string \n  parameter value.\n- invalidQuery: The query section of the URI is invalid.\n- invalidBody: The request has an invalid body."
-      enum:
-      - missingQueryParameter
-      - missingQueryValue
-      - invalidQuery
-      - invalidBody
-    TimeDurationUnits:
-      description: The unit of measure in the duration. For example, if an interval is 2ms, this element is MS.
-      type: string
-      enum:
-      - NS
-      - US
-      - MS
-      - SEC
-      - MIN
-      - HOUR
-      - DAY
-      - WEEK
-      - MONTH
-      - YEAR
     ModifyFaultManagementJob:
       allOf:
       - $ref: '#/components/schemas/ModifyFaultManagementJob_Create'
@@ -1160,36 +1079,138 @@ components:
         - id
         - state
       description: Request for modification of an existing Fault Management Job.
-    Error500:
+    Error:
+      type: object
+      description: Standard Class used to describe API response error Not intended to be used directly. The `code` in the HTTP header is used as a discriminator for the type of error returned in runtime.
+      properties:
+        message:
+          type: string
+          description: Text that provides more details and corrective actions related to the error. This can be shown to a client user.
+        reason:
+          type: string
+          description: Text that explains the reason for the error. This can be shown to a client user.
+          maxLength: 255
+        referenceError:
+          type: string
+          description: URL pointing to documentation describing the error.
+          format: uri
+      required:
+      - reason
+    EntityRef:
+      type: object
+      description: Reference to Entity.
+      properties:
+        '@referredType':
+          type: string
+          description: The type of the referred object. This is used to distinguish between different types of objects that can be referred to by the EntityId.
+        entityHref:
+          type: string
+          description: Hyperlink to the Entity resource. This is used to provide a link to the Entity resource in the Seller/Server system.
+        entityId:
+          type: string
+          description: Identifier of an Entity.
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - EntityRef
+      required:
+      - '@type'
+      - '@referredType'
+      - entityId
+    Error403Code:
+      type: string
+      description: 'This code indicates that the server understood the request but refuses to authorize it because of one of the following error codes: - accessDenied: Access denied - forbiddenRequester: Forbidden requester - tooManyUsers: Too many users.'
+      enum:
+      - accessDenied
+      - forbiddenRequester
+      - tooManyUsers
+    CancelFaultManagementJob:
       allOf:
-      - $ref: '#/components/schemas/Error'
+      - $ref: '#/components/schemas/CancelFaultManagementJob_Create'
       - type: object
         properties:
-          code:
+          creationDateTime:
             type: string
-            description: 'The following error code: - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
-            enum:
-            - internalError
+            format: date-time
+            description: Date when the Cancel Fault Management Job was created.
+          href:
+            type: string
+            description: Hyperlink to the Cancel Fault Management Job entity.
+          id:
+            type: string
+            description: Unique identifier for the Cancel Fault Management Job that is generated by the Seller/Server when the Cancel Fault Management Job request  `state` is set to `acknowledged`.
+          state:
+            $ref: '#/components/schemas/FaultManagementJobProcessStateType'
+            description: The state of the process related to the Fault Management Job.
         required:
-        - code
-      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
-    Error403:
+        - creationDateTime
+        - id
+        - state
+      description: Request for cancellation of an existing Fault Management Job.
+    Error401:
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            $ref: '#/components/schemas/Error403Code'
+            $ref: '#/components/schemas/Error401Code'
             description: Error code
         required:
         - code
-      description: Forbidden. This code indicates that the server understood the request but refused to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
+      description: '''Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)'''
     ResultFormat:
       type: string
       description: List of possible result formats that define how Seller/Server will deliver a Report to the Buyer/Client.
       enum:
       - attachment
       - payload
+    Error400Code:
+      type: string
+      description: "One of the following error codes:\n- missingQueryParameter: The URI is missing a required query-string \n  parameter.\n- missingQueryValue: The URI is missing a required query-string \n  parameter value.\n- invalidQuery: The query section of the URI is invalid.\n- invalidBody: The request has an invalid body."
+      enum:
+      - missingQueryParameter
+      - missingQueryValue
+      - invalidQuery
+      - invalidBody
+    OutputFormat:
+      type: string
+      description: List of possible output formats for the Report.
+      enum:
+      - json
+      - xml
+      - avro
+      - csv
+    FaultManagementJobProcessStateType:
+      type: string
+      description: 'The state of the process related to the Fault Management Job
+
+
+        | state          | Mplify 133.1 name | Description                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+
+        | -------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+
+        | `acknowledged` | Acknowledged      | The Cancel/Modify Fault Management Job request has been received by the Seller/Server and has passed basic validation. Fault Management Job Process Identifier is assigned in the Acknowledged state. The request remains Acknowledged until all validations as applicable are completed. If the attributes are validated, the request moves to the In-Progress state. If not all attributes are validated, the request moves to the Rejected state. |
+
+        | `completed`    | Completed         | The Cancel/Modify Fault Management Job request has been completed by the Seller/Server.                                                                                                                                                                                                                                                                                                                                                              |
+
+        | `inProgress`   | In-Progress       | The Cancel/Modify Fault Management Job request has been validated and accepted by the Seller/Server and is in-progress.                                                                                                                                                                                                                                                                                                                              |
+
+        | `rejected`     | Rejected          | The Cancel/Modify Fault Management Job request has failed validation and has been declined by the Seller/Server.                                                                                                                                                                                                                                                                                                                                     |'
+      enum:
+      - acknowledged
+      - completed
+      - inProgress
+      - rejected
+    CancelFaultManagementJob_Create:
+      type: object
+      description: Request for cancellation of an existing Fault Management Job.
+      properties:
+        faultManagementJob:
+          $ref: '#/components/schemas/FaultManagementJobRef'
+          description: A reference to a Fault Management Job resource.
+      required:
+      - faultManagementJob
     RecurringSchedule:
       type: object
       description: "A definition of recurring schedule to run a job based on the Cron utility in Linux-like systems. It defines how the job should periodically run at specified times, dates, or intervals.  Special characters can be used in the definition of individual fields, such as:\n  - `*` -> any value\n  - `,` -> value list separator\n  - `-` -> range of values\n  - `/` -> step values"
@@ -1255,32 +1276,66 @@ components:
         state:
           $ref: '#/components/schemas/FaultManagementJobStateType'
           description: The state of the Fault Management Job.
-    Error401:
+    ServiceRef:
+      type: object
+      description: Reference to a Service.
+      properties:
+        serviceHref:
+          type: string
+          description: Hyperlink to the Service resource.
+        serviceId:
+          type: string
+          description: Identifier of the Service.
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - ServiceRef
+      required:
+      - '@type'
+      - serviceId
+    Error400:
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
-            $ref: '#/components/schemas/Error401Code'
+            $ref: '#/components/schemas/Error400Code'
             description: Error code
         required:
         - code
-      description: '''Unauthorized.  (https://tools.ietf.org/html/rfc7235#section-3.1)'''
-    Error422:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            $ref: '#/components/schemas/Error422Code'
-          propertyPath:
-            type: string
-            description: 'A pointer to a particular property of the payload that caused the validation issue. It is highly recommended that this property should be used.
-
-              Defined using JavaScript Object Notation (JSON) Pointer (https://tools.ietf.org/html/rfc6901).'
-        required:
-        - code
-      description: Unprocessable entity due to a business validation problem. (https://tools.ietf.org/html/rfc4918#section-11.2)
+      description: '''Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)'''
+    FaultManagementJobRef:
+      type: object
+      description: A reference to a Fault Management Job resource.
+      properties:
+        faultManagementJobHref:
+          type: string
+          description: Hyperlink to the referenced Fault Management Job.
+        faultManagementJobId:
+          type: string
+          description: Identifier of the referenced Fault Management Job.
+        '@type':
+          description: Used to unambiguously designate the class type when using `oneOf`
+          type: string
+          enum:
+          - FaultManagementJobRef
+      required:
+      - '@type'
+      - faultManagementJobId
+    MonitoredObjectRef:
+      type: object
+      description: Defines the reference to object which is a subject of fault management.
+      discriminator:
+        propertyName: '@type'
+        mapping:
+          EntityRef: '#/components/schemas/EntityRef'
+          ServiceFromToRef: '#/components/schemas/ServiceFromToRef'
+          ServiceRef: '#/components/schemas/ServiceRef'
+      oneOf:
+      - $ref: '#/components/schemas/EntityRef'
+      - $ref: '#/components/schemas/ServiceFromToRef'
+      - $ref: '#/components/schemas/ServiceRef'
     FaultManagementJobStateType:
       type: string
       description: 'The state of the Fault Management Job.
@@ -1320,51 +1375,6 @@ components:
       - resourcesUnavailable
       - scheduled
       - suspended
-    ServiceSpecificConfiguration:
-      type: object
-      description: ServiceSpecificConfiguration is used as an extension point for Mplify-specific service fault management configuration. The `@type` attribute is used as a discriminator.
-      discriminator:
-        propertyName: '@type'
-      properties:
-        '@type':
-          description: Uniquely identifies the type of fault management job configuration. In the case of Mplify services, this is the URN provided in the fault management configuration specification. The named type must be a  subclass of ServiceSpecificConfiguration.
-          type: string
-      required:
-      - '@type'
-    CancelFaultManagementJob:
-      allOf:
-      - $ref: '#/components/schemas/CancelFaultManagementJob_Create'
-      - type: object
-        properties:
-          creationDateTime:
-            type: string
-            format: date-time
-            description: Date when the Cancel Fault Management Job was created.
-          href:
-            type: string
-            description: Hyperlink to the Cancel Fault Management Job entity.
-          id:
-            type: string
-            description: Unique identifier for the Cancel Fault Management Job that is generated by the Seller/Server when the Cancel Fault Management Job request  `state` is set to `acknowledged`.
-          state:
-            $ref: '#/components/schemas/FaultManagementJobProcessStateType'
-            description: The state of the process related to the Fault Management Job.
-        required:
-        - creationDateTime
-        - id
-        - state
-      description: Request for cancellation of an existing Fault Management Job.
-    Error400:
-      allOf:
-      - $ref: '#/components/schemas/Error'
-      - type: object
-        properties:
-          code:
-            $ref: '#/components/schemas/Error400Code'
-            description: Error code
-        required:
-        - code
-      description: '''Bad Request. (https://tools.ietf.org/html/rfc7231#section-6.5.1)'''
     TerminationError:
       type: object
       description: This indicates an error that caused a FM Job or FM Report to be terminated. The code and propertyPath should be used like in Error422.
@@ -1446,6 +1456,51 @@ components:
       - resultFormat
       - scheduleDefinition
       - serviceSpecificConfiguration
+    ModifyFaultManagementJob_Create:
+      type: object
+      description: Request for modification of an existing Fault Management Job.
+      properties:
+        description:
+          type: string
+          description: A free-text description of the Fault Management Job.
+        faultManagementJob:
+          $ref: '#/components/schemas/FaultManagementJobRef'
+          description: A reference to a Fault Management Job resource.
+        granularity:
+          $ref: '#/components/schemas/TimeDuration'
+          description: Sampling rate of the collection or production of Fault Management Job results.
+        jobPriority:
+          type: integer
+          default: 5
+          description: The priority of the Fault Management Job. The way the management application will use the Job priority to schedule Job execution is application-specific and out the scope.
+        outputFormat:
+          $ref: '#/components/schemas/OutputFormat'
+          description: List of possible output formats for the Fault Management Report.
+        reportingPeriod:
+          $ref: '#/components/schemas/TimeDuration'
+          description: Defines the interval for the report generation.
+        resultFormat:
+          $ref: '#/components/schemas/ResultFormat'
+          description: List of possible result formats that define how Seller/Server will deliver Fault Management Report to the Buyer/Client.
+        scheduleDefinition:
+          $ref: '#/components/schemas/ScheduleDefinition'
+          description: The schedule definition for running jobs.
+        serviceSpecificConfiguration:
+          $ref: '#/components/schemas/ServiceSpecificConfiguration'
+          description: ServiceSpecificConfiguration is used as an extension point for Mplify-specific service fault management configuration.
+      required:
+      - faultManagementJob
+    Error403:
+      allOf:
+      - $ref: '#/components/schemas/Error'
+      - type: object
+        properties:
+          code:
+            $ref: '#/components/schemas/Error403Code'
+            description: Error code
+        required:
+        - code
+      description: Forbidden. This code indicates that the server understood the request but refused to authorize it. (https://tools.ietf.org/html/rfc7231#section-6.5.3)
     Error422Code:
       type: string
       description: "One of the following error codes:\n- missingProperty: The property that was expected is not present in the\n  payload.\n- invalidValue: The property has an incorrect value.\n- invalidFormat: The property value does not comply with the expected \n  value format.\n- referenceNotFound: The object referenced by the property cannot be \n  identified in the target system.\n- unexpectedProperty: Additional, not expected property has been \n  provided.\n- tooLargeDataset: The requested entity will produce too much data\n- tooManyRecords: The number of records to be provided in the response\n  exceeds the threshold\n- tooManyRequests: The number of simultaneous requests from one API \n  client exceeds the threshold\n- otherIssue: Other problem was identified (detailed information\n  provided in a reason)."
@@ -1459,74 +1514,19 @@ components:
       - tooManyRecords
       - tooManyRequests
       - otherIssue
-    ServiceFromToRef:
-      type: object
-      description: Reference to Service From and Service To endpoints.
-      properties:
-        serviceFrom:
-          type: object
-          description: A reference to a Service From endpoint resource.
-          properties:
-            serviceFromHref:
-              type: string
-              description: Hyperlink to the Service From endpoint.
-            serviceFromId:
-              type: string
-              description: Identifier of the Service From endpoint.
-          required:
-          - serviceFromId
-        serviceTo:
-          type: object
-          description: A reference to a Service To endpoint resource.
-          properties:
-            serviceToHref:
-              type: string
-              description: Hyperlink to the Service To endpoint.
-            serviceToId:
-              type: string
-              description: Identifier of the Service To endpoint.
-          required:
-          - serviceToId
-        '@type':
-          description: Used to unambiguously designate the class type when using `oneOf`
-          type: string
-          enum:
-          - ServiceFromToRef
-      required:
-      - '@type'
-      - serviceFrom
-      - serviceTo
-    Error404:
+    Error500:
       allOf:
       - $ref: '#/components/schemas/Error'
       - type: object
         properties:
           code:
             type: string
-            description: "The following error code:\n- notFound: A current representation of the target resource \n  not found."
+            description: 'The following error code: - internalError: Internal server error - the server encountered an unexpected condition that prevented it from fulfilling the request.'
             enum:
-            - notFound
+            - internalError
         required:
         - code
-      description: Resource for the requested path not found. (https://tools.ietf.org/html/rfc7231#section-6.5.4)
-    ScheduleDefinition:
-      type: object
-      description: The schedule definition for running jobs.
-      properties:
-        scheduleDefinitionStartTime:
-          type: string
-          format: date-time
-          description: The start time of the Schedule Definition. If the attribute is empty the Schedule starts immediately after provisioning of the Job.
-        scheduleDefinitionEndTime:
-          type: string
-          format: date-time
-          description: The end time of the Schedule Definition. If the attribute is empty the Schedule runs forever, not having a time constraint.
-        recurringSchedule:
-          $ref: '#/components/schemas/RecurringSchedule'
-          description: A recurring frequency to run a job within a timeframe defined  by schedule definition, for example, every 5 minutes, 15 minutes,  1 hour, 1 day. If the attribute is empty, job runs non-stop.
-        executionDuration:
-          $ref: '#/components/schemas/TimeDuration'
-          description: "Total time for running one execution of a schedule. Depending  on the reportingPeriod attribute, one execution of a schedule might produce multiple reports (e.g., when reporting period is 15 minutes\n and executionDuration is 1 hour, every execution of a schedule\nwill produce 4 reports)."
+      description: Internal Server Error. (https://tools.ietf.org/html/rfc7231#section-6.6.1)
     JobType:
       type: string
       description: The type of a Job. Proactive jobs are carried on continuously to permit timely reporting of fault or performance status. On-demand jobs are actions that are  initiated for a limited time to carry out the measurements. Passive  jobs support the collection and reporting of network and service statistics/faults.
